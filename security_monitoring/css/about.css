@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/* 主体 内容 核心 */
+
+.aricle-middle {
+    padding: 20px 10px;
+}
+
+.aricle-middle p {
+    font: normal 14px/28px "微软雅黑";
+    text-indent: 2em;
+    color: #767474;
+}
+
+.aricle-down {
+    overflow: hidden;
+    padding: 0;
+    font-size: 0;
+    white-space: nowrap;
+}
+
+.aricle-down img {
+    height: 178px;
+    margin: 10px 0 10px 10px;
+}

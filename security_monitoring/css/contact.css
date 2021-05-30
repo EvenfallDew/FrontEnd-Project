@@ -1,0 +1,19 @@
+@charset "UTF-8";
+/* 主体 内容 核心 */
+
+.aricle-middle img {
+    width: 100%;
+}
+
+.aricle-down ul {
+    float: left;
+}
+
+.aricle-down .address {
+    margin-right: 170px;
+}
+
+.aricle-down li {
+    font: 500 14px/38px "微软雅黑";
+    color: #7d7d7d;
+}

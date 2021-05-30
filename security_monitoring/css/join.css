@@ -1,0 +1,23 @@
+@charset "UTF-8";
+/* 主体 内容 */
+
+.aricle-down h3 {
+    font: bolder 18px/32px "微软雅黑";
+    color: #ff0000;
+}
+
+.aricle-down h4 {
+    font: bolder 16px/32px "微软雅黑";
+}
+
+.aricle-down div {
+    width: 50px;
+    height: 20px;
+    border-bottom: 1px solid #000000;
+}
+
+.aricle-down p {
+    margin-bottom: 20px;
+    font: normal 14px/32px "微软雅黑";
+    color: #676666;
+}
