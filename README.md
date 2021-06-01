@@ -4,6 +4,6 @@
 
 * 安防网站首页和相关服务页面
 
-> [源码地址](https://github.com/EvenfallDew/FrontEnd-Project/tree/main/security_monitoring)
+> [源码地址](https://github.com/EvenfallDew/FrontEnd-Projects/tree/main/security_monitoring)
 
-> [预览地址](https://evenfalldew.github.io/FrontEnd-Project/security_monitoring/index.html)
+> [预览地址](https://evenfalldew.github.io/FrontEnd-Projects/security_monitoring/index.html)
