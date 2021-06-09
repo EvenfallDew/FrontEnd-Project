@@ -8,7 +8,7 @@
 
 > [预览地址](https://evenfalldew.github.io/FrontEnd-Projects/security_monitoring/index.html)
 
-### 01. 购物商城网站仿例
+### 02. 购物商城网站仿例
 
 * 购物商城网站页面：首页，分类页，商品页，登录页，注册页，购物车，支付页
 
