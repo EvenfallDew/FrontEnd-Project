@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商城-注册</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/base_header_login.css">
+    <link rel="stylesheet" href="css/base_footer.css">
+    <link rel="stylesheet" href="css/register.css">
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header>
+        <!-- 导航菜单栏 -->
+        <div class="w1200 nav rel">
+            <!-- logo -->
+            <h1 class="logo abs">
+                <a href="index.html">乐购</a>
+            </h1>
+            <div class="contact fr">
+                <div class="contact-pic fl">
+                    联系
+                </div>
+                <div class="contact-tel fl">
+                    咨询电话<br>XXXX-XXXXXXXX
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 注册 -->
+    <main>
+        <div class="register-box">
+            <!-- 注册-标签栏 -->
+            <div class="register-tabs">
+                <ul>
+                    <li class="tabOn">注册协议</li>
+                    <li>填写账号信息</li>
+                    <li>注册成功</li>
+                </ul>
+            </div>
+            <!-- 注册-内容栏 -->
+            <div class="register-conts">
+                <!-- 注册-内容栏1-注册协议 -->
+                <div class="register-cont1 register-cont contOn">
+                    <h3>注册协议</h3>
+                    <p>
+                        <strong>【审慎阅读】</strong>您在申请注册流程中点击同意前，应当认真阅读以下协议。<br>
+                        <strong>请您务必审慎阅读、充分理解协议中相关条款内容，其中包括：</strong><br>
+                        1、<strong>与您约定免除或限制责任的条款；</strong><br>
+                        2、<strong>与您约定法律适用和管辖的条款；</strong><br>
+                        3、<strong>其他以粗体下划线标识的重要条款。</strong><br>
+                        如您对协议有任何疑问，可向平台客服咨询。<br>
+                    </p>
+                    <p>
+                        <strong>【特别提示】</strong>当您按照注册页面提示填写信息、阅读并同意协议且完成全部注册程序后，即表示您已充分阅读、理解并接受协议的全部内容。如您因平台服务与淘宝发生争议的，适用《淘宝平台服务协议》处理。如您在使用平台服务过程中与其他用户发生争议的，依您与其他用户达成的协议处理。<br>
+                        <strong>阅读协议的过程中，如果您不同意相关协议或其中任何条款约定，您应立即停止注册程序</strong>
+                    </p>
+                    <p>
+                        "平台服务协议<br>
+                        隐私权政策<br>
+                        法律声明<br>
+                        支付宝及客户端服务协议"
+                    </p>
+                    <p>
+                        <button class="agree btn-next" type="button">同意协议</button>
+                    </p>
+                </div>
+                <!-- 注册-内容栏2-填写账号信息 -->
+                <div class="register-cont2 register-cont">
+                    <form class="registerForm" action="">
+                        <p>
+                            <span>真实姓名：</span>
+                            <input class="real-name" type="text">
+                            <span class="register-inf register-inf-name"></span>
+                        </p>
+                        <p>
+                            <span>用户名：</span>
+                            <input class="user-name" type="text">
+                            <span class="register-inf register-inf-user"></span>
+
+                        </p>
+                        <p>
+                            <span>密码：</span>
+                            <input class="user-psw" type="password">
+                            <span class="register-inf register-inf-psw"></span>
+
+                        </p>
+                        <p>
+                            <span>密码强度：</span>
+                            <span class="register-psw-safebox">
+                                <span class="register-psw-safe register-psw-safe0"></span>
+                                <span class="register-psw-safe register-psw-safe1"></span>
+                                <span class="register-psw-safe register-psw-safe2"></span>
+                                <span class="register-psw-safe register-psw-safe3"></span>
+                            </span>
+                            <span class="register-inf register-inf-psws"></span>
+                        </p>
+                        <p class="mail">
+                            <span>邮箱：</span>
+                            <input class="user-mail" type="text">
+                            <select name="" id="">
+                                <option value="1">@163.com</option>
+                                <option value="2">@qq.com</option>
+                                <option value="3">@sohu.com</option>
+                            </select>
+                            <span class="register-inf register-inf-mail"></span>
+                        </p>
+                        <p>
+                            <span>手机号码：</span>
+                            <input class="tel-num" type="tel">
+                            <span class="register-inf register-inf-tel"></span>
+                        </p>
+                        <p class="v-code">
+                            <span>验证码：</span>
+                            <input class="confirm-code" type="text">
+                            <button class="confirm-code-btn" type="button">获取验证码</button>
+                        </p>
+                        <p>
+                            <button class="submit btn-next" type="button">提交注册</button>
+                        </p>
+                    </form>
+                </div>
+                <!-- 注册-内容栏3-注册成功 -->
+                <div class="register-cont3 register-cont" style="display: none;">
+                    <div class="finish">注册完成</div>
+                    <p>注册成功，请前往登录</p>
+                    <h2>
+                        倒计时
+                        <span id="time"></span>
+                        跳转<a href="login.html">登录</a>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <!-- 底部链接 -->
+        <div class="foot-up w1200">
+            <div class="foot-up-box clearfix">
+                <div class="foot-up-inf fl">
+                    <img src="images/footer/foot_up_pic1.jpg">
+                    <span>
+                        正品保障<br>
+                    </span>
+                    <span>
+                        赠品行货&emsp;放心选购
+                    </span>
+                </div>
+                <div class="foot-up-inf fl">
+                    <img src="images/footer/foot_up_pic2.jpg">
+                    <span>
+                        满86包邮<br>
+                    </span>
+                    <span>
+                        满86元&emsp;免运费
+                    </span>
+                </div>
+                <div class="foot-up-inf fl">
+                    <img src="images/footer/foot_up_pic3.jpg">
+                    <span>
+                        售后无忧<br>
+                    </span>
+                    <span>
+                        7天无理由退货
+                    </span>
+                </div>
+                <div class="foot-up-inf fl">
+                    <img src="images/footer/foot_up_pic4.jpg">
+                    <span>
+                        准时送达<br>
+                    </span>
+                    <span>
+                        收货时间由你做主
+                    </span>
+                </div>
+            </div>
+            <!-- 链接部分 -->
+            <div class="foot-up-link">
+                <dl>
+                    <dt>新手入门</dt>
+                    <dd><a href="">购买流程</a></dd>
+                    <dd><a href="">会员制度</a></dd>
+                    <dd><a href="">订单查询</a></dd>
+                    <dd><a href="">服务协议及隐私说明</a></dd>
+                    <dd><a href="">网站地图</a></dd>
+                </dl>
+                <dl>
+                    <dt>支付方式</dt>
+                    <dd><a href="">货到付款</a></dd>
+                    <dd><a href="">网上支付</a></dd>
+                    <dd><a href="">礼品卡支付</a></dd>
+                    <dd><a href="">其他支付</a></dd>
+                </dl>
+                <dl>
+                    <dt>配送服务</dt>
+                    <dd><a href="">配送进度查询</a></dd>
+                    <dd><a href="">商品验货与签收</a></dd>
+                </dl>
+                <dl>
+                    <dt>相关规则</dt>
+                    <dd><a href="">平台规则</a></dd>
+                    <dd><a href="">退换货政策</a></dd>
+                    <dd><a href="">发票制度</a></dd>
+                    <dd><a href="">帮助中心</a></dd>
+                </dl>
+                <dl>
+                    <dt>App更优惠</dt>
+                    <dd><img src="images/qc_code.png"></dd>
+                </dl>
+                <dl>
+                    <dt>加微信查订单</dt>
+                    <dd><img src="images/qc_code.png"></dd>
+                </dl>
+
+            </div>
+        </div>
+        <!-- 版权信息 -->
+        <div class="foot-down">
+            <div class="w1200">
+                <span>
+                    沪ICP备XXXXXXXXX号 | 经营证照 | 互联网药品信息服务资格证(沪)-经营性-2017-0006 | 违法和不良信息举报电话：XXX-XXXXXXXX | 沪B2-XXXXXXX
+                    |
+                </span>
+                <span>
+                    沪公网安备 XXXXXXXXX号 | 友情链接 | 出版物经营许可证 | 增值电信业务经营许可证
+                </span>
+                <div class="foot-down-pic">
+                    举报图片
+                    <img src="images/footer/foot_down_pic1.jpg">
+                    <img src="images/footer/foot_down_pic2.jpg">
+                    <img src="images/footer/foot_down_pic3.jpg">
+                    <img src="images/footer/foot_down_pic4.jpg">
+                    <img src="images/footer/foot_down_pic5.jpg">
+                    <img src="images/footer/foot_down_pic6.jpg">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- js -->
+    <script src="lib/jquery.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/register.js"></script>
+</body>
+
+</html>

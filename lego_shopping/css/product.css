@@ -1,0 +1,593 @@
+@charset "UTF-8";
+/* 商品展示 */
+
+.product-show {
+    height: 600px;
+}
+
+/* 商品展示-大图 */
+
+.product-pic {
+    width: 600px;
+    height: 726px;
+}
+
+#magnifier {
+    position: relative;
+    width: 450px;
+    margin: 54px 0 0 70px;
+}
+
+.small-box {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+
+.small-box table td {
+    width: 450px;
+    height: 450px;
+    text-align: center;
+}
+
+.small-box img {
+    /* width: 450px; */
+    width: auto;
+    height: auto;
+    max-height: 450px;
+    max-width: 450px;
+}
+
+.small-box .hover {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #aaa;
+    background: #0099ff;
+    opacity: .5;
+    filter: alpha(opacity=50);
+    cursor: move;
+}
+
+.thumbnail-box {
+    position: relative;
+    width: 100%;
+}
+
+.thumbnail-box .btn {
+    position: absolute;
+    top: 50%;
+    width: 22px;
+    height: 32px;
+    margin-top: -16px;
+}
+
+.thumbnail-box .btn-prev {
+    left: 0;
+    background: url(../images/product/btn_prev.png) no-repeat;
+}
+
+.thumbnail-box .btn-prev.btn_prev_disabled {
+    background: url(../images/product/btn_prev_disabled.png) no-repeat;
+    cursor: not-allowed;
+}
+
+.thumbnail-box .btn-next {
+    right: 0;
+    background: url(../images/product/btn_next.png) no-repeat;
+}
+
+.thumbnail-box .btn-next.btn_next_disabled {
+    background: url(../images/product/btn_next_disabled.png) no-repeat;
+    cursor: not-allowed;
+}
+
+.thumbnail-box .list {
+    overflow: hidden;
+    width: 390px;
+    margin: 0 auto;
+}
+
+.thumbnail-box .wrapper {
+    width: 100000px;
+}
+
+.thumbnail-box .list .item {
+    float: left;
+    margin: 0 10px;
+}
+
+.thumbnail-box .list .item img {
+    border: 2px solid #a9a9a9;
+    width: 54px;
+    height: 54px;
+}
+
+.thumbnail-box .list .item-cur img {
+    border: 2px solid #e53e41;
+}
+
+.big-box {
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    left: 451px;
+    top: 0;
+    width: 540px;
+    height: 540px;
+    border: 1px solid #e4e4e4;
+}
+
+.big-box img {
+    /* width: 540px;
+    height: 540px; */
+    /* 宽高可注释 */
+    display: block;
+}
+
+/* 商品展示-价格 */
+
+.product-text {
+    width: 570px;
+}
+
+.product-text h2 {
+    width: 533px;
+    height: 60px;
+    letter-spacing: 1px;
+    font: bold 20px/30px "微软雅黑";
+    color: #000000;
+}
+
+.product-text>p {
+    height: 24px;
+    color: #ff0000;
+    font: normal 16px/24px "微软雅黑";
+}
+
+.product-price p span {
+    display: inline-block;
+    width: 100px;
+    height: 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 24px;
+    color: #808080;
+}
+
+/* 商品展示-价格-原价 */
+
+.product-price .price del {
+    color: #333333;
+    font: normal 12px/24px "微软雅黑";
+}
+
+/* 商品展示-价格-折扣价 */
+
+.product-price .cut-price strong {
+    font: bold 14px/24px "微软雅黑";
+    width: 183px;
+    color: #fb1414;
+}
+
+/* 商品展示-价格-活动 */
+
+.product-price .active {
+    color: #b05811;
+    font: normal 14px/24px "微软雅黑";
+}
+
+/* 商品展示-价格-运费 */
+
+.product-price .fare {
+    color: #808080;
+    font: normal 14px/24px "微软雅黑";
+}
+
+/* 商品展示-价格-月销量 */
+
+.product-price .month {
+    margin-top: 10px;
+    width: 570px;
+    height: 40px;
+    border-top: 1px dashed #808080;
+    border-bottom: 1px dashed #808080;
+}
+
+.product-price .month span {
+    text-align: center;
+    display: inline-block;
+    width: 180px;
+    color: #808080;
+    font: normal 14px/40px "微软雅黑";
+    border-right: 1px solid #cbcbcb;
+}
+
+.product-price .month span:last-child {
+    border: 0;
+}
+
+.product-price .month strong {
+    letter-spacing: 1px;
+    color: #ff0000;
+    font: bold 18px/24px "微软雅黑";
+}
+
+/* 商品展示-价格-颜色分类 */
+
+.product-price .color-text {
+    margin-left: 107px;
+    width: 460px;
+}
+
+.product-price .color a {
+    text-align: center;
+    display: inline-block;
+    width: 220px;
+    height: 30px;
+    border: 1px solid #808080;
+    line-height: 30px;
+    color: #333333;
+    margin-bottom: 5px;
+}
+
+/* 商品展示-价格-数量 */
+
+.product-price p {
+    margin-top: 10px;
+}
+
+.product-price .count input {
+    width: 80px;
+    height: 30px;
+    outline: none;
+    font: normal 18px/30px "微软雅黑";
+    border: 1px solid #808080;
+    color: #333333;
+}
+
+/* 商品展示-价格-分期 */
+
+.product-price .ali {
+    height: 90px;
+}
+
+.product-price .ali span {
+    line-height: 90px;
+}
+
+.product-price .ali a {
+    text-align: center;
+    display: inline-block;
+    width: 140px;
+    height: 64px;
+    border: 1px solid #808080;
+    line-height: 32px;
+    color: #333333;
+}
+
+/* 商品展示-价格-购买按钮 */
+
+.product-price .btn {
+    width: 410px;
+    margin-left: 107px;
+}
+
+.product-price button {
+    box-sizing: border-box;
+    width: 200px;
+    height: 34px;
+    background-color: #ffeb8a;
+    border: 1px solid #ff8a00;
+    color: #ff8a00;
+}
+
+.product-price button:hover {
+    background-color: #feb80f;
+    border: 1px solid #ff8a00;
+}
+
+.product-price button a {
+    color: #ff8a00;
+}
+
+.product-price button:hover a {
+    color: #ffffff;
+}
+
+/* 商品展示-价格-收藏 */
+
+.product-price .get {
+    margin-left: 450px;
+}
+
+.product-price .get a {
+    color: #333333;
+}
+
+/* 商品介绍 */
+
+.product-inf {
+    margin-top: 20px;
+}
+
+/* 左边 */
+
+.product-inf-l {
+    width: 965px;
+}
+
+/* 标签 */
+
+.product-inf-l .tabs {
+    box-sizing: border-box;
+    height: 50px;
+    width: 965px;
+    border-bottom: 3px solid #feb80f;
+}
+
+.product-inf-l li {
+    text-align: center;
+    float: left;
+    width: 180px;
+    height: 47px;
+    background-color: #dbdbdb;
+    border-radius: 10px 10px 0px 0px;
+    letter-spacing: 4px;
+    font: bold 18px/50px "微软雅黑";
+    color: #969695;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.product-inf-l li:hover {
+    background-color: #feb80f;
+    color: #ffffff;
+}
+
+.product-inf-l li.tabOn {
+    color: #ffffff;
+    background-color: #feb80f;
+    cursor: pointer;
+}
+
+/* 商品介绍-左边-内容 */
+
+.product-inf-conts {
+    margin-top: 10px;
+}
+
+.product-inf-conts .contOn {
+    display: block;
+}
+
+/* 商品介绍-左边-内容-产品介绍图 */
+
+.product-inf-cont1 {
+    display: none;
+}
+
+.product-inf-cont1 div {
+    width: 965px;
+    margin-bottom: 10px;
+    width: 965px;
+}
+
+.product-inf-cont1-pic3 img {
+    width: 965px;
+}
+
+/* 商品介绍-左边-内容-积累评价 */
+
+.product-inf-cont2 {
+    display: none;
+    background-color: #ffffff;
+}
+
+/* 商品介绍-内容-累积评价-评分栏 */
+
+.product-marks {
+    width: 965px;
+    height: 110px;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.product-marks h3 {
+    height: 30px;
+    font: normal 14px/30px "微软雅黑";
+    color: #808080;
+    margin: 5px 0;
+}
+
+.product-mark span {
+    height: 50px;
+    font: bold 50px/50px "微软雅黑";
+    letter-spacing: 1px;
+    color: #fe520f;
+}
+
+/* 商品介绍-内容-累积评价-评分栏-星星 */
+
+.product-stars {
+    height: 50px;
+    width: 250px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-right: 1px solid #808080;
+}
+
+.product-stars-bg {
+    background-image: url(../images/product/stars.png);
+    width: 220px;
+    height: 44px;
+    background-position-y: -44px;
+}
+
+.product-stars-in {
+    background-image: url(../images/product/stars.png);
+    width: 195px;
+    height: 44px;
+}
+
+/* 商品介绍-内容-累积评价-评分栏-好评率 */
+
+.product-present {
+    margin-left: 20px;
+    font: normal 16px/24px "微软雅黑";
+    color: #333333;
+}
+
+.product-present-pic {
+    width: 500px;
+    height: 18px;
+    background-color: #d6d6d6;
+}
+
+.product-present-innerpic {
+    width: 400px;
+    height: 18px;
+    background-color: #2e9aff;
+}
+
+/* 商品介绍-内容-累积评价-筛选栏 */
+
+.product-filter {
+    border-top: 1px solid #7c7c7c;
+    width: 965px;
+    height: 50px;
+    font: normal 16px/50px "微软雅黑";
+    color: #555555;
+    background-color: #f6f6f6;
+}
+
+.product-filter input {
+    margin-left: 40px;
+}
+
+.product-filter select {
+    margin-top: 12px;
+    margin-right: 40px;
+    width: 110px;
+    height: 26px;
+    outline: none;
+}
+
+/* 商品介绍-内容-累积评价-评论内容 */
+
+.product-comment {
+    padding: 10px 20px;
+}
+
+.product-comment-cont {
+    height: 240px;
+    border-bottom: 2px dashed #bfbec5;
+    padding: 0 20px;
+}
+
+.product-comment-text {
+    padding-top: 10px;
+    width: 560px;
+}
+
+.product-comment-text p:first-child {
+    height: 40px;
+    font-size: 16px;
+    font: normal 16px/24px "微软雅黑";
+    color: #555555;
+}
+
+.product-comment-text img {
+    width: 54px;
+    height: 54px;
+    border: 1px solid black;
+}
+
+.product-comment-text p:nth-child(4) {
+    height: 11px;
+    height: 40px;
+    font: normal 16px/40px "微软雅黑";
+    color: #9f9f9f;
+}
+
+.product-comment-text p:last-child {
+    height: 62px;
+    font: normal 14px/24px "微软雅黑";
+    color: #ab5d00;
+}
+
+.product-comment-name {
+    font: normal 16px/240px "微软雅黑";
+    text-indent: 10em;
+    color: #333333;
+}
+
+/* 商品介绍-左边-内容-积累评价-页码 */
+
+.product-inf-page {
+    width: 340px;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.product-inf-page a {
+    display: inline-block;
+    border: 1px solid #58575c;
+    text-align: center;
+    height: 26px;
+    width: 26px;
+    cursor: pointer;
+    font: normal 14px/26px "微软雅黑";
+    color: #58575c;
+}
+
+.product-inf-page a:nth-child(1), .product-inf-page a:nth-child(6), .product-inf-page a:nth-child(7) {
+    width: 60px;
+}
+
+/* 右边 */
+
+.product-inf-r {
+    width: 210px;
+    text-align: center;
+}
+
+.product-inf-r h2 {
+    width: 210px;
+    height: 50px;
+    background-color: #feb80f;
+    border-radius: 10px 10px 0px 0px;
+    letter-spacing: 4px;
+    font: bold 18px/50px "微软雅黑";
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.product-inf-rpic {
+    width: 210px;
+    height: 210px;
+    border: 1px solid #bfbec5;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.product-inf-rpic img {
+    width: 170px;
+    height: 170px;
+}
+
+.product-inf-rpic p {
+    font: normal 14px/24px "微软雅黑";
+    font-weight: normal;
+    color: #808080;
+    text-align: center;
+}

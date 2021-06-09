@@ -1,0 +1,165 @@
+@charset "UTF-8";
+main {
+    height: 600px;
+    background-image: url(../images/login/login_bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.login-box {
+    top: 50px;
+    right: 50px;
+    width: 400px;
+    height: 445px;
+    padding: 0 35px 0 35px;
+    text-align: center;
+    color: #808080;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-sizing: border-box;
+}
+
+.login-box a {
+    color: #808080;
+}
+
+/* 账密登录 */
+
+.login-change {
+    height: 55px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    padding-top: 15px;
+    font: normal 18px/24px "微软雅黑";
+    border-bottom: 1px solid #bfb6b5;
+    box-sizing: border-box;
+}
+
+.login-change a {
+    display: inline-block;
+    width: 140px;
+    height: 36px;
+    border-bottom: 4px solid #ffa200;
+}
+
+.login-change a:hover {
+    color: #5a5959;
+    border-bottom: 4px solid #ffa200;
+}
+
+.login-cont1 {
+    display: none;
+}
+
+.login-cont1 input, .login-cont1 button {
+    width: 330px;
+    height: 45px;
+    box-sizing: border-box;
+}
+
+.login-cont1 input {
+    margin-bottom: 30px;
+    padding-left: 20px;
+    border: 1px solid #bfb6b5;
+}
+
+.login-cont1 button {
+    font: normal 18px/24px "微软雅黑";
+    text-align: center;
+    color: #ffffff;
+    background-color: #ffa200;
+    cursor: pointer;
+}
+
+.user-pic, .psw-pic {
+    right: 0;
+    width: 45px;
+    height: 45px;
+    font-size: 0;
+    background-color: #ffa200;
+    background-image: url(../images/login/login_user.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+}
+
+.psw-pic {
+    background-image: url(../images/login/login_psw.png);
+}
+
+.login-forget {
+    margin-top: 25px;
+    text-align: right;
+}
+
+.login-other {
+    margin-top: 25px;
+    text-align: left;
+}
+
+.login-other img {
+    width: 18px;
+}
+
+/* 二维码登录 */
+
+.login-change2 {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    padding-top: 15px;
+    font: normal 18px/25px "微软雅黑";
+    box-sizing: border-box;
+}
+
+.login-camera {
+    width: 150px;
+    height: 50px;
+    margin: 0 auto;
+    background-image: url(../images/login/login_camera.png);
+    background-repeat: no-repeat;
+    background-size: 50px;
+}
+
+.login-camera p {
+    margin-left: 60px;
+}
+
+/* 二维码 */
+
+.login-code {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    margin-bottom: 35px;
+    font-size: 0;
+    background-image: url(../images/login/qc_code.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 200px;
+}
+
+.login-cont2 p:last-child {
+    font: normal 18px/25px "微软雅黑";
+}
+
+.tabOn {
+    display: block;
+}
+
+/* 切换区 */
+
+.change-hide1, .change-hide2 {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 35px;
+    top: 35px;
+    font-size: 0;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: right top;
+    z-index: 1;
+}
+
+.change-hide1 {
+    right: 0;
+}

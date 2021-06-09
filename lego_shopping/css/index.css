@@ -1,0 +1,466 @@
+@charset "utf-8";
+/* 轮播图 */
+
+.banner {
+    margin-top: 25px;
+}
+
+.banner-cont {
+    z-index: 1;
+}
+
+/* 轮播广告 */
+
+.slide {
+    position: absolute;
+    width: 100%;
+    min-width: 1200px;
+    overflow: hidden;
+}
+
+/* 目录 */
+
+.menu ul {
+    width: 230px;
+    height: 450px;
+    opacity: 0.8;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding-top: 20px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.menu li {
+    font: bold 14px/34px "微软雅黑";
+    letter-spacing: 1px;
+    color: #ffffff;
+    height: 34px;
+}
+
+.menu li a {
+    color: #ffffff;
+    border: 1px solid transparent;
+    padding-left: 30px;
+    display: block;
+    height: 32px;
+}
+
+.menu li:hover a {
+    position: relative;
+    z-index: 2;
+    border: 1px solid #808080;
+    border-right: 0;
+    color: #ff6600;
+    background-color: #ffffff;
+}
+
+/* 目录内容 */
+
+.menu .box {
+    display: none;
+    top: 0;
+    left: 229px;
+    width: 600px;
+    height: 450px;
+    border: 1px solid #808080;
+    box-sizing: border-box;
+    background-color: #808080;
+}
+
+.menu li:hover .box {
+    display: block;
+}
+
+.menu li .box>a {
+    margin: 5px;
+    width: 100px;
+    display: inline-block;
+    color: #ff6600;
+}
+
+.menu li .box>a:hover {
+    color: #ffffff;
+    background-color: #ff6600;
+}
+
+/* 今日推荐 */
+
+.recommend {
+    margin-top: 20px;
+}
+
+.recommend .rec, .recommend .rec img {
+    width: 285px;
+    height: 154px;
+}
+
+.recommend .rec {
+    margin-right: 20px;
+}
+
+.recommend .rec:nth-child(4) {
+    margin-right: 0;
+}
+
+.recommend-ad img {
+    margin-top: 20px;
+    width: 1200px;
+}
+
+/* 秒杀-倒计时*/
+
+.recommend-pic {
+    width: 230px;
+    height: 285px;
+    background-image: url(../images/inde_time.png);
+    background-size: 300px;
+    background-position: top right;
+    background-position: 50px -80px;
+    background-repeat: no-repeat;
+}
+
+.recommend-time {
+    width: 230px;
+    height: 285px;
+    background-color: rgba(241, 73, 56, 0.9);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.recommend-time h2 {
+    color: #ffffff;
+    text-align: center;
+    font: normal 25px/40px "微软雅黑";
+}
+
+.recommend-time img {
+    display: block;
+    width: 40px;
+    margin: 20px auto;
+}
+
+.recommend-time h3 {
+    color: #ffffff;
+    text-align: center;
+    font: normal 20px/40px "微软雅黑";
+}
+
+.recommend-time-on {
+    font: normal 20px/50px "微软雅黑";
+    color: #ffffff;
+}
+
+.recommend-time-on span {
+    margin-top: 20px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: #666666;
+    text-align: center;
+    font: normal 20px/50px "微软雅黑";
+}
+
+.cutdown-box {
+    margin-top: 30px;
+}
+
+/* 秒杀-轮播 */
+
+.recommend-show {
+    width: 960px;
+    height: 285px;
+}
+
+.recommend-show img {
+    height: 210px;
+}
+
+/* 每日推荐 */
+
+.everyday {
+    margin-top: 55px;
+    height: 654px;
+    background-color: #ffffff;
+    padding-top: 60px;
+}
+
+.everyday h2 {
+    text-align: center;
+    font: bold 30px/60px "微软雅黑";
+}
+
+.everyday h3 {
+    font: bold 26px/26px "微软雅黑";
+}
+
+.everyday p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #9f9f9f;
+}
+
+.everyday-boxl, .everyday-boxr {
+    margin-top: 55px;
+    width: 585px;
+    height: 410px;
+    background-color: #ffdbdb;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.everyday-boxr {
+    background-color: #acd0ff;
+}
+
+.everyday-pic {
+    float: left;
+    width: 165px;
+    height: 250px;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.everyday-pic:last-child {
+    margin-right: 0;
+}
+
+.everyday-boxl img {
+    height: 250px;
+}
+
+/* 服装 */
+
+.cloth {
+    height: 650px;
+    padding-top: 40px;
+}
+
+/* 标题切换标签 */
+
+.cloth-title {
+    height: 35px;
+    font: bold 16px/24px "微软雅黑";
+}
+
+.cloth-tabs li {
+    float: left;
+    margin: 0 10px;
+}
+
+.cloth-title .tabOn {
+    color: #ffbd0d;
+}
+
+/* 内容 隐藏 */
+
+.cloth-cont {
+    height: 536px;
+}
+
+.cloth-cont1 .contOn {
+    display: block;
+}
+
+.cloth-cont2 {
+    display: none;
+}
+
+.cloth-cont3 {
+    display: none;
+}
+
+/* 内容 左边内容 */
+
+.cloth-cont .contl {
+    height: 465px;
+    width: 262px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+.cloth-cont .contl-pic {
+    height: 330px;
+    width: 262px;
+    overflow: hidden;
+}
+
+.cloth-cont .contl img {
+    width: 262px;
+}
+
+.contl-lab {
+    text-align: center;
+}
+
+.contl-lab a {
+    display: inline-block;
+    width: 70px;
+    height: 24px;
+    border: 1px solid black;
+    border-radius: 12px;
+    text-align: center;
+    color: black;
+    margin-top: 14px;
+}
+
+/* 中间内容 */
+
+.contm {
+    width: 455px;
+    height: 465px;
+    margin: auto 15px;
+    box-sizing: border-box;
+}
+
+.contm-slide {
+    width: 455px;
+    height: 300px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.contm-slide img {
+    height: 300px;
+}
+
+.contm-down {
+    margin-top: 15px;
+    width: 455px;
+    height: 150px;
+    overflow: hidden;
+}
+
+.contm-down img {
+    width: 455px;
+    height: 150px;
+}
+
+/* 中间-轮播 */
+
+.cloth .contm .flex-direction-nav a {
+    margin: -100px 0;
+}
+
+/* 右边内容 */
+
+.contr {
+    width: 450px;
+    height: 465px;
+    box-sizing: border-box;
+}
+
+.contr-pic {
+    float: left;
+    width: 220px;
+    height: 225px;
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    text-align: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.contr-pic:nth-child(2), .contr-pic:nth-child(4) {
+    margin-right: 0;
+}
+
+.contr-pic img {
+    width: 180px;
+    height: 144px;
+}
+
+.contr-pic h2 {
+    font: bold 18px/24px "微软雅黑";
+}
+
+/* 下边内容 */
+
+.contd {
+    width: 1200px;
+    height: 65px;
+}
+
+.contd-pic {
+    margin-top: 15px;
+    float: left;
+    width: 128px;
+    height: 65px;
+    overflow: hidden;
+    margin-right: 6px;
+}
+
+.contd-pic:last-child {
+    margin-right: 0;
+}
+
+.contd-pic img {
+    width: 128px;
+    height: 65px;
+}
+
+/* 搜索栏下拉 */
+
+.fixed-header {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    padding-top: 15px;
+    z-index: 10;
+}
+
+.fixed-header .search-box {
+    float: none;
+    margin: 0 auto;
+}
+
+/* 电梯导航 */
+
+.fixed-nav {
+    display: none;
+    width: 50px;
+    /* background-color: #ffffff; */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -670px;
+    box-sizing: border-box;
+}
+
+.fixed-nav li {
+    width: 40px;
+    text-align: center;
+    color: #fff;
+    padding: 5px;
+    margin-bottom: 10px;
+    background: skyblue;
+    cursor: pointer;
+}
+
+.fixed-nav li.current {
+    background: #ff6600;
+}
+
+.fixed-nav li:hover {
+    background: #ff6600;
+}
+
+/* 固定二维码 */
+
+.fixed-code {
+    display: none;
+    text-align: center;
+    width: 100px;
+    height: 170px;
+    background-color: #ffffff;
+    position: fixed;
+    top: 50%;
+    right: 50%;
+    margin-right: -720px;
+    box-sizing: border-box;
+    padding: 20px 0;
+}

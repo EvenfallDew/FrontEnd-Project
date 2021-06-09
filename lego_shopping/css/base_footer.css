@@ -1,0 +1,118 @@
+@charset "utf-8";
+/* 底部页脚 */
+
+footer {
+    height: 500px;
+    background-color: #ffffff;
+}
+
+.foot-up {
+    height: 370px;
+    padding-top: 50px;
+}
+
+.foot-up a {
+    color: #808080;
+}
+
+/* 声明部分 */
+
+.foot-up-box {
+    padding-bottom: 30px;
+    border-bottom: 2px solid #dadada;
+}
+
+.foot-up-inf {
+    width: 298px;
+    height: 66px;
+    border-right: 2px solid #dadada;
+}
+
+.foot-up-inf:last-child {
+    border-right: 0;
+}
+
+.foot-up-inf img {
+    float: left;
+    margin-right: 15px;
+    margin-left: 20px;
+}
+
+.foot-up-inf:first-child img {
+    margin-left: 0;
+}
+
+.foot-up-inf span {
+    font: normal 20px/33px "微软雅黑";
+    color: #000000;
+}
+
+.foot-up-inf span:last-child {
+    font: normal 14px/33px "微软雅黑";
+    color: #808080;
+}
+
+/* 链接部分 */
+
+.foot-up-link {
+    margin-top: 30px;
+}
+
+.foot-up-link dl {
+    float: left;
+}
+
+.foot-up-link dl:nth-child(1) {
+    width: 220px;
+    margin-left: 10px;
+}
+
+.foot-up-link dl:nth-child(2) {
+    width: 190px;
+}
+
+.foot-up-link dl:nth-child(3) {
+    width: 195px;
+}
+
+.foot-up-link dl:nth-child(4) {
+    width: 240px;
+}
+
+.foot-up-link dl:nth-child(5) {
+    width: 140px;
+}
+
+.foot-up-link dt {
+    font: bold 18px/36px "微软雅黑";
+}
+
+.foot-up-link dd {
+    font: normal 16px/32px "微软雅黑";
+}
+
+/* 版权部分 */
+
+.foot-down {
+    height: 120px;
+    padding-top: 10px;
+    text-align: center;
+    background-color: #f4f4f4;
+    box-sizing: border-box;
+}
+
+.foot-down span {
+    display: block;
+    font: normal 12px/24px "微软雅黑";
+    color: #808080;
+}
+
+.foot-down-pic {
+    height: 30px;
+    margin-top: 10px;
+    font-size: 0;
+}
+
+.foot-down-pic img {
+    margin-right: 5px;
+}

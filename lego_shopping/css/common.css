@@ -1,0 +1,72 @@
+@charset "utf-8";
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* 左浮动 */
+
+.fl {
+    float: left;
+}
+
+/* 右浮动 */
+
+.fr {
+    float: right;
+}
+
+/* 清除浮动 */
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+
+/* 清除低版本浏览器的浮动 */
+
+.clearfix {
+    *zoom: 1
+}
+
+.rel {
+    position: relative;
+}
+
+.abs {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+button {
+    border: 0;
+}
+
+input {
+    outline: none;
+}
+
+/* 版心 */
+
+.w1200 {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* 字体样式 */
+
+body {
+    font: 14px/1.6 'SimHei';
+    color: #333;
+    min-width: 1200px;
+    background-color: #f4f4f4;
+}

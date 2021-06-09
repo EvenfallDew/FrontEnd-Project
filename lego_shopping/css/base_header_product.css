@@ -1,0 +1,168 @@
+@charset "utf-8";
+header {
+    height: 155px;
+    box-shadow: 0px 1px 0px 0px #f4f4f4;
+    background-color: #ffffff;
+}
+
+header a {
+    color: #9f9f9f;
+}
+
+/* 顶部菜单栏 */
+
+.top {
+    height: 40px;
+    line-height: 40px;
+    color: #e6e6e6;
+    background-color: #101010;
+}
+
+.top .welcome a {
+    color: #ff9c00;
+}
+
+/* 顶部logo */
+
+header .nav h1 {
+    top: 25px;
+    width: 170px;
+    height: 76px;
+    background-image: url(../images/logo.jpg);
+    background-repeat: no-repeat;
+    background-position-x: -10px;
+}
+
+header .nav h1 a {
+    display: block;
+    font-size: 0;
+    width: 170px;
+    height: 76px;
+}
+
+/* 店铺logo */
+
+.shop-logo {
+    margin-top: 25px;
+    margin-left: 200px;
+    width: 298px;
+    height: 75px;
+    box-sizing: border-box;
+}
+
+.shop-logo-pic {
+    width: 170px;
+    height: 75px;
+    border-right: 1px dashed #808080;
+    overflow: hidden;
+}
+
+.shop-logo-pic img {
+    width: 170px;
+    height: 75px;
+}
+
+.shop-logo-inf {
+    width: 112px;
+    height: 75px;
+    padding-left: 5px;
+}
+
+.shop-logo-inf h3 {
+    height: 24px;
+    letter-spacing: 1px;
+    font: bold 14px/24px "微软雅黑";
+    color: #003333;
+}
+
+.shop-logo-inf span {
+    text-align: center;
+    display: block;
+    width: 88px;
+    height: 18px;
+    background-color: #f4c985;
+    letter-spacing: 1px;
+    font: normal 12px/18px "微软雅黑";
+    color: #86612a;
+    border: 2px solid #feb80f;
+}
+
+.shop-logo-inf a {
+    margin-top: 5px;
+    display: block;
+    width: 90px;
+    height: 24px;
+    background-color: #313131;
+    border-radius: 12px;
+    letter-spacing: 1px;
+    font: normal 14px/24px "微软雅黑";
+    color: #ffffff;
+    text-align: center;
+}
+
+/* 搜索框和购物车按钮 */
+
+.search-buy {
+    margin-top: 45px;
+    margin-left: 50px;
+    width: 650px;
+}
+
+/* 搜索 */
+
+.search-box {
+    width: 490px;
+    height: 35px;
+    /* margin-left: 500px; */
+    border: 2px solid #feb80f;
+    box-sizing: border-box;
+}
+
+.search-cont {
+    width: 416px;
+    height: 31px;
+    padding-left: 10px;
+    outline: 0;
+    border: 0;
+}
+
+.search-btn {
+    width: 60px;
+    height: 31px;
+    border-radius: 0;
+    background-color: #feb80f;
+    background-image: url(../images/search_button.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    background-size: 30px;
+}
+
+/* 购物车 */
+
+.buy-box {
+    margin-left: 30px;
+    width: 130px;
+    height: 35px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font: normal 14px/35px "微软雅黑";
+    text-align: center;
+    text-indent: 36px;
+    color: #feb80f;
+    background-image: url(../images/buy_box.png);
+    background-repeat: no-repeat;
+    background-position: 24px center;
+    border: 1px solid #dadada;
+    background-size: 24px;
+}
+
+/* 假banner */
+
+nav {
+    height: 155px;
+    background-image: url(../images/product/product_banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 0;
+}

@@ -1,0 +1,132 @@
+@charset "utf-8";
+header {
+    height: 155px;
+    box-shadow: 0px 1px 0px 0px #f4f4f4;
+    background-color: #ffffff;
+}
+
+header a {
+    color: #9f9f9f;
+}
+
+/* 顶部菜单栏 */
+
+.top {
+    height: 40px;
+    line-height: 40px;
+    color: #e6e6e6;
+    background-color: #101010;
+}
+
+.top .welcome a {
+    color: #ff9c00;
+}
+
+/* 顶部logo */
+
+header .nav h1 {
+    left: 30px;
+    top: 25px;
+    width: 170px;
+    height: 76px;
+    background-image: url(../images/logo.jpg);
+    background-repeat: no-repeat;
+    background-position-x: -10px;
+}
+
+header .nav h1 a {
+    display: block;
+    font-size: 0;
+    width: 170px;
+    height: 76px;
+}
+
+/* 搜索框和购物车按钮 */
+
+.search-buy {
+    margin-top: 25px;
+    margin-bottom: 21px;
+}
+
+/* 搜索 */
+
+.search-box {
+    width: 490px;
+    height: 35px;
+    margin-left: 300px;
+    border: 2px solid #feb80f;
+    box-sizing: border-box;
+}
+
+.search-cont {
+    width: 406px;
+    height: 31px;
+    padding-left: 10px;
+    outline: 0;
+    border: 0;
+}
+
+.search-btn {
+    width: 60px;
+    height: 31px;
+    border-radius: 0;
+    background-color: #feb80f;
+    background-image: url(../images/search_button.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    background-size: 30px;
+}
+
+/* 购物车 */
+
+.buy {
+    width: 280px;
+    height: 35px;
+    margin-left: 30px;
+}
+
+.buy-box, .buy-order {
+    width: 130px;
+    height: 35px;
+    box-sizing: border-box;
+}
+
+.buy-box {
+    border-radius: 5px;
+    font: normal 14px/35px "微软雅黑";
+    text-align: center;
+    text-indent: 36px;
+    color: #feb80f;
+    background-image: url(../images/buy_box.png);
+    background-repeat: no-repeat;
+    background-position: 24px center;
+    border: 1px solid #dadada;
+    background-size: 24px;
+}
+
+.buy-order {
+    margin-left: 15px;
+    border-radius: 5px;
+    font: bold 14px/35px "微软雅黑";
+    text-align: center;
+    color: #dadada;
+    border: 1px solid #dadada;
+}
+
+/* 导航 */
+
+nav ul {
+    margin-left: 300px;
+}
+
+nav li {
+    float: left;
+    margin-right: 30px;
+    font: normal 16px/24px "微软雅黑";
+    color: #9f9f9f;
+}
+
+nav li a:hover {
+    color: #feb80f;
+}

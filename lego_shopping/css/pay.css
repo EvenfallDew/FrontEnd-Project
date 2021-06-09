@@ -1,0 +1,615 @@
+@charset "UTF-8";
+.pay-box {
+    height: 940px;
+    margin-top: 35px;
+    margin-bottom: 60px;
+    background-color: #ffffff;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+/* 支付进度栏 */
+
+.pay-label {
+    position: relative;
+}
+
+.pay-label ul {
+    float: right;
+    position: relative;
+    z-index: 2;
+}
+
+.pay-label li {
+    float: left;
+    height: 80px;
+    width: 150px;
+    text-align: center;
+    margin-left: 20px;
+}
+
+.pay-label p {
+    font: bold 16px/32px "微软雅黑";
+}
+
+.pay-label-num {
+    width: 33px;
+    height: 33px;
+    border: 1px solid #1b1b1b;
+    border-radius: 50%;
+    text-align: center;
+    font: bold 16px/32px "微软雅黑";
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+
+.pay-label-num.tabOn {
+    background-color: #feb80f;
+    color: #ffffff;
+    border: 1px solid #c0bebe;
+}
+
+.pay-label-line {
+    position: absolute;
+    border: 2px solid #c0bebe;
+    width: 472px;
+    right: 92px;
+    top: 48px;
+    font-size: 0;
+}
+
+/* 支付进度内容 */
+
+/* 支付进度内容-第1步-收货地址-地址选择 */
+
+.pay-locals {
+    border-top: 2px solid #c0bebe;
+    padding: 20px;
+}
+
+.pay-local {
+    float: left;
+    border: 1px solid #c0bebe;
+    width: 250px;
+    height: 150px;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 12px;
+}
+
+.pay-local h3 {
+    font: normal 18px/30px "微软雅黑";
+    height: 30px;
+}
+
+/* 支付进度内容-第1步-收货地址-确认订单 */
+
+.pay-table {
+    border-top: 2px solid #c0bebe;
+    border-bottom: 2px solid #c0bebe;
+    padding: 20px;
+}
+
+.pay-table table {
+    width: 100%;
+}
+
+/* 支付进度内容-第1步-收货地址-确认订单-店铺名 */
+
+.pay-table-shop {
+    height: 40px;
+    text-align: left;
+}
+
+.pay-table-shop th {
+    height: 40px;
+    border-bottom: 1px solid #c0bebe;
+}
+
+/* 支付进度内容-第1步-收货地址-确认订单-图片 */
+
+.pay-table-pic {
+    width: 140px;
+}
+
+.pay-table-pic img {
+    width: 110px;
+}
+
+/* 支付进度内容-第1步-收货地址-确认订单-描述 */
+
+.pay-table-text {
+    width: 260px;
+}
+
+.pay-table-text p {
+    font: normal 14px/18px "微软雅黑";
+    letter-spacing: 1px;
+    color: #333333;
+    margin-bottom: 40px;
+}
+
+.pay-table-text span {
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.pay-table-text span {
+    background-color: #ff9c00;
+}
+
+/* 支付进度内容-第1步-收货地址-确认订单-颜色尺寸 */
+
+.pay-table-color {
+    width: 160px;
+}
+
+/* 支付进度内容-第1步-收货地址-确认订单-单价 */
+
+.pay-table-price {
+    width: 160px;
+}
+
+.pay-table-price p {
+    font: bold 18px/20px "微软雅黑";
+    color: #e50500;
+    margin-bottom: 10px;
+}
+
+.pay-table-price span {
+    font: bold 14px/20px "微软雅黑";
+    color: #e50500;
+}
+
+.pay-table-price span i {
+    font: italic 14px/20px "微软雅黑";
+    color: #9f9f9f;
+}
+
+/* 支付进度内容-第1步-收货地址-确认订单-数量 */
+
+.pay-table-count {
+    width: 220px;
+    text-align: center;
+}
+
+.pay-table-count button {
+    width: 20px;
+    height: 20px;
+}
+
+.pay-table-count input {
+    width: 40px;
+    height: 30px;
+    outline: none;
+    border: 1px solid #9f9f9f;
+    text-align: center;
+}
+
+.pay-table-count .add {
+    cursor: pointer;
+}
+
+.pay-table-count .sum {
+    /* font-size: 0; */
+    display: none;
+}
+
+/* 支付进度内容-第1步-收货地址-确认订单-小计 */
+
+.single-sum {
+    font: bold 16px/20px "微软雅黑";
+    color: #ff0000;
+}
+
+/* 支付进度内容-第1步-收货地址-留言 */
+
+.pay-table-comment {
+    margin-top: 10px;
+    font: normal 16px/20px "微软雅黑";
+    color: #9f9f9f;
+}
+
+.pay-table-comment input {
+    width: 300px;
+    height: 30px;
+    outline: none;
+    border: 1px solid #9f9f9f;
+    padding-left: 10px;
+}
+
+/* 支付进度内容-第2步-支付方式 */
+
+.pay-cont2 {
+    display: none;
+}
+
+/* 支付进度内容-第2步-支付方式-具体方式 */
+
+.pay-choice {
+    border-top: 2px solid #c0bebe;
+    border-bottom: 2px solid #c0bebe;
+    height: 100px;
+    padding: 20px 30px;
+    box-sizing: border-box;
+}
+
+.pay-choice img {
+    width: 180px;
+    height: 58px;
+    border: 2px solid #c0bebe;
+    margin-right: 40px;
+}
+
+.pay-choice a {
+    color: #5f5f5f;
+}
+
+/* 支付进度内容-第2步-支付方式-账单信息 */
+
+.pay-address {
+    float: right;
+    color: #5f5f5f;
+}
+
+.pay-address p {
+    font: normal 16px/16px "微软雅黑";
+    margin-top: 20px;
+    text-align: right;
+}
+
+.pay-address span {
+    color: #1b1b1b;
+}
+
+.pay-address .pay-address-single-sum {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.pay-address button {
+    width: 200px;
+    height: 50px;
+    background-color: #ff9c00;
+    color: #ffffff;
+    letter-spacing: 8px;
+    font: normal 20px/50px "微软雅黑";
+    cursor: pointer;
+}
+
+/* 支付进度内容-第3步-确认付款 */
+
+.pay-cont3 {
+    display: none;
+}
+
+/* 支付进度内容-第3步-确认付款-订单信息 */
+
+.pay-list {
+    border-top: 2px solid #c0bebe;
+    border-bottom: 2px solid #c0bebe;
+    padding: 30px;
+    padding-bottom: 50px;
+}
+
+.pay-list h3 {
+    float: right;
+    font: bold 20px/40px "微软雅黑";
+    height: 40px;
+}
+
+.pay-list h3 span {
+    color: #ff0000;
+}
+
+/* 支付进度内容-第3步-确认付款-订单信息-表格 */
+
+.pay-list table {
+    width: 100%;
+    height: 200px;
+    text-align: center;
+}
+
+.pay-list tr, .pay-list td {
+    border: 1px solid #c0bebe;
+}
+
+.pay-list tr:first-child {
+    background-color: #e9f3ff;
+    height: 40px;
+}
+
+.pay-list td {
+    padding: 10px;
+}
+
+.pay-list td img {
+    width: 100px;
+}
+
+.pay-list td p {
+    display: inline-block;
+    text-align: left;
+}
+
+/* 支付进度内容-第3步-确认付款-订单信息-地址 */
+
+.pay-cont3-address {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.pay-cont3-address p {
+    font: normal 16px/16px "微软雅黑";
+    margin: 0;
+}
+
+.pay-cont3-address span {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    height: 40px;
+}
+
+.pay-cont3-submit {
+    width: 100%;
+    text-align: center;
+}
+
+.pay-cont3-submit button {
+    width: 200px;
+    height: 50px;
+    background-color: #ff9c00;
+    color: #ffffff;
+    letter-spacing: 8px;
+    font: normal 20px/50px "微软雅黑";
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+/* 支付进度内容-第4步-商品评价 */
+
+.pay-cont4 {
+    display: none;
+}
+
+/* 支付进度内容-第4步-商品评价-评论输入 */
+
+.pay-comment {
+    border-top: 2px solid #c0bebe;
+    border-bottom: 2px solid #c0bebe;
+    padding: 30px 30px;
+    box-sizing: border-box;
+}
+
+/* 支付进度内容-第4步-商品评价-评论输入-左边图片 */
+
+.pay-comment-l {
+    width: 135px;
+    height: 215px;
+}
+
+.pay-comment-l img {
+    width: 135px;
+    height: 135px;
+}
+
+.pay-comment-l p {
+    font: normal 14px/18px "微软雅黑";
+    letter-spacing: 1px;
+    color: #333333;
+}
+
+/* 支付进度内容-第4步-商品评价-评论输入-中间文本 */
+
+.pay-comment-m {
+    width: 575px;
+    height: 215px;
+    margin: 0 25px;
+    box-sizing: border-box;
+}
+
+.pay-comment-m textarea {
+    width: 575px;
+    height: 175px;
+    outline: none;
+    border-radius: 3px;
+    resize: none;
+}
+
+.pay-comment-m button {
+    float: left;
+    width: 95px;
+    height: 30px;
+    background-color: #ff9c00;
+    border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.pay-comment-m label {
+    float: right;
+    margin: 0 20px;
+}
+
+/* 支付进度内容-第4步-商品评价-评论输入-右边打分 */
+
+.pay-comment-r>div {
+    margin-top: 10px;
+    height: 50px;
+}
+
+.pay-comment-r p {
+    float: left;
+    width: 200px;
+    font: normal 14px/18px "微软雅黑";
+    letter-spacing: 1px;
+    color: #333333;
+}
+
+.pay-stars-bg {
+    float: left;
+    background-image: url(../images/pay/stars.png);
+    background-size: 22px 44px;
+    width: 110px;
+    height: 22px;
+    background-position-y: -44px;
+}
+
+.pay-stars-in {
+    background-image: url(../images/pay/stars.png);
+    background-size: 22px 44px;
+    width: 58px;
+    height: 22px;
+}
+
+/* 支付进度内容-第4步-商品评价-提交按钮 */
+
+.comment-submit {
+    text-align: center;
+}
+
+.comment-submit button {
+    width: 200px;
+    height: 55px;
+    background-color: #ff9c00;
+    color: #ffffff;
+    margin: 25px auto;
+    font: normal 18px/55px "微软雅黑";
+    letter-spacing: 8px;
+    cursor: pointer;
+}
+
+/* 支付进度内容-第4步-商品评价-猜你喜欢 */
+
+.guess-like {
+    width: 1150px;
+    height: 282px;
+}
+
+.guess-like h2 {
+    color: #333333;
+    font: normal 18px/30px "微软雅黑";
+    letter-spacing: 1px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+/* 支付进度内容-第4步-商品评价-猜你喜欢-图片 */
+
+.guess-like {
+    width: 1150px;
+    height: 282px;
+}
+
+.guess-like h2 {
+    color: #333333;
+    font: normal 18px/30px "微软雅黑";
+    letter-spacing: 1px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+/* 猜你喜欢-图片 */
+
+.guess-like-pics {
+    margin-top: 25px;
+    overflow: hidden;
+    width: 1150px;
+    /* height: 400px; */
+}
+
+/* 猜你喜欢-图片-每个图片 */
+
+.guess-like-pic {
+    float: left;
+    width: 175px;
+    height: 230px;
+    overflow: hidden;
+    color: #333333;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 3450px;
+}
+
+.guess-like-pic ul {
+    width: 1150px;
+    float: left;
+}
+
+.guess-like-pic li {
+    float: left;
+    width: 175px;
+    height: 230px;
+    margin-right: 20px;
+}
+
+.guess-like-pic li:last-child {
+    margin-right: 0;
+}
+
+/* 猜你喜欢-图片-圆角 */
+
+.guess-like-pic-radius {
+    border-radius: 15px;
+    width: 175px;
+    height: 175px;
+    overflow: hidden;
+}
+
+/* 猜你喜欢-图片-大小 */
+
+.guess-like-pic img {
+    width: 175px;
+}
+
+/* 猜你喜欢-图片-价格 */
+
+.guess-like-pic p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font: normal 16px/30px "微软雅黑";
+}
+
+.guess-like-pic span {
+    letter-spacing: 1px;
+    font: normal 14px/30px "微软雅黑";
+}
+
+.guess-change {
+    cursor: pointer;
+}
+
+.guess-like-pic span {
+    letter-spacing: 1px;
+    font: normal 14px/30px "微软雅黑";
+}
+
+/* 支付进度内容-第5步-完成并跳转 */
+
+.pay-cont5 {
+    text-align: center;
+    width: 400px;
+    margin-top: 40px;
+    margin: 0 auto;
+    display: none;
+}
+
+.pay-cont5 .finish {
+    background-image: url(../images/register_finish.png);
+    background-repeat: no-repeat;
+    width: 125px;
+    height: 125px;
+    font-size: 0;
+    margin: 0 auto;
+}
+
+.pay-cont5 p {
+    font: normal 20px/40px "微软雅黑";
+    letter-spacing: 3px;
+}

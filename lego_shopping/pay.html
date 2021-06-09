@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商城-支付</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/base_header_index.css">
+    <link rel="stylesheet" href="css/base_footer.css">
+    <link rel="stylesheet" href="css/pay.css">
+</head>
+
+<body>
+    <!-- 顶部菜单栏 -->
+    <header>
+        <!-- 顶部通栏 -->
+        <div class="top">
+            <!-- 版心 -->
+            <div class="w1200">
+                <!-- 左边url -->
+                <span class="fl">乐购&emsp;legochina.cn</span>
+                <!-- 右边欢迎语 -->
+                <div class="welcome fr">欢迎光临乐购&emsp;请<a href="login.html">登陆</a>|<a href="register.html">注册</a>
+                </div>
+            </div>
+        </div>
+        <!-- 导航菜单栏 -->
+        <div class="w1200 nav rel">
+            <!-- logo -->
+            <h1 class="logo abs">
+                <a href="index.html">乐购</a>
+            </h1>
+            <!-- 搜索框和购物车按钮 -->
+            <div class="search-buy fl">
+                <!-- 搜索框 -->
+                <div class="search-box fl">
+                    <input class="search-cont" type="text" placeholder="请输入搜索的商品名">
+                    <button class="search-btn fr"></button>
+                </div>
+                <!-- 购物车和订单 -->
+                <div class="buy fr">
+                    <div class="buy-box fl"><a href="cart.html">购物车</a></div>
+                    <div class="buy-order fl"><a href="pay.html">我的订单</a></div>
+                </div>
+            </div>
+            <!-- 导航栏 -->
+            <nav class="fl">
+                <ul class="fl">
+                    <li><a href="sale.html">图书</a></li>
+                    <li><a href="sale.html">电子书</a></li>
+                    <li><a href="sale.html">原创文学</a></li>
+                    <li><a href="sale.html">服装</a></li>
+                    <li><a href="sale.html">户外运动</a></li>
+                    <li><a href="sale.html">孕婴童</a></li>
+                    <li><a href="sale.html">家居</a></li>
+                    <li><a href="sale.html">创意文具</a></li>
+                    <li><a href="sale.html">地方特产</a></li>
+                    <li><a href="sale.html">海外购</a></li>
+                    <li><a href="sale.html">电器城</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 支付主体 -->
+    <main class="w1200">
+        <div class="pay-box">
+            <!-- 支付进度栏 -->
+            <div class="pay-label pay-tabs clearfix">
+                <ul>
+                    <li>
+                        <p>确认订单</p>
+                        <div class="pay-label-num tabOn">1</div>
+                    </li>
+                    <li>
+                        <p>支付货款</p>
+                        <div class="pay-label-num">2</div>
+                    </li>
+                    <li>
+                        <p>确认货款</p>
+                        <div class="pay-label-num">3</div>
+                    </li>
+                    <li>
+                        <p>评价商品</p>
+                        <div class="pay-label-num">4</div>
+                    </li>
+                </ul>
+                <div class="pay-label-line">进度线</div>
+            </div>
+            <!-- 支付进度内容 -->
+            <div class="pay-conts">
+                <!-- 支付进度内容-第1步-收货地址 -->
+                <div class="pay-cont1 pay-cont">
+                    <h2>收货地址</h2>
+                    <!-- 支付进度内容-第1步-收货地址-地址选择 -->
+                    <div class="pay-locals clearfix">
+                        <div class="pay-local">
+                            <h3>四川成都（金轮法王 收）</h3>
+                            <hr>
+                            <p>18012341234</p>
+                            <p>四川省 成都市 武侯区 蜀锦路88号</p>
+                        </div>
+                        <div class="pay-local">
+                            <h3>上海（卢本伟 收）</h3>
+                            <hr>
+                            <p>13388889999</p>
+                            <p>上海市 德玛西亚区 27杀号</p>
+                        </div>
+                        <div class="pay-local">
+                            <h3>四川成都（金轮法王 收）</h3>
+                            <hr>
+                            <p>18012341234</p>
+                            <p>四川省 成都市 武侯区 蜀锦路88号</p>
+                        </div>
+                        <div class="pay-local">
+                            <h3>四川成都（金轮法王 收）</h3>
+                            <hr>
+                            <p>18012341234</p>
+                            <p>四川省 成都市 武侯区 蜀锦路88号</p>
+                        </div>
+                    </div>
+                    <!-- 支付进度内容-第1步-收货地址-确认订单 -->
+                    <h2>确认订单</h2>
+                    <div class="pay-table">
+                        <table>
+                            <!-- 支付进度内容-第1步-收货地址-确认订单-店铺名 -->
+                            <thead>
+                                <tr class="pay-table-shop">
+                                    <th colspan="6">木果果官方旗舰店</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <!-- 支付进度内容-第1步-收货地址-确认订单-图片 -->
+                                    <td class="pay-table-pic">
+                                        <img src="images/pay/pay_bought.jpg">
+                                    </td>
+                                    <!-- 支付进度内容-第1步-收货地址-确认订单-描述 -->
+                                    <td class="pay-table-text">
+                                        <p>秋装新品韩范简约宽松中长款纯棉长袖衬衫</p>
+                                        <span>新品</span>
+                                        <span>包邮</span>
+                                    </td>
+                                    <!-- 支付进度内容-第1步-收货地址-确认订单-颜色尺寸 -->
+                                    <td class="pay-table-color">
+                                        颜色：魅夜黑<br>
+                                        尺寸：M
+                                    </td>
+                                    <!-- 支付进度内容-第1步-收货地址-确认订单-单价 -->
+                                    <td class="pay-table-price">
+                                        <p>169.00</p>
+                                        <span>
+                                            <i>vip积分</i>
+                                            100
+                                        </span>
+                                    </td>
+                                    <!-- 支付进度内容-第1步-收货地址-确认订单-数量 -->
+                                    <td class="pay-table-count">
+                                        <button class="minus">-</button>
+                                        <input type="text" value="1" class="num">
+                                        <button class="add">+</button>
+                                        <span class="sum"></span>
+                                    </td>
+                                    <!-- 支付进度内容-第1步-收货地址-确认订单-小计 -->
+                                    <td class="pay-table-sum">
+                                        <span>小计</span>
+                                        <span class="single-sum">169.00</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- 支付进度内容-第1步-收货地址-留言 -->
+                        <p class="pay-table-comment">给卖家留言：<input type="text"></p>
+                    </div>
+                    <!-- 支付进度内容-第1步-收货地址-信息展示 -->
+                    <div class="pay-address">
+                        <p>
+                            实付款：
+                            <span class="pay-address-single-sum">169.00</span>
+                        </p>
+                        <p>
+                            送寄地址：
+                            <span>四川省 成都市 武侯区 蜀锦路88号</span>
+                        </p>
+                        <p>
+                            收货人：
+                            <span>金轮法王</span>
+                        </p>
+                        <p>
+                            <button class="btn-next">提交订单</button>
+                        </p>
+                    </div>
+                </div>
+                <!-- 支付进度内容-第2步-支付方式 -->
+                <div class="pay-cont2 pay-cont clearfix">
+                    <h2>支付方式</h2>
+                    <!-- 支付-第2步-支付方式-具体方式 -->
+                    <div class="pay-choice">
+                        <input type="radio" name="pay-choice">
+                        <img src="images/pay/pay_ali.jpg">
+                        <input type="radio" name="pay-choice">
+                        <img src="images/pay/pay_bank.jpg">
+                        <input type="radio" name="pay-choice">
+                        <img src="images/pay/pay_wechat.jpg">
+                        <input type="radio" name="pay-choice">
+                        <img src="images/pay/pay_bit.jpg">
+                        <a href="javascript:;">更多》》</a>
+                    </div>
+                    <!-- 支付-第2步-支付方式-账单信息 -->
+                    <div class="pay-address ">
+                        <p>
+                            实付款：
+                            <span class="pay-address-single-sum">169.00</span>
+                        </p>
+                        <p>
+                            送寄地址：
+                            <span>四川省 成都市 武侯区 蜀锦路88号</span>
+                        </p>
+                        <p>
+                            收货人：
+                            <span>金轮法王</span>
+                        </p>
+                        <p>
+                            <button class="btn-next">确认支付</button>
+                        </p>
+                    </div>
+                </div>
+                <!-- 支付进度内容-第3步-确认付款 -->
+                <div class="pay-cont3 pay-cont">
+                    <h2>我已收到货，同意付款</h2>
+                    <!-- 支付进度内容-第3步-确认付款-订单信息 -->
+                    <div class="pay-list">
+                        <h2>订单信息</h2>
+                        <!-- 支付进度内容-第3步-确认付款-订单信息-表格 -->
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>宝贝</th>
+                                    <th>状态</th>
+                                    <th>单价(元)</th>
+                                    <th>数量</th>
+                                    <th>优惠(元)</th>
+                                    <th>总价(元)</th>
+                                    <th>运费(元)</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="images/pay/pay_bought.jpg">
+                                        <p>
+                                            <span>木果果木2016秋装新品韩范简约宽袖</span><br>
+                                            <span>颜色：黑</span>
+                                            <span>尺寸：M</span>
+                                        </p>
+                                    </td>
+                                    <td>--</td>
+                                    <td>169.00</td>
+                                    <td class="pay-address-single-num">1</td>
+                                    <td>满300-200<br>两件包邮</td>
+                                    <td>
+                                        <span class="pay-address-single-sum">169.00</span>
+                                    </td>
+                                    <td>快递0.00</td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <h3>实付款：<span class="pay-address-real-pay">169.00</span>元</h3>
+                    </div>
+                    <!-- 支付进度内容-第3步-确认付款-订单信息-地址 -->
+                    <div class="pay-cont3-address">
+                        <p><span>订单编号：</span>1801512345674898975</p>
+                        <p><span>支付宝交易号：</span>1801512345674898975</p>
+                        <p><span>买家昵称：</span>金轮法王</p>
+                        <p><span>收货信息：</span>四川省 成都市 武侯区 蜀锦路88号</p>
+                        <p><span>成交时间：</span>2019-10-08 23:00:00</p>
+                    </div>
+                    <!-- 支付进度内容-第3步-确认付款-订单信息-提交按钮 -->
+                    <div class="pay-cont3-submit">
+                        <button class="btn-next">确认提交</button>
+                    </div>
+                </div>
+                <!-- 支付进度内容-第4步-商品评价 -->
+                <div class="pay-cont4 pay-cont">
+                    <!-- 支付进度内容-第4步-商品评价-评论输入 -->
+                    <h2>商品评价 </h2>
+                    <div class="pay-comment clearfix">
+                        <!-- 支付进度内容-第4步-商品评价-评论输入-左边图片 -->
+                        <div class="pay-comment-l fl">
+                            <img src="images/pay/pay_bought.jpg">
+                            <p>木果果木2016秋装新品韩范简约宽袖</p>
+                        </div>
+                        <!-- 支付进度内容-第4步-商品评价-评论输入-中间文本 -->
+                        <div class="pay-comment-m fl">
+                            <textarea></textarea>
+
+                            <button type="button">商品晒图</button>
+                            <label><input type="radio" name="tu">匿名</label>
+                            <label><input type="radio" name="tu" checked>公开</label>
+                        </div>
+                        <div class="pay-comment-r fr">
+                            <div>
+                                <p>
+                                    宝贝与描述是否相符
+                                </p>
+                                <div class="pay-stars-bg">
+                                    <div class="pay-stars-in"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p>
+                                    卖家的服务态度
+                                </p>
+                                <div class="pay-stars-bg">
+                                    <div class="pay-stars-in"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p>
+                                    物流服务的质量
+                                </p>
+                                <div class="pay-stars-bg">
+                                    <div class="pay-stars-in"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 支付进度内容-第4步-商品评价-提交按钮 -->
+                    <div class="comment-submit">
+                        <button class="btn-next">提交评价</button>
+                    </div>
+                    <!-- 支付进度内容-第4步-商品评价-猜你喜欢 -->
+                    <div class="guess-like">
+                        <h2>猜你喜欢<span class="guess-change fr">换一批</span></h2>
+                        <!-- 猜你喜欢-图片 -->
+                        <div class="guess-like-pics">
+                            <div class="guess-like-pic">
+                                <!-- 猜你喜欢-图片-第一批 -->
+                                <ul>
+                                    <li>
+                                        <div class="guess-like-pic-radius">
+                                            <img src="images/cart/cart_guess_1.jpg">
+                                        </div>
+                                        <p>AIVEI秋新中长款牛仔外套</p>
+                                        <span>￥ 79.00</span>
+                                    </li>
+                                    <script>
+                                        for (let i = 0; i < 5; i++) {
+                                            document.write(`
+                                    <li>
+                                        <div class="guess-like-pic-radius">
+                                            <img src="images/cart/cart_guess_1.jpg">
+                                        </div>
+                                        <p>AIVEI秋新中长款牛仔外套</p>
+                                        <span>￥ 79.00</span>
+                                    </li>
+                                    `)
+                                        }
+                                    </script>
+                                </ul>
+                                <!-- 猜你喜欢-图片-第二批 -->
+                                <ul>
+                                    <li>
+                                        <div class="guess-like-pic-radius">
+                                            <img src="images/cart/cart_guess_2.jpg">
+                                        </div>
+                                        <p>女装夏季裙子新款品牌</p>
+                                        <span>￥ 52.00</span>
+                                    </li>
+                                    <script>
+                                        for (let i = 0; i < 5; i++) {
+                                            document.write(`
+                                    <li>
+                                        <div class="guess-like-pic-radius">
+                                            <img src="images/cart/cart_guess_2.jpg">
+                                        </div>
+                                        <p>女装夏季裙子新款品牌</p>
+                                        <span>￥ 52.00</span>
+                                    </li>
+                                    `)
+                                        }
+                                    </script>
+                                </ul>
+                                <!-- 猜你喜欢-图片-第三批 -->
+                                <ul>
+                                    <li>
+                                        <div class="guess-like-pic-radius">
+                                            <img src="images/cart/cart_guess_3.jpg">
+                                        </div>
+                                        <p>女性夏装首选服装类型</p>
+                                        <span>￥ 229.00</span>
+                                    </li>
+                                    <script>
+                                        for (let i = 0; i < 5; i++) {
+                                            document.write(`
+                                    <li>
+                                        <div class="guess-like-pic-radius">
+                                            <img src="images/cart/cart_guess_3.jpg">
+                                        </div>
+                                        <p>女性夏装首选服装类型</p>
+                                        <span>￥ 229.00</span>
+                                    </li>
+                                    `)
+                                        }
+                                    </script>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 支付进度内容-第5步-完成并跳转 -->
+                <div class="pay-cont5 pay-cont" style="display: none;">
+                    <div class="finish">评价完成</div>
+                    <p>评价成功，</p>
+                    <h2>
+                        倒计时
+                        <span id="time"></span>
+                        跳转<a href="index.html">主页</a>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部页脚 -->
+    <footer>
+        <!-- 底部链接 -->
+        <div class="foot-up w1200">
+            <div class="foot-up-box clearfix">
+                <div class="foot-up-inf fl">
+                    <img src="images/footer/foot_up_pic1.jpg">
+                    <span>
+                        正品保障<br>
+                    </span>
+                    <span>
+                        赠品行货&emsp;放心选购
+                    </span>
+                </div>
+                <div class="foot-up-inf fl">
+                    <img src="images/footer/foot_up_pic2.jpg">
+                    <span>
+                        满86包邮<br>
+                    </span>
+                    <span>
+                        满86元&emsp;免运费
+                    </span>
+                </div>
+                <div class="foot-up-inf fl">
+                    <img src="images/footer/foot_up_pic3.jpg">
+                    <span>
+                        售后无忧<br>
+                    </span>
+                    <span>
+                        7天无理由退货
+                    </span>
+                </div>
+                <div class="foot-up-inf fl">
+                    <img src="images/footer/foot_up_pic4.jpg">
+                    <span>
+                        准时送达<br>
+                    </span>
+                    <span>
+                        收货时间由你做主
+                    </span>
+                </div>
+            </div>
+            <!-- 链接部分 -->
+            <div class="foot-up-link">
+                <dl>
+                    <dt>新手入门</dt>
+                    <dd><a href="">购买流程</a></dd>
+                    <dd><a href="">会员制度</a></dd>
+                    <dd><a href="">订单查询</a></dd>
+                    <dd><a href="">服务协议及隐私说明</a></dd>
+                    <dd><a href="">网站地图</a></dd>
+                </dl>
+                <dl>
+                    <dt>支付方式</dt>
+                    <dd><a href="">货到付款</a></dd>
+                    <dd><a href="">网上支付</a></dd>
+                    <dd><a href="">礼品卡支付</a></dd>
+                    <dd><a href="">其他支付</a></dd>
+                </dl>
+                <dl>
+                    <dt>配送服务</dt>
+                    <dd><a href="">配送进度查询</a></dd>
+                    <dd><a href="">商品验货与签收</a></dd>
+                </dl>
+                <dl>
+                    <dt>相关规则</dt>
+                    <dd><a href="">平台规则</a></dd>
+                    <dd><a href="">退换货政策</a></dd>
+                    <dd><a href="">发票制度</a></dd>
+                    <dd><a href="">帮助中心</a></dd>
+                </dl>
+                <dl>
+                    <dt>App更优惠</dt>
+                    <dd><img src="images/qc_code.png"></dd>
+                </dl>
+                <dl>
+                    <dt>加微信查订单</dt>
+                    <dd><img src="images/qc_code.png"></dd>
+                </dl>
+
+            </div>
+        </div>
+        <!-- 版权信息 -->
+        <div class="foot-down">
+            <div class="w1200">
+                <span>
+                    沪ICP备XXXXXXXXX号 | 经营证照 | 互联网药品信息服务资格证(沪)-经营性-2017-0006 | 违法和不良信息举报电话：XXX-XXXXXXXX | 沪B2-XXXXXXX
+                    |
+                </span>
+                <span>
+                    沪公网安备 XXXXXXXXX号 | 友情链接 | 出版物经营许可证 | 增值电信业务经营许可证
+                </span>
+                <div class="foot-down-pic">
+                    举报图片
+                    <img src="images/footer/foot_down_pic1.jpg">
+                    <img src="images/footer/foot_down_pic2.jpg">
+                    <img src="images/footer/foot_down_pic3.jpg">
+                    <img src="images/footer/foot_down_pic4.jpg">
+                    <img src="images/footer/foot_down_pic5.jpg">
+                    <img src="images/footer/foot_down_pic6.jpg">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- js -->
+    <script src="lib/jquery.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/pay.js"></script>
+</body>
+
+</html>
