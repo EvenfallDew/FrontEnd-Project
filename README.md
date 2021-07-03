@@ -15,7 +15,6 @@
 > [源码地址](https://github.com/EvenfallDew/FrontEnd-Projects/tree/main/lego_shopping)
 
 > [预览地址](https://evenfalldew.github.io/FrontEnd-Projects/lego_shopping/index.html)
-<<<<<<< HEAD
 
 ### 03. 健身APP仿例
 
@@ -24,5 +23,3 @@
 > [源码地址](https://github.com/EvenfallDew/FrontEnd-Projects/tree/main/fitness_app)
 
 > [预览地址](https://evenfalldew.github.io/FrontEnd-Projects/fitness_app/pages/index.html)
-=======
->>>>>>> ce0c8169601ec47b0621697432c46c8b3db2b4b1
