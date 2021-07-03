@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="../less/common_css/normalize.css">
+    <link rel="stylesheet" href="../less/common_css/reset.css">
+    <link rel="stylesheet" href="../less/common_css/basic.css">
+    <link rel="stylesheet" href="../less/common_css/property.css">
+    <link rel="stylesheet" href="../fonts/iconfont.css">
+    <link rel="stylesheet" href="../libs/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../less/index.css">
+</head>
+
+<body class="dpflex fdcolumn">
+    <main>
+        <!-- 轮播 -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="../images/index-swiper-bg1.jpg" alt="swiper-1">
+                </div>
+                <div class="swiper-slide">
+                    <img src="../images/index-swiper-bg2.jpg" alt="swiper-2">
+                </div>
+                <div class="swiper-slide">
+                    <img src="../images/index-swiper-bg3.jpg" alt="swiper-3">
+                </div>
+            </div>
+
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- 内容模块 -->
+        <div class="index-content">
+            <section class="dpflex">
+                <div class="rank">
+                    <h3>今日排名</h3>
+                    <p>9</p>
+                </div>
+                <div class="clock">
+                    <h3>累计打卡</h3>
+                    <button>今日打卡</button>
+                </div>
+            </section>
+            <section class="dpflex">
+                <div class="data">
+                    <h3>运动数据</h3>
+                </div>
+                <div class="badge">
+                    <h3>累计运动徽章</h3>
+                    <p><span>3</span>枚</p>
+                </div>
+            </section>
+            <section class="dpflex sec3">
+                <div class="train">
+                    <h3>课程训练</h3>
+                </div>
+            </section>
+            <section>
+                <div class="run">
+                    <h3>户外跑步</h3>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 载入封装底部 -->
+
+    <!-- js -->
+    <script src="../js/common_js/dom.js"></script>
+    <script src="../js/common_js/utils.js"></script>
+    <script src="../libs/swiper/swiper-bundle.min.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+
+</html>

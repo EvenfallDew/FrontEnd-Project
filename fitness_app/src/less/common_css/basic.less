@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* 公有布局  */
+
+/* 底部封装 */
+.common-footer {
+    display: flex;
+    height: 75px;
+    background-color: #ffffff;
+    justify-content: space-around;
+    box-shadow: 0 0 10px 0 #c2c2c2;
+    align-items: center;
+    text-align: center;
+
+    .footer-btn {
+        width: 60px;
+        height: 50px;
+        color: #8A8A8A;
+
+        span {
+            font-size: 30px;
+        }
+
+        p {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+    }
+
+    .on {
+        color: #4294FF;
+    }
+}
+
+// 消息窗口
+.msg-box {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    i {
+        font-size: 50px;
+    }
+}

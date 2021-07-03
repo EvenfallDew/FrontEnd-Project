@@ -1,0 +1,212 @@
+{
+  "id": "2643995",
+  "name": "fitness",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "15995172",
+      "name": "圈子",
+      "font_class": "footer-social",
+      "unicode": "e6fa",
+      "unicode_decimal": 59130
+    },
+    {
+      "icon_id": "22642264",
+      "name": "微信",
+      "font_class": "login-wechat",
+      "unicode": "e83a",
+      "unicode_decimal": 59450
+    },
+    {
+      "icon_id": "356541",
+      "name": "叉",
+      "font_class": "toast-wrong",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "1198529",
+      "name": "成功",
+      "font_class": "toast-correct",
+      "unicode": "e666",
+      "unicode_decimal": 58982
+    },
+    {
+      "icon_id": "1110588",
+      "name": "详情",
+      "font_class": "mine-detail",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "13769353",
+      "name": "列表页-VIP角标",
+      "font_class": "mine-vip",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "17705365",
+      "name": "心跳 健康 运动 医疗 保护 心率",
+      "font_class": "footer-sports",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "17728500",
+      "name": "锁",
+      "font_class": "yunzhong-shangsuo",
+      "unicode": "e838",
+      "unicode_decimal": 59448
+    },
+    {
+      "icon_id": "17728504",
+      "name": "锁",
+      "font_class": "yunzhong-jiesuo",
+      "unicode": "e839",
+      "unicode_decimal": 59449
+    },
+    {
+      "icon_id": "19634186",
+      "name": "设 置",
+      "font_class": "yundong-shezhi",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "19994900",
+      "name": "暂停",
+      "font_class": "xunlian-zanting",
+      "unicode": "e68c",
+      "unicode_decimal": 59020
+    },
+    {
+      "icon_id": "400038",
+      "name": "返回",
+      "font_class": "jieshao-fanhui",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "657339",
+      "name": "分期－时间",
+      "font_class": "yunzhong-yongshi",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "716048",
+      "name": "音乐",
+      "font_class": "yunzhong-yinyue",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "887964",
+      "name": "我的 (1)",
+      "font_class": "footer-mine",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "980894",
+      "name": "暂停",
+      "font_class": "yunzhong-zanting",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "996545",
+      "name": "开始",
+      "font_class": "yunzhong-kaishi",
+      "unicode": "e68a",
+      "unicode_decimal": 59018
+    },
+    {
+      "icon_id": "1069188",
+      "name": "定位",
+      "font_class": "yunzhong-dingwei",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "1107033",
+      "name": "首页",
+      "font_class": "footer-index",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "1117917",
+      "name": "播放",
+      "font_class": "xunlian-bofang",
+      "unicode": "e77e",
+      "unicode_decimal": 59262
+    },
+    {
+      "icon_id": "2055102",
+      "name": "下一步",
+      "font_class": "xunlian-xiayibu",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "4294034",
+      "name": "哑铃",
+      "font_class": "jieshao-qixie",
+      "unicode": "e776",
+      "unicode_decimal": 59254
+    },
+    {
+      "icon_id": "4539904",
+      "name": "奖章",
+      "font_class": "mine-badge",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "5175327",
+      "name": "热量",
+      "font_class": "yunzhong-qianka",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "5485664",
+      "name": "速度",
+      "font_class": "yunzhong-peisu",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "6506205",
+      "name": "数据",
+      "font_class": "mine-data",
+      "unicode": "e680",
+      "unicode_decimal": 59008
+    },
+    {
+      "icon_id": "13124354",
+      "name": "练习题管理",
+      "font_class": "jieshao-lianxi",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "13972346",
+      "name": "音乐",
+      "font_class": "yundong-yinyue",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "15346608",
+      "name": "设置",
+      "font_class": "yunzhong-shezhi",
+      "unicode": "e6a9",
+      "unicode_decimal": 59049
+    }
+  ]
+}

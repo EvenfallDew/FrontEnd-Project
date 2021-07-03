@@ -1,0 +1,131 @@
+@charset "utf-8";
+html,
+body {
+  height: 100%;
+  margin: 0 auto;
+  min-width: 300px;
+  max-width: 1000px;
+}
+main {
+  flex: 1;
+  overflow-y: scroll;
+}
+main .swiper-container {
+  width: 100%;
+  height: 200px;
+}
+main .swiper-container img {
+  width: 100%;
+}
+main .index-content {
+  padding: 0 15px 20px 15px;
+}
+main .index-content section {
+  margin-top: 20px;
+}
+main .index-content section > div {
+  border-radius: 15px;
+  padding: 15px;
+}
+main .index-content .rank {
+  flex: 2;
+  height: 150px;
+  margin-right: 15px;
+  background-image: url(../images/index-card-rank.png);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 110px;
+  background-color: #6ac3ec;
+}
+main .index-content .rank h3 {
+  font: bold 20px/20px "微软雅黑";
+  color: #003b57;
+}
+main .index-content .rank p {
+  text-align: right;
+  font: bold 80px/110px "微软雅黑";
+  color: #fff;
+}
+main .index-content .clock {
+  flex: 3;
+  height: 150px;
+  background-image: url(../images/index-card-sum.png);
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  background-size: 110px;
+  background-color: #9fd9f8;
+}
+main .index-content .clock h3 {
+  font: bold 20px/20px "微软雅黑";
+  color: #005177;
+}
+main .index-content .clock button {
+  float: right;
+  margin-top: 50px;
+  width: 100px;
+  height: 40px;
+  font: bold 16px/24px "微软雅黑";
+  border-radius: 20px;
+  background-color: transparent;
+  text-align: center;
+  color: #005177;
+  border: 3px solid #005177;
+}
+main .index-content .data {
+  flex: 1;
+  height: 110px;
+  margin-right: 15px;
+  background-image: url(../images/index-card-data.jpg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+main .index-content .data h3 {
+  font: bold 16px/16px "微软雅黑";
+  color: #fff;
+}
+main .index-content .badge {
+  flex: 1;
+  height: 110px;
+  background-image: url(../images/index-card-badge.png);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 100px;
+  background-color: #9dbde3;
+}
+main .index-content .badge h3 {
+  font: bold 16px/16px "微软雅黑";
+  color: #005177;
+}
+main .index-content .badge p {
+  text-align: right;
+  color: #005177;
+  font-weight: bold;
+}
+main .index-content .badge p span {
+  font: bold 80px/60px "微软雅黑";
+}
+main .index-content .train {
+  flex: 1;
+  height: 110px;
+  background-image: url(../images/index-card-train.jpg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+main .index-content .train h3 {
+  font: bold 16px/16px "微软雅黑";
+  color: #fff;
+}
+main .index-content .run {
+  flex: 1;
+  height: 110px;
+  background-image: url(../images/index-card-run.jpg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+main .index-content .run h3 {
+  font: bold 16px/16px "微软雅黑";
+  color: #fff;
+}

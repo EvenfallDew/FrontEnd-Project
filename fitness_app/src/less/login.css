@@ -1,0 +1,81 @@
+@charset "utf-8";
+html,
+body {
+  height: 100%;
+  margin: 0 auto;
+  min-width: 300px;
+  min-height: 500px;
+}
+body {
+  background-image: url(../images/sign-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+main {
+  width: 350px;
+  color: #fff;
+  margin: 0 auto;
+}
+main .sign-label {
+  margin: 40px 0;
+  height: 28px;
+  font-size: 20px;
+  text-align: right;
+  font-family: PingFangSC-regular;
+}
+main .sign-label a {
+  color: #fff;
+}
+main .login-label {
+  margin: 40px 0;
+  height: 40px;
+  font-size: 28px;
+  text-align: left;
+  font-family: PingFangSC-bold;
+}
+main input {
+  width: 350px;
+  height: 50px;
+  line-height: 20px;
+  margin: 20px 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 25px;
+  color: #fff;
+  text-indent: 25px;
+}
+main input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+main .login-btn {
+  width: 350px;
+  height: 50px;
+  line-height: 20px;
+  margin: 20px 0;
+  border-radius: 25px;
+  background-color: rgba(99, 255, 167, 0.5);
+  color: #fff;
+  text-align: center;
+}
+main .forget-password {
+  height: 20px;
+  font-size: 14px;
+  text-align: center;
+  font-family: PingFangSC-regular;
+}
+main .forget-password .wechat-login {
+  left: 326px;
+  top: 450px;
+  width: 56px;
+  height: 20px;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: left;
+  font-family: PingFangSC-regular;
+}
+main .bottom-slogan {
+  background-color: blueviolet;
+  position: absolute;
+  text-align: center;
+  bottom: 80px;
+}

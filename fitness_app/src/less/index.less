@@ -1,0 +1,164 @@
+@charset "utf-8";
+
+html,
+body {
+    height: 100%;
+    margin: 0 auto;
+    min-width: 300px;
+    max-width: 1000px;
+}
+
+main {
+    flex: 1;
+    overflow-y: scroll;
+
+    // 轮播
+    .swiper-container {
+        width: 100%;
+        height: 200px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    // 内容模块
+    .index-content {
+        padding: 0 15px 20px 15px;
+
+        section {
+            margin-top: 20px;
+        }
+
+        section>div {
+            border-radius: 15px;
+            padding: 15px;
+        }
+
+        // 今日排名
+        .rank {
+            flex: 2;
+            height: 150px;
+            margin-right: 15px;
+            background-image: url(../images/index-card-rank.png);
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: 110px;
+            background-color: #6ac3ec;
+
+            h3 {
+                font: bold 20px/20px "微软雅黑";
+                color: #003b57;
+            }
+
+            p {
+                text-align: right;
+                font: bold 80px/110px "微软雅黑";
+                color: #fff;
+            }
+        }
+
+        // 累计打卡
+        .clock {
+            flex: 3;
+            height: 150px;
+            background-image: url(../images/index-card-sum.png);
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            background-size: 110px;
+            background-color: #9fd9f8;
+
+            h3 {
+                font: bold 20px/20px "微软雅黑";
+                color: #005177;
+            }
+
+            button {
+                float: right;
+                margin-top: 50px;
+                width: 100px;
+                height: 40px;
+                font: bold 16px/24px "微软雅黑";
+                border-radius: 20px;
+                background-color: transparent;
+                text-align: center;
+                color: #005177;
+                border: 3px solid #005177;
+            }
+        }
+
+        // 运动数据
+        .data {
+            flex: 1;
+            height: 110px;
+            margin-right: 15px;
+            background-image: url(../images/index-card-data.jpg);
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-size: cover;
+
+            h3 {
+                font: bold 16px/16px "微软雅黑";
+                color: #fff;
+            }
+        }
+
+        // 运动徽章
+        .badge {
+            flex: 1;
+            height: 110px;
+            background-image: url(../images/index-card-badge.png);
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: 100px;
+            background-color: #9dbde3;
+
+            h3 {
+                font: bold 16px/16px "微软雅黑";
+                color: #005177;
+            }
+
+            p {
+                text-align: right;
+                color: #005177;
+                font-weight: bold;
+
+                span {
+                    font: bold 80px/60px "微软雅黑";
+                }
+            }
+        }
+
+        // 课程训练
+        .train {
+            flex: 1;
+            height: 110px;
+            background-image: url(../images/index-card-train.jpg);
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-size: cover;
+
+            h3 {
+                font: bold 16px/16px "微软雅黑";
+                color: #fff;
+            }
+
+        }
+
+        // 户外跑步
+        .run {
+            flex: 1;
+            height: 110px;
+            background-image: url(../images/index-card-run.jpg);
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-size: cover;
+
+            h3 {
+                font: bold 16px/16px "微软雅黑";
+                color: #fff;
+            }
+        }
+    }
+
+}

@@ -8,10 +8,18 @@
 
 > [预览地址](https://evenfalldew.github.io/FrontEnd-Projects/security_monitoring/index.html)
 
-### 01. 购物商城网站仿例
+### 02. 购物商城网站仿例
 
 * 购物商城网站页面：首页，分类页，商品页，登录页，注册页，购物车，支付页
 
 > [源码地址](https://github.com/EvenfallDew/FrontEnd-Projects/tree/main/lego_shopping)
 
 > [预览地址](https://evenfalldew.github.io/FrontEnd-Projects/lego_shopping/index.html)
+
+### 03. 健身APP仿例
+
+* 健身APP仿例页面：广告页，首页，登录页，注册页，
+
+> [源码地址](https://github.com/EvenfallDew/FrontEnd-Projects/tree/main/fitness_app)
+
+> [预览地址](https://evenfalldew.github.io/FrontEnd-Projects/fitness_app/pages/index.html)

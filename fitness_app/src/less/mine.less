@@ -1,0 +1,149 @@
+@charset "utf-8";
+
+body,
+html {
+    height: 100%;
+    margin: 0 auto;
+    min-width: 300px;
+    max-width: 1000px;
+    background-color: #e8e8e8;
+}
+
+section {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+main {
+    flex: 1;
+    overflow-y: scroll;
+
+    // 用户信息
+    .user-info {
+        .user-pic {
+            margin-top: 15px;
+            align-items: center;
+            position: relative;
+
+            // 头像
+            .user-head {
+                width: 120px;
+                height: 120px;
+                background-color: #e8e8e8;
+                border-radius: 50%;
+                border: 3px solid #4294ff;
+            }
+
+            // 用户名
+            .user-name {
+                height: 30px;
+                margin-left: 20px;
+                color: #101010;
+                font-size: 22px;
+                text-align: left;
+            }
+
+            // vip
+            .icon-mine-vip {
+                font-size: 22px;
+                position: absolute;
+                left: 90px;
+                bottom: 0;
+                color: #ff7100;
+                background-color: #fff;
+            }
+        }
+
+        // 个性签名
+        .signature {
+            margin-top: 20px;
+            height: 25px;
+            color: #8A8A8A;
+            font-size: 18px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    h3 {
+        height: 24px;
+
+        .mine-label {
+            color: #101010;
+            text-align: left;
+            font: normal 18px/24px "微软雅黑";
+        }
+
+        .icon-mine-label {
+            font-size: 22px;
+            color: #4294FF;
+        }
+
+        .icon-mine-detail {
+            font-size: 22px;
+            color: #8A8A8A;
+            float: right;
+        }
+    }
+
+    // 运动数据
+    .data {
+        .data-datas {
+            margin-top: 15px;
+            justify-content: space-around;
+
+            h4 {
+                height: 22px;
+                color: #8A8A8A;
+                font: normal 16px/16px "微软雅黑";
+                text-align: left;
+            }
+
+            p {
+                margin-top: 15px;
+
+                span {
+                    color: #4294FF;
+                    font-size: 40px;
+                    font: normal 40px/40px "微软雅黑";
+                    text-align: left;
+                }
+            }
+
+            .divid-line {
+                border: 1px dashed #8A8A8A;
+            }
+        }
+    }
+
+    // 运动徽章
+    .badge {
+        .badge-medals {
+            margin-top: 15px;
+            justify-content: space-around;
+
+            .badge-medal {
+                width: 100px;
+                height: 100px;
+                line-height: 20px;
+                text-align: center;
+                border: 1px solid #BBBBBB;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    // 退出登录
+    .logout {
+        text-align: center;
+
+        .logout-btn {
+            height: 18px;
+            color: #4294FF;
+            font-size: 18px;
+            background-color: transparent;
+        }
+    }
+}
