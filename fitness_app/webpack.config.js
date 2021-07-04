@@ -23,7 +23,7 @@ module.exports = {
     sports: "./src/js/sports.js", //运动
     social: "./src/js/social.js", //运动
     mine: "./src/js/mine.js", //我的
-    mine_info: "./src/js/mine_info.js",
+    mine_info: "./src/js/mine_info.js", //我的-资料
     mine_data: "./src/js/mine_data.js",
     mine_badge: "./src/js/mine_badge.js",
   },

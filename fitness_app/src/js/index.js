@@ -1,5 +1,6 @@
 "use strict"
-// 引入当前文件对应的样式文件
+
+// 引入对应的less样式
 require("../less/index.less");
 
 // 引入swiper的样式文件
@@ -80,6 +81,7 @@ document.ready(function () {
                 console.log(error);
             });
         } else {
+            // 弹窗提示
             $utils.showToast("icon-toast-wrong", "已打卡");
         }
     });

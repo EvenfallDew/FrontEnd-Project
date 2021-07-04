@@ -1,6 +1,6 @@
 "use strict";
 
-// 引入对应的less
+// 引入对应的less样式
 require("../less/advertisement.less");
 
 document.ready(function () {

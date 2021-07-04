@@ -10,13 +10,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/less/mine_info.less":
-/*!*********************************!*\
-  !*** ./src/less/mine_info.less ***!
-  \*********************************/
+/***/ "./src/less/mine_badge.less":
+/*!**********************************!*\
+  !*** ./src/less/mine_badge.less ***!
+  \**********************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://fitness_app/./src/less/mine_info.less?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://fitness_app/./src/less/mine_badge.less?");
 
 /***/ })
 
@@ -59,10 +59,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /******/ 	
 /************************************************************************/
 !function() {
-/*!*****************************!*\
-  !*** ./src/js/mine_info.js ***!
-  \*****************************/
-eval("\n\n__webpack_require__(/*! ../less/mine_info.less */ \"./src/less/mine_info.less\");\n\n//# sourceURL=webpack://fitness_app/./src/js/mine_info.js?");
+/*!******************************!*\
+  !*** ./src/js/mine_badge.js ***!
+  \******************************/
+eval("\n\n// 引入对应的less样式\n\n__webpack_require__(/*! ../less/mine_badge.less */ \"./src/less/mine_badge.less\");\n\n//# sourceURL=webpack://fitness_app/./src/js/mine_badge.js?");
 }();
 /******/ })()
 ;

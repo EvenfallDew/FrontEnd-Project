@@ -1,10 +1,7 @@
 "use strict"
 
-// 引入当前页面对应的样式文件
+// 引入对应的less样式
 require("../less/reg_log.less");
-
-// 引入字体图标的样式文件
-require("../fonts/iconfont.css");
 
 document.ready(function () {
     // 获取元素
@@ -73,5 +70,5 @@ document.ready(function () {
     testBtn.addEventListener("click", function () {
         phone.value = "13333333335";
         password.value = "a123123";
-    })
+    });
 });

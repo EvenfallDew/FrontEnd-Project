@@ -10,13 +10,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/less/mine_data.less":
-/*!*********************************!*\
-  !*** ./src/less/mine_data.less ***!
-  \*********************************/
+/***/ "./src/less/advertisement.less":
+/*!*************************************!*\
+  !*** ./src/less/advertisement.less ***!
+  \*************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://fitness_app/./src/less/mine_data.less?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://fitness_app/./src/less/advertisement.less?");
 
 /***/ })
 
@@ -59,10 +59,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /******/ 	
 /************************************************************************/
 !function() {
-/*!*****************************!*\
-  !*** ./src/js/mine_data.js ***!
-  \*****************************/
-eval("\n\n__webpack_require__(/*! ../less/mine_data.less */ \"./src/less/mine_data.less\");\n\n//# sourceURL=webpack://fitness_app/./src/js/mine_data.js?");
+/*!*********************************!*\
+  !*** ./src/js/advertisement.js ***!
+  \*********************************/
+eval("\n\n// 引入对应的less样式\n\n__webpack_require__(/*! ../less/advertisement.less */ \"./src/less/advertisement.less\");\n\ndocument.ready(function () {\n    var skipBtnCutDown = document.querySelector(\"#skipBtnCutDown\");\n    var num = 3;\n    skipBtnCutDown.textContent = num;\n    // 倒计时自动跳过\n    var timer = setInterval(function () {\n        num = num - 1;\n        if (num == 0) {\n            clearInterval(timer);\n            // 跳转登录页\n            location.href = \"./login.html\";\n        } else {\n            skipBtnCutDown.textContent = num;\n        }\n    }, 1000);\n\n    // 手动跳过广告\n    var skipBtn = document.querySelector(\"#skipBtn\");\n    skipBtn.addEventListener(\"click\", function () {\n        location.href = \"./login.html\";\n    });\n});\n\n//# sourceURL=webpack://fitness_app/./src/js/advertisement.js?");
 }();
 /******/ })()
 ;
