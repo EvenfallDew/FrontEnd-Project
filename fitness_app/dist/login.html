@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+<script defer src="js/common_css-a1a0831b.js"></script><script defer src="js/dom-a1a0831b.js"></script><script defer src="js/utils-a1a0831b.js"></script><script defer src="js/login-a1a0831b.js"></script><link href="css/common_css-a1a0831b.css" rel="stylesheet"><link href="css/login-a1a0831b.css" rel="stylesheet"></head>
+
+<body>
+    <main>
+        <!-- 头部 -->
+        <section class="head">
+            <!-- 注册账号跳转 -->
+            <h3 class="sign-label"><a href="./register.html">注册账号</a></h3>
+            <h2>密码登录</h2>
+        </section>
+
+        <!-- 表单 -->
+        <form>
+            <p class="mt20">
+                <input id="phone" type="text" placeholder="请输入账号">
+            </p>
+            <p class="mt20">
+                <input id="password" type="password" placeholder="请输入密码">
+            </p>
+            <p class="mt20">
+                <button id="loginBtn" class="submit-btn" type="button">登录</button>
+            </p>
+        </form>
+
+        <!-- 格式错误提示 -->
+        <p id="msg" class="msg"></p>
+
+        <!-- 尾巴 -->
+        <section class="foot">
+            <h4>
+                <span class="forget-pwd">忘记密码</span>
+                <span class="wechat-in">
+                    <span class="iconfont icon-login-wechat"></span>
+                    微信登录
+                </span>
+            </h4>
+            <h3 id="testBtn">- HOLD ON -</h3>
+        </section>
+    </main>
+
+    <!-- js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</body>
+
+</html>
