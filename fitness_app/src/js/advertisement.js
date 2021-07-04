@@ -1,5 +1,8 @@
 "use strict";
 
+// 引入对应的less
+require("../less/advertisement.less");
+
 document.ready(function () {
     let skipBtnCutDown = document.querySelector("#skipBtnCutDown");
     let num = 3;

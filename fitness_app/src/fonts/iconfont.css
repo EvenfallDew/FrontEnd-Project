@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2643995 */
-  src: url('iconfont.woff2?t=1625249818595') format('woff2'),
-       url('iconfont.woff?t=1625249818595') format('woff'),
-       url('iconfont.ttf?t=1625249818595') format('truetype');
+  src: url('iconfont.woff2?t=1625283072703') format('woff2'),
+       url('iconfont.woff?t=1625283072703') format('woff'),
+       url('iconfont.ttf?t=1625283072703') format('truetype');
 }
 
 .iconfont {
@@ -27,6 +27,10 @@
 
 .icon-toast-correct:before {
   content: "\e666";
+}
+
+.icon-mineInfo-back-copy:before {
+  content: "\e83b";
 }
 
 .icon-mine-detail:before {

@@ -6,13 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首页</title>
-    <link rel="stylesheet" href="../less/common_css/normalize.css">
-    <link rel="stylesheet" href="../less/common_css/reset.css">
-    <link rel="stylesheet" href="../less/common_css/basic.css">
-    <link rel="stylesheet" href="../less/common_css/property.css">
-    <link rel="stylesheet" href="../fonts/iconfont.css">
-    <link rel="stylesheet" href="../libs/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="../less/index.css">
 </head>
 
 <body class="dpflex fdcolumn">
@@ -40,11 +33,11 @@
             <section class="dpflex">
                 <div class="rank">
                     <h3>今日排名</h3>
-                    <p>9</p>
+                    <p id="rankNum">9</p>
                 </div>
                 <div class="clock">
-                    <h3>累计打卡</h3>
-                    <button>今日打卡</button>
+                    <h3>累计打卡<span id="clockNum">-</span>天</h3>
+                    <button id="clockBtn" type="button">今日打卡</button>
                 </div>
             </section>
             <section class="dpflex">
@@ -53,7 +46,7 @@
                 </div>
                 <div class="badge">
                     <h3>累计运动徽章</h3>
-                    <p><span>3</span>枚</p>
+                    <p><span id="badgeNum">3</span>枚</p>
                 </div>
             </section>
             <section class="dpflex sec3">
@@ -72,10 +65,7 @@
     <!-- 载入封装底部 -->
 
     <!-- js -->
-    <script src="../js/common_js/dom.js"></script>
-    <script src="../js/common_js/utils.js"></script>
-    <script src="../libs/swiper/swiper-bundle.min.js"></script>
-    <script src="../js/index.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
 </body>
 
 </html>

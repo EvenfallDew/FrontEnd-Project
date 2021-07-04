@@ -1,6 +1,14 @@
 @charset "utf-8";
 /* 公有布局  */
 
+html,
+body {
+    height: 100%;
+    margin: 0 auto;
+    min-width: 320px;
+    max-width: 1000px;
+}
+
 /* 底部封装 */
 .common-footer {
     display: flex;
@@ -47,5 +55,25 @@
 
     i {
         font-size: 50px;
+    }
+}
+
+// 我的页面头部样式
+.mine-header {
+    position: relative;
+    height: 50px;
+    padding: 0 20px;
+    color: #fff;
+    background-color: #4294FF;
+    font: normal 18px/50px "微软雅黑";
+
+    a {
+        color: #fff;
+    }
+
+    .header-text {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }

@@ -1,5 +1,11 @@
 "use strict"
 
+// 引入当前页面对应的样式文件
+require("../less/reg_log.less");
+
+// 引入字体图标的样式文件
+require("../fonts/iconfont.css");
+
 document.ready(function () {
     // 获取元素
     let phone = document.querySelector("#phone");
@@ -39,7 +45,9 @@ document.ready(function () {
                     msg.textContent = "";
                     // 按钮禁用
                     loginBtn.disabled = true;
-                    // 3秒后跳转登录
+                    // 获取数据到本地存储
+                    localStorage.setItem("user", JSON.stringify(result.data.user));
+                    // 3秒后跳转主页
                     setTimeout(function () {
                         location.href = "./index.html";
                     }, 3000);
@@ -63,7 +71,6 @@ document.ready(function () {
 
     // 测试专用
     testBtn.addEventListener("click", function () {
-        console.log(this)
         phone.value = "13333333335";
         password.value = "a123123";
     })

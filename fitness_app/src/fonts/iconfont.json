@@ -34,6 +34,13 @@
       "unicode_decimal": 58982
     },
     {
+      "icon_id": "22643613",
+      "name": "详情",
+      "font_class": "mineInfo-back-copy",
+      "unicode": "e83b",
+      "unicode_decimal": 59451
+    },
+    {
       "icon_id": "1110588",
       "name": "详情",
       "font_class": "mine-detail",

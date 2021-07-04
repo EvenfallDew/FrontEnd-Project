@@ -1,6 +1,4 @@
-/* 
-  webpack配置
-*/
+// webpack配置
 // 处理html的插件
 const path = require('path') // 引入node内置模块path 处理文件路径
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -8,20 +6,39 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin")
 
 module.exports = {
-  // 入口
-  entry: './src/js/index.js',
+  // 1 入口
+  entry: {
+    // 公共的css
+    common_css: "./src/js/common_css.js",
 
-  // 出口
-  output: {
-    path: path.resolve(__dirname, 'dist'), // 输出目录
-    filename: 'bundle.js' // 输出文件名
+    // 公共的js
+    dom: "./src/js/common_js/dom.js",
+    utils: "./src/js/common_js/utils.js",
+
+    // 页面的模块
+    advertisement: "./src/js/advertisement.js", //广告页
+    login: "./src/js/login.js", //登录页
+    register: "./src/js/register.js", //注册页
+    index: "./src/js/index.js", //首页
+    sports: "./src/js/sports.js", //运动
+    social: "./src/js/social.js", //运动
+    mine: "./src/js/mine.js", //我的
+    mine_info: "./src/js/mine_info.js",
+    mine_data: "./src/js/mine_data.js",
+    mine_badge: "./src/js/mine_badge.js",
   },
 
-  //3 loader 加载器
+  // 2 出口
+  output: {
+    path: path.resolve(__dirname, 'dist'), // 输出目录
+    filename: "js/[name]-[hash:8].js" // 输出文件名
+  },
+
+  // 3 loader 加载器
   module: {
-    //loader的加载顺序是从后往前执行。
+    // loader的加载顺序是从后往前执行。
     rules: [
-      //1 处理css   
+      // 1 处理css   
       {
         test: /\.css$/, // 匹配所有.css文件
         use: [
@@ -32,13 +49,12 @@ module.exports = {
               publicPath: "../" //配置图片的查找位置
             }
           },
-          'css-loader',
-          'postcss-loader', // 解析加载css到js中（把css打成字符串）。
+          'css-loader', // 解析加载css到js中（把css打成字符串）
+          'postcss-loader',
         ]
-
       },
 
-      //2 处理less   
+      // 2 处理less   
       {
         test: /\.less$/, // 匹配所有.less文件
         use: [
@@ -55,7 +71,7 @@ module.exports = {
         ]
       },
 
-      // 处理图片   
+      // 3 处理图片   
       {
         test: /\.(png|jpeg|jpg|gif)$/, // 匹配所有图片文件
         loader: "url-loader",
@@ -68,13 +84,13 @@ module.exports = {
         }
       },
 
-      // 处理html中的图片 把html中的图片拷到dist目录中  
+      // 4 处理html中的图片 把html中的图片拷到dist目录中  
       {
         test: /\.html$/, // 匹配所有.html文件
         loader: "html-loader",
       },
 
-      // 字体
+      // 5 字体
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/, // 处理字体格式文件
         loader: 'file-loader',
@@ -84,7 +100,7 @@ module.exports = {
         }
       },
 
-      // es6转换为es5
+      // 6 es6转换为es5
       {
         test: /\.js$/,
         loader: 'babel-loader', // loader 编译es6为es5
@@ -93,26 +109,94 @@ module.exports = {
     ]
   },
 
-  // 插件处理html文件
+  // 4 插件处理html文件
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/index.html",
-    }),
+    // 抽取css
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css'
+      filename: 'css/[name]-[hash:8].css'
+    }),
+
+    // advertisement.html
+    new HtmlWebpackPlugin({
+      template: "./src/pages/advertisement.html",
+      filename: "advertisement.html",
+      chunks: ["advertisement", "common_css", "dom", "utils"]
+    }),
+
+    // login.html
+    new HtmlWebpackPlugin({
+      template: "./src/pages/login.html",
+      filename: "login.html",
+      chunks: ["login", "common_css", "dom", "utils"]
+
+    }),
+
+    // register.html
+    new HtmlWebpackPlugin({
+      template: "./src/pages/register.html",
+      filename: "register.html",
+      chunks: ["register", "common_css", "dom", "utils"]
+    }),
+
+    // index.html
+    new HtmlWebpackPlugin({
+      template: "./src/pages/index.html",
+      filename: "index.html",
+      chunks: ["index", "common_css", "dom", "utils"]
+    }),
+
+    // sports.html
+    new HtmlWebpackPlugin({
+      template: "./src/pages/sports.html",
+      filename: "sports.html",
+      chunks: ["sports", "common_css", "dom", "utils"]
+    }),
+
+    // social.html
+    new HtmlWebpackPlugin({
+      template: "./src/pages/social.html",
+      filename: "social.html",
+      chunks: ["social", "common_css", "dom", "utils"]
+    }),
+
+    // mine.html
+    new HtmlWebpackPlugin({
+      template: "./src/pages/mine.html",
+      filename: "mine.html",
+      chunks: ["mine", "common_css", "dom", "utils"]
+    }),
+
+    // mine_info.html
+    new HtmlWebpackPlugin({
+      template: "./src/pages/mine_info.html",
+      filename: "mine_info.html",
+      chunks: ["mine_info", "common_css", "dom", "utils"]
+    }),
+
+    // mine_data.html
+    new HtmlWebpackPlugin({
+      template: "./src/pages/mine_data.html",
+      filename: "mine_data.html",
+      chunks: ["mine_data", "common_css", "dom", "utils"]
+    }),
+
+    // mine_badge.html
+    new HtmlWebpackPlugin({
+      template: "./src/pages/mine_badge.html",
+      filename: "mine_badge.html",
+      chunks: ["mine_badge", "common_css", "dom", "utils"]
     }),
   ],
 
-  // 模式： development: 开发模式  production: 生产模式
+  // 5 模式： development: 开发模式  production: 生产模式
   mode: 'development',
-
+  // 配置开发服务器
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'), // 启动服务器目录
-    compress: true, // 启动gzip
-    port: 666, // 端口
-    open: true, // 自动打开服务
+    contentBase: path.resolve(__dirname, 'dist'), // 启动服务器目录
+    compress: true, // 启动gzip
+    port: 666, // 端口
+    open: true, // 自动打开服务
     publicPath: '/', // 默认dist就是服务器根目录 从根目录查找资源
-    openPage: 'index.html', // 打开的页面
+    openPage: 'advertisement.html', // 打开的页面
   },
-
 }

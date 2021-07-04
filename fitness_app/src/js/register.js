@@ -1,4 +1,10 @@
 "use strict"
+// 引入当前页面对应的样式文件
+require("../less/reg_log.less");
+// 引入字体图标的样式文件
+require("../fonts/iconfont.css");
+//引入注册码的js
+const CaptchaMini = require("../libs/captcha/captcha-mini.js");
 
 document.ready(function () {
     // 验证码设置
@@ -81,7 +87,6 @@ document.ready(function () {
 
     // 测试专用
     testBtn.addEventListener("click", function () {
-        console.log(this)
         phone.value = "13333333333";
         captcha.value = captCode;
         password.value = "a123123";
