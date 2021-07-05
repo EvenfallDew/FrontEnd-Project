@@ -19,6 +19,13 @@ main {
     flex: 1;
     overflow-y: scroll;
 
+    // 跳转指示图标
+    .icon-mine-detail {
+        font: bold 22px/1em "微软雅黑";
+        color: #8A8A8A;
+        float: right;
+    }
+
     // 用户信息
     .user-info {
         .user-pic {
@@ -33,15 +40,14 @@ main {
                 background-color: #e8e8e8;
                 border-radius: 50%;
                 border: 3px solid #4294ff;
-            }
+                overflow: hidden;
 
-            // 用户名
-            .user-name {
-                height: 30px;
-                margin-left: 20px;
-                color: #101010;
-                font-size: 22px;
-                text-align: left;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+
+                }
             }
 
             // vip
@@ -53,6 +59,26 @@ main {
                 color: #ff7100;
                 background-color: #fff;
             }
+
+            .link-detail {
+                flex: 1;
+                justify-content: space-between;
+            }
+
+            // 用户名
+            .user-name {
+                height: 30px;
+                margin-left: 20px;
+                color: #101010;
+                font-size: 22px;
+                text-align: left;
+            }
+
+        }
+
+        // 上传头像
+        input {
+            display: none;
         }
 
         // 个性签名
@@ -81,11 +107,7 @@ main {
             color: #4294FF;
         }
 
-        .icon-mine-detail {
-            font-size: 22px;
-            color: #8A8A8A;
-            float: right;
-        }
+
     }
 
     // 运动数据

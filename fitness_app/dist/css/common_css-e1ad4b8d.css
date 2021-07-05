@@ -475,6 +475,7 @@ h1,h2,h3,h4,h5,h6{
     font-size: 220px;
 }
 @charset "utf-8";
+
 /* 公有布局  */
 html,
 body {
@@ -483,6 +484,7 @@ body {
   min-width: 320px;
   max-width: 1000px;
 }
+
 /* 底部封装 */
 .common-footer {
   display: -webkit-box;
@@ -498,21 +500,27 @@ body {
           align-items: center;
   text-align: center;
 }
+
 .common-footer .footer-btn {
   width: 60px;
   height: 50px;
   color: #8A8A8A;
 }
+
 .common-footer .footer-btn span {
   font-size: 30px;
 }
+
 .common-footer .footer-btn p {
   margin-top: 5px;
   font-size: 14px;
 }
+
 .common-footer .on {
   color: #4294FF;
 }
+
+/* 弹窗提示 */
 .msg-box {
   position: fixed;
   left: 50%;
@@ -527,9 +535,11 @@ body {
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.8);
 }
+
 .msg-box i {
   font-size: 50px;
 }
+
 .mine-header {
   position: relative;
   height: 50px;
@@ -538,16 +548,17 @@ body {
   background-color: #4294FF;
   font: normal 18px/50px "微软雅黑";
 }
+
 .mine-header a {
   color: #fff;
 }
+
 .mine-header .header-text {
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
-
 @font-face {
   font-family: "iconfont"; /* Project id 2643995 */
   src: url(../fonts/c01cdcbb.woff2) format('woff2'),

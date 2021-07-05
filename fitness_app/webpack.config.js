@@ -16,16 +16,17 @@ module.exports = {
     utils: "./src/js/common_js/utils.js",
 
     // 页面的模块
-    advertisement: "./src/js/advertisement.js", //广告页
-    login: "./src/js/login.js", //登录页
-    register: "./src/js/register.js", //注册页
+    advertisement: "./src/js/advertisement.js", //广告
+    login: "./src/js/login.js", //登录
+    register: "./src/js/register.js", //注册
     index: "./src/js/index.js", //首页
     sports: "./src/js/sports.js", //运动
-    social: "./src/js/social.js", //运动
+    sports_train: "./src/js/sports_train.js", //运动-训练
+    social: "./src/js/social.js", //圈子
     mine: "./src/js/mine.js", //我的
     mine_info: "./src/js/mine_info.js", //我的-资料
-    mine_data: "./src/js/mine_data.js",
-    mine_badge: "./src/js/mine_badge.js",
+    mine_data: "./src/js/mine_data.js", //我的-数据
+    mine_badge: "./src/js/mine_badge.js", //我的-徽章
   },
 
   // 2 出口
@@ -152,6 +153,13 @@ module.exports = {
       chunks: ["sports", "common_css", "dom", "utils"]
     }),
 
+    // sports_train.html
+    new HtmlWebpackPlugin({
+      template: "./src/pages/sports_train.html",
+      filename: "sports_train.html",
+      chunks: ["sports_train", "common_css", "dom", "utils"]
+    }),
+
     // social.html
     new HtmlWebpackPlugin({
       template: "./src/pages/social.html",
@@ -190,7 +198,8 @@ module.exports = {
 
   // 5 模式： development: 开发模式  production: 生产模式
   mode: 'development',
-  // 配置开发服务器
+
+  // 6 配置开发服务器
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'), // 启动服务器目录
     compress: true, // 启动gzip
@@ -198,5 +207,5 @@ module.exports = {
     open: true, // 自动打开服务
     publicPath: '/', // 默认dist就是服务器根目录 从根目录查找资源
     openPage: 'advertisement.html', // 打开的页面
-  },
+  }
 }

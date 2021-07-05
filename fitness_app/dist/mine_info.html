@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人资料</title>
-<script defer src="js/common_css-ada47ea8.js"></script><script defer src="js/dom-ada47ea8.js"></script><script defer src="js/utils-ada47ea8.js"></script><script defer src="js/mine_info-ada47ea8.js"></script><link href="css/common_css-ada47ea8.css" rel="stylesheet"><link href="css/mine_info-ada47ea8.css" rel="stylesheet"></head>
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/2.3.0/weui.min.css" />
+<script defer src="js/common_css-e1ad4b8d.js"></script><script defer src="js/dom-e1ad4b8d.js"></script><script defer src="js/utils-e1ad4b8d.js"></script><script defer src="js/mine_info-e1ad4b8d.js"></script><link href="css/common_css-e1ad4b8d.css" rel="stylesheet"><link href="css/mine_info-e1ad4b8d.css" rel="stylesheet"></head>
 
-<body>
+<body data-weui-theme="light">
     <!-- 头部 -->
     <header class="mine-header">
         <!-- 返回 -->
@@ -21,50 +22,58 @@
 
     <!-- 主体 -->
     <main>
-        <!-- 头像 -->
-        <section class="dpflex">
-            <span class="user-label">更换头像</span>
-            <div class="dpflex user-cont">
-                <div class="user-head"></div>
-                <span class="iconfont icon-mine-detail"></span>
-            </div>
-        </section>
         <!-- 昵称 -->
-        <section class="dpflex">
-            <span class="user-label">昵称</span>
+        <div class="weui-cell weui-cell_active">
+            <div class="weui-cell__hd"><label class="weui-label">昵称</label></div>
+            <div class="weui-cell__bd">
+                <input id="nickName" class="weui-input" placeholder="请填写昵称" />
+            </div>
+        </div>
 
-            <span class="iconfont icon-mine-detail"></span>
-        </section>
         <!-- 性别 -->
-        <section class="dpflex">
-            <span class="user-label">性别</span>
+        <div class="weui-cell weui-cell_active weui-cell_access" id="showSexPicker">
+            <div class="weui-cell__bd">性别</div>
+            <div class="weui-cell__ft" id="sex"></div>
+        </div>
 
-            <span class="iconfont icon-mine-detail"></span>
-        </section>
         <!-- 生日 -->
-        <section class="dpflex">
-            <span class="user-label">生日</span>
+        <div class="weui-cell weui-cell_active weui-cell_access" id="showBirthdayPicker">
+            <div class="weui-cell__bd">生日</div>
+            <div class="weui-cell__ft" id="birthday"></div>
+        </div>
 
-            <span class="iconfont icon-mine-detail"></span>
-        </section>
+        <!-- 所在省份 -->
+        <div class="weui-cell weui-cell_active weui-cell_access" id="showProvincePicker">
+            <div class="weui-cell__bd">所在省份</div>
+            <div class="weui-cell__ft" id="province"></div>
+        </div>
+
         <!-- 所在城市 -->
-        <section class="dpflex">
-            <span class="user-label">所在城市</span>
+        <div class="weui-cell weui-cell_active weui-cell_access" id="showCityPicker">
+            <div class="weui-cell__bd">所在城市</div>
+            <div class="weui-cell__ft" id="city"></div>
+        </div>
 
-            <span class="iconfont icon-mine-detail"></span>
-        </section>
         <!-- 个人简介 -->
-        <section class="personal-profile">
-            <span class="user-label">个人简介</span>
-            <p>
-                <textarea id="" class="" placeholder="多行输入"></textarea>
-            </p>
-        </section>
+        <div class="weui-cell change-sign">
+            <div class="weui-cell__bd">个人签名
+                <textarea id="signArea" maxlength="20" class="weui-textarea" placeholder="请输入您的个人签名"
+                    rows="3"></textarea>
+                <div class="weui-textarea-counter"><span id="signNum">0</span>/20</div>
+            </div>
+        </div>
+
         <!-- 保存按钮 -->
-        <section class="button-area">
+        <div class="button-area">
             <button id="saveBtn" class="save-btn" type="button">保存信息</button>
-        </section>
+        </div>
+
+        <button id="test">测 试</button>
     </main>
+
+    <!-- js -->
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.2.1/weui.min.js" charset="utf-8"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
 </body>
 
 </html>

@@ -24,7 +24,7 @@ function showToast(flag = "icon-toast-correct", msg = "成功", time = 3000) {
     //4 添加到body中
     document.body.appendChild(box);
     // 若干秒后消失
-    window.setTimeout(function () {
+    setTimeout(function () {
         box.remove();
     }, time);
 }
@@ -71,13 +71,34 @@ function commonFooter() {
     let pageIndex = webArr.findIndex(function (item) {
         return item == pageName;
     });
-    footerBtns[pageIndex].classList.add("on");
+    if (pageIndex == -1) {
+        footerBtns[1].classList.add("on");
+    } else {
+        footerBtns[pageIndex].classList.add("on");
+    }
 }
 
+// 格式化日期
+function formatDate(str) {
+    let now = new Date(str);
+    let y = now.getFullYear();
+    let m = now.getMonth() + 1;
+    let d = now.getDate();
+    let arr = [y, m, d].map(function (ele) {
+        return padZero(ele)
+    });
+    return arr.join("-");
+}
+// 补零
+function padZero(n) {
+    return n < 10 ? "0" + n : n;
+}
 // 暴露出去
 window.$utils = {
     isPhoneNum: isPhoneNum,
     isPassword: isPassword,
     showToast: showToast,
     commonFooter: commonFooter,
+    padZero: padZero,
+    formatDate: formatDate,
 }

@@ -18,6 +18,11 @@ main {
           flex: 1;
   overflow-y: scroll;
 }
+main .icon-mine-detail {
+  font: bold 22px/1em "微软雅黑";
+  color: #8A8A8A;
+  float: right;
+}
 main .user-info .user-pic {
   margin-top: 15px;
   -webkit-box-align: center;
@@ -31,13 +36,12 @@ main .user-info .user-pic .user-head {
   background-color: #e8e8e8;
   border-radius: 50%;
   border: 3px solid #4294ff;
+  overflow: hidden;
 }
-main .user-info .user-pic .user-name {
-  height: 30px;
-  margin-left: 20px;
-  color: #101010;
-  font-size: 22px;
-  text-align: left;
+main .user-info .user-pic .user-head img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 main .user-info .user-pic .icon-mine-vip {
   font-size: 22px;
@@ -46,6 +50,24 @@ main .user-info .user-pic .icon-mine-vip {
   bottom: 0;
   color: #ff7100;
   background-color: #fff;
+}
+main .user-info .user-pic .link-detail {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+main .user-info .user-pic .user-name {
+  height: 30px;
+  margin-left: 20px;
+  color: #101010;
+  font-size: 22px;
+  text-align: left;
+}
+main .user-info input {
+  display: none;
 }
 main .user-info .signature {
   margin-top: 20px;
@@ -67,11 +89,6 @@ main h3 .mine-label {
 main h3 .icon-mine-label {
   font-size: 22px;
   color: #4294FF;
-}
-main h3 .icon-mine-detail {
-  font-size: 22px;
-  color: #8A8A8A;
-  float: right;
 }
 main .data .data-datas {
   margin-top: 15px;

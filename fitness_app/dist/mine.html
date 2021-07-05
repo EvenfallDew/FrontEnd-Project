@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的</title>
-<script defer src="js/common_css-ada47ea8.js"></script><script defer src="js/dom-ada47ea8.js"></script><script defer src="js/utils-ada47ea8.js"></script><script defer src="js/mine-ada47ea8.js"></script><link href="css/common_css-ada47ea8.css" rel="stylesheet"><link href="css/mine-ada47ea8.css" rel="stylesheet"></head>
+<script defer src="js/common_css-e1ad4b8d.js"></script><script defer src="js/dom-e1ad4b8d.js"></script><script defer src="js/utils-e1ad4b8d.js"></script><script defer src="js/mine-e1ad4b8d.js"></script><link href="css/common_css-e1ad4b8d.css" rel="stylesheet"><link href="css/mine-e1ad4b8d.css" rel="stylesheet"></head>
 
 <body class="dpflex fdcolumn">
     <!-- 内容模块 -->
@@ -15,13 +15,23 @@
         <section class="user-info">
             <div class="dpflex user-pic">
                 <!-- 头像 -->
-                <div class="user-head"></div>
-                <span class="user-name">用户名</span>
+                <div id="userHead" class="user-head">
+                    <img id="headPic" alt="头像">
+                </div>
                 <!-- vip图标 -->
                 <span class="iconfont icon-mine-vip"></span>
+                <!-- 点击可跳转详情页区域 -->
+                <a href="./mine_info.html" class="dpflex link-detail">
+                    <span id="userName" class="user-name">用户名</span>
+                    <!-- 进入详情页图标 -->
+                    <span class="iconfont icon-mine-detail"></span>
+                </a>
             </div>
+            <!-- 上传头像 -->
+            <input type="file" id="uploadHead">
+            <!-- 个性签名 -->
             <p class="signature">
-                个性签名: 高举中国特色社会主义伟大旗帜，永远把伟大建党精神继承下去、发扬光大！
+                个性签名: <span id="signText"></span>
             </p>
         </section>
 
@@ -35,12 +45,12 @@
             <div class="dpflex data-datas">
                 <div class="exercise-data">
                     <h4>总运动</h4>
-                    <p><span>9999</span>分钟</p>
+                    <p><span id="dataMin">9999</span>分钟</p>
                 </div>
                 <div class="divid-line"></div>
                 <div class="this-week">
                     <h4>本周消耗</h4>
-                    <p><span>9999</span>千卡</p>
+                    <p><span id="dataCalory">9999</span>千卡</p>
                 </div>
             </div>
         </section>
