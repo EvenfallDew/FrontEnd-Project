@@ -19,13 +19,13 @@ function showToast(flag = "icon-toast-correct", msg = "成功", time = 3000) {
     //3 添加内容
     box.innerHTML = `
      <i class="iconfont ${flag}"></i>
-     <p>${msg}</p>
+     <p class="msg-text">${msg}</p>
      `
     //4 添加到body中
     document.body.appendChild(box);
     // 若干秒后消失
     setTimeout(function () {
-        box.remove();
+        // box.remove();
     }, time);
 }
 

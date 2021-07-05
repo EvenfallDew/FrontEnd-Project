@@ -104,6 +104,7 @@ document.ready(function () {
     let logoutBtn = document.querySelector("#logoutBtn");
     logoutBtn.addEventListener("click", function () {
         $utils.showToast("icon-toast-correct", "退出成功", 2000);
+        // 移出本地存储数据
         localStorage.removeItem("user");
         // 跳转登录页面
         setTimeout(() => {

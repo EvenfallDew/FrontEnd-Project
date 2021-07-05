@@ -1,6 +1,7 @@
 "use strict"
 
 // 引入对应的less样式
+require("../less/common_css/weui.css");
 require("../less/mine_info.less");
 
 document.ready(function () {
@@ -65,13 +66,12 @@ document.ready(function () {
         });
     });
 
-    /* 省份 */
+    // 选择省份
     showProvincePicker.addEventListener('click', function () {
         weui.picker(
             provinceArr, {
                 // 确认事件
                 onConfirm: function (result) {
-                    console.log(result)
                     province.textContent = result[0].label;
                     city.textContent = "请选择";
                     // 去获取所管辖的城市的信息
@@ -95,9 +95,8 @@ document.ready(function () {
         );
     });
 
-    // 城市 bug
+    // 选择城市
     showCityPicker.addEventListener('click', function () {
-        alert(2);
         weui.picker(
             cityArr, {
                 // 确认事件
@@ -110,10 +109,28 @@ document.ready(function () {
     });
 
     // 获取省份信息
-    function getProvince() {
+    function getProCity() {
         axios.get(BASE_URL + "/address/province").then(function (res) {
             let result = res.data;
             if (result.status == 0) {
+                // 获取城市列表
+                let user = JSON.parse(localStorage.getItem("user"));
+                let proName = user.address.split(",")[0];
+                let addressId = search(proName, result.data);
+                axios.get(BASE_URL + "/address/city/" + addressId).then(function (res) {
+                    let result = res.data;
+                    if (result.status == 0) {
+                        cityArr = result.data.map(function (city) {
+                            let obj = {
+                                label: city.name,
+                                value: city.addressId
+                            }
+                            return obj;
+                        });
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
                 provinceArr = result.data.map(function (pro) {
                     return {
                         label: pro.name,
@@ -124,24 +141,17 @@ document.ready(function () {
         }).catch(function (error) {
             console.log(error);
         });
-
-        // axios.get(BASE_URL + "/address/city/" + result[0].value).then(function (res) {
-        //     let result = res.data;
-        //     if (result.status == 0) {
-        //         cityArr = result.data.map(function (city) {
-        //             let obj = {
-        //                 label: city.name,
-        //                 value: city.addressId
-        //             }
-        //             return obj;
-        //         });
-        //     }
-        // }).catch(function (error) {
-        //     console.log(error);
-        // });
     }
-    getProvince();
-    console.log("省份", getProvince())
+
+    // 查找省份id
+    function search(nameKey, myArray) {
+        for (var i = 0; i < myArray.length; i++) {
+            if (myArray[i].name == nameKey) {
+                return myArray[i].addressId;
+            }
+        }
+    }
+    getProCity();
 
     // 签名实时字数
     signArea.addEventListener("input", function () {
@@ -191,9 +201,4 @@ document.ready(function () {
             console.log(error);
         });
     });
-
-    // 测试专用
-    test.addEventListener("click", function () {
-        console.log("city", cityArr)
-    })
 });
