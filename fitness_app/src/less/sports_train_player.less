@@ -2,17 +2,54 @@
 
 main {
     flex: 1;
-    overflow-y: scroll;
-    background-color: #000;
+    // overflow-y: scroll;
+    position: relative;
+
+    .video {
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+    }
+
+    // 步骤提示
+    .video-part {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: #fff;
+    }
 }
 
 footer {
-    height: 90px;
-    background-color: aqua;
+    position: relative;
+    height: 70px;
+
+    /* 进度条 */
+    .progress {
+        width: 0px;
+        height: 70px;
+        background-color: #4294ff;
+    }
+
+    /* 控制条 */
+    .control {
+        width: 100%;
+        height: 70px;
+        align-items: center;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        .iconfont {
+            font-size: 30px;
+        }
+    }
 }
 
+// 蒙层
 .mask {
-    // display: none;
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -20,14 +57,30 @@ footer {
     height: 100%;
     padding: 50px 20px;
     z-index: 5;
-    background-color: rgba(30, 150, 205, 0.8);
+    background-color: rgba(30, 150, 205, 0.9);
 
+    // 内容
+    .mask-cont {
+        min-width: 280px;
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    // 控制区
+    .mask-ctrl {
+        margin-top: 60%;
+        transform: translateY(-50%);
+    }
+
+    // 废话
     h3 {
         color: #fff;
     }
 
+    // 按钮
     .mask-btns {
         justify-content: space-around;
+        margin-bottom: 50px;
 
         .mask-btn {
             width: 140px;
@@ -35,6 +88,9 @@ footer {
             border-radius: 50%;
             text-align: center;
             color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .goon-btn {
@@ -46,7 +102,7 @@ footer {
         }
     }
 
-    // 当前
+    // 当前环节
     .current-part {
         border: 2px solid #e8e8e8;
         border-radius: 10px;
@@ -69,10 +125,12 @@ footer {
             text-align: center;
 
             h4 {
+                font-size: 20px;
                 color: #e8e8e8;
             }
 
             p {
+                margin-top: 20px;
                 color: #fff;
             }
         }

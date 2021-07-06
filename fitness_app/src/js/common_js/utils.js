@@ -1,5 +1,8 @@
 // 工具函数集
 
+// 服务器地址
+const BASE_URL = "http://139.9.177.51:8099";
+
 // 手机号码验证
 function isPhoneNum(n) {
     return /^1[3-9]\d{9}$/.test(n)
@@ -27,6 +30,31 @@ function showToast(flag = "icon-toast-correct", msg = "成功", time = 3000) {
     setTimeout(function () {
         // box.remove();
     }, time);
+}
+
+// 运动头部封装
+function commonHeader() {
+    let sportsHeader = document.querySelector("#sportsHeader");
+    //1 创建一个盒子
+    let header = document.createElement("div")
+    //2 书写类名
+    header.className = "common-header";
+    //3 添加内容
+    header.innerHTML = `
+        <a class="header-btn" href="./sports_run.html">跑步</a>
+        <a class="header-btn" href="./sports_ride.html">骑行</a>
+        <a class="header-btn" href="./sports_train.html">课程训练</a>
+    `
+    //4 添加到body中
+    sportsHeader.appendChild(header);
+    let headerBtns = document.querySelectorAll(".header-btn");
+    let headerWebs = ["./sports_run.html", "./sports_ride.html", "./sports_train.html"];
+    let headerPagesArr = location.pathname.split("/");
+    let headerPagesName = "./" + headerPagesArr[headerPagesArr.length - 1];
+    let headerPagesIndex = headerWebs.findIndex(function (item) {
+        return item == headerPagesName;
+    });
+    headerBtns[headerPagesIndex].classList.add("header-on");
 }
 
 // 底部封装
@@ -59,7 +87,7 @@ function commonFooter() {
 
     // 链接跳转
     let footerBtns = document.querySelectorAll(".footer-btn");
-    let footerWebs = ["./index.html", "./sports.html", "./social.html", "./mine.html"];
+    let footerWebs = ["./index.html", "./sports_train.html", "./social.html", "./mine.html"];
     for (let i = 0; i < footerBtns.length; i++) {
         footerBtns[i].addEventListener("click", function () {
             location.href = footerWebs[i];
@@ -76,31 +104,6 @@ function commonFooter() {
     } else {
         footerBtns[footerPagesIndex].classList.add("footer-on");
     }
-}
-
-// 运动头部封装
-function commonHeader() {
-    let sportsHeader = document.querySelector("#sportsHeader");
-    //1 创建一个盒子
-    let header = document.createElement("div")
-    //2 书写类名
-    header.className = "common-header";
-    //3 添加内容
-    header.innerHTML = `
-        <a class="header-btn" href="./sports_run.html">跑步</a>
-        <a class="header-btn" href="./sports_ride.html">骑行</a>
-        <a class="header-btn" href="./sports_train.html">课程训练</a>
-    `
-    //4 添加到body中
-    sportsHeader.appendChild(header);
-    let headerBtns = document.querySelectorAll(".header-btn");
-    let headerWebs = ["./sports_run.html", "./sports_ride.html", "./sports_train.html"];
-    let headerPagesArr = location.pathname.split("/");
-    let headerPagesName = "./" + headerPagesArr[headerPagesArr.length - 1];
-    let headerPagesIndex = headerWebs.findIndex(function (item) {
-        return item == headerPagesName;
-    });
-    headerBtns[headerPagesIndex].classList.add("header-on");
 }
 
 // 格式化日期
@@ -120,6 +123,7 @@ function padZero(n) {
 }
 // 暴露出去
 window.$utils = {
+    BASE_URL: BASE_URL,
     isPhoneNum: isPhoneNum,
     isPassword: isPassword,
     showToast: showToast,

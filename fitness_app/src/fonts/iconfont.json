@@ -36,7 +36,7 @@
     {
       "icon_id": "22643613",
       "name": "详情",
-      "font_class": "mineInfo-back-copy",
+      "font_class": "mineInfo-back",
       "unicode": "e83b",
       "unicode_decimal": 59451
     },
@@ -85,9 +85,16 @@
     {
       "icon_id": "19994900",
       "name": "暂停",
-      "font_class": "xunlian-zanting",
+      "font_class": "train-play-pause",
       "unicode": "e68c",
       "unicode_decimal": 59020
+    },
+    {
+      "icon_id": "22710575",
+      "name": "下一步",
+      "font_class": "train-play-next",
+      "unicode": "e83c",
+      "unicode_decimal": 59452
     },
     {
       "icon_id": "400038",
@@ -148,14 +155,14 @@
     {
       "icon_id": "1117917",
       "name": "播放",
-      "font_class": "xunlian-bofang",
+      "font_class": "train-play-play",
       "unicode": "e77e",
       "unicode_decimal": 59262
     },
     {
       "icon_id": "2055102",
       "name": "下一步",
-      "font_class": "xunlian-xiayibu",
+      "font_class": "train-play-prev",
       "unicode": "e66d",
       "unicode_decimal": 58989
     },

@@ -13,30 +13,29 @@
         <!-- 视频播放跳转 -->
         <div class="video-preview">
             <!-- 测试图片 -->
-            <img src="../images/course-img01.jpg" alt="course">
+            <img id="courseImg" src="../images/course-img02.jpg" alt="pic">
             <!-- 返回 -->
-            <span class="iconfont icon-train-detail-back"></span>
+            <a class="iconfont icon-train-detail-back" href="./sports_train.html"></a>
             <!-- 播放 -->
-            <span class="iconfont icon-train-detail-play
-            "></span>
+            <span class="iconfont icon-train-detail-play"></span>
         </div>
         <!-- 课程详情 -->
         <div class="course-details">
-            <h3 id="courseName">课程名</h3>
+            <h3 id="name">课程名</h3>
             <section class="dpflex course-data">
                 <div>
-                    <span>1</span>千卡
-                    <span>1</span>分钟
+                    <span id="calorie">--</span>千卡
+                    <span id="time">--</span>分钟
                 </div>
                 <div>
-                    <span>99</span>人练过
+                    <span id="peoplenum">--</span>人练过
                     <span class="iconfont icon-mine-detail"></span>
                 </div>
             </section>
 
             <hr>
             <!-- 课程介绍 -->
-            <p id="courseText" class="course-text">balabala</p>
+            <p id="desc" class="course-text">课程介绍</p>
             <!-- 练习方法 -->
             <div class="dpflex course-method">
                 <div>
@@ -44,21 +43,26 @@
                         <span class="iconfont icon-train-detail-frequency"></span>
                         练习频次
                     </h4>
-                    <p>3</p>
+                    <p id="frequency">--</p>
                 </div>
                 <div>
                     <h4>
                         <span class="iconfont icon-train-detail-tool"></span>
                         器械
                     </h4>
-                    <p>无</p>
+                    <p id="instrument">--</p>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- 开始按钮 -->
     <footer>
-        <button class="train-btn" type="button">开始训练</button>
+        <button id="trainBtn" class="train-btn" type="button">开始训练</button>
     </footer>
+
+    <!-- js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
 </body>
 
 </html>

@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2643995 */
-  src: url('iconfont.woff2?t=1625567727548') format('woff2'),
-       url('iconfont.woff?t=1625567727548') format('woff'),
-       url('iconfont.ttf?t=1625567727548') format('truetype');
+  src: url('iconfont.woff2?t=1625593731702') format('woff2'),
+       url('iconfont.woff?t=1625593731702') format('woff'),
+       url('iconfont.ttf?t=1625593731702') format('truetype');
 }
 
 .iconfont {
@@ -29,7 +29,7 @@
   content: "\e666";
 }
 
-.icon-mineInfo-back-copy:before {
+.icon-mineInfo-back:before {
   content: "\e83b";
 }
 
@@ -57,8 +57,12 @@
   content: "\e603";
 }
 
-.icon-xunlian-zanting:before {
+.icon-train-play-pause:before {
   content: "\e68c";
+}
+
+.icon-train-play-next:before {
+  content: "\e83c";
 }
 
 .icon-train-detail-back:before {
@@ -93,11 +97,11 @@
   content: "\e625";
 }
 
-.icon-xunlian-bofang:before {
+.icon-train-play-play:before {
   content: "\e77e";
 }
 
-.icon-xunlian-xiayibu:before {
+.icon-train-play-prev:before {
   content: "\e66d";
 }
 

@@ -1,5 +1,4 @@
 @charset "utf-8";
-
 /* 公有布局  */
 html,
 body {
@@ -8,8 +7,27 @@ body {
   min-width: 320px;
   max-width: 1000px;
 }
-
-/* 底部封装 */
+.common-header {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 20px;
+  height: 40px;
+  align-items: center;
+  border: 1px solid #ddd;
+}
+.common-header .header-btn {
+  line-height: 40px;
+  height: 40px;
+  color: #9a9a9a;
+  font-size: 16px;
+  text-align: center;
+  padding: 0 15px;
+}
+.common-header .header-on {
+  font-size: 18px;
+  color: #4294FF;
+  border-bottom: 3px solid #4294FF;
+}
 .common-footer {
   display: flex;
   height: 75px;
@@ -19,27 +37,21 @@ body {
   align-items: center;
   text-align: center;
 }
-
 .common-footer .footer-btn {
   width: 60px;
   height: 50px;
   color: #8A8A8A;
 }
-
 .common-footer .footer-btn span {
   font-size: 30px;
 }
-
 .common-footer .footer-btn p {
   margin-top: 5px;
   font-size: 14px;
 }
-
-.common-footer .on {
+.common-footer .footer-on {
   color: #4294FF;
 }
-
-/* 弹窗提示 */
 .msg-box {
   position: fixed;
   left: 50%;
@@ -52,12 +64,15 @@ body {
   text-align: center;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.8);
+  line-height: normal;
 }
-
 .msg-box i {
   font-size: 50px;
+  line-height: normal;
 }
-
+.msg-box .msg-text {
+  line-height: normal;
+}
 .mine-header {
   position: relative;
   height: 50px;
@@ -66,11 +81,9 @@ body {
   background-color: #4294FF;
   font: normal 18px/50px "微软雅黑";
 }
-
 .mine-header a {
   color: #fff;
 }
-
 .mine-header .header-text {
   position: absolute;
   left: 50%;

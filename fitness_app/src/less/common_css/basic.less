@@ -9,6 +9,32 @@ body {
     max-width: 1000px;
 }
 
+// 运动头部封装
+.common-header {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20px;
+    height: 40px;
+    align-items: center;
+    border: 1px solid #ddd;
+
+    .header-btn {
+        line-height: 40px;
+        height: 40px;
+        color: #9a9a9a;
+        font-size: 16px;
+        text-align: center;
+        padding: 0 15px;
+
+    }
+
+    .header-on {
+        font-size: 18px;
+        color: #4294FF;
+        border-bottom: 3px solid #4294FF;
+    }
+}
+
 // 底部封装
 .common-footer {
     display: flex;
@@ -39,31 +65,6 @@ body {
     }
 }
 
-// 运动头部封装
-.common-header {
-    display: flex;
-    justify-content: space-around;
-    padding: 0 20px;
-    height: 40px;
-    align-items: center;
-    border: 1px solid #ddd;
-
-    a {
-        line-height: 40px;
-        height: 40px;
-        color: #9a9a9a;
-        font-size: 16px;
-        text-align: center;
-        padding: 0 15px;
-
-    }
-
-    .header-on {
-        font-size: 18px;
-        color: #4294FF;
-        border-bottom: 3px solid #4294FF;
-    }
-}
 
 // 消息窗口
 .msg-box {
@@ -81,7 +82,7 @@ body {
     line-height: normal;
 
     i {
-        font-size: 520px;
+        font-size: 50px;
         line-height: normal;
     }
 
