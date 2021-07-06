@@ -561,9 +561,9 @@ body {
 }
 @font-face {
   font-family: "iconfont"; /* Project id 2643995 */
-  src: url(../fonts/c01cdcbb.woff2) format('woff2'),
-       url(../fonts/68834615.woff) format('woff'),
-       url(../fonts/bdd5755e.ttf) format('truetype');
+  src: url(../fonts/ab13bad3.woff2) format('woff2'),
+       url(../fonts/01688bfd.woff) format('woff'),
+       url(../fonts/255e88f3.ttf) format('truetype');
 }
 
 .iconfont {
@@ -622,7 +622,7 @@ body {
   content: "\e68c";
 }
 
-.icon-jieshao-fanhui:before {
+.icon-train-detail-back:before {
   content: "\e629";
 }
 
@@ -642,7 +642,7 @@ body {
   content: "\e616";
 }
 
-.icon-yunzhong-kaishi:before {
+.icon-train-detail-play:before {
   content: "\e68a";
 }
 
@@ -662,7 +662,7 @@ body {
   content: "\e66d";
 }
 
-.icon-jieshao-qixie:before {
+.icon-train-detail-tool:before {
   content: "\e776";
 }
 
@@ -682,7 +682,7 @@ body {
   content: "\e680";
 }
 
-.icon-jieshao-lianxi:before {
+.icon-train-detail-frequency:before {
   content: "\e60a";
 }
 

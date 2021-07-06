@@ -92,7 +92,7 @@
     {
       "icon_id": "400038",
       "name": "返回",
-      "font_class": "jieshao-fanhui",
+      "font_class": "train-detail-back",
       "unicode": "e629",
       "unicode_decimal": 58921
     },
@@ -127,7 +127,7 @@
     {
       "icon_id": "996545",
       "name": "开始",
-      "font_class": "yunzhong-kaishi",
+      "font_class": "train-detail-play",
       "unicode": "e68a",
       "unicode_decimal": 59018
     },
@@ -162,7 +162,7 @@
     {
       "icon_id": "4294034",
       "name": "哑铃",
-      "font_class": "jieshao-qixie",
+      "font_class": "train-detail-tool",
       "unicode": "e776",
       "unicode_decimal": 59254
     },
@@ -197,7 +197,7 @@
     {
       "icon_id": "13124354",
       "name": "练习题管理",
-      "font_class": "jieshao-lianxi",
+      "font_class": "train-detail-frequency",
       "unicode": "e60a",
       "unicode_decimal": 58890
     },

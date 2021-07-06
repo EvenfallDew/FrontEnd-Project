@@ -1,7 +1,7 @@
 "use strict"
 
 // 引入当前页面对应的样式文件
-require("../less/sports_train.less");
+require("../less/sports_ride.less");
 
 document.ready(function () {
     // 头部封装

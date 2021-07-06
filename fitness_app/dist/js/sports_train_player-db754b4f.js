@@ -10,13 +10,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/less/sports_train.less":
-/*!************************************!*\
-  !*** ./src/less/sports_train.less ***!
-  \************************************/
+/***/ "./src/less/sports_train_player.less":
+/*!*******************************************!*\
+  !*** ./src/less/sports_train_player.less ***!
+  \*******************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://fitness_app/./src/less/sports_train.less?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://fitness_app/./src/less/sports_train_player.less?");
 
 /***/ })
 
@@ -59,10 +59,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /******/ 	
 /************************************************************************/
 !function() {
-/*!********************************!*\
-  !*** ./src/js/sports_train.js ***!
-  \********************************/
-eval("\n\n// 引入当前页面对应的样式文件\n\n__webpack_require__(/*! ../less/sports_train.less */ \"./src/less/sports_train.less\");\n\ndocument.ready(function () {\n    // 底部封装\n    $utils.commonFooter();\n});\n\n//# sourceURL=webpack://fitness_app/./src/js/sports_train.js?");
+/*!***************************************!*\
+  !*** ./src/js/sports_train_player.js ***!
+  \***************************************/
+eval("\n\n// 引入当前页面对应的样式文件\n\n__webpack_require__(/*! ../less/sports_train_player.less */ \"./src/less/sports_train_player.less\");\n\ndocument.ready(function () {});\n\n//# sourceURL=webpack://fitness_app/./src/js/sports_train_player.js?");
 }();
 /******/ })()
 ;

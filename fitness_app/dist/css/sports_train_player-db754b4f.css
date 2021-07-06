@@ -1,0 +1,66 @@
+@charset "utf-8";
+main {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  overflow-y: scroll;
+  background-color: #000;
+}
+footer {
+  height: 90px;
+  background-color: aqua;
+}
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 50px 20px;
+  z-index: 5;
+  background-color: rgba(30, 150, 205, 0.8);
+}
+.mask h3 {
+  color: #fff;
+}
+.mask .mask-btns {
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
+}
+.mask .mask-btns .mask-btn {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+}
+.mask .mask-btns .goon-btn {
+  background-color: #79f0c2;
+}
+.mask .mask-btns .stop-btn {
+  background-color: #ff6060;
+}
+.mask .current-part {
+  border: 2px solid #e8e8e8;
+  border-radius: 10px;
+  background-color: transparent;
+  overflow: hidden;
+}
+.mask .current-part div {
+  width: 50%;
+}
+.mask .current-part .current-part-pic img {
+  width: 100%;
+  height: 100%;
+}
+.mask .current-part .current-part-text {
+  padding: 20px;
+  text-align: center;
+}
+.mask .current-part .current-part-text h4 {
+  color: #e8e8e8;
+}
+.mask .current-part .current-part-text p {
+  color: #fff;
+}
+

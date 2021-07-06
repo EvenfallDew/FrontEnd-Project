@@ -21,7 +21,11 @@ module.exports = {
     register: "./src/js/register.js", //注册
     index: "./src/js/index.js", //首页
     sports: "./src/js/sports.js", //运动
+    sports_run: "./src/js/sports_run.js", //运动-跑步
+    sports_ride: "./src/js/sports_ride.js", //运动-骑行
     sports_train: "./src/js/sports_train.js", //运动-训练
+    sports_train_detail: "./src/js/sports_train_detail.js", //运动-训练-详情
+    sports_train_player: "./src/js/sports_train_player.js", //运动-训练-视频
     social: "./src/js/social.js", //圈子
     mine: "./src/js/mine.js", //我的
     mine_info: "./src/js/mine_info.js", //我的-资料
@@ -153,11 +157,39 @@ module.exports = {
       chunks: ["sports", "common_css", "dom", "utils"]
     }),
 
+    // sports_run.html
+    new HtmlWebpackPlugin({
+      template: "./src/pages/sports_run.html",
+      filename: "sports_run.html",
+      chunks: ["sports_run", "common_css", "dom", "utils"]
+    }),
+
+    // sports_ride.html
+    new HtmlWebpackPlugin({
+      template: "./src/pages/sports_ride.html",
+      filename: "sports_ride.html",
+      chunks: ["sports_ride", "common_css", "dom", "utils"]
+    }),
+
     // sports_train.html
     new HtmlWebpackPlugin({
       template: "./src/pages/sports_train.html",
       filename: "sports_train.html",
       chunks: ["sports_train", "common_css", "dom", "utils"]
+    }),
+
+    // sports_train_detail.html
+    new HtmlWebpackPlugin({
+      template: "./src/pages/sports_train_detail.html",
+      filename: "sports_train_detail.html",
+      chunks: ["sports_train_detail", "common_css", "dom", "utils"]
+    }),
+
+    // sports_train_player.html
+    new HtmlWebpackPlugin({
+      template: "./src/pages/sports_train_player.html",
+      filename: "sports_train_player.html",
+      chunks: ["sports_train_player", "common_css", "dom", "utils"]
     }),
 
     // social.html
