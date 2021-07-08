@@ -1,0 +1,236 @@
+@charset "utf-8";
+main {
+  overflow-y: scroll;
+}
+main .run-title {
+  height: 100px;
+  padding: 15px 20px;
+}
+main .run-title .run-data {
+  color: #333;
+}
+main .run-title .run-data span {
+  font-size: 48px;
+  color: #4294FF;
+}
+main .map {
+  height: 100%;
+}
+main .go-btn {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  text-align: center;
+  font: bold 90px/150px "微软雅黑";
+  color: #1276a8;
+  background-color: rgba(66, 148, 255, 0.7);
+}
+.masks {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: none;
+  background-color: #59b2db;
+}
+.masks .data-cont {
+  height: 100%;
+  min-width: 320px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #fff;
+}
+.mask-time .time-num {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 150px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  font-size: 100px;
+  font-weight: bold;
+  color: #fff;
+}
+.mask-data {
+  display: none;
+}
+.mask-data .mask-data-cont {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.mask-data .run-category {
+  color: #AAD9F7;
+}
+.mask-data .run-statu {
+  font-size: 24px;
+}
+.mask-data .run-mile {
+  font-size: 20px;
+  text-align: center;
+}
+.mask-data .run-mile .mile-data {
+  font-size: 100px;
+}
+.mask-data .location {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  font-size: 14px;
+}
+.mask-data .location .gps-text {
+  color: #ACDFFF;
+}
+.mask-data .location .icon-run-location {
+  font-size: 40px;
+}
+.mask-data .data-info {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.mask-data .data-info .info-item {
+  text-align: center;
+}
+.mask-data .data-info .info-item p {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  color: #AAD9F7;
+}
+.mask-data .data-info .info-item span {
+  font-size: 30px;
+}
+.mask-data .data-btns {
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
+}
+.mask-data .data-btns div {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  text-align: center;
+}
+.mask-data .data-btns div .iconfont {
+  font-size: 36px;
+}
+.mask-data .data-btns .pause-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  color: #59b2db;
+  background-color: #fff;
+}
+.mask-data .data-btns .continue-btn {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  background-color: #79f0c2;
+}
+.mask-data .data-btns .stop-btn {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  background-color: #ff6060;
+}
+.mask-map .map-back {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #bbb;
+  border-radius: 50%;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  background-color: #fff;
+  color: #101010;
+}
+.mask-map .map-back .icon-train-detail-back {
+  font: normal 30px/40px "微软雅黑";
+}
+.mask-map .map-finish {
+  width: 65px;
+  height: 40px;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  background-color: #fff;
+  color: #101010;
+}
+.mask-map .map-finish span {
+  font: normal 20px/40px "微软雅黑";
+}
+.mask-map .mask-map-cont {
+  position: relative;
+}
+.mask-map .mask-map-cont .map-text {
+  position: absolute;
+  left: 0;
+  bottom: 70px;
+  width: 100%;
+  height: 140px;
+  padding: 0 20px;
+}
+.mask-map .map-text-cont {
+  width: 100%;
+  height: 100%;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.4);
+  color: #101010;
+  background-color: #fff;
+}
+.mask-map .map-text-cont .map-data {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.mask-map .map-text-cont h3 {
+  font: bold 18px/30px "微软雅黑";
+  color: #4294FF;
+  border-bottom: 2px dashed #bbb;
+}
+.mask-map .map-text-cont .map-item {
+  font-size: 14px;
+  text-align: center;
+  padding: 15px 0;
+}
+.mask-map .map-text-cont .map-item span {
+  font: normal 25px/50px "微软雅黑";
+}
+

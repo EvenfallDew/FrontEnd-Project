@@ -129,7 +129,7 @@ document.ready(function () {
                     location.href = "./sports_train.html";
                 }, 2000);
             } else {
-                $utils.showToast("icon-toast-wrong", "请联系后端", 2000);
+                $utils.showToast("icon-toast-wrong", "请联系后台", 2000);
                 setTimeout(() => {
                     location.href = "./sports_train.html";
                 }, 2000);

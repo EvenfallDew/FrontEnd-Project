@@ -87,7 +87,7 @@ function commonFooter() {
 
     // 链接跳转
     let footerBtns = document.querySelectorAll(".footer-btn");
-    let footerWebs = ["./index.html", "./sports_train.html", "./social.html", "./mine.html"];
+    let footerWebs = ["./index.html", "./sports_run.html", "./social.html", "./mine.html"];
     for (let i = 0; i < footerBtns.length; i++) {
         footerBtns[i].addEventListener("click", function () {
             location.href = footerWebs[i];
@@ -117,10 +117,24 @@ function formatDate(str) {
     });
     return arr.join("-");
 }
+
+// 把秒转为时分秒
+function secondToHms(n) {
+    let h = Math.floor(n / 60 / 60); //小时
+    let m = Math.floor(n / 60 % 60); //分钟
+    let s = n % 60;
+    let arr = [h, m, s].map((v) => {
+        return padZero(v)
+    });
+    let str = arr.join(":")
+    return str;
+}
+
 // 补零
 function padZero(n) {
     return n < 10 ? "0" + n : n;
 }
+
 // 暴露出去
 window.$utils = {
     BASE_URL: BASE_URL,
@@ -131,4 +145,5 @@ window.$utils = {
     commonHeader: commonHeader,
     padZero: padZero,
     formatDate: formatDate,
+    secondToHms: secondToHms,
 }

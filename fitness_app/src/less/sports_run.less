@@ -1,30 +1,31 @@
 @charset "utf-8";
 
-// 数据显示
-.run-title {
-    height: 100px;
-    padding: 15px 20px;
+main {
+    overflow-y: scroll;
 
-    .run-data {
-        color: #333;
+    // 数据显示
+    .run-title {
+        height: 100px;
+        padding: 15px 20px;
 
-        span {
-            font-size: 48px;
-            color: #4294FF;
+        .run-data {
+            color: #333;
+
+            span {
+                font-size: 48px;
+                color: #4294FF;
+            }
         }
     }
-}
 
-main {
-    flex: 1;
-    overflow-y: scroll;
-    background-color: wheat;
-    position: relative;
-
+    // 地图
+    .map {
+        height: 100%;
+    }
 
     // 开始按钮
     .go-btn {
-        position: absolute;
+        position: fixed;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
@@ -33,18 +34,13 @@ main {
         border-radius: 50%;
         text-align: center;
         font: bold 90px/150px "微软雅黑";
-        color: #2778e2;
+        color: #1276a8;
         background-color: rgba(66, 148, 255, .7);
     }
 }
 
-// 倒计时蒙层
-.mask-time {
-    display: none;
-}
-
-// 运动中数据蒙层
-.mask-data {
+// 蒙层
+.masks {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -53,7 +49,6 @@ main {
     display: none;
     background-color: #59b2db;
 
-    // 内容区
     .data-cont {
         height: 100%;
         min-width: 320px;
@@ -61,149 +56,205 @@ main {
         margin: 0 auto;
         padding: 20px;
         color: #fff;
+    }
+}
 
-        // 标题
-        .run-category {
-            color: #AAD9F7;
+// 倒计时蒙层
+.mask-time {
+    .time-num {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 150px;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        font-size: 100px;
+        font-weight: bold;
+        color: #fff;
+    }
+}
+
+// 运动中数据蒙层
+.mask-data {
+    display: none;
+
+    .mask-data-cont {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    // 标题
+    .run-category {
+        color: #AAD9F7;
+    }
+
+    .run-statu {
+        font-size: 24px;
+    }
+
+    // 公里数
+    .run-mile {
+        font-size: 20px;
+        text-align: center;
+
+        .mile-data {
+            font-size: 100px;
+        }
+    }
+
+    // GPS
+    .location {
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+
+        .gps-text {
+            color: #ACDFFF;
         }
 
-        .run-statu {
-            font-size: 24px;
+        .icon-run-location {
+            font-size: 40px;
         }
+    }
 
-        // 公里数
-        .run-mile {
-            font-size: 20px;
+    // 速度时间千卡
+    .data-info {
+        justify-content: space-between;
+
+        .info-item {
             text-align: center;
 
-            .mile-data {
-                font-size: 100px;
+            p {
+                margin-top: 15px;
+                margin-bottom: 20px;
+                color: #AAD9F7;
+            }
+
+            span {
+                font-size: 30px;
+            }
+        }
+    }
+
+    // 按钮
+    .data-btns {
+        justify-content: space-around;
+
+        div {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            text-align: center;
+
+            .iconfont {
+                font-size: 36px;
             }
         }
 
-        // GPS
-        .location {
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-
-            .icon-run-location {
-                font-size: 40px;
-            }
+        .pause-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #59b2db;
+            background-color: #fff;
         }
 
-        // 速度时间千卡
-        .data-info {
-            justify-content: space-between;
-
-            .info-item {
-                text-align: center;
-
-                span {
-                    font-size: 30px;
-                }
-            }
+        .continue-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #79f0c2;
         }
 
-        // 按钮
-        .data-btns {
-            justify-content: space-around;
-
-            div {
-                width: 120px;
-                height: 120px;
-                border-radius: 50%;
-                text-align: center;
-
-                .iconfont {
-                    font-size: 36px;
-                }
-            }
-
-            .continue-btn {
-                display: none;
-                background-color: #79f0c2;
-            }
-
-            .pause-btn {
-                color: #59b2db;
-                background-color: #fff;
-            }
-
-            .stop-btn {
-                display: none;
-                background-color: #ff6060;
-            }
+        .stop-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #ff6060;
         }
     }
 }
 
 // 地图模式蒙层
 .mask-map {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    // display: none;
 
-
-    .map-cont {
-        height: 100%;
-        width: 100%;
-        min-width: 320px;
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 20px;
+    // 返回按钮
+    .map-back {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #bbb;
+        border-radius: 50%;
+        box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        background-color: #fff;
         color: #101010;
-        background-color: #59b2db;
 
-        // 返回按钮
-        .map-back {
-            width: 40px;
-            height: 40px;
-            border: 1px solid #bbb;
-            border-radius: 50%;
-            box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.4);
-            text-align: center;
-            background-color: #fff;
+        .icon-train-detail-back {
+            font: normal 30px/40px "微软雅黑";
+        }
+    }
 
-            .icon-train-detail-back {
-                font: normal 30px/40px "微软雅黑";
-            }
+    // 结束按钮
+    .map-finish {
+        width: 65px;
+        height: 40px;
+        border: 1px solid #bbb;
+        border-radius: 10px;
+        box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        background-color: #fff;
+        color: #101010;
+
+        span {
+            font: normal 20px/40px "微软雅黑";
+        }
+    }
+
+    // 数据框
+    .mask-map-cont {
+        position: relative;
+
+        // 定位
+        .map-text {
+            position: absolute;
+            left: 0;
+            bottom: 70px;
+            width: 100%;
+            height: 140px;
+            padding: 0 20px;
+        }
+    }
+
+    .map-text-cont {
+        width: 100%;
+        height: 100%;
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.4);
+        color: #101010;
+        background-color: #fff;
+
+        .map-data {
+            justify-content: space-between;
         }
 
-        // 数据框
-        .map-text {
-            position: fixed;
-            bottom: 70px;
-            left: 5%;
-            width: 90%;
-            height: 140px;
-            padding: 10px 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.4);
-            background-color: #fff;
+        h3 {
+            font: bold 18px/30px "微软雅黑";
+            color: #4294FF;
+            border-bottom: 2px dashed #bbb;
+        }
 
-            .map-data {
-                justify-content: space-between;
-            }
+        .map-item {
+            font-size: 14px;
+            text-align: center;
+            padding: 15px 0;
 
-            h3 {
-                font: bold 18px/30px "微软雅黑";
-                color: #4294FF;
-                border-bottom: 2px dashed #bbb;
-            }
-
-            .map-item {
-                font-size: 14px;
-                text-align: center;
-                padding: 15px 0;
-
-                // 数值
-                span {
-                    font: normal 25px/50px "微软雅黑";
-                }
+            // 数值
+            span {
+                font: normal 25px/50px "微软雅黑";
             }
         }
     }

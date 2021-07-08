@@ -4,9 +4,15 @@ main {
   -webkit-flex: 1;
           flex: 1;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
-main object {
+main div {
   width: 100%;
   height: 100%;
+}
+main div .web {
+  width: 105%;
+  height: 300%;
+  margin-top: -100%;
 }
 
