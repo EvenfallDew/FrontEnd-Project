@@ -15,20 +15,20 @@ function isPassword(str) {
 
 // 弹窗提示信息
 function showToast(flag = "icon-toast-correct", msg = "成功", time = 3000) {
-    //1 创建一个盒子
+    // 1 创建一个盒子
     let box = document.createElement("div")
-    //2 书写类名
+    // 2 书写类名
     box.className = "msg-box";
-    //3 添加内容
+    // 3 添加内容
     box.innerHTML = `
      <i class="iconfont ${flag}"></i>
      <p class="msg-text">${msg}</p>
      `
-    //4 添加到body中
+    // 4 添加到body中
     document.body.appendChild(box);
     // 若干秒后消失
     setTimeout(function () {
-        // box.remove();
+        box.remove();
     }, time);
 }
 

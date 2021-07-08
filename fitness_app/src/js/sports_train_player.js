@@ -113,8 +113,8 @@ document.ready(function () {
         let cid = location.search.split("=")[1]; //课程id
         let userId = JSON.parse(localStorage.getItem("user")).userId; //用户id
         let countTime = 0; //训练的时间
-        timeArr.forEach((ele) => {
-            countTime += ele;
+        timeArr.forEach((v) => {
+            countTime += v;
         });
         axios.post($utils.BASE_URL + "/sports/saveTrain", {
             id: cid, //课程id
@@ -122,16 +122,20 @@ document.ready(function () {
             takeTime: countTime, //训练的时间
             calorie: countTime * 1.2 //卡路里
         }).then(function (res) {
-            console.log(res)
             let result = res.data;
             if (result.status == 0) {
-                $utils.showToast("icon-toast-correct", "数据保存成功", 3000);
+                $utils.showToast("icon-toast-correct", "数据保存成功", 2000);
                 setTimeout(() => {
                     location.href = "./sports_train.html";
-                }, 3000);
+                }, 2000);
+            } else {
+                $utils.showToast("icon-toast-wrong", "请联系后端", 2000);
+                setTimeout(() => {
+                    location.href = "./sports_train.html";
+                }, 2000);
             }
         }).catch(function (error) {
             console.log(error);
-        })
+        });
     })
 });

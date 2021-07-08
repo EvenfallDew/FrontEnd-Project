@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程视频</title>
+<script defer src="js/common_css-01c1188a.js"></script><script defer src="js/dom-01c1188a.js"></script><script defer src="js/utils-01c1188a.js"></script><script defer src="js/sports_train_player-01c1188a.js"></script><link href="css/common_css-01c1188a.css" rel="stylesheet"><link href="css/sports_train_player-01c1188a.css" rel="stylesheet"></head>
+
+<body class="dpflex fdcolumn">
+    <!-- 视频 -->
+    <main>
+        <video id="video" class="video" autoplay muted></video>
+        <div class="video-part">
+            <h3>
+                <span id="currentPart" class="current-part fs30"> </span>/
+                <span id="countPart" class="count-part fs30"></span>
+            </h3>
+            <p id="title" class="title mt10 "></p>
+        </div>
+    </main>
+
+    <!-- 进度 -->
+    <footer>
+        <!-- 进度条 -->
+        <div id="progress" class="progress"></div>
+        <!-- 控制条 -->
+        <div class="control dpflex">
+            <i id="prevBtn" class="iconfont icon-train-play-prev flex1"></i>
+            <i id="pauseBtn" class="iconfont icon-train-play-pause flex1"></i>
+            <i id="nextBtn" class="iconfont icon-train-play-next flex1"></i>
+        </div>
+    </footer>
+
+    <!-- 蒙层 -->
+    <div id="mask" class="mask">
+        <!-- 内容 -->
+        <div class="mask-cont">
+            <!-- 废话 -->
+            <h3>balabala</h3>
+            <!-- 控制区 -->
+            <div class="mask-ctrl">
+                <!-- 按钮 -->
+                <section class="dpflex mask-btns">
+                    <div id="continuePlay" class="mask-btn goon-btn">
+                        <span></span>
+                        <p>继续训练</p>
+                    </div>
+                    <div id="stopPlay" class="mask-btn stop-btn">
+                        <span></span>
+                        <p>结束训练</p>
+                    </div>
+                </section>
+                <!-- 当前环节 -->
+                <section class="dpflex current-part">
+                    <div class="current-part-pic">
+                        <img id="currentImg" src="images/ac781103.jpg" alt="course">
+                    </div>
+                    <div class="current-part-text">
+                        <h4>当前</h4>
+                        <p id="curTitle">步骤</p>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</body>
+
+</html>

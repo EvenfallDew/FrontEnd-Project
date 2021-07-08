@@ -9,4 +9,10 @@ document.ready(function () {
     // 底部封装
     $utils.commonFooter();
 
+    let goBtn = document.querySelector("#goBtn");
+    let maskTime = document.querySelector("#maskTime");
+
+    goBtn.addEventListener("click", function () {
+        maskTime.style.display = "block";
+    });
 });

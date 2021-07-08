@@ -12,10 +12,117 @@
     <!-- 载入运动头部封装 -->
     <header id="sportsHeader"></header>
 
-    <main>
-        跑步
+    <!-- 数据显示 -->
+    <div class="run-title">
+        <h4>目前积累跑步距离：</h4>
+        <p class="run-data"><span id="kilomiles">0000</span>公里</p>
+    </div>
 
+    <!-- 初始地图 -->
+    <main>
+        太卡了，假装有地图
+        <!-- 开始按钮 -->
+        <div id="goBtn" class="go-btn">
+            GO
+        </div>
     </main>
+
+    <!-- 倒计时蒙层 -->
+    <div id="maskTime" class="mask-time">
+        <span id="timeNum" class="time-num"></span>
+    </div>
+
+    <!-- 运动中数据蒙层 -->
+    <div id="maskData" class="mask-data">
+        <!-- 内容区 -->
+        <div class="data-cont">
+            <!-- 标题 -->
+            <p class="run-category">户外跑</p>
+            <p class="run-statu">运动中</p>
+
+            <!-- 公里数 -->
+            <p class="run-mile">
+                <span id="mileData" class="mile-data">00.00</span>
+                公里
+            </p>
+
+            <!-- GPS -->
+            <p class="dpflex location">
+                <span class="gps-text">GPS信号低,数据精准度低</span>
+                <span id="iconLocation" class="iconfont icon-run-location"></span>
+            </p>
+
+            <!-- 速度时间千卡 -->
+            <div class="dpflex mt40 data-info">
+                <div class="info-item">
+                    <span class="iconfont icon-run-speed"></span>
+                    <p class="mt10 mb10">配速</p>
+                    <span id="speed">00'00"</span>
+                </div>
+                <div class="info-item">
+                    <span class="iconfont icon-run-time"></span>
+                    <p class="mt10 mb10">用时</p>
+                    <span id="takeTime">00:00:00</span>
+                </div>
+                <div class="info-item">
+                    <span class="iconfont icon-run-calorie"></span>
+                    <p class="mt10 mb10">千卡</p>
+                    <span id="calorie">00.00</span>
+                </div>
+            </div>
+
+            <!-- 按钮 -->
+            <div class="dpflex mt40 data-btns">
+                <!-- 继续 -->
+                <div id="continueBtn" class="continue-btn">
+                    <span class="iconfont icon-run-play"></span>
+                    <p class="mt10">继续</p>
+                </div>
+                <!-- 暂停 -->
+                <div id="pauseBtn" class="pause-btn ">
+                    <span class="iconfont icon-run-pause"></span>
+                    <p class="mt10">暂停</p>
+                </div>
+                <!-- 结束 -->
+                <div id="stopBtn" class="stop-btn">
+                    <span class="iconfont icon-run-over"></span>
+                    <p class="mt10">结束</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 地图模式蒙层 -->
+    <div class="mask-map">
+        <!-- 内容区 -->
+        <div class="map-cont">
+            <!-- 返回按钮 -->
+            <div class="map-back">
+                <span class="iconfont icon-train-detail-back"></span>
+            </div>
+            <!-- 数据框 -->
+            <div class="map-text">
+                <h3>户外跑</h3>
+                <div class="dpflex map-data">
+                    <div class="map-item">
+                        <p>配速</p>
+                        <span id="mapSpeed">00'00"</span>
+                    </div>
+                    <div class="map-item">
+                        <p>用时</p>
+                        <span id="mapTakeTime">00:00:00</span>
+                    </div>
+                    <div class="map-item">
+                        <p>千卡</p>
+                        <span id="mapCalorie">00.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
     <!-- 载入底部封装 -->
 
     <!-- js -->

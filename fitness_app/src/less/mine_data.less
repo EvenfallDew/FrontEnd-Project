@@ -1,1 +1,60 @@
 @charset "utf-8";
+
+// 整体数据展示
+.data-label {
+    height: 355px;
+    margin-top: -5px;
+    padding: 15px 20px;
+    color: #fff;
+    background-color: #4294ff;
+
+    // 标题头像
+    .data-text {
+        width: 100%;
+        height: 60px;
+        justify-content: space-between;
+        align-items: center;
+
+        .data-head {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    // 简单数据
+    .data-big {
+        width: 100%;
+        padding: 30px 10px;
+
+        div {
+            width: 50%;
+
+            p {
+                font-size: 14px;
+
+                span {
+                    font-size: 40px;
+                }
+            }
+        }
+    }
+
+    // 详细数据
+    .data-small {
+        width: 100%;
+
+        div {
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
+}

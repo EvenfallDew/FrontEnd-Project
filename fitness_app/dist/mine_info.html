@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人资料</title>
+<script defer src="js/common_css-01c1188a.js"></script><script defer src="js/dom-01c1188a.js"></script><script defer src="js/utils-01c1188a.js"></script><script defer src="js/mine_info-01c1188a.js"></script><link href="css/common_css-01c1188a.css" rel="stylesheet"><link href="css/mine_info-01c1188a.css" rel="stylesheet"></head>
+
+<body data-weui-theme="light">
+    <!-- 头部 -->
+    <header class="mine-header">
+        <!-- 返回 -->
+        <a href="./mine.html">
+            <span class="iconfont icon-mineInfo-back"></span>
+        </a>
+        <!-- 页标题 -->
+        <span class="header-text">个人资料</span>
+    </header>
+
+    <!-- 主体 -->
+    <main>
+        <!-- 昵称 -->
+        <div class="weui-cell weui-cell_active">
+            <div class="weui-cell__hd"><label class="weui-label">昵称</label></div>
+            <div class="weui-cell__bd">
+                <input id="nickName" class="weui-input" placeholder="请填写昵称" />
+            </div>
+        </div>
+
+        <!-- 性别 -->
+        <div class="weui-cell weui-cell_active weui-cell_access" id="showSexPicker">
+            <div class="weui-cell__bd">性别</div>
+            <div class="weui-cell__ft" id="sex"></div>
+        </div>
+
+        <!-- 生日 -->
+        <div class="weui-cell weui-cell_active weui-cell_access" id="showBirthdayPicker">
+            <div class="weui-cell__bd">生日</div>
+            <div class="weui-cell__ft" id="birthday"></div>
+        </div>
+
+        <!-- 所在省份 -->
+        <div class="weui-cell weui-cell_active weui-cell_access" id="showProvincePicker">
+            <div class="weui-cell__bd">所在省份</div>
+            <div class="weui-cell__ft" id="province"></div>
+        </div>
+
+        <!-- 所在城市 -->
+        <div class="weui-cell weui-cell_active weui-cell_access" id="showCityPicker">
+            <div class="weui-cell__bd">所在城市</div>
+            <div class="weui-cell__ft" id="city"></div>
+        </div>
+
+        <!-- 个人简介 -->
+        <div class="weui-cell change-sign">
+            <div class="weui-cell__bd">个人签名
+                <textarea id="signArea" maxlength="20" class="weui-textarea" placeholder="请输入您的个人签名"
+                    rows="3"></textarea>
+                <div class="weui-textarea-counter"><span id="signNum">0</span>/20</div>
+            </div>
+        </div>
+
+        <!-- 保存按钮 -->
+        <div class="button-area">
+            <button id="saveBtn" class="save-btn" type="button">保存信息</button>
+        </div>
+    </main>
+
+    <!-- js -->
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.2.1/weui.min.js" charset="utf-8"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</body>
+
+</html>

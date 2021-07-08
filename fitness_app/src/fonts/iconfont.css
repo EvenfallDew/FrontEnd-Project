@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2643995 */
-  src: url('iconfont.woff2?t=1625593731702') format('woff2'),
-       url('iconfont.woff?t=1625593731702') format('woff'),
-       url('iconfont.ttf?t=1625593731702') format('truetype');
+  src: url('iconfont.woff2?t=1625647316488') format('woff2'),
+       url('iconfont.woff?t=1625647316488') format('woff'),
+       url('iconfont.ttf?t=1625647316488') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-run-over:before {
+  content: "\e980";
 }
 
 .icon-footer-social:before {
@@ -45,11 +49,11 @@
   content: "\e60b";
 }
 
-.icon-yunzhong-shangsuo:before {
+.icon-run-lock:before {
   content: "\e838";
 }
 
-.icon-yunzhong-jiesuo:before {
+.icon-run-unlock:before {
   content: "\e839";
 }
 
@@ -65,15 +69,19 @@
   content: "\e83c";
 }
 
+.icon-run-play:before {
+  content: "\e981";
+}
+
 .icon-train-detail-back:before {
   content: "\e629";
 }
 
-.icon-yunzhong-yongshi:before {
+.icon-run-time:before {
   content: "\e651";
 }
 
-.icon-yunzhong-yinyue:before {
+.icon-run-music:before {
   content: "\e644";
 }
 
@@ -81,7 +89,7 @@
   content: "\e62e";
 }
 
-.icon-yunzhong-zanting:before {
+.icon-run-pause:before {
   content: "\e616";
 }
 
@@ -89,7 +97,7 @@
   content: "\e68a";
 }
 
-.icon-yunzhong-dingwei:before {
+.icon-run-location:before {
   content: "\e645";
 }
 
@@ -113,11 +121,11 @@
   content: "\e61b";
 }
 
-.icon-yunzhong-qianka:before {
+.icon-run-calorie:before {
   content: "\e61c";
 }
 
-.icon-yunzhong-peisu:before {
+.icon-run-speed:before {
   content: "\e619";
 }
 
@@ -133,7 +141,7 @@
   content: "\e600";
 }
 
-.icon-yunzhong-shezhi:before {
+.icon-run-setting:before {
   content: "\e6a9";
 }
 

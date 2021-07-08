@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程详情</title>
+<script defer src="js/common_css-01c1188a.js"></script><script defer src="js/dom-01c1188a.js"></script><script defer src="js/utils-01c1188a.js"></script><script defer src="js/sports_train_detail-01c1188a.js"></script><link href="css/common_css-01c1188a.css" rel="stylesheet"><link href="css/sports_train_detail-01c1188a.css" rel="stylesheet"></head>
+
+<body class="dpflex fdcolumn">
+    <main>
+        <!-- 视频播放跳转 -->
+        <div class="video-preview">
+            <!-- 测试图片 -->
+            <img id="courseImg" src="images/ac781103.jpg" alt="pic">
+            <!-- 返回 -->
+            <a class="iconfont icon-train-detail-back" href="./sports_train.html"></a>
+            <!-- 播放 -->
+            <span class="iconfont icon-train-detail-play"></span>
+        </div>
+        <!-- 课程详情 -->
+        <div class="course-details">
+            <h3 id="name">课程名</h3>
+            <section class="dpflex course-data">
+                <div>
+                    <span id="calorie">--</span>千卡
+                    <span id="time">--</span>分钟
+                </div>
+                <div>
+                    <span id="peoplenum">--</span>人练过
+                    <span class="iconfont icon-mine-detail"></span>
+                </div>
+            </section>
+
+            <hr>
+            <!-- 课程介绍 -->
+            <p id="desc" class="course-text">课程介绍</p>
+            <!-- 练习方法 -->
+            <div class="dpflex course-method">
+                <div>
+                    <h4>
+                        <span class="iconfont icon-train-detail-frequency"></span>
+                        练习频次
+                    </h4>
+                    <p id="frequency">--</p>
+                </div>
+                <div>
+                    <h4>
+                        <span class="iconfont icon-train-detail-tool"></span>
+                        器械
+                    </h4>
+                    <p id="instrument">--</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 开始按钮 -->
+    <footer>
+        <button id="trainBtn" class="train-btn" type="button">开始训练</button>
+    </footer>
+
+    <!-- js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</body>
+
+</html>

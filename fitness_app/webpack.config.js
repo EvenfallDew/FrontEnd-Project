@@ -20,7 +20,6 @@ module.exports = {
     login: "./src/js/login.js", //登录
     register: "./src/js/register.js", //注册
     index: "./src/js/index.js", //首页
-    sports: "./src/js/sports.js", //运动
     sports_run: "./src/js/sports_run.js", //运动-跑步
     sports_ride: "./src/js/sports_ride.js", //运动-骑行
     sports_train: "./src/js/sports_train.js", //运动-训练
@@ -148,13 +147,6 @@ module.exports = {
       template: "./src/pages/index.html",
       filename: "index.html",
       chunks: ["index", "common_css", "dom", "utils"]
-    }),
-
-    // sports.html
-    new HtmlWebpackPlugin({
-      template: "./src/pages/sports.html",
-      filename: "sports.html",
-      chunks: ["sports", "common_css", "dom", "utils"]
     }),
 
     // sports_run.html

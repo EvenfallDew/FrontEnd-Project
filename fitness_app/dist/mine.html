@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的</title>
+<script defer src="js/common_css-01c1188a.js"></script><script defer src="js/dom-01c1188a.js"></script><script defer src="js/utils-01c1188a.js"></script><script defer src="js/mine-01c1188a.js"></script><link href="css/common_css-01c1188a.css" rel="stylesheet"><link href="css/mine-01c1188a.css" rel="stylesheet"></head>
+
+<body class="dpflex fdcolumn data-weui-theme='light'">
+    <!-- 内容模块 -->
+    <main>
+        <!-- 用户信息 -->
+        <section class="user-info">
+            <div class="dpflex user-pic">
+                <!-- 头像 -->
+                <div id="userHead" class="user-head">
+                    <img id="headPic" alt="头像">
+                </div>
+                <!-- vip图标 -->
+                <span class="iconfont icon-mine-vip"></span>
+                <!-- 点击可跳转详情页区域 -->
+                <a href="./mine_info.html" class="dpflex link-detail">
+                    <span id="userName" class="user-name">用户名</span>
+                    <!-- 进入详情页图标 -->
+                    <span class="iconfont icon-mine-detail"></span>
+                </a>
+            </div>
+            <!-- 上传头像 -->
+            <input type="file" id="uploadHead">
+            <!-- 个性签名 -->
+            <p class="signature">
+                个性签名: <span id="signText"></span>
+            </p>
+        </section>
+
+        <!-- 运动数据 -->
+        <section class="data">
+            <h3>
+                <span class="iconfont icon-mine-data icon-mine-label"></span>
+                <span class="mine-label">运动数据</span>
+                <span class="iconfont icon-mine-detail"></span>
+            </h3>
+            <div class="dpflex data-datas">
+                <div class="exercise-data">
+                    <h4>总运动</h4>
+                    <p><span id="dataMin">9999</span>分钟</p>
+                </div>
+                <div class="divid-line"></div>
+                <div class="this-week">
+                    <h4>本周消耗</h4>
+                    <p><span id="dataCalory">9999</span>千卡</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 运动徽章 -->
+        <section class="badge">
+            <h3>
+                <span class="iconfont icon-mine-badge icon-mine-label"></span>
+                <span class="mine-label">我的运动徽章</span>
+                <span class="iconfont icon-mine-detail"></span>
+            </h3>
+            <div class="dpflex badge-medals">
+                <div class="badge-medal">
+                </div>
+                <div class="badge-medal">
+                </div>
+                <div class="badge-medal">
+                </div>
+            </div>
+        </section>
+
+        <!-- 退出登录 -->
+        <section class="logout">
+            <button id="logoutBtn" class="logout-btn" type="button">退出登录</button>
+        </section>
+
+        <!-- 退出确认 -->
+
+    </main>
+
+    <!-- 载入底部封装 -->
+
+    <!-- js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</body>
+
+</html>
