@@ -135,6 +135,72 @@ function padZero(n) {
     return n < 10 ? "0" + n : n;
 }
 
+/* 画线函数 */
+function drawLine(map, start, end) {
+    var polyline = new BMap.Polyline([
+        new BMap.Point(start.lng, start.lat),
+        new BMap.Point(end.lng, end.lat)
+    ], {
+        strokeColor: "blue",
+        strokeWeight: 6,
+        strokeOpacity: 0.5
+    });
+    map.addOverlay(polyline);
+}
+/* 
+ 根据经纬度计算距离
+   startPoint:  起点 
+   curPoint:  终点
+*/
+function calcDistance(startPoint, curPoint) {
+    let lat1 = startPoint.lat
+    let lng1 = startPoint.lng
+
+    let lat2 = curPoint.lat
+    let lng2 = curPoint.lng
+
+    var radLat1 = lat1 * Math.PI / 180.0;
+    var radLat2 = lat2 * Math.PI / 180.0;
+    var a = radLat1 - radLat2;
+    var b = lng1 * Math.PI / 180.0 - lng2 * Math.PI / 180.0;
+    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+    s = s * 6378.137;
+    s = Math.round(s * 10000) / 10000;
+    return s.toFixed(2) // 单位千米
+}
+/* 计算配速函数 
+  d： 距离
+  s： 时间
+*/
+function calcPace(d, s) {
+    let distance = d
+    let spendTime = s / 60
+    if (distance > 0 && spendTime > 0) {
+        let pace = parseFloat(spendTime / distance)
+        let m = Math.floor(pace)
+        let s = ((pace - m) * 60).toFixed(0)
+        return `${m}'${s}"`
+
+    }
+    return "--"
+}
+
+/* 计算卡路里 */
+function calCalorie(miles) {
+    if (miles > 0) {
+        let calorie = 60 * miles * 1.036;
+        return calorie.toFixed(2);
+    }
+    return "--"
+}
+
+// 随机正负数
+function randomNum(m, n) {
+    let a = Math.random() < 0.5 ? -1 : 1;
+    let b = Math.random() * (m - n) + n;
+    return a * b;
+}
+
 // 暴露出去
 window.$utils = {
     BASE_URL: BASE_URL,
@@ -146,4 +212,9 @@ window.$utils = {
     padZero: padZero,
     formatDate: formatDate,
     secondToHms: secondToHms,
+    drawLine: drawLine,
+    calcDistance: calcDistance,
+    calcPace: calcPace,
+    calCalorie: calCalorie,
+    randomNum: randomNum,
 }

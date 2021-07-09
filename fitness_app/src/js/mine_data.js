@@ -49,11 +49,17 @@ document.ready(function () {
         var option;
 
         option = {
+            title: {
+                text: "近7天运动类型",
+                textStyle: {
+                    color: "#101010"
+                }
+            },
             tooltip: {
                 trigger: 'item'
             },
             legend: {
-                top: '5%',
+                bottom: '0px',
                 left: 'center'
             },
             series: [{
@@ -82,28 +88,19 @@ document.ready(function () {
                 },
                 data: [{
                         value: 1048,
-                        name: '搜索引擎'
+                        name: '跑步'
                     },
                     {
-                        value: 735,
-                        name: '直接访问'
+                        value: 535,
+                        name: '骑行'
                     },
                     {
                         value: 580,
-                        name: '邮件营销'
-                    },
-                    {
-                        value: 484,
-                        name: '联盟广告'
-                    },
-                    {
-                        value: 300,
-                        name: '视频广告'
+                        name: '课程'
                     }
                 ]
             }]
         };
-
         option && myChart.setOption(option);
     }
 });

@@ -226,6 +226,15 @@ main {
             height: 140px;
             padding: 0 20px;
         }
+
+        .map-mode {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
     }
 
     .map-text-cont {
@@ -246,6 +255,11 @@ main {
             color: #4294FF;
             border-bottom: 2px dashed #bbb;
 
+            .run-km {
+                margin-left: 20px;
+                color: #101010;
+            }
+
             .now-date {
                 float: right;
                 font: normal 16px/30px "微软雅黑";
@@ -264,4 +278,5 @@ main {
             }
         }
     }
+
 }

@@ -27,6 +27,32 @@ document.ready(function () {
     let backBtn = document.querySelector("#backBtn"); //返回按钮
     let finishBtn = document.querySelector("#finishBtn"); //完成按钮
 
+    let nowDate = document.querySelector("#nowDate"); //卡片中日期
+    let pace = document.querySelector("#mapSpeed"); //卡片中的配速
+    let useTime = document.querySelector("#mapTakeTime"); //卡片中的用时
+    let useCalorie = document.querySelector("#mapCalorie"); //卡片中的千卡
+
+    let nowKm = document.querySelector("#nowKm"); //跑步距离
+    let cardRunKm = document.querySelector("#cardRunKm"); //跑步距离
+    let speed = document.querySelector("#speed"); //跑步距离
+    let calorie = document.querySelector("#calorie"); //千卡
+
+    let second = 0; //秒（用时）
+    let timerId = null;
+    // 指定区域创建地图对象
+    var map = new BMap.Map("mapMode");
+    // 模拟跑步的距离
+    let moveNumX = 0.0001;
+    let moveNumY = 0.0001;
+    // 存放点坐标的数组
+    let pointArr = [];
+    // 跑步的距离
+    let km = 0;
+    // 卡路里
+    let calorieValue = 0;
+    // 日期
+    nowDate.textContent = $utils.formatDate(new Date());
+
     // 获取累积跑步距离
     function getRunKm() {
         axios.get($utils.BASE_URL + "/sports/exerciseData?id=" + userId).then(function (res) {
@@ -61,7 +87,7 @@ document.ready(function () {
 
     /* go按钮的点击事件 */
     goBtn.addEventListener("click", function () {
-        //显示倒计时蒙层
+        // 显示倒计时蒙层
         maskTime.style.display = "block";
         let arr = [3, 2, 1, "GO"];
         let index = 0;
@@ -83,23 +109,27 @@ document.ready(function () {
         }, 1000);
     });
 
-    let i = 0
-    let timerId = null;
     /* 定义跑步函数 */
     function startRun() {
         clearInterval(timerId);
         timerId = setInterval(function () {
-            i++;
-            takeTime.textContent = $utils.secondToHms(i);
+            second++;
+            //数据模式中的数据
+            takeTime.textContent = $utils.secondToHms(second); //用时
+            //渲染卡片中的数据
+            useTime.textContent = $utils.secondToHms(second);
+            //调用获取位置的函数
+            getlocation();
         }, 1000);
     }
 
     /* 暂停按钮 */
     pauseBtn.addEventListener("click", function () {
         // 1 清除定时器
+        useCalorie.click();
         clearInterval(timerId);
         // 2 隐藏自身
-        this.style.display = "none";
+        pauseBtn.style.display = "none";
         // 3 显示继续按钮
         continueBtn.style.display = "flex";
         // 4 显示结束按钮
@@ -139,9 +169,87 @@ document.ready(function () {
 
     // 完成按钮
     finishBtn.addEventListener("click", function () {
-        $utils.showToast("icon-toast-correct", "完成跑步", 2000);
-        setTimeout(() => {
-            location.href = "./sports_run.html";
-        }, 2000);
+        mapMask.style.display = "none";
+        maskData.style.display = "none";
+        // 显示暂停
+        pauseBtn.style.display = "flex"
+        // 隐藏继续
+        continueBtn.style.display = "none"
+        // 隐藏结束
+        stopBtn.style.display = "none"
+        // 清除定时器
+        clearInterval(timerId);
+        // 用时
+        takeTime.textContent = $utils.secondToHms(second);
+        useTime.textContent = $utils.secondToHms(second);
+        axios.post($utils.BASE_URL + "/sports/save", {
+            id: userId, //用户id
+            type: 1, //跑步
+            takeTime: second, //用时
+            miles: km, //跑步距离
+            averagerate: (km / second).toFixed(2), //平均速度
+            calorie: calorieValue //卡路里
+        }).then(function (res) {
+            let result = res.data;
+            if (result.status == 0) {
+                // 保存成功
+                $utils.showToast("icon-toast-correct", "运动数据<br/>保存成功", 2000);
+                setTimeout(() => {
+                    location.reload();
+                    // 重置时间
+                    second = 0;
+                }, 2000);
+            } else {
+                $utils.showToast("icon-toast-wrong", "运动数据<br/>保存失败", 2000);
+            }
+        }).catch(function (error) {
+            console.log(error);
+        });
     });
+
+    /* 获取位置的函数 */
+    function getlocation() {
+        var geolocation = new BMap.Geolocation();
+        geolocation.getCurrentPosition(function (r) {
+            if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+                // 当前位置的经纬度
+                let lng = parseFloat(r.longitude) + moveNumX; //经度
+                let lat = parseFloat(r.latitude) + moveNumY; //纬度
+                moveNumX += $utils.randomNum(0.0001, 0.001);
+                moveNumY += $utils.randomNum(0.0001, 0.001);
+                // 把当前的坐标存到数组中
+                pointArr.push({
+                    lng: lng,
+                    lat: lat
+                });
+                // 画线 
+                if (pointArr.length > 1) {
+                    let startPoint = pointArr[pointArr.length - 2];
+                    let endPoint = pointArr[pointArr.length - 1];
+                    $utils.drawLine(map, startPoint, endPoint);
+                    // 计算距离
+                    km += $utils.calcDistance(startPoint, endPoint) * 1;
+                    nowKm.textContent = km.toFixed(2);
+                    cardRunKm.textContent = km.toFixed(2);
+                    // 配速
+                    let paceValue = $utils.calcPace(km, second);
+                    speed.textContent = paceValue
+                    pace.textContent = paceValue
+                    // 千卡
+                    calorieValue = $utils.calCalorie(km);
+                    calorie.textContent = calorieValue;
+                    useCalorie.textContent = calorieValue;
+                }
+                var point = new BMap.Point(lng, lat); //设置点坐标
+                map.centerAndZoom(point, 18); //根据点坐标绘制地图
+            } else {
+                $utils.showToast("icon-toast-wrong", "获取位置失败", 2000);
+            }
+        });
+    }
+
+    // 测试专用
+    useCalorie.addEventListener("click", function () {
+        clearInterval(timerId);
+    })
 });

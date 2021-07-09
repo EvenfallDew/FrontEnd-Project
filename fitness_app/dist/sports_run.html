@@ -8,7 +8,7 @@
     <title>跑步</title>
     <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=Q5GbhUmHEuqhMY6qHDS62xxB8KDetWcH">
     </script>
-<script defer src="js/common_css-00517d02.js"></script><script defer src="js/dom-00517d02.js"></script><script defer src="js/utils-00517d02.js"></script><script defer src="js/sports_run-00517d02.js"></script><link href="css/common_css-00517d02.css" rel="stylesheet"><link href="css/sports_run-00517d02.css" rel="stylesheet"></head>
+<script defer src="js/common_css-f046a586.js"></script><script defer src="js/dom-f046a586.js"></script><script defer src="js/utils-f046a586.js"></script><script defer src="js/sports_run-f046a586.js"></script><link href="css/common_css-f046a586.css" rel="stylesheet"><link href="css/sports_run-f046a586.css" rel="stylesheet"></head>
 
 <body class="dpflex fdcolumn">
     <!-- 载入运动头部封装 -->
@@ -53,7 +53,7 @@
 
             <!-- 公里数 -->
             <p class="run-mile">
-                <span id="mileData" class="mile-data">00.00</span>公里
+                <span id="nowKm" class="mile-data">00.00</span>公里
             </p>
 
             <!-- GPS -->
@@ -117,7 +117,12 @@
             <!-- 数据框 -->
             <div class="map-text">
                 <div class="map-text-cont">
-                    <h3>户外跑</h3>
+                    <h3>
+                        户外跑
+                        <span id="cardRunKm" class="run-km">0</span>公里
+                        <span id="nowDate" class="now-date">00-00-00</span>
+                    </h3>
+                    <!-- 当前日期 -->
                     <div class="dpflex map-data">
                         <div class="map-item">
                             <p>配速</p>
@@ -134,8 +139,9 @@
                     </div>
                 </div>
             </div>
+            <!-- 地图 -->
+            <div id="mapMode" class="map-mode"></div>
         </div>
-
     </div>
 
 

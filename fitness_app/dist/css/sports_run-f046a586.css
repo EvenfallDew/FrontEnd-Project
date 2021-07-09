@@ -80,7 +80,7 @@ main .go-btn {
   color: #AAD9F7;
 }
 .mask-data .run-statu {
-  font-size: 24px;
+  font: normal 22px/32px "微软雅黑";
 }
 .mask-data .run-mile {
   font-size: 20px;
@@ -206,6 +206,14 @@ main .go-btn {
   height: 140px;
   padding: 0 20px;
 }
+.mask-map .mask-map-cont .map-mode {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 .mask-map .map-text-cont {
   width: 100%;
   height: 100%;
@@ -224,6 +232,15 @@ main .go-btn {
   font: bold 18px/30px "微软雅黑";
   color: #4294FF;
   border-bottom: 2px dashed #bbb;
+}
+.mask-map .map-text-cont h3 .run-km {
+  margin-left: 20px;
+  color: #101010;
+}
+.mask-map .map-text-cont h3 .now-date {
+  float: right;
+  font: normal 16px/30px "微软雅黑";
+  color: #8dcef7;
 }
 .mask-map .map-text-cont .map-item {
   font-size: 14px;
