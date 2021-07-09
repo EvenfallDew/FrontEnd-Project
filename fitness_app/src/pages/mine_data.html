@@ -25,10 +25,9 @@
         <div class="dpflex data-text">
             <h4>我的运动数据</h4>
             <div class="data-head">
-                <img src="../images/dc.jpg" alt="head">
+                <img src="../images/headerPic.jpg" alt="head">
             </div>
         </div>
-
         <!-- 简单数据 -->
         <div class="dpflex data-big">
             <div>
@@ -40,7 +39,6 @@
                 <p><span>999</span>千卡</p>
             </div>
         </div>
-
         <!-- 详细数据 -->
         <div class="dpflex data-small">
             <div class="flex1">
@@ -56,13 +54,17 @@
                 <p>99999</p>
             </div>
         </div>
-
     </section>
 
     <!-- 主体 -->
-    <main>
-
+    <main class="dpflex  fdcolumn">
+        <!-- 近7天运动时长 -->
+        <div id="sportTime" class="sport-time"></div>
+        <div id="sportTime2" class="sport-time"></div>
     </main>
+
+    <!-- js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.min.js"></script>
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 // 引入当前页面对应的样式文件
 require("../less/reg_log.less");
 
-//引入注册码的js
+// 引入验证码的js
 const CaptchaMini = require("../libs/captcha/captcha-mini.js");
 
 document.ready(function () {
@@ -53,7 +53,7 @@ document.ready(function () {
             return;
         } else {
             // 全部的格式通过，ajax注册传值验证是否已注册
-            axios.post("http://139.9.177.51:8099/users/add", {
+            axios.post($utils.BASE_URL + "/users/add", {
                 "account": phoneVal,
                 "password": pwdVal
             }).then(function (res) {

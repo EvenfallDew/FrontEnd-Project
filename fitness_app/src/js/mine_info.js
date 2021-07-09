@@ -5,9 +5,6 @@ require("../less/common_css/weui.css");
 require("../less/mine_info.less");
 
 document.ready(function () {
-    // 接口地址
-    const BASE_URL = "http://139.9.177.51:8099";
-
     // 获取本地存储信息
     let userId = JSON.parse(localStorage.getItem("user")).userId;
 
@@ -75,7 +72,7 @@ document.ready(function () {
                     province.textContent = result[0].label;
                     city.textContent = "请选择";
                     // 去获取所管辖的城市的信息
-                    axios.get(BASE_URL + "/address/city/" + result[0].value).then(function (res) {
+                    axios.get($utils.BASE_URL + "/address/city/" + result[0].value).then(function (res) {
                         let result = res.data;
                         if (result.status == 0) {
                             cityArr = result.data.map(function (city) {
@@ -110,14 +107,14 @@ document.ready(function () {
 
     // 获取省份信息
     function getProCity() {
-        axios.get(BASE_URL + "/address/province").then(function (res) {
+        axios.get($utils.BASE_URL + "/address/province").then(function (res) {
             let result = res.data;
             if (result.status == 0) {
                 // 获取城市列表
                 let user = JSON.parse(localStorage.getItem("user"));
                 let proName = user.address.split(",")[0];
                 let addressId = search(proName, result.data);
-                axios.get(BASE_URL + "/address/city/" + addressId).then(function (res) {
+                axios.get($utils.BASE_URL + "/address/city/" + addressId).then(function (res) {
                     let result = res.data;
                     if (result.status == 0) {
                         cityArr = result.data.map(function (city) {
@@ -180,7 +177,7 @@ document.ready(function () {
 
     // 保存按钮
     saveBtn.addEventListener("click", function () {
-        axios.post(BASE_URL + "/users/userEdit", {
+        axios.post($utils.BASE_URL + "/users/userEdit", {
             "nickname": nickName.value,
             "gender": sex.textContent,
             "birthday": birthday.textContent,

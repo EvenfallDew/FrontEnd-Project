@@ -41,7 +41,7 @@ document.ready(function () {
 
     // 获取该账号的数据
     function getData() {
-        axios.get("http://139.9.177.51:8099/headPageInfo?userId=" + userId).then(function (res) {
+        axios.get($utils.BASE_URL + "/headPageInfo?userId=" + userId).then(function (res) {
             let result = res.data;
             // 获取数据成功
             if (result.status == 0) {
@@ -61,14 +61,13 @@ document.ready(function () {
             console.log(error);
         });
     }
-
     // 页面加载完获取
     getData();
 
     // 打卡
     clockBtn.addEventListener("click", function () {
         if (isClock == true) {
-            axios.get("http://139.9.177.51:8099/clockIn?userId=" + userId).then(function (res) {
+            axios.get($utils.BASE_URL + "/clockIn?userId=" + userId).then(function (res) {
                 let result = res.data;
                 // 获取数据成功
                 if (result.status == 0) {

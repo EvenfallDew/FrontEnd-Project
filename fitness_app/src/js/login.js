@@ -28,7 +28,7 @@ document.ready(function () {
         } else {
             // 全部的格式通过，ajax登录传值验证是否已注册
             msg.textContent = "";
-            axios.post("http://139.9.177.51:8099/users/login", {
+            axios.post($utils.BASE_URL + "/users/login", {
                 "account": phoneVal,
                 "password": pwdVal
             }).then(function (res) {

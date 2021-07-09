@@ -12,34 +12,42 @@ header {
 // 主体
 main {
     background-image: url(../images/advertisement-bg.jpg);
-    background-size: 1280px;
     background-repeat: no-repeat;
     background-position: top center;
+    background-size: cover;
 
-    // 跳过按钮
-    .skip-btn {
-        position: fixed;
-        top: 74px;
-        right: 20px;
-        width: 104px;
-        height: 40px;
-        line-height: 40px;
-        font-size: 14px;
-        text-align: center;
-        border-radius: 20px;
-        background-color: #fff;
+    .ad-cont {
+        height: 100%;
+        min-width: 320px;
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+
+        // 跳过按钮
+        .skip-btn {
+            position: absolute;
+            top: 40px;
+            right: 20px;
+            width: 104px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            text-align: center;
+            border-radius: 20px;
+            background-color: #fff;
+        }
+
+        // 广告语
+        .slogan {
+            position: absolute;
+            bottom: 100px;
+            width: 100%;
+            color: #fff;
+            font-size: 48px;
+            text-align: center;
+            animation: fadeDown 2s linear;
+        }
     }
-}
-
-// 广告语
-.slogan {
-    position: fixed;
-    bottom: 100px;
-    width: 100%;
-    color: #fff;
-    font-size: 48px;
-    text-align: center;
-    animation: fadeDown 2s linear;
 }
 
 // 广告语动画

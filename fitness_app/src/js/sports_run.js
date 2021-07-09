@@ -8,7 +8,7 @@ document.ready(function () {
     $utils.commonHeader();
     // 底部封装
     $utils.commonFooter();
-
+    // 获取本地存储数据
     let userId = JSON.parse(localStorage.getItem("user")).userId;
 
     let goBtn = document.querySelector("#goBtn");
@@ -31,7 +31,7 @@ document.ready(function () {
     function getRunKm() {
         axios.get($utils.BASE_URL + "/sports/exerciseData?id=" + userId).then(function (res) {
             let result = res.data;
-            if (result.status === 0) {
+            if (result.status == 0) {
                 runKm.textContent = result.data.runkm;
             }
         }).catch(function (error) {
@@ -81,7 +81,7 @@ document.ready(function () {
                 startRun();
             }
         }, 1000);
-    })
+    });
 
     let i = 0
     let timerId = null;

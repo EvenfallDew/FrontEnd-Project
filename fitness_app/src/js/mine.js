@@ -7,9 +7,6 @@ document.ready(function () {
     // 底部封装
     $utils.commonFooter();
 
-    // 接口地址
-    const BASE_URL = "http://139.9.177.51:8099";
-
     // 获取元素
     let userHead = document.querySelector("#userHead");
     let headPic = document.querySelector("#headPic");
@@ -40,14 +37,14 @@ document.ready(function () {
         // 添加内容
         formData.append("imgurl", file)
         // 发送ajax请求
-        axios.post(BASE_URL + "/users/upload", formData).then(function (res) {
+        axios.post($utils.BASE_URL + "/users/upload", formData).then(function (res) {
             let result = res.data;
             //上传成功
             if (result.status == 0) {
                 // 把上传之后的图片显示在页面上
-                headPic.src = BASE_URL + result.data; //result.data是图片地址
+                headPic.src = $utils.BASE_URL + result.data; //result.data是图片地址
                 // 发请求去修改后台的数据库
-                axios.post(BASE_URL + "/users/userEdit", {
+                axios.post($utils.BASE_URL + "/users/userEdit", {
                     "userId": userId,
                     "imgurl": result.data
                 }).then(function (res) {
@@ -76,7 +73,7 @@ document.ready(function () {
 
     // 获取信息
     function getData() {
-        axios.get(BASE_URL + "/users/accountinfo?userId=" + userId).then(function (res) {
+        axios.get($utils.BASE_URL + "/users/accountinfo?userId=" + userId).then(function (res) {
             let result = res.data;
             if (result.status == 0) {
                 // 覆盖本地数据
@@ -93,7 +90,7 @@ document.ready(function () {
     // 定义一个显示数据的函数
     function render(obj) {
         // 头像
-        headPic.src = obj.imgurl ? BASE_URL + obj.imgurl : require("../images/headerPic.jpg");
+        headPic.src = obj.imgurl ? $utils.BASE_URL + obj.imgurl : require("../images/headerPic.jpg");
         // 昵称
         userName.textContent = obj.nickname;
         // 签名
