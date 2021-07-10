@@ -147,11 +147,8 @@ function drawLine(map, start, end) {
     });
     map.addOverlay(polyline);
 }
-/* 
- 根据经纬度计算距离
-   startPoint:  起点 
-   curPoint:  终点
-*/
+
+// 根据经纬度计算距离
 function calcDistance(startPoint, curPoint) {
     let lat1 = startPoint.lat
     let lng1 = startPoint.lng
@@ -168,10 +165,8 @@ function calcDistance(startPoint, curPoint) {
     s = Math.round(s * 10000) / 10000;
     return s.toFixed(2) // 单位千米
 }
-/* 计算配速函数 
-  d： 距离
-  s： 时间
-*/
+
+// 计算配速函数 
 function calcPace(d, s) {
     let distance = d
     let spendTime = s / 60
@@ -185,7 +180,7 @@ function calcPace(d, s) {
     return "--"
 }
 
-/* 计算卡路里 */
+// 计算卡路里
 function calCalorie(miles) {
     if (miles > 0) {
         let calorie = 60 * miles * 1.036;

@@ -126,7 +126,6 @@ document.ready(function () {
     /* 暂停按钮 */
     pauseBtn.addEventListener("click", function () {
         // 1 清除定时器
-        useCalorie.click();
         clearInterval(timerId);
         // 2 隐藏自身
         pauseBtn.style.display = "none";
@@ -160,6 +159,7 @@ document.ready(function () {
         mapMask.style.display = "block"; //显示地图模式蒙层
         backBtn.style.display = "block"; //显示返回按钮
         finishBtn.style.display = "none"; //隐藏完成按钮
+        getlocation();
     });
 
     /* 返回按钮 */
@@ -193,14 +193,14 @@ document.ready(function () {
             let result = res.data;
             if (result.status == 0) {
                 // 保存成功
-                $utils.showToast("icon-toast-correct", "运动数据<br/>保存成功", 2000);
+                $utils.showToast("icon-toast-correct", "保存成功", 2000);
                 setTimeout(() => {
                     location.reload();
                     // 重置时间
                     second = 0;
                 }, 2000);
             } else {
-                $utils.showToast("icon-toast-wrong", "运动数据<br/>保存失败", 2000);
+                $utils.showToast("icon-toast-wrong", "保存失败", 2000);
             }
         }).catch(function (error) {
             console.log(error);
@@ -215,8 +215,9 @@ document.ready(function () {
                 // 当前位置的经纬度
                 let lng = parseFloat(r.longitude) + moveNumX; //经度
                 let lat = parseFloat(r.latitude) + moveNumY; //纬度
-                moveNumX += $utils.randomNum(0.0001, 0.001);
-                moveNumY += $utils.randomNum(0.0001, 0.001);
+                // 随机乱逛
+                moveNumX += $utils.randomNum(0.0001, 0.0005);
+                moveNumY += $utils.randomNum(0.0001, 0.0005);
                 // 把当前的坐标存到数组中
                 pointArr.push({
                     lng: lng,
@@ -247,9 +248,4 @@ document.ready(function () {
             }
         });
     }
-
-    // 测试专用
-    useCalorie.addEventListener("click", function () {
-        clearInterval(timerId);
-    })
 });

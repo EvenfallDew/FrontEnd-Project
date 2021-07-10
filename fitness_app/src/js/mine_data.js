@@ -33,8 +33,7 @@ document.ready(function () {
     let xDataArr = ["7-1", "7-2", "7-3", "7-4", "7-5", "7-6", "7-7"];
     let yDataArr = [30, 60, 40, 120, 90, 80, 50];
     /*近7天运动时长 */
-    showBarCharts();
-    /* 绘制柱状图 */
+    // 柱状图
     function showBarCharts() {
         // 1 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById("sportTime"));
@@ -64,6 +63,7 @@ document.ready(function () {
         };
         myChart.setOption(option);
     }
+    showBarCharts();
 
     // 饼状图
     function bing() {
@@ -127,4 +127,69 @@ document.ready(function () {
         option && myChart.setOption(option);
     }
     bing();
+
+    // 折线图
+    function zhexian() {
+        var chartDom = document.getElementById('sportTime3');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            title: {
+                text: '近7天运动类型',
+                textStyle: {
+                    color: "#101010"
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                bottom: 0,
+                data: ['跑步', '骑行', '课程']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '10%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ["7-1", "7-2", "7-3", "7-4", "7-5", "7-6", "7-7"]
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                    name: '跑步',
+                    type: 'line',
+                    stack: '总量',
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: '骑行',
+                    type: 'line',
+                    stack: '总量',
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '课程',
+                    type: 'line',
+                    stack: '总量',
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                },
+            ]
+        };
+
+        option && myChart.setOption(option);
+
+    }
+    zhexian();
 });

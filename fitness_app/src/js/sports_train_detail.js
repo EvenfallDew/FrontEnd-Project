@@ -6,7 +6,6 @@ require("../less/sports_train_detail.less");
 document.ready(function () {
     // 获取元素
     let trainBtn = document.querySelector("#trainBtn");
-
     let courseImg = document.querySelector("#courseImg");
     let name = document.querySelector("#name");
     let calorie = document.querySelector("#calorie");
@@ -18,6 +17,7 @@ document.ready(function () {
 
     // 获取当前课程id
     let cid = location.search.split("=")[1];
+
 
     // 发送请求获取课程详情
     axios.get($utils.BASE_URL + "/sports/courseDetail?id=" + cid).then(function (res) {
@@ -39,7 +39,7 @@ document.ready(function () {
         console.log(error);
     });
 
-    // 开心训练
+    // 开始训练
     trainBtn.addEventListener("click", function () {
         location.href = "./sports_train_player.html?courseId=" + cid;
     });
