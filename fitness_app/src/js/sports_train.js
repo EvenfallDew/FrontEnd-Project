@@ -16,9 +16,6 @@ document.ready(function () {
     let newCourse = document.querySelector("#newCourse");
     let oldCourse = document.querySelector("#oldCourse");
 
-    // 课程数组
-    let saveCourseArr = [];
-
     // 获取当前用户的所有课程
     function getAllCourse() {
         axios.get($utils.BASE_URL + "/sports/courseList?id=" + userId).then(function (res) {
@@ -26,6 +23,10 @@ document.ready(function () {
             if (result.status == 0) {
                 // 课程数组
                 let courseArr = result.data;
+                // 没有课程不渲染
+                if (courseArr.length == 0) {
+                    return;
+                }
                 // 获取最新的课程
                 let newCourse = courseArr.find(function (ele) {
                     return ele.latest == 1;
@@ -72,43 +73,52 @@ document.ready(function () {
         oldCourse.innerHTML = str;
     }
 
-    // ..................
-    // 获取所有课程数据
-    // 对比训练课程列表
-    // 展现未加入的课程，主键为课程编号
-    // 操作既是发送请求
-    // 关闭既是刷新or跳转
+    // 修改课程
     let changeMask = document.querySelector("#changeMask");
     let changeBtn = document.querySelector("#changeBtn");
     let saveBtn = document.querySelector("#saveBtn");
+
+    // 课程数组
+    let saveCourseArr = ["3"];
 
     // 获取课程ID
     function getCourseId() {
         // 课程ID数组
         let saveCourseEle = document.querySelectorAll(".course-id");
         for (let i = 0; i < saveCourseEle.length; i++) {
-            saveCourseArr.push(saveCourseEle[i].innerHTML);
+            if (saveCourseArr.indexOf(saveCourseEle[i].innerHTML) == -1) {
+                saveCourseArr.push(saveCourseEle[i].innerHTML);
+            }
         }
-        console.log(saveCourseArr);
+        // console.log("已选", saveCourseArr);
     }
 
     // 渲染所有课程
     function renderChangeCourse(courseArr) {
+        getCourseId()
         let str = "";
         courseArr.forEach((v) => {
-            str += `
+            // 保留1个最新课程，后端无法接收空数组
+            if (v.courseId != 3) {
+                if (saveCourseArr.indexOf(String(v.courseId)) == -1) {
+                    var needAdd = '<span id="addCourse" class="add-course">添加课程</span><span id="delCourse" class="del-course" style="display:none;">删除课程</span>'
+                } else {
+                    var needAdd = '<span id="addCourse" class="add-course" style="display:none;">添加课程</span><span id="delCourse" class="del-course">删除课程</span>'
+                }
+                str += `
                     <a class="info mt10">
                         <img class="info-img" src="${$utils.BASE_URL + v.imgurl}" alt="img">
-
                         <p class="course-title mt10">
-                            <span class="all-course-id">${v.courseId}</span>
-                            ${v.name}
-                            <span id="addCourse" class="add-course">添加课程</span>
-                            <span id="delCourse" class="del-course">删除课程</span>
+                            <span>
+                                <span class="all-course-id">${v.courseId}</span>
+                                <span>${v.name}</span>
+                            </span>
+                            ${needAdd}
                         </p>
                         <p class="desc mt10">${v.desc}</p>
                     </a>
                 `
+            }
         });
         changeCourse.innerHTML = str;
     }
@@ -136,20 +146,30 @@ document.ready(function () {
     document.querySelector("#changeCourse").addEventListener("click", function (e) {
         // 点击添加
         if (e.target.className == "add-course") {
-            let newCourseId = e.path[1].children[0].innerHTML;
+            // 获取课程编号
+            let newCourseId = e.path[1].children[0].children[0].innerHTML;
+            // 按钮切换
+            let addBtn = e.path[1].children[1];
+            addBtn.style.display = "none";
+            let delBtn = e.path[1].children[2];
+            delBtn.style.display = "block";
             if (saveCourseArr.indexOf(newCourseId) == -1) {
                 saveCourseArr.push(newCourseId);
             }
-            console.log(saveCourseArr);
         }
         // 点击删除
         if (e.target.className == "del-course") {
-            let newCourseId = e.path[1].children[0].innerHTML;
+            // 获取课程编号
+            let newCourseId = e.path[1].children[0].children[0].innerHTML;
+            // 按钮切换
+            let addBtn = e.path[1].children[1];
+            addBtn.style.display = "block";
+            let delBtn = e.path[1].children[2];
+            delBtn.style.display = "none";
             if (saveCourseArr.indexOf(newCourseId) != -1) {
                 let a = saveCourseArr.indexOf(newCourseId);
                 saveCourseArr.splice(a, 1);
             }
-            console.log(saveCourseArr);
         }
     });
 
@@ -165,14 +185,15 @@ document.ready(function () {
                 $utils.showToast("icon-toast-correct", "修改成功", 2000);
             }
         }).catch(function (error) {
+            // 弹窗提示，修改失败
+            changeMask.style.display = "none";
+            $utils.showToast("icon-toast-correct", "修改失败", 2000);
             console.log(error);
         });
     }
 
     // 点击保存按钮
     saveBtn.addEventListener("click", function () {
-        // 隐藏蒙层
-        // changeMask.style.display = "none";
         // 保存修改
         saveCourse();
         // 跳转页面

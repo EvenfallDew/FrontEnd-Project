@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>运动数据</title>
-<script defer src="js/common_css-5d2cf2f1.js"></script><script defer src="js/dom-5d2cf2f1.js"></script><script defer src="js/utils-5d2cf2f1.js"></script><script defer src="js/mine_data-5d2cf2f1.js"></script><link href="css/common_css-5d2cf2f1.css" rel="stylesheet"><link href="css/mine_data-5d2cf2f1.css" rel="stylesheet"></head>
+<script defer src="js/common_css-ce4ba002.js"></script><script defer src="js/dom-ce4ba002.js"></script><script defer src="js/utils-ce4ba002.js"></script><script defer src="js/mine_data-ce4ba002.js"></script><link href="css/common_css-ce4ba002.css" rel="stylesheet"><link href="css/mine_data-ce4ba002.css" rel="stylesheet"></head>
 
 <body>
     <!-- 头部 -->
@@ -25,33 +25,33 @@
         <div class="dpflex data-text">
             <h4>我的运动数据</h4>
             <div class="data-head">
-                <img src="images/7a661d86.jpg" alt="head">
+                <img id="headPic" src="images/7a661d86.jpg" alt="head">
             </div>
         </div>
         <!-- 简单数据 -->
         <div class="dpflex data-big">
             <div>
                 <h4>总运动</h4>
-                <p><span>999</span>分钟</p>
+                <p><span id="times">000.00</span>分钟</p>
             </div>
             <div>
-                <h4>本周消耗</h4>
-                <p><span>999</span>千卡</p>
+                <h4>课程训练</h4>
+                <p><span id="coursetims">000.00</span>分钟</p>
             </div>
         </div>
         <!-- 详细数据 -->
         <div class="dpflex data-small">
             <div class="flex1">
                 <h4>消耗(千卡)</h4>
-                <p>99999</p>
+                <p id="calorie">000.00</p>
             </div>
             <div class="flex1">
-                <h4>累计(天)</h4>
-                <p>99999</p>
+                <h4>累计(千米)</h4>
+                <p id="miles">000.00</p>
             </div>
             <div>
                 <h4>连续(天)</h4>
-                <p>99999</p>
+                <p id="punchin">000.00</p>
             </div>
         </div>
     </section>
@@ -61,9 +61,11 @@
         <!-- 近7天运动时长 -->
         <div id="sportTime" class="sport-time"></div>
         <div id="sportTime2" class="sport-time"></div>
+        <div id="sportTime3" class="sport-time"></div>
     </main>
 
     <!-- js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.min.js"></script>
 </body>
 
