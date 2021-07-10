@@ -13,8 +13,8 @@ document.ready(function () {
     let uploadHead = document.querySelector("#uploadHead");
     let userName = document.querySelector("#userName");
     let signText = document.querySelector("#signText");
-    let dataMin = document.querySelector("#dataMin");
-    let dataCalory = document.querySelector("#dataCalory");
+    let times = document.querySelector("#times");
+    let coursetims = document.querySelector("#coursetims");
 
     // 获取数据
     let userId = null;
@@ -95,6 +95,28 @@ document.ready(function () {
         userName.textContent = obj.nickname;
         // 签名
         signText.textContent = obj.sign ? obj.sign : "这个人很懒，什么都没有留下"
+    }
+
+    // 加载运动数据
+    function getExercuseData() {
+        axios.get($utils.BASE_URL + "/sports/exerciseData?id=" + userId).then(function (res) {
+            let result = res.data;
+            if (result.status == 0) {
+                // 覆盖本地数据
+                localStorage.setItem("exerciseData", JSON.stringify(result.data));
+                // 显示在页面上
+                renderExercuseData(result.data);
+            }
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+    getExercuseData();
+
+    // 定义一个显示数据的函数
+    function renderExercuseData(obj) {
+        times.textContent = obj.times.toFixed(2);
+        coursetims.textContent = obj.coursetims.toFixed(2);
     }
 
     // 退出登录

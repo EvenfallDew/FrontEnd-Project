@@ -25,33 +25,33 @@
         <div class="dpflex data-text">
             <h4>我的运动数据</h4>
             <div class="data-head">
-                <img src="../images/headerPic.jpg" alt="head">
+                <img id="headPic" src="../images/headerPic.jpg" alt="head">
             </div>
         </div>
         <!-- 简单数据 -->
         <div class="dpflex data-big">
             <div>
                 <h4>总运动</h4>
-                <p><span>999</span>分钟</p>
+                <p><span id="times">000.00</span>分钟</p>
             </div>
             <div>
-                <h4>本周消耗</h4>
-                <p><span>999</span>千卡</p>
+                <h4>课程训练</h4>
+                <p><span id="coursetims">000.00</span>分钟</p>
             </div>
         </div>
         <!-- 详细数据 -->
         <div class="dpflex data-small">
             <div class="flex1">
                 <h4>消耗(千卡)</h4>
-                <p>99999</p>
+                <p id="calorie">000.00</p>
             </div>
             <div class="flex1">
-                <h4>累计(天)</h4>
-                <p>99999</p>
+                <h4>累计(千米)</h4>
+                <p id="miles">000.00</p>
             </div>
             <div>
                 <h4>连续(天)</h4>
-                <p>99999</p>
+                <p id="punchin">000.00</p>
             </div>
         </div>
     </section>
@@ -64,6 +64,7 @@
     </main>
 
     <!-- js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.min.js"></script>
 </body>
 

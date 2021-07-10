@@ -2,7 +2,34 @@
 
 // 引入对应的less样式
 require("../less/mine_data.less");
+
 document.ready(function () {
+    // 获取本地存储信息
+    let user = JSON.parse(localStorage.getItem("user"));
+    let userId = JSON.parse(localStorage.getItem("user")).userId;
+    let userData = JSON.parse(localStorage.getItem("exerciseData"));
+    let headPic = document.querySelector("#headPic");
+    // 获取元素
+    let times = document.querySelector("#times");
+    let coursetims = document.querySelector("#coursetims");
+    let calorie = document.querySelector("#calorie");
+    let miles = document.querySelector("#miles");
+    let punchin = document.querySelector("#punchin");
+
+    // 加载头像
+    headPic.src = user.imgurl ? $utils.BASE_URL + user.imgurl : require("../images/headerPic.jpg");
+
+    // 加载运动数据
+    function render(obj) {
+        times.textContent = obj.times.toFixed(2);
+        coursetims.textContent = obj.coursetims.toFixed(2);
+        calorie.textContent = obj.calorie.toFixed(2);
+        miles.textContent = obj.miles.toFixed(2);
+        punchin.textContent = obj.punchin;
+    }
+    render(userData);
+
+    // 制图数据
     let xDataArr = ["7-1", "7-2", "7-3", "7-4", "7-5", "7-6", "7-7"];
     let yDataArr = [30, 60, 40, 120, 90, 80, 50];
     /*近7天运动时长 */
@@ -13,7 +40,6 @@ document.ready(function () {
         var myChart = echarts.init(document.getElementById("sportTime"));
         // 2 指定图表的配置项和数据
         var option = {
-            // 标题
             title: {
                 text: "近7天运动时长",
                 textStyle: {
@@ -30,19 +56,16 @@ document.ready(function () {
                 max: 140,
                 scale: true,
             },
-            // 系列
             series: [{
                 data: yDataArr,
                 type: "bar",
                 color: "#83a7d1"
             }]
         };
-        //3 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
     }
 
-    bing();
-
+    // 饼状图
     function bing() {
         var chartDom = document.getElementById('sportTime2');
         var myChart = echarts.init(chartDom);
@@ -103,4 +126,5 @@ document.ready(function () {
         };
         option && myChart.setOption(option);
     }
+    bing();
 });
