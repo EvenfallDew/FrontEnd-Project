@@ -147,12 +147,8 @@ document.ready(function () {
         pauseBtn.style.display = "flex";
     });
 
-    // 停止按钮
-    stopBtn.addEventListener("click", function () {
-        mapMask.style.display = "block"; //显示地图模式蒙层
-        finishBtn.style.display = "block"; //显示完成按钮
-        backBtn.style.display = "none"; //隐藏返回按钮
-    });
+    // 结束按钮
+    $utils.delayBtn(stopBtn, 2000, true);
 
     /* 地图图标按钮 */
     iconLocation.addEventListener("click", function () {
@@ -207,7 +203,7 @@ document.ready(function () {
         });
     });
 
-    /* 获取位置的函数 */
+    // 获取位置的函数
     function getlocation() {
         var geolocation = new BMap.Geolocation();
         geolocation.getCurrentPosition(function (r) {

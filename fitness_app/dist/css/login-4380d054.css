@@ -1,0 +1,73 @@
+@charset "utf-8";
+body {
+  background-image: url(../images/b9234b60.gif);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+body .msg {
+  margin-top: 15px;
+  color: #fff;
+  text-align: center;
+}
+main {
+  margin: 0 auto;
+  padding: 20px 0;
+  width: 300px;
+}
+main .head {
+  margin-bottom: 40px;
+  color: #fff;
+}
+main .head h3 {
+  text-align: right;
+}
+main .head h3 a {
+  font: normal 20px/20px "微软雅黑";
+  color: #fff;
+}
+main .head h2 {
+  font-size: 28px;
+}
+main input,
+main button {
+  width: 300px;
+  height: 50px;
+  border-radius: 25px;
+  color: #101010;
+  text-indent: 25px;
+  letter-spacing: 1px;
+  background-color: rgba(230, 230, 230, 0.9);
+}
+main input::-webkit-input-placeholder {
+  color: #6e6e6e;
+}
+main input:-ms-input-placeholder {
+  color: #6e6e6e;
+}
+main input::placeholder {
+  color: #6e6e6e;
+}
+main .captcha-text {
+  margin-left: 15px;
+}
+main .submit-btn {
+  text-indent: 0px;
+  background-color: rgba(99, 255, 167, 0.9);
+}
+main .foot {
+  margin-top: 20px;
+  color: #226fbc;
+}
+main .foot h4 {
+  height: 30px;
+  font-size: 14px;
+}
+main .foot h4 .wechat-in {
+  float: right;
+}
+main .foot h3 {
+  font: normal 16px/16px "微软雅黑";
+  text-align: center;
+}
+

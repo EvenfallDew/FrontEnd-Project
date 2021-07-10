@@ -5,7 +5,7 @@ require("../less/advertisement.less");
 
 document.ready(function () {
     let skipBtnCutDown = document.querySelector("#skipBtnCutDown");
-    let num = 3;
+    let num = 5;
     skipBtnCutDown.textContent = num;
     // 倒计时自动跳过
     let timer = setInterval(() => {

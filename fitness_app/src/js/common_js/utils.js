@@ -196,6 +196,43 @@ function randomNum(m, n) {
     return a * b;
 }
 
+// 长按触发
+function delayBtn(btn, time, isMoble) {
+    let timer = null;
+    let touchstartHander = function (event) {
+        // event.preventDefault();
+        timer = setTimeout(LongPress, time);
+    }
+    let touchmoveHander = function (event) {
+        event.preventDefault();
+        clearTimeout(timer);
+        timer = null;
+    }
+    let touchendHander = function (event) {
+        event.preventDefault();
+        clearTimeout(timer);
+        return false;
+    }
+    if (isMoble == true) {
+        // 移动端
+        btn.addEventListener("touchstart", touchstartHander, false);
+        btn.addEventListener("touchmove", touchmoveHander, false);
+        btn.addEventListener("touchend", touchendHander, false);
+    } else {
+        // PC端
+        btn.addEventListener("mousedown", touchstartHander, false);
+        btn.addEventListener("mousemove", touchmoveHander, false);
+        btn.addEventListener("mouseup", touchendHander, false);
+    }
+    // 到点执行函数
+    function LongPress() {
+        mapMask.style.display = "block"; //显示地图模式蒙层
+        finishBtn.style.display = "block"; //显示完成按钮
+        backBtn.style.display = "none"; //隐藏返回按钮
+        getlocation();
+    }
+}
+
 // 暴露出去
 window.$utils = {
     BASE_URL: BASE_URL,
@@ -212,4 +249,5 @@ window.$utils = {
     calcPace: calcPace,
     calCalorie: calCalorie,
     randomNum: randomNum,
+    delayBtn: delayBtn,
 }
