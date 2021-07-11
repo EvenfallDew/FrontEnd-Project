@@ -9,10 +9,18 @@
 </head>
 
 <body data-weui-theme="light">
+    <!-- 载入层 -->
+    <div id="loadMask" class="load-mask">
+        <p>Loading</p>
+    </div>
+    <div id="outMask" class="out-mask">
+        <p>Loading</p>
+    </div>
+
     <!-- 头部 -->
     <header class="mine-header">
         <!-- 返回 -->
-        <a href="./mine.html">
+        <a id="mineLink" href="./mine.html">
             <span class="iconfont icon-mineInfo-back"></span>
         </a>
         <!-- 页标题 -->

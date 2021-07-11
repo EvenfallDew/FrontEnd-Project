@@ -9,6 +9,9 @@ require("../libs/swiper/swiper-bundle.min.css");
 // 引入swiper的js文件
 const Swiper = require("../libs/swiper/swiper-bundle.min.js");
 
+// 加载
+$utils.load(1400);
+
 document.ready(function () {
     // 底部封装
     $utils.commonFooter();
@@ -91,15 +94,27 @@ document.ready(function () {
     let trainLink = document.querySelector("#trainLink");
     let runLink = document.querySelector("#runLink");
     dataLink.addEventListener("click", function () {
-        location.href = "./mine_data.html";
+        $utils.out();
+        setTimeout(() => {
+            location.href = "./mine_data.html";
+        }, 1000);
     });
     badgeLink.addEventListener("click", function () {
-        location.href = "./mine_badge.html";
+        $utils.out();
+        setTimeout(() => {
+            location.href = "./mine_badge.html";
+        }, 1000);
     });
     trainLink.addEventListener("click", function () {
-        location.href = "./sports_train.html";
+        $utils.out();
+        setTimeout(() => {
+            location.href = "./sports_train.html";
+        }, 1000);
     });
     runLink.addEventListener("click", function () {
-        location.href = "./sports_run.html";
+        $utils.out();
+        setTimeout(() => {
+            location.href = "./sports_run.html";
+        }, 1000);
     });
 });

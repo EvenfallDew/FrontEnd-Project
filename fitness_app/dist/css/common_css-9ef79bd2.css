@@ -475,6 +475,7 @@ h1,h2,h3,h4,h5,h6{
     font-size: 220px;
 }
 @charset "utf-8";
+
 /* 公有布局  */
 html,
 body {
@@ -483,6 +484,7 @@ body {
   min-width: 320px;
   max-width: 1000px;
 }
+
 .common-header {
   display: -webkit-box;
   display: -webkit-flex;
@@ -496,6 +498,7 @@ body {
           align-items: center;
   border: 1px solid #ddd;
 }
+
 .common-header .header-btn {
   line-height: 40px;
   height: 40px;
@@ -504,11 +507,13 @@ body {
   text-align: center;
   padding: 0 15px;
 }
+
 .common-header .header-on {
   font-size: 18px;
   color: #4294FF;
   border-bottom: 3px solid #4294FF;
 }
+
 .common-footer {
   display: -webkit-box;
   display: -webkit-flex;
@@ -523,21 +528,26 @@ body {
           align-items: center;
   text-align: center;
 }
+
 .common-footer .footer-btn {
   width: 60px;
   height: 50px;
   color: #8A8A8A;
 }
+
 .common-footer .footer-btn span {
   font-size: 30px;
 }
+
 .common-footer .footer-btn p {
   margin-top: 5px;
   font-size: 14px;
 }
+
 .common-footer .footer-on {
   color: #4294FF;
 }
+
 .msg-box {
   position: fixed;
   left: 50%;
@@ -553,13 +563,16 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
   line-height: normal;
 }
+
 .msg-box i {
   font-size: 50px;
   line-height: normal;
 }
+
 .msg-box .msg-text {
   line-height: normal;
 }
+
 .mine-header {
   position: relative;
   height: 50px;
@@ -568,9 +581,11 @@ body {
   background-color: #4294FF;
   font: normal 18px/50px "微软雅黑";
 }
+
 .mine-header a {
   color: #fff;
 }
+
 .mine-header .header-text {
   position: absolute;
   left: 50%;
@@ -578,6 +593,83 @@ body {
           transform: translateX(-50%);
 }
 
+/* 载入 */
+.load-mask,
+.out-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #7ccceb;
+  overflow: hidden;
+  z-index: 999;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+
+.load-mask {
+  display: block;
+  -webkit-animation: load 1.5s;
+          animation: load 1.5s;
+}
+
+.out-mask {
+  display: none;
+  -webkit-animation: out 1s;
+          animation: out 1s;
+}
+
+.load-mask p,
+.out-mask p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  color: #fff;
+  font: bold 40px/40px "微软雅黑";
+}
+
+@-webkit-keyframes load {
+  0% {
+    height: 100%;
+  }
+
+  100% {
+    height: 0;
+  }
+}
+
+@keyframes load {
+  0% {
+    height: 100%;
+  }
+
+  100% {
+    height: 0;
+  }
+}
+
+@-webkit-keyframes out {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes out {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
 @font-face {
   font-family: "iconfont"; /* Project id 2643995 */
   src: url(../fonts/b32bdec6.woff2) format('woff2'),

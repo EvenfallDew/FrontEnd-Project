@@ -4,6 +4,8 @@
 require("../less/common_css/weui.css");
 require("../less/mine_info.less");
 
+$utils.load(1400);
+
 document.ready(function () {
     // 获取本地存储信息
     let userId = JSON.parse(localStorage.getItem("user")).userId;
@@ -191,11 +193,24 @@ document.ready(function () {
                 $utils.showToast("icon-toast-correct", "修改成功", 2000);
                 // 跳转页面
                 setTimeout(() => {
-                    location.href = "./mine.html";
+                    $utils.out();
+                    setTimeout(() => {
+                        location.href = "./mine.html";
+                    }, 1000);
                 }, 2000);
             }
         }).catch(function (error) {
             console.log(error);
         });
+    });
+
+    // 跳转
+    let mineLink = document.querySelector("#mineLink");
+    mineLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        $utils.out();
+        setTimeout(() => {
+            location.href = "./mine.html";
+        }, 1000);
     });
 });

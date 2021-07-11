@@ -3,6 +3,8 @@
 // 引入对应的less样式
 require("../less/mine_data.less");
 
+$utils.load(1400);
+
 document.ready(function () {
     // 获取本地存储信息
     let user = JSON.parse(localStorage.getItem("user"));
@@ -28,6 +30,16 @@ document.ready(function () {
         punchin.textContent = obj.punchin;
     }
     render(userData);
+
+    // 跳转
+    let mineLink = document.querySelector("#mineLink");
+    mineLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        $utils.out();
+        setTimeout(() => {
+            location.href = "./mine.html";
+        }, 1000);
+    });
 
     // 制图数据
     let xDataArr = ["7-1", "7-2", "7-3", "7-4", "7-5", "7-6", "7-7"];

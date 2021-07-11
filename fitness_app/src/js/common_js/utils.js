@@ -41,9 +41,9 @@ function commonHeader() {
     header.className = "common-header";
     //3 添加内容
     header.innerHTML = `
-        <a class="header-btn" href="./sports_run.html">跑步</a>
-        <a class="header-btn" href="./sports_ride.html">骑行</a>
-        <a class="header-btn" href="./sports_train.html">课程训练</a>
+        <a id="runLink" class="header-btn" href="./sports_run.html">跑步</a>
+        <a id="rideLink" class="header-btn" href="./sports_ride.html">骑行</a>
+        <a id="trainLink" class="header-btn" href="./sports_train.html">课程训练</a>
     `
     //4 添加到body中
     sportsHeader.appendChild(header);
@@ -55,6 +55,16 @@ function commonHeader() {
         return item == headerPagesName;
     });
     headerBtns[headerPagesIndex].classList.add("header-on");
+    // 链接跳转
+    for (let i = 0; i < headerBtns.length; i++) {
+        headerBtns[i].addEventListener("click", function (e) {
+            e.preventDefault();
+            $utils.out();
+            setTimeout(() => {
+                location.href = headerWebs[i];
+            }, 1000);
+        });
+    }
 }
 
 // 底部封装
@@ -90,7 +100,10 @@ function commonFooter() {
     let footerWebs = ["./index.html", "./sports_run.html", "./social.html", "./mine.html"];
     for (let i = 0; i < footerBtns.length; i++) {
         footerBtns[i].addEventListener("click", function () {
-            location.href = footerWebs[i];
+            $utils.out();
+            setTimeout(() => {
+                location.href = footerWebs[i];
+            }, 1000);
         });
     }
     // 当前页底部图标添加颜色
@@ -196,6 +209,20 @@ function randomNum(m, n) {
     return a * b;
 }
 
+// 加载
+function load(time = 1400) {
+    let loadMask = document.querySelector("#loadMask");
+    setTimeout(() => {
+        loadMask.style.display = "none";
+    }, time);
+}
+
+// 退出
+function out() {
+    let outMask = document.querySelector("#outMask");
+    outMask.style.display = "block";
+}
+
 // 暴露出去
 window.$utils = {
     BASE_URL: BASE_URL,
@@ -212,4 +239,6 @@ window.$utils = {
     calcPace: calcPace,
     calCalorie: calCalorie,
     randomNum: randomNum,
+    load: load,
+    out: out,
 }

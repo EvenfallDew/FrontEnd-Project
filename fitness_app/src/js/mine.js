@@ -3,6 +3,8 @@
 // 引入对应的less样式
 require("../less/mine.less");
 
+$utils.load(1400);
+
 document.ready(function () {
     // 底部封装
     $utils.commonFooter();
@@ -127,7 +129,33 @@ document.ready(function () {
         localStorage.removeItem("user");
         // 跳转登录页面
         setTimeout(() => {
-            location.href = "./login.html";
+            $utils.out();
+            setTimeout(() => {
+                location.href = "./login.html";
+            }, 1000);
         }, 2000);
+    });
+
+    // 跳转
+    let infoLink = document.querySelector("#infoLink");
+    infoLink.addEventListener("click", function () {
+        $utils.out();
+        setTimeout(() => {
+            location.href = "./mine_info.html";
+        }, 1000);
+    });
+    let dataLink = document.querySelector("#dataLink");
+    dataLink.addEventListener("click", function () {
+        $utils.out();
+        setTimeout(() => {
+            location.href = "./mine_data.html";
+        }, 1000);
+    });
+    let badgeLink = document.querySelector("#badgeLinks");
+    badgeLink.addEventListener("click", function () {
+        $utils.out();
+        setTimeout(() => {
+            location.href = "./mine_badge.html";
+        }, 1000);
     });
 });

@@ -10,13 +10,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/less/social.less":
-/*!******************************!*\
-  !*** ./src/less/social.less ***!
-  \******************************/
+/***/ "./src/less/mine_badge.less":
+/*!**********************************!*\
+  !*** ./src/less/mine_badge.less ***!
+  \**********************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://fitness_app/./src/less/social.less?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://fitness_app/./src/less/mine_badge.less?");
 
 /***/ })
 
@@ -59,10 +59,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /******/ 	
 /************************************************************************/
 !function() {
-/*!**************************!*\
-  !*** ./src/js/social.js ***!
-  \**************************/
-eval("\n\n// 引入当前页面对应的样式文件\n\n__webpack_require__(/*! ../less/social.less */ \"./src/less/social.less\");\n\ndocument.ready(function () {\n    // 底部封装\n    $utils.commonFooter();\n});\n\n//# sourceURL=webpack://fitness_app/./src/js/social.js?");
+/*!******************************!*\
+  !*** ./src/js/mine_badge.js ***!
+  \******************************/
+eval("\n\n// 引入对应的less样式\n\n__webpack_require__(/*! ../less/mine_badge.less */ \"./src/less/mine_badge.less\");\n\n$utils.load(1400);\n\ndocument.ready(function () {\n    // 跳转\n    var mineLink = document.querySelector(\"#mineLink\");\n    mineLink.addEventListener(\"click\", function (e) {\n        e.preventDefault();\n        $utils.out();\n        setTimeout(function () {\n            location.href = \"./mine.html\";\n        }, 1000);\n    });\n});\n\n//# sourceURL=webpack://fitness_app/./src/js/mine_badge.js?");
 }();
 /******/ })()
 ;
