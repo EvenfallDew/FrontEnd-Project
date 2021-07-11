@@ -37,7 +37,7 @@ document.ready(function () {
     let badgeNum = document.querySelector("#badgeNum");
     let clockBtn = document.querySelector("#clockBtn");
     let userId = JSON.parse(window.localStorage.getItem("user")).userId;
-    let isClock = true; //true 表示没有打卡，false表示已经打卡
+    let isClock = true;
 
     // 获取该账号的数据
     function getData() {
@@ -83,5 +83,23 @@ document.ready(function () {
             // 弹窗提示
             $utils.showToast("icon-toast-wrong", "已打卡");
         }
+    });
+
+    // 页面跳转
+    let dataLink = document.querySelector("#dataLink");
+    let badgeLink = document.querySelector("#badgeLink");
+    let trainLink = document.querySelector("#trainLink");
+    let runLink = document.querySelector("#runLink");
+    dataLink.addEventListener("click", function () {
+        location.href = "./mine_data.html";
+    });
+    badgeLink.addEventListener("click", function () {
+        location.href = "./mine_badge.html";
+    });
+    trainLink.addEventListener("click", function () {
+        location.href = "./sports_train.html";
+    });
+    runLink.addEventListener("click", function () {
+        location.href = "./sports_run.html";
     });
 });

@@ -1,7 +1,7 @@
 "use strict"
 
 // 引入当前页面对应的样式文件
-require("../less/sports_ride.less");
+require("../less/sports_run.less");
 
 document.ready(function () {
     // 头部封装
@@ -37,7 +37,7 @@ document.ready(function () {
     let speed = document.querySelector("#speed"); //跑步距离
     let calorie = document.querySelector("#calorie"); //千卡
 
-    let second = 0; //秒（用时）
+    let second = 0;
     let timerId = null;
     // 指定区域创建地图对象
     var map = new BMap.Map("mapMode");
@@ -85,14 +85,13 @@ document.ready(function () {
     }
     initMap();
 
-    /* go按钮的点击事件 */
+    // go按钮
     goBtn.addEventListener("click", function () {
         // 显示倒计时蒙层
         maskTime.style.display = "block";
         let arr = [3, 2, 1, "GO"];
         let index = 0;
         timeNum.textContent = arr[index]; //初始化页面
-        /* 倒计时 */
         let timerId = setInterval(function () {
             index++;
             timeNum.textContent = arr[index];
@@ -148,14 +147,19 @@ document.ready(function () {
     });
 
     // 结束按钮
-    $utils.delayBtn(stopBtn, 2000, true);
+    stopBtn.addEventListener("click", function () {
+        mapMask.style.display = "block"; //显示地图模式蒙层
+        finishBtn.style.display = "block"; //显示完成按钮
+        backBtn.style.display = "none"; //隐藏返回按钮
+        getlocation(false);
+    });
 
-    /* 地图图标按钮 */
+    // 地图图标按钮 
     iconLocation.addEventListener("click", function () {
         mapMask.style.display = "block"; //显示地图模式蒙层
         backBtn.style.display = "block"; //显示返回按钮
         finishBtn.style.display = "none"; //隐藏完成按钮
-        getlocation();
+        getlocation(false);
     });
 
     /* 返回按钮 */
@@ -204,38 +208,42 @@ document.ready(function () {
     });
 
     // 获取位置的函数
-    function getlocation() {
+    function getlocation(isAdd = true) {
         var geolocation = new BMap.Geolocation();
         geolocation.getCurrentPosition(function (r) {
             if (this.getStatus() == BMAP_STATUS_SUCCESS) {
                 // 当前位置的经纬度
-                let lng = parseFloat(r.longitude) + moveNumX; //经度
-                let lat = parseFloat(r.latitude) + moveNumY; //纬度
-                // 随机乱逛
-                moveNumX += $utils.randomNum(0.0001, 0.0005);
-                moveNumY += $utils.randomNum(0.0001, 0.0005);
-                // 把当前的坐标存到数组中
-                pointArr.push({
-                    lng: lng,
-                    lat: lat
-                });
-                // 画线 
-                if (pointArr.length > 1) {
-                    let startPoint = pointArr[pointArr.length - 2];
-                    let endPoint = pointArr[pointArr.length - 1];
-                    $utils.drawLine(map, startPoint, endPoint);
-                    // 计算距离
-                    km += $utils.calcDistance(startPoint, endPoint) * 1;
-                    nowKm.textContent = km.toFixed(2);
-                    cardRunKm.textContent = km.toFixed(2);
-                    // 配速
-                    let paceValue = $utils.calcPace(km, second);
-                    speed.textContent = paceValue
-                    pace.textContent = paceValue
-                    // 千卡
-                    calorieValue = $utils.calCalorie(km);
-                    calorie.textContent = calorieValue;
-                    useCalorie.textContent = calorieValue;
+                let lng = parseFloat(r.longitude)
+                let lat = parseFloat(r.latitude)
+                if (isAdd == true) {
+                    lng = lng + moveNumX; //经度
+                    lat = lat + moveNumY; //纬度
+                    // 随机乱逛
+                    moveNumX += $utils.randomNum(0.0001, 0.0005);
+                    moveNumY += $utils.randomNum(0.0001, 0.0005);
+                    // 把当前的坐标存到数组中
+                    pointArr.push({
+                        lng: lng,
+                        lat: lat
+                    });
+                    // 画线 
+                    if (pointArr.length > 1) {
+                        let startPoint = pointArr[pointArr.length - 2];
+                        let endPoint = pointArr[pointArr.length - 1];
+                        $utils.drawLine(map, startPoint, endPoint);
+                        // 计算距离
+                        km += $utils.calcDistance(startPoint, endPoint) * 1;
+                        nowKm.textContent = km.toFixed(2);
+                        cardRunKm.textContent = km.toFixed(2);
+                        // 配速
+                        let paceValue = $utils.calcPace(km, second);
+                        speed.textContent = paceValue
+                        pace.textContent = paceValue
+                        // 千卡
+                        calorieValue = $utils.calCalorie(km);
+                        calorie.textContent = calorieValue;
+                        useCalorie.textContent = calorieValue;
+                    }
                 }
                 var point = new BMap.Point(lng, lat); //设置点坐标
                 map.centerAndZoom(point, 18); //根据点坐标绘制地图

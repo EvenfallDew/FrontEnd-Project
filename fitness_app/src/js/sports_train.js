@@ -78,7 +78,7 @@ document.ready(function () {
     let changeBtn = document.querySelector("#changeBtn");
     let saveBtn = document.querySelector("#saveBtn");
 
-    // 课程数组
+    // 课程数组，必载入最新课程：3号课程
     let saveCourseArr = ["3"];
 
     // 获取课程ID
@@ -90,7 +90,6 @@ document.ready(function () {
                 saveCourseArr.push(saveCourseEle[i].innerHTML);
             }
         }
-        // console.log("已选", saveCourseArr);
     }
 
     // 渲染所有课程
@@ -98,7 +97,7 @@ document.ready(function () {
         getCourseId()
         let str = "";
         courseArr.forEach((v) => {
-            // 保留1个最新课程，后端无法接收空数组
+            // 保留1个最新课程，辣鸡后端无法接收空数组
             if (v.courseId != 3) {
                 if (saveCourseArr.indexOf(String(v.courseId)) == -1) {
                     var needAdd = '<span id="addCourse" class="add-course">添加课程</span><span id="delCourse" class="del-course" style="display:none;">删除课程</span>'
@@ -142,7 +141,7 @@ document.ready(function () {
         });
     });
 
-    // 添加删除
+    // 添加或删除课程
     document.querySelector("#changeCourse").addEventListener("click", function (e) {
         // 点击添加
         if (e.target.className == "add-course") {
@@ -185,8 +184,8 @@ document.ready(function () {
                 $utils.showToast("icon-toast-correct", "修改成功", 2000);
             }
         }).catch(function (error) {
-            // 弹窗提示，修改失败
             changeMask.style.display = "none";
+            // 弹窗提示，修改失败
             $utils.showToast("icon-toast-correct", "修改失败", 2000);
             console.log(error);
         });
