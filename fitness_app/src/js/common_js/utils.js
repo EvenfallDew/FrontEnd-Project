@@ -229,7 +229,6 @@ function delayBtn(btn, time, isMoble) {
         mapMask.style.display = "block"; //显示地图模式蒙层
         finishBtn.style.display = "block"; //显示完成按钮
         backBtn.style.display = "none"; //隐藏返回按钮
-        getlocation();
     }
 }
 
