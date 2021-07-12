@@ -22,7 +22,6 @@
 
 > [源码地址](https://github.com/EvenfallDew/FrontEnd-Projects/tree/main/fitness_app)
 
-> [预览地址-广告页进入](https://evenfalldew.github.io/FrontEnd-Projects/fitness_app/dist/advertisement.html)
+> [预览地址](https://evenfalldew.github.io/FrontEnd-Projects/fitness_app/dist/advertisement.html)
 
-> [预览地址-主页进入](https://evenfalldew.github.io/FrontEnd-Projects/fitness_app/dist/index.html)
 
