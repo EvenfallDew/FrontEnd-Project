@@ -96,15 +96,19 @@ document.ready(function () {
 
     // 选择城市
     showCityPicker.addEventListener('click', function () {
-        weui.picker(
-            cityArr, {
-                // 确认事件
-                onConfirm: function (result) {
-                    city.textContent = result[0].label;
-                },
-                title: '请选择城市'
-            }
-        );
+        if (province.innerHTML == "请选择") {
+            province.click();
+        } else {
+            weui.picker(
+                cityArr, {
+                    // 确认事件
+                    onConfirm: function (result) {
+                        city.textContent = result[0].label;
+                    },
+                    title: '请选择城市'
+                }
+            );
+        }
     });
 
     // 获取省份信息
@@ -114,22 +118,24 @@ document.ready(function () {
             if (result.status == 0) {
                 // 获取城市列表
                 let user = JSON.parse(localStorage.getItem("user"));
-                let proName = user.address.split(",")[0];
-                let addressId = search(proName, result.data);
-                axios.get($utils.BASE_URL + "/address/city/" + addressId).then(function (res) {
-                    let result = res.data;
-                    if (result.status == 0) {
-                        cityArr = result.data.map(function (city) {
-                            let obj = {
-                                label: city.name,
-                                value: city.addressId
-                            }
-                            return obj;
-                        });
-                    }
-                }).catch(function (error) {
-                    console.log(error);
-                });
+                if (user.address != null) {
+                    let proName = user.address.split(",")[0];
+                    let addressId = search(proName, result.data);
+                    axios.get($utils.BASE_URL + "/address/city/" + addressId).then(function (res) {
+                        let result = res.data;
+                        if (result.status == 0) {
+                            cityArr = result.data.map(function (city) {
+                                let obj = {
+                                    label: city.name,
+                                    value: city.addressId
+                                }
+                                return obj;
+                            });
+                        }
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                }
                 provinceArr = result.data.map(function (pro) {
                     return {
                         label: pro.name,
@@ -173,7 +179,7 @@ document.ready(function () {
         // 签名
         signArea.value = user.sign;
         // 签名字数
-        signNum.textContent = user.sign.length;
+        signNum.textContent = user.sign != null ? user.sign.length : "0";
     }
     getUserInfo();
 
@@ -181,8 +187,8 @@ document.ready(function () {
     saveBtn.addEventListener("click", function () {
         axios.post($utils.BASE_URL + "/users/userEdit", {
             "nickname": nickName.value,
-            "gender": sex.textContent,
-            "birthday": birthday.textContent,
+            "gender": sex.textContent == "请选择" ? "请选择" : sex.textContent,
+            "birthday": birthday.textContent == "请选择" ? $utils.formatDate(new Date()) : birthday.textContent,
             "address": [province.textContent, city.textContent],
             "sign": signArea.value,
             "userId": userId

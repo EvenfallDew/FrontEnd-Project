@@ -221,7 +221,7 @@ module.exports = {
   ],
 
   // 5 模式： development: 开发模式  production: 生产模式
-  mode: 'development',
+  mode: 'production',
 
   // 6 配置开发服务器
   devServer: {
