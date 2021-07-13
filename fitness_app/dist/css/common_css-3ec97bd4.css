@@ -634,40 +634,52 @@ body {
 @-webkit-keyframes load {
   0% {
     height: 100%;
+    background-color: #7ccceb;
+
   }
 
   100% {
     height: 0;
+    background-color: #4294ff;
+
   }
 }
 
 @keyframes load {
   0% {
     height: 100%;
+    background-color: #7ccceb;
+
   }
 
   100% {
     height: 0;
+    background-color: #4294ff;
+
   }
 }
 
 @-webkit-keyframes out {
   0% {
     width: 0;
+    background-color: #4294ff;
   }
 
   100% {
     width: 100%;
+    background-color: #7ccceb;
   }
 }
 
 @keyframes out {
   0% {
     width: 0;
+    background-color: #4294ff;
   }
 
   100% {
     width: 100%;
+    background-color: #7ccceb;
   }
 }
 @font-face {

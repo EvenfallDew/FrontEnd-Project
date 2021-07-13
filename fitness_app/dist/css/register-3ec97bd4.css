@@ -7,8 +7,10 @@ body {
 }
 body .msg {
   margin-top: 15px;
-  color: #fff;
+  color: #ff7c0b;
   text-align: center;
+  border-radius: 9px;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 main {
   margin: 0 auto;
