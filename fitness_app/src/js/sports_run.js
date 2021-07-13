@@ -171,14 +171,6 @@ document.ready(function () {
 
     // 完成按钮
     finishBtn.addEventListener("click", function () {
-        mapMask.style.display = "none";
-        maskData.style.display = "none";
-        // 显示暂停
-        pauseBtn.style.display = "flex"
-        // 隐藏继续
-        continueBtn.style.display = "none"
-        // 隐藏结束
-        stopBtn.style.display = "none"
         // 清除定时器
         clearInterval(timerId);
         // 用时
@@ -197,9 +189,21 @@ document.ready(function () {
                 // 保存成功
                 $utils.showToast("icon-toast-correct", "保存成功", 2000);
                 setTimeout(() => {
-                    location.reload();
                     // 重置时间
                     second = 0;
+                    $utils.out();
+                    setTimeout(() => {
+                        // 隐藏蒙层
+                        mapMask.style.display = "none";
+                        maskData.style.display = "none";
+                        // 显示暂停
+                        pauseBtn.style.display = "flex"
+                        // 隐藏继续
+                        continueBtn.style.display = "none"
+                        // 隐藏结束
+                        stopBtn.style.display = "none"
+                        location.reload();
+                    }, 1000);
                 }, 2000);
             } else {
                 $utils.showToast("icon-toast-wrong", "保存失败", 2000);

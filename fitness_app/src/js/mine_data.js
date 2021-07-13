@@ -44,7 +44,7 @@ document.ready(function () {
     // 制图数据
     let xDataArr = ["7-1", "7-2", "7-3", "7-4", "7-5", "7-6", "7-7"];
     let yDataArr = [30, 60, 40, 120, 90, 80, 50];
-    /*近7天运动时长 */
+
     // 柱状图
     function showBarCharts() {
         // 1 基于准备好的dom，初始化echarts实例
@@ -199,9 +199,65 @@ document.ready(function () {
                 },
             ]
         };
-
         option && myChart.setOption(option);
-
     }
     zhexian();
+
+    function leida() {
+        var chartDom = document.getElementById('sportTime4');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            title: {
+                text: '近7天运动类型'
+            },
+            legend: {
+                bottom: 0,
+                right: 0,
+                data: ['跑步', '骑行']
+            },
+            radar: {
+                indicator: [{
+                        name: '热量',
+                        max: 6500
+                    },
+                    {
+                        name: '里程',
+                        max: 16000
+                    },
+                    {
+                        name: '配速',
+                        max: 30000
+                    },
+                    {
+                        name: '热量',
+                        max: 38000
+                    },
+                    {
+                        name: '里程',
+                        max: 52000
+                    },
+                    {
+                        name: '配速',
+                        max: 25000
+                    }
+                ]
+            },
+            series: [{
+                type: 'radar',
+                data: [{
+                        value: [4200, 3000, 20000, 35000, 50000, 18000],
+                        name: '跑步'
+                    },
+                    {
+                        value: [5000, 14000, 28000, 26000, 42000, 21000],
+                        name: '骑行'
+                    }
+                ]
+            }]
+        };
+        option && myChart.setOption(option);
+    }
+    leida();
 });

@@ -142,19 +142,25 @@ body {
 @keyframes load {
   0% {
     height: 100%;
+    background-color: #7ccceb;
+
   }
 
   100% {
     height: 0;
+    background-color: #4294ff;
+
   }
 }
 
 @keyframes out {
   0% {
     width: 0;
+    background-color: #4294ff;
   }
 
   100% {
     width: 100%;
+    background-color: #7ccceb;
   }
 }
