@@ -24,4 +24,6 @@
 
 > [预览地址](https://evenfalldew.github.io/FrontEnd-Projects/fitness_app/dist/advertisement.html)
 
+> [预览地址http](http://0410.08321.org/liminghui/fitness/dist/advertisement.html)
+
 
