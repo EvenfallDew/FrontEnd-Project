@@ -150,12 +150,14 @@ main .oldcourse .info .desc {
   font: normal 14px/14px "微软雅黑";
   border-radius: 10px;
   background-color: #42a514;
+  cursor: pointer;
 }
 .change-mask .allcourse .info .course-title .del-course {
   padding: 2px 5px;
   font: normal 14px/14px "微软雅黑";
   border-radius: 10px;
   background-color: #fd5e5e;
+  cursor: pointer;
 }
 .change-mask .allcourse .info .desc {
   font-size: 14px;
