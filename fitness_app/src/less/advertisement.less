@@ -3,9 +3,11 @@
 // 头部
 section {
     height: 44px;
+
+    font-weight: bold;
     line-height: 44px;
     text-align: center;
-    font-weight: bold;
+
     color: #fff;
 }
 
@@ -17,23 +19,27 @@ main {
     background-size: cover;
 
     .ad-cont {
-        height: 100%;
+        position: relative;
+
+        margin: 0 auto;
         min-width: 320px;
         max-width: 1000px;
-        margin: 0 auto;
-        position: relative;
+        height: 100%;
 
         // 跳过按钮
         .skip-btn {
             position: absolute;
             top: 40px;
             right: 20px;
+
+            border-radius: 20px;
             width: 104px;
             height: 40px;
-            line-height: 40px;
+
             font-size: 14px;
+            line-height: 40px;
             text-align: center;
-            border-radius: 20px;
+
             background-color: #fff;
         }
 
@@ -41,10 +47,14 @@ main {
         .slogan {
             position: absolute;
             bottom: 100px;
+
             width: 100%;
-            color: #fff;
+
             font-size: 48px;
             text-align: center;
+
+            color: #fff;
+
             animation: fadeDown 2s linear;
         }
     }
@@ -53,12 +63,15 @@ main {
 // 广告语动画
 @keyframes fadeDown {
     0% {
-        opacity: 0;
         bottom: 200px;
+
+        opacity: 0;
     }
 
     100% {
+        bottom: 100px;
+;
+
         opacity: 1;
-        bottom: 100px
     }
 }

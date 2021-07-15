@@ -1,17 +1,20 @@
 @charset "utf-8";
 
 main {
-    flex: 1;
     overflow-y: scroll;
+
+    flex: 1;
 
     .video-preview {
         position: relative;
+
         height: 370px;
 
         // 测试图片
         img {
             width: 100%;
             height: 100%;
+
             object-fit: cover;
         }
 
@@ -20,7 +23,9 @@ main {
             position: absolute;
             top: 0;
             left: 0;
+
             font-size: 40px;
+
             color: #fff;
         }
 
@@ -28,9 +33,12 @@ main {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%);
+
             font-size: 40px;
+
             color: #fff;
+
+            transform: translate(-50%);
         }
     }
 
@@ -45,19 +53,24 @@ main {
 
         .course-data {
             margin-top: 20px;
-            justify-content: space-between;
+
             font: normal 18px/18px "微软雅黑";
-            color: #8A8A8A;
+
+            color: #8a8a8a;
+
+            justify-content: space-between;
 
             span {
                 font-size: 20px;
+
                 color: #101010;
             }
         }
 
         .course-text {
             margin: 20px 0;
-            color: #8A8A8A;
+
+            color: #8a8a8a;
         }
 
         .course-method {
@@ -68,7 +81,8 @@ main {
 
                 p {
                     margin: 10px 0;
-                    color: #8A8A8A;
+
+                    color: #8a8a8a;
                 }
             }
         }
@@ -76,17 +90,20 @@ main {
 }
 
 footer {
-    text-align: center;
     border-bottom: none;
+
+    text-align: center;
 
     // 开始按钮
     .train-btn {
+        border-radius: 27px;
         width: 100%;
         max-width: 320px;
         height: 55px;
-        border-radius: 27px;
+
         font: normal 18px/55px "微软雅黑";
+
         color: #fff;
-        background-color: #4294FF;
+        background-color: #4294ff;
     }
 }

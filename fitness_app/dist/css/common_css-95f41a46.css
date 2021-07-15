@@ -9,8 +9,12 @@
  */
 
 html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+    line-height: 1.15;
+
+/* 1 */
+
+    -webkit-text-size-adjust: 100%;
+    /* 2 */
 }
 
 /* Sections
@@ -21,7 +25,7 @@ html {
  */
 
 body {
-  margin: 0;
+    margin: 0;
 }
 
 /**
@@ -29,7 +33,7 @@ body {
  */
 
 main {
-  display: block;
+    display: block;
 }
 
 /**
@@ -38,8 +42,9 @@ main {
  */
 
 h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
+    margin: .67em 0;
+
+    font-size: 2em;
 }
 
 /* Grouping content
@@ -51,9 +56,14 @@ h1 {
  */
 
 hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
+/* 1 */
+    overflow: visible;
+
+    box-sizing: content-box;
+
+/* 1 */
+    height: 0;
+    /* 2 */
 }
 
 /**
@@ -62,8 +72,11 @@ hr {
  */
 
 pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
+    font-family: monospace, monospace;
+
+/* 1 */
+    font-size: 1em;
+    /* 2 */
 }
 
 /* Text-level semantics
@@ -74,7 +87,7 @@ pre {
  */
 
 a {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 /**
@@ -83,10 +96,16 @@ a {
  */
 
 abbr[title] {
-  border-bottom: none; /* 1 */
-  text-decoration: underline; /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted; /* 2 */
+    border-bottom: none;
+
+/* 1 */
+
+    text-decoration: underline;
+
+/* 2 */
+    -webkit-text-decoration: underline dotted;
+            text-decoration: underline dotted;
+    /* 2 */
 }
 
 /**
@@ -95,7 +114,7 @@ abbr[title] {
 
 b,
 strong {
-  font-weight: bolder;
+    font-weight: bolder;
 }
 
 /**
@@ -106,8 +125,11 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
+    font-family: monospace, monospace;
+
+/* 1 */
+    font-size: 1em;
+    /* 2 */
 }
 
 /**
@@ -115,7 +137,7 @@ samp {
  */
 
 small {
-  font-size: 80%;
+    font-size: 80%;
 }
 
 /**
@@ -125,18 +147,19 @@ small {
 
 sub,
 sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
+    position: relative;
+
+    font-size: 75%;
+    line-height: 0;
+    vertical-align: baseline;
 }
 
 sub {
-  bottom: -0.25em;
+    bottom: -.25em;
 }
 
 sup {
-  top: -0.5em;
+    top: -.5em;
 }
 
 /* Embedded content
@@ -147,7 +170,7 @@ sup {
  */
 
 img {
-  border-style: none;
+    border-style: none;
 }
 
 /* Forms
@@ -163,10 +186,17 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit; /* 1 */
-  font-size: 100%; /* 1 */
-  line-height: 1.15; /* 1 */
-  margin: 0; /* 2 */
+/* 1 */
+    margin: 0;
+
+    font-family: inherit;
+
+/* 1 */
+    font-size: 100%;
+
+/* 1 */
+    line-height: 1.15;
+    /* 2 */
 }
 
 /**
@@ -175,8 +205,9 @@ textarea {
  */
 
 button,
-input { /* 1 */
-  overflow: visible;
+input {
+    /* 1 */
+    overflow: visible;
 }
 
 /**
@@ -185,8 +216,9 @@ input { /* 1 */
  */
 
 button,
-select { /* 1 */
-  text-transform: none;
+select {
+    /* 1 */
+    text-transform: none;
 }
 
 /**
@@ -197,7 +229,7 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button;
+    -webkit-appearance: button;
 }
 
 /**
@@ -208,8 +240,8 @@ button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
+    border-style: none;
+    padding: 0;
 }
 
 /**
@@ -220,7 +252,7 @@ button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
+    outline: 1px dotted ButtonText;
 }
 
 /**
@@ -228,7 +260,7 @@ button:-moz-focusring,
  */
 
 fieldset {
-  padding: 0.35em 0.75em 0.625em;
+    padding: .35em .75em .625em;
 }
 
 /**
@@ -239,12 +271,25 @@ fieldset {
  */
 
 legend {
-  box-sizing: border-box; /* 1 */
-  color: inherit; /* 2 */
-  display: table; /* 1 */
-  max-width: 100%; /* 1 */
-  padding: 0; /* 3 */
-  white-space: normal; /* 1 */
+/* 2 */
+    display: table;
+
+    box-sizing: border-box;
+
+/* 1 */
+    padding: 0;
+
+/* 1 */
+    max-width: 100%;
+
+/* 3 */
+
+    white-space: normal;
+
+/* 1 */
+
+    color: inherit;
+    /* 1 */
 }
 
 /**
@@ -252,7 +297,7 @@ legend {
  */
 
 progress {
-  vertical-align: baseline;
+    vertical-align: baseline;
 }
 
 /**
@@ -260,7 +305,7 @@ progress {
  */
 
 textarea {
-  overflow: auto;
+    overflow: auto;
 }
 
 /**
@@ -270,8 +315,11 @@ textarea {
 
 [type="checkbox"],
 [type="radio"] {
-  box-sizing: border-box; /* 1 */
-  padding: 0; /* 2 */
+    box-sizing: border-box;
+
+/* 1 */
+    padding: 0;
+    /* 2 */
 }
 
 /**
@@ -280,7 +328,7 @@ textarea {
 
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
-  height: auto;
+    height: auto;
 }
 
 /**
@@ -289,8 +337,11 @@ textarea {
  */
 
 [type="search"] {
-  -webkit-appearance: textfield; /* 1 */
-  outline-offset: -2px; /* 2 */
+/* 1 */
+    outline-offset: -2px;
+
+    -webkit-appearance: textfield;
+    /* 2 */
 }
 
 /**
@@ -298,7 +349,7 @@ textarea {
  */
 
 [type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
+    -webkit-appearance: none;
 }
 
 /**
@@ -307,8 +358,11 @@ textarea {
  */
 
 ::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
+/* 1 */
+    font: inherit;
+
+    -webkit-appearance: button;
+    /* 2 */
 }
 
 /* Interactive
@@ -319,7 +373,7 @@ textarea {
  */
 
 details {
-  display: block;
+    display: block;
 }
 
 /*
@@ -327,7 +381,7 @@ details {
  */
 
 summary {
-  display: list-item;
+    display: list-item;
 }
 
 /* Misc
@@ -338,7 +392,7 @@ summary {
  */
 
 template {
-  display: none;
+    display: none;
 }
 
 /**
@@ -346,53 +400,65 @@ template {
  */
 
 [hidden] {
-  display: none;
+    display: none;
 }
-
-
 
 /*
  * 在 normalize.css 基础上进行的其他重置
  */
- * {
-  box-sizing: border-box;
+* {
+    box-sizing: border-box;
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
+html,
+body {
+    width: 100%;
+    height: 100%;
 }
 
 html {
-  /* AntD 字体家族：https://ant.design/docs/spec/font-cn#%E5%AD%97%E4%BD%93%E5%AE%B6%E6%97%8F */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-    'Noto Color Emoji';
+    /* AntD 字体家族：https://ant.design/docs/spec/font-cn#%E5%AD%97%E4%BD%93%E5%AE%B6%E6%97%8F */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
 }
 
 p {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
-input, button {
-  border: none; /* 去掉浏览器默认的 input 边框样式 */
-  outline: none; /* 去掉浏览器默认的聚焦时候的蓝色边框 */
+input,
+button {
+    border: none;
+
+/* 去掉浏览器默认的 input 边框样式 */
+
+    outline: none;
+    /* 去掉浏览器默认的聚焦时候的蓝色边框 */
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
-ul{
-  list-style: none;
-  margin: 0;
-  padding: 0;
+ul {
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
 }
-h1,h2,h3,h4,h5,h6{
-  margin:0;
-  padding:0
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
 }
+
 /*
  * 面向属性的 CSS
  */
@@ -418,7 +484,7 @@ h1,h2,h3,h4,h5,h6{
 .flex1 {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
-            flex: 1
+            flex: 1;
 }
 
 /* 盒模型 */
@@ -474,214 +540,258 @@ h1,h2,h3,h4,h5,h6{
 .fs20 {
     font-size: 220px;
 }
+
 @charset "utf-8";
 
 /* 公有布局  */
 html,
 body {
-  height: 100%;
-  margin: 0 auto;
-  min-width: 320px;
-  max-width: 1000px;
+    margin: 0 auto;
+    min-width: 320px;
+    max-width: 1000px;
+    height: 100%;
 }
 
 .common-header {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-justify-content: space-around;
-          justify-content: space-around;
-  padding: 0 20px;
-  height: 40px;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-  border: 1px solid #ddd;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+
+    border: 1px solid #ddd;
+    padding: 0 20px;
+    height: 40px;
+
+    -webkit-justify-content: space-around;
+
+            justify-content: space-around;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
 }
 
 .common-header .header-btn {
-  line-height: 40px;
-  height: 40px;
-  color: #9a9a9a;
-  font-size: 16px;
-  text-align: center;
-  padding: 0 15px;
+    padding: 0 15px;
+    height: 40px;
+
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+
+    color: #9a9a9a;
 }
 
 .common-header .header-on {
-  font-size: 18px;
-  color: #4294FF;
-  border-bottom: 3px solid #4294FF;
+    border-bottom: 3px solid #4294ff;
+
+    font-size: 18px;
+
+    color: #4294ff;
 }
 
 .common-footer {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  height: 75px;
-  background-color: #ffffff;
-  -webkit-justify-content: space-around;
-          justify-content: space-around;
-  box-shadow: 0 0 10px 0 #c2c2c2;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-  text-align: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+
+    height: 75px;
+
+    text-align: center;
+
+    background-color: #fff;
+
+    box-shadow: 0 0 10px 0 #c2c2c2;
+
+    -webkit-justify-content: space-around;
+
+            justify-content: space-around;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
 }
 
 .common-footer .footer-btn {
-  width: 60px;
-  height: 50px;
-  color: #8A8A8A;
+    width: 60px;
+    height: 50px;
+
+    color: #8a8a8a;
 }
 
 .common-footer .footer-btn span {
-  font-size: 30px;
+    font-size: 30px;
 }
 
 .common-footer .footer-btn p {
-  margin-top: 5px;
-  font-size: 14px;
+    margin-top: 5px;
+
+    font-size: 14px;
 }
 
 .common-footer .footer-on {
-  color: #4294FF;
+    color: #4294ff;
 }
 
 .msg-box {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  padding: 20px;
-  color: #fff;
-  text-align: center;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.8);
-  line-height: normal;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    border-radius: 10px;
+    padding: 20px;
+    width: 120px;
+    height: 120px;
+
+    line-height: normal;
+    text-align: center;
+
+    color: #fff;
+    background-color: rgba(0, 0, 0, .8);
+
+    -webkit-transform: translate(-50%, -50%);
+
+            transform: translate(-50%, -50%);
 }
 
 .msg-box i {
-  font-size: 50px;
-  line-height: normal;
+    font-size: 50px;
+    line-height: normal;
 }
 
 .msg-box .msg-text {
-  line-height: normal;
+    line-height: normal;
 }
 
 .mine-header {
-  position: relative;
-  height: 50px;
-  padding: 0 20px;
-  color: #fff;
-  background-color: #4294FF;
-  font: normal 18px/50px "微软雅黑";
+    position: relative;
+
+    padding: 0 20px;
+    height: 50px;
+
+    font: normal 18px/50px "微软雅黑";
+
+    color: #fff;
+    background-color: #4294ff;
 }
 
 .mine-header a {
-  color: #fff;
+    color: #fff;
 }
 
 .mine-header .header-text {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+
+    -webkit-transform: translateX(-50%);
+
+            transform: translateX(-50%);
 }
 
 /* 载入 */
 .load-mask,
 .out-mask {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #7ccceb;
-  overflow: hidden;
-  z-index: 999;
-  -webkit-animation-iteration-count: 1;
-          animation-iteration-count: 1;
+    overflow: hidden;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: #7ccceb;
+
+    -webkit-animation-iteration-count: 1;
+
+            animation-iteration-count: 1;
 }
 
 .load-mask {
-  display: block;
-  -webkit-animation: load 1.5s;
-          animation: load 1.5s;
+    display: block;
+
+    -webkit-animation: load 1.5s;
+
+            animation: load 1.5s;
 }
 
 .out-mask {
-  display: none;
-  -webkit-animation: out 1s;
-          animation: out 1s;
+    display: none;
+
+    -webkit-animation: out 1s;
+
+            animation: out 1s;
 }
 
 .load-mask p,
 .out-mask p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%);
-          transform: translate(-50%);
-  color: #fff;
-  font: bold 40px/40px "微软雅黑";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    font: bold 40px/40px "微软雅黑";
+
+    color: #fff;
+
+    -webkit-transform: translate(-50%);
+
+            transform: translate(-50%);
 }
 
 @-webkit-keyframes load {
-  0% {
-    height: 100%;
-    background-color: #7ccceb;
+    0% {
+        height: 100%;
 
-  }
+        background-color: #7ccceb;
+    }
 
-  100% {
-    height: 0;
-    background-color: #4294ff;
+    100% {
+        height: 0;
 
-  }
+        background-color: #4294ff;
+    }
 }
 
 @keyframes load {
-  0% {
-    height: 100%;
-    background-color: #7ccceb;
+    0% {
+        height: 100%;
 
-  }
+        background-color: #7ccceb;
+    }
 
-  100% {
-    height: 0;
-    background-color: #4294ff;
+    100% {
+        height: 0;
 
-  }
+        background-color: #4294ff;
+    }
 }
 
 @-webkit-keyframes out {
-  0% {
-    width: 0;
-    background-color: #4294ff;
-  }
+    0% {
+        width: 0;
 
-  100% {
-    width: 100%;
-    background-color: #7ccceb;
-  }
+        background-color: #4294ff;
+    }
+
+    100% {
+        width: 100%;
+
+        background-color: #7ccceb;
+    }
 }
 
 @keyframes out {
-  0% {
-    width: 0;
-    background-color: #4294ff;
-  }
+    0% {
+        width: 0;
 
-  100% {
-    width: 100%;
-    background-color: #7ccceb;
-  }
+        background-color: #4294ff;
+    }
+
+    100% {
+        width: 100%;
+
+        background-color: #7ccceb;
+    }
 }
+
 @font-face {
   font-family: "iconfont"; /* Project id 2643995 */
   src: url(../fonts/b32bdec6.woff2) format('woff2'),

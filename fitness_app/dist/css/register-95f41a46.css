@@ -7,9 +7,9 @@ body {
 }
 body .msg {
   margin-top: 15px;
-  color: #ff7c0b;
-  text-align: center;
   border-radius: 9px;
+  text-align: center;
+  color: #ff7c0b;
   background-color: rgba(0, 0, 0, 0.8);
 }
 main {
@@ -33,12 +33,12 @@ main .head h2 {
 }
 main input,
 main button {
+  border-radius: 25px;
   width: 300px;
   height: 50px;
-  border-radius: 25px;
-  color: #101010;
   text-indent: 25px;
   letter-spacing: 1px;
+  color: #101010;
   background-color: rgba(230, 230, 230, 0.9);
 }
 main input::-webkit-input-placeholder {
@@ -54,7 +54,7 @@ main .captcha-text {
   margin-left: 15px;
 }
 main .submit-btn {
-  text-indent: 0px;
+  text-indent: 0;
   background-color: rgba(99, 255, 167, 0.9);
 }
 main .foot {

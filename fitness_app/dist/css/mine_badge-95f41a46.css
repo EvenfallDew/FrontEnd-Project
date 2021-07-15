@@ -1,14 +1,14 @@
 @charset "utf-8";
 .badge-label {
-  height: 140px;
   margin-top: -5px;
   padding: 20px;
+  height: 140px;
+  color: #fff;
   background-color: #4294ff;
   background-image: url(../images/4a22d28e.png);
   background-repeat: no-repeat;
   background-position: right;
   background-size: 130px;
-  color: #fff;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
           justify-content: space-between;
@@ -28,17 +28,17 @@ main {
   grid-template-columns: repeat(auto-fill, 110px);
 }
 main .badge-medal {
+  margin: 10px 0;
   width: 110px;
   height: 160px;
-  margin: 10px 0;
 }
 main .badge-medal img {
   width: 100%;
 }
 main .badge-medal p {
   margin-top: 15px;
-  text-align: center;
   font-size: 14px;
+  text-align: center;
   color: #333;
 }
 

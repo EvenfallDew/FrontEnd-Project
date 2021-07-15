@@ -3,164 +3,196 @@
 /* 公有布局  */
 html,
 body {
-  height: 100%;
-  margin: 0 auto;
-  min-width: 320px;
-  max-width: 1000px;
+    margin: 0 auto;
+    min-width: 320px;
+    max-width: 1000px;
+    height: 100%;
 }
 
 .common-header {
-  display: flex;
-  justify-content: space-around;
-  padding: 0 20px;
-  height: 40px;
-  align-items: center;
-  border: 1px solid #ddd;
+    display: flex;
+
+    border: 1px solid #ddd;
+    padding: 0 20px;
+    height: 40px;
+
+    justify-content: space-around;
+    align-items: center;
 }
 
 .common-header .header-btn {
-  line-height: 40px;
-  height: 40px;
-  color: #9a9a9a;
-  font-size: 16px;
-  text-align: center;
-  padding: 0 15px;
+    padding: 0 15px;
+    height: 40px;
+
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+
+    color: #9a9a9a;
 }
 
 .common-header .header-on {
-  font-size: 18px;
-  color: #4294FF;
-  border-bottom: 3px solid #4294FF;
+    border-bottom: 3px solid #4294ff;
+
+    font-size: 18px;
+
+    color: #4294ff;
 }
 
 .common-footer {
-  display: flex;
-  height: 75px;
-  background-color: #ffffff;
-  justify-content: space-around;
-  box-shadow: 0 0 10px 0 #c2c2c2;
-  align-items: center;
-  text-align: center;
+    display: flex;
+
+    height: 75px;
+
+    text-align: center;
+
+    background-color: #fff;
+
+    box-shadow: 0 0 10px 0 #c2c2c2;
+
+    justify-content: space-around;
+    align-items: center;
 }
 
 .common-footer .footer-btn {
-  width: 60px;
-  height: 50px;
-  color: #8A8A8A;
+    width: 60px;
+    height: 50px;
+
+    color: #8a8a8a;
 }
 
 .common-footer .footer-btn span {
-  font-size: 30px;
+    font-size: 30px;
 }
 
 .common-footer .footer-btn p {
-  margin-top: 5px;
-  font-size: 14px;
+    margin-top: 5px;
+
+    font-size: 14px;
 }
 
 .common-footer .footer-on {
-  color: #4294FF;
+    color: #4294ff;
 }
 
 .msg-box {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  padding: 20px;
-  color: #fff;
-  text-align: center;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.8);
-  line-height: normal;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    border-radius: 10px;
+    padding: 20px;
+    width: 120px;
+    height: 120px;
+
+    line-height: normal;
+    text-align: center;
+
+    color: #fff;
+    background-color: rgba(0, 0, 0, .8);
+
+    transform: translate(-50%, -50%);
 }
 
 .msg-box i {
-  font-size: 50px;
-  line-height: normal;
+    font-size: 50px;
+    line-height: normal;
 }
 
 .msg-box .msg-text {
-  line-height: normal;
+    line-height: normal;
 }
 
 .mine-header {
-  position: relative;
-  height: 50px;
-  padding: 0 20px;
-  color: #fff;
-  background-color: #4294FF;
-  font: normal 18px/50px "微软雅黑";
+    position: relative;
+
+    padding: 0 20px;
+    height: 50px;
+
+    font: normal 18px/50px "微软雅黑";
+
+    color: #fff;
+    background-color: #4294ff;
 }
 
 .mine-header a {
-  color: #fff;
+    color: #fff;
 }
 
 .mine-header .header-text {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+
+    transform: translateX(-50%);
 }
 
 /* 载入 */
 .load-mask,
 .out-mask {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #7ccceb;
-  overflow: hidden;
-  z-index: 999;
-  animation-iteration-count: 1;
+    overflow: hidden;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: #7ccceb;
+
+    animation-iteration-count: 1;
 }
 
 .load-mask {
-  display: block;
-  animation: load 1.5s;
+    display: block;
+
+    animation: load 1.5s;
 }
 
 .out-mask {
-  display: none;
-  animation: out 1s;
+    display: none;
+
+    animation: out 1s;
 }
 
 .load-mask p,
 .out-mask p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%);
-  color: #fff;
-  font: bold 40px/40px "微软雅黑";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    font: bold 40px/40px "微软雅黑";
+
+    color: #fff;
+
+    transform: translate(-50%);
 }
 
 @keyframes load {
-  0% {
-    height: 100%;
-    background-color: #7ccceb;
+    0% {
+        height: 100%;
 
-  }
+        background-color: #7ccceb;
+    }
 
-  100% {
-    height: 0;
-    background-color: #4294ff;
+    100% {
+        height: 0;
 
-  }
+        background-color: #4294ff;
+    }
 }
 
 @keyframes out {
-  0% {
-    width: 0;
-    background-color: #4294ff;
-  }
+    0% {
+        width: 0;
 
-  100% {
-    width: 100%;
-    background-color: #7ccceb;
-  }
+        background-color: #4294ff;
+    }
+
+    100% {
+        width: 100%;
+
+        background-color: #7ccceb;
+    }
 }

@@ -1,9 +1,9 @@
 @charset "utf-8";
 main {
+  position: relative;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
-  position: relative;
 }
 main .video {
   width: 100%;
@@ -23,20 +23,20 @@ footer {
   /* 控制条 */
 }
 footer .progress {
-  width: 0px;
+  width: 0;
   height: 70px;
   background-color: #4294ff;
 }
 footer .control {
-  width: 100%;
-  height: 70px;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-  text-align: center;
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 100%;
+  height: 70px;
+  text-align: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
 }
 footer .control .iconfont {
   font-size: 30px;
@@ -46,16 +46,16 @@ footer .control .iconfont {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 5;
+  padding: 50px 20px;
   width: 100%;
   height: 100%;
-  padding: 50px 20px;
-  z-index: 5;
   background-color: rgba(30, 150, 205, 0.9);
 }
 .mask .mask-cont {
+  margin: 0 auto;
   min-width: 280px;
   max-width: 960px;
-  margin: 0 auto;
 }
 .mask .mask-ctrl {
   margin-top: 60%;
@@ -66,19 +66,19 @@ footer .control .iconfont {
   color: #fff;
 }
 .mask .mask-btns {
+  margin-bottom: 50px;
   -webkit-justify-content: space-around;
           justify-content: space-around;
-  margin-bottom: 50px;
 }
 .mask .mask-btns .mask-btn {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  text-align: center;
-  color: #fff;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  color: #fff;
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
@@ -93,10 +93,10 @@ footer .control .iconfont {
   background-color: #ff6060;
 }
 .mask .current-part {
+  overflow: hidden;
   border: 2px solid #e8e8e8;
   border-radius: 10px;
   background-color: transparent;
-  overflow: hidden;
 }
 .mask .current-part div {
   width: 50%;

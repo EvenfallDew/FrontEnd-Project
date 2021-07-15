@@ -1,15 +1,17 @@
 @charset "utf-8";
 
 .badge-label {
-    height: 140px;
     margin-top: -5px;
     padding: 20px;
+    height: 140px;
+
+    color: #fff;
     background-color: #4294ff;
     background-image: url(../images/index-card-badge.png);
     background-repeat: no-repeat;
     background-position: right;
     background-size: 130px;
-    color: #fff;
+
     justify-content: space-between;
 
     .badge-text {
@@ -18,20 +20,23 @@
 
     .badge-num {
         margin-right: 25%;
+
         font: bold 80px/80px "微软雅黑";
     }
 }
 
 main {
     display: grid;
+
     padding: 25px 10px;
+
     justify-content: space-around;
     grid-template-columns: repeat(auto-fill, 110px);
 
     .badge-medal {
+        margin: 10px 0;
         width: 110px;
         height: 160px;
-        margin: 10px 0;
 
         img {
             width: 100%;
@@ -39,8 +44,10 @@ main {
 
         p {
             margin-top: 15px;
-            text-align: center;
+
             font-size: 14px;
+            text-align: center;
+
             color: #333;
         }
     }

@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 body {
-    background-image: url(../images/sign-bg1.gif);
+    background-image: url(../images/sign-bg.gif);
     background-repeat: no-repeat;
     background-position: center top;
     background-size: cover;
@@ -9,10 +9,12 @@ body {
     // 格式错误提示
     .msg {
         margin-top: 15px;
-        color: #ff7c0b;
-        text-align: center;
         border-radius: 9px;
-        background-color: rgba(0, 0, 0, 0.8);
+
+        text-align: center;
+
+        color: #ff7c0b;
+        background-color: rgba(0, 0, 0, .8);
     }
 }
 
@@ -25,16 +27,17 @@ main {
     .head {
         margin-bottom: 40px;
 
+        color: #fff;
+
         h3 {
             text-align: right;
 
             a {
                 font: normal 20px/20px "微软雅黑";
+
                 color: #fff;
             }
         }
-
-        color: #fff;
 
         h2 {
             font-size: 28px;
@@ -43,13 +46,15 @@ main {
 
     input,
     button {
+        border-radius: 25px;
         width: 300px;
         height: 50px;
-        border-radius: 25px;
-        color: #101010;
+
         text-indent: 25px;
         letter-spacing: 1px;
-        background-color: rgba(230, 230, 230, 0.9);
+
+        color: #101010;
+        background-color: rgba(230, 230, 230, .9);
     }
 
     input::placeholder {
@@ -63,17 +68,20 @@ main {
 
     // 提交按钮
     .submit-btn {
-        text-indent: 0px;
-        background-color: rgba(99, 255, 167, 0.9);
+        text-indent: 0;
+
+        background-color: rgba(99, 255, 167, .9);
     }
 
     // 底部
     .foot {
         margin-top: 20px;
+
         color: #226fbc;
 
         h4 {
             height: 30px;
+
             font-size: 14px;
 
             // 微信进入

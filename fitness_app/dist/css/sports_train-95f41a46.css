@@ -1,22 +1,22 @@
 @charset "utf-8";
 main {
+  overflow-y: scroll;
+  padding: 15px;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
-  overflow-y: scroll;
-  padding: 15px;
 }
 main .newcourse .title {
   font-size: 18px;
   color: #101010;
 }
 main .newcourse .info {
-  border-radius: 15px;
-  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.4);
-  overflow: hidden;
   display: block;
+  overflow: hidden;
   margin-top: 20px;
+  border-radius: 15px;
   padding-bottom: 10px;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.4);
 }
 main .newcourse .info-img {
   width: 100%;
@@ -27,27 +27,27 @@ main .newcourse .info-img {
 main .newcourse .course-title {
   padding: 0 15px;
   font-size: 16px;
-  color: #101010;
   font-weight: bold;
+  color: #101010;
 }
 main .newcourse .desc {
+  overflow: hidden;
   margin-top: 5px;
   padding: 0 15px;
   font-size: 14px;
-  color: #9A9A9A;
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #9a9a9a;
 }
 main .oldcourse .info {
-  position: relative;
   display: block;
+  overflow: hidden;
+  position: relative;
+  margin-top: 20px;
+  border-radius: 15px;
   width: 100%;
   height: 140px;
-  border-radius: 15px;
-  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.4);
-  margin-top: 20px;
-  overflow: hidden;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.4);
 }
 main .oldcourse .info .info-img {
   width: 100%;
@@ -57,69 +57,69 @@ main .oldcourse .info .info-img {
 }
 main .oldcourse .info .course-title,
 main .oldcourse .info .desc {
-  padding: 0 15px;
   position: absolute;
   bottom: 40px;
   left: 0;
+  padding: 0 15px;
   color: #fff;
 }
 main .oldcourse .info .desc {
-  font-size: 14px;
-  bottom: 10px;
   overflow: hidden;
-  text-overflow: ellipsis;
+  bottom: 10px;
+  font-size: 14px;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .changecourse {
   text-align: center;
 }
 .changecourse button {
+  margin-top: 20px;
+  border-radius: 27px;
   width: 100%;
   max-width: 320px;
   height: 55px;
-  margin-top: 20px;
-  border-radius: 27px;
   font: normal 18px/55px "微软雅黑";
   color: #fff;
-  background-color: #4294FF;
+  background-color: #4294ff;
 }
 .change-mask {
+  display: none;
+  overflow-y: scroll;
+  position: absolute;
+  padding: 15px;
+  width: 100%;
+  min-width: 320px;
+  max-width: 1000px;
+  height: 100%;
+  text-align: center;
+  background-color: #fff;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
-  overflow-y: scroll;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
           flex-direction: column;
-  padding: 15px;
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  max-width: 1000px;
-  min-width: 320px;
-  background-color: #fff;
-  text-align: center;
 }
 .change-mask button {
+  margin-top: 20px;
+  border-radius: 27px;
   width: 100%;
   max-width: 320px;
   height: 55px;
-  margin-top: 20px;
-  border-radius: 27px;
   font: normal 18px/55px "微软雅黑";
   color: #fff;
-  background-color: #4294FF;
+  background-color: #4294ff;
 }
 .change-mask .allcourse .info {
-  position: relative;
   display: block;
+  overflow: hidden;
+  position: relative;
+  margin-top: 20px;
+  border-radius: 15px;
   width: 100%;
   height: 140px;
-  border-radius: 15px;
-  margin-top: 20px;
-  overflow: hidden;
 }
 .change-mask .allcourse .info .info-img {
   width: 100%;
@@ -129,41 +129,41 @@ main .oldcourse .info .desc {
 }
 .change-mask .allcourse .info .course-title,
 .change-mask .allcourse .info .desc {
-  padding: 0 15px;
   position: absolute;
   bottom: 40px;
   left: 0;
+  padding: 0 15px;
   color: #fff;
 }
 .change-mask .allcourse .info .course-title {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
+  width: 100%;
+  font-weight: bold;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
           justify-content: space-between;
-  width: 100%;
-  font-weight: bold;
 }
 .change-mask .allcourse .info .course-title .add-course {
+  border-radius: 10px;
   padding: 2px 5px;
   font: normal 14px/14px "微软雅黑";
-  border-radius: 10px;
   background-color: #42a514;
   cursor: pointer;
 }
 .change-mask .allcourse .info .course-title .del-course {
+  border-radius: 10px;
   padding: 2px 5px;
   font: normal 14px/14px "微软雅黑";
-  border-radius: 10px;
   background-color: #fd5e5e;
   cursor: pointer;
 }
 .change-mask .allcourse .info .desc {
-  font-size: 14px;
-  bottom: 10px;
   overflow: hidden;
-  text-overflow: ellipsis;
+  bottom: 10px;
+  font-size: 14px;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
