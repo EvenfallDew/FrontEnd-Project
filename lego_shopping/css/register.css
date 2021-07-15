@@ -1,29 +1,34 @@
 @charset "utf-8";
+
 body {
     background-color: #f4f4f4;
 }
 
 main {
+    margin: 25px auto 65px auto;
+    border-top: 2px solid #dadadb;
     width: 1000px;
     height: 698px;
-    border-top: 2px solid #dadadb;
-    margin: 25px auto 65px auto;
-    background-color: #ffffff;
+
+    background-color: #fff;
 }
 
 /* 注册-标签栏 */
 
 .register-tabs {
     margin: 0 auto;
+    border-bottom: 2px solid #dadadb;
     width: 840px;
     height: 63px;
-    border-bottom: 2px solid #dadadb;
+
     text-align: center;
 }
 
 .register-tabs li {
     display: inline-block;
+
     width: 220px;
+
     font: bold 16px/63px "微软雅黑";
 }
 
@@ -36,12 +41,12 @@ main {
 .register-conts {
     margin: 0 auto;
     margin-top: 46px;
-    width: 700px;
-    height: 533px;
+    box-sizing: border-box;
     border: 1px solid #dadadb;
     border-top: 2px solid #ff9c00;
-    box-sizing: border-box;
     padding: 25px;
+    width: 700px;
+    height: 533px;
 }
 
 .contOn {
@@ -51,7 +56,7 @@ main {
 /* 注册协议 */
 
 .register-cont1 {
-    color: #666666;
+    color: #666;
 }
 
 .register-cont1 h3 {
@@ -60,11 +65,13 @@ main {
 
 .register-cont1 p {
     margin-top: 8px;
+
     font: normal 12px/30px "微软雅黑";
 }
 
 .register-cont1 p:nth-child(4) {
     font: bold 12px/24px "微软雅黑";
+
     color: #ff9c00;
 }
 
@@ -73,62 +80,74 @@ main {
 }
 
 .register-cont1 button {
+    border-radius: 15px;
     width: 180px;
     height: 38px;
-    background-color: #ff9c00;
-    border-radius: 15px;
-    color: #ffffff;
-    cursor: pointer;
-    letter-spacing: 3px;
+
     font: bold 16px/16px "微软雅黑";
+    letter-spacing: 3px;
+
+    color: #fff;
+    background-color: #ff9c00;
+
+    cursor: pointer;
 }
 
 /* 账号信息 */
 
 .register-cont2 {
-    width: 400px;
+    display: none;
+
     margin: 0 auto;
     margin-top: 40px;
+    width: 400px;
+
     text-align: center;
-    display: none;
 }
 
 .register-cont2 span {
     display: inline-block;
+
     width: 85px;
     height: 30px;
+
+    font: normal 14px/30px "微软雅黑";
     text-align: right;
     letter-spacing: 3px;
-    font: normal 14px/30px "微软雅黑";
+
     color: #395c59;
 }
 
 .register-cont2 input {
+    box-sizing: border-box;
+    border: 1px solid #dadadb;
     width: 295px;
     height: 30px;
-    border: 1px solid #dadadb;
-    box-sizing: border-box;
 }
 
-.mail input, .v-code input {
+.mail input,
+.v-code input {
     width: 165px;
 }
 
 .mail select {
     margin-left: 5px;
+    border: 1px solid #dadadb;
     width: 115px;
     height: 30px;
-    border: 1px solid #dadadb;
 }
 
 .v-code button {
     margin-left: 5px;
+    border-radius: 5px;
     width: 115px;
     height: 30px;
-    background-color: #ff9c00;
+
     letter-spacing: 2px;
-    color: #ffffff;
-    border-radius: 5px;
+
+    color: #fff;
+    background-color: #ff9c00;
+
     cursor: pointer;
 }
 
@@ -137,45 +156,55 @@ main {
 }
 
 .register-cont2 p:last-child button {
+    border-radius: 15px;
     width: 180px;
     height: 38px;
-    background-color: #ff9c00;
-    border-radius: 15px;
-    color: #ffffff;
-    cursor: pointer;
-    letter-spacing: 3px;
+
     font: bold 16px/16px "微软雅黑";
+    letter-spacing: 3px;
+
+    color: #fff;
+    background-color: #ff9c00;
+
+    cursor: pointer;
 }
 
 /* 账号信息验证提示 */
 
 .register-cont2 .register-inf {
     display: block;
-    font: normal 14px/14px "微软雅黑";
-    color: #ff0000;
-    height: 20px;
+
     width: 390px;
+    height: 20px;
+
+    font: normal 14px/14px "微软雅黑";
     text-align: right;
-    letter-spacing: 0px;
+    letter-spacing: 0;
+
+    color: #f00;
 }
 
 /* 注册成功 */
 
 .register-cont3 {
-    text-align: center;
-    width: 400px;
-    margin-top: 40px;
-    margin: 0 auto;
     display: none;
+
+    margin: 0 auto;
+    margin-top: 40px;
+    width: 400px;
+
+    text-align: center;
 }
 
 .register-cont3 .finish {
-    background-image: url(../images/register_finish.png);
-    background-repeat: no-repeat;
+    margin: 0 auto;
     width: 125px;
     height: 125px;
+
     font-size: 0;
-    margin: 0 auto;
+
+    background-image: url(../images/register_finish.png);
+    background-repeat: no-repeat;
 }
 
 .register-cont3 p {
@@ -187,38 +216,46 @@ main {
 
 .register-cont2 .register-psw-safebox {
     display: inline-block;
-    vertical-align: middle;
+
+    box-sizing: border-box;
     width: 295px;
     height: 20px;
-    box-sizing: border-box;
+
+    vertical-align: middle;
 }
 
 .register-cont2 .register-psw-safebox span {
     display: inline-block;
-    height: 20px;
-    width: 93px;
-    text-align: left;
+    float: left;
+
     margin: 0;
     padding: 0;
-    float: left;
+    width: 93px;
+    height: 20px;
+
+    text-align: left;
 }
 
 .register-cont2 .register-psw-safebox .register-psw-safe0 {
-    background-color: #ff0000;
     display: none;
+
+    background-color: #f00;
 }
 
 .register-cont2 .register-psw-safebox .register-psw-safe1 {
-    background-color: #fdfc02;
     display: none;
+
+    background-color: #fdfc02;
 }
 
 .register-cont2 .register-psw-safebox .register-psw-safe2 {
-    background-color: #fed500;
     display: none;
+
+    background-color: #fed500;
 }
 
 .register-cont2 .register-psw-safebox .register-psw-safe3 {
-    background-color: #27ea05;
     display: none;
+
+    background-color: #27ea05;
 }

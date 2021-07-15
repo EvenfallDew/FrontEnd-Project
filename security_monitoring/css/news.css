@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /* 主体 内容 核心*/
 
 .aricle-down {
@@ -6,18 +7,21 @@
 }
 
 .aricle-down li {
-    height: 115px;
-    padding: 30px 10px 20px 30px;
-    border-bottom: 1px solid #aeaeae;
     box-sizing: border-box;
+    border-bottom: 1px solid #aeaeae;
+    padding: 30px 10px 20px 30px;
+    height: 115px;
 }
 
 .news-date {
     float: left;
+
     width: 60px;
     height: 60px;
+
     text-align: center;
-    color: #ffffff;
+
+    color: #fff;
     background-color: #0077ed;
 }
 
@@ -31,28 +35,34 @@
 
 .news-text {
     float: left;
-    width: 778px;
+
     box-sizing: border-box;
+    width: 778px;
 }
 
 .news-text h4 {
     margin-left: 20px;
+
     line-height: 28px;
 }
 
 .news-text p {
     margin-left: 20px;
+
     font-size: 12px;
+
     color: #aeacb0;
 }
 
 .page {
     margin-top: 60px;
+
     font: normal 14px/1em "微软雅黑";
     text-align: center;
+
     color: #7d7d7d;
 }
 
 .page a {
-    color: #ff0000;
+    color: #f00;
 }

@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /* 主体 内容 核心 */
 
 .aricle-middle img {
@@ -15,5 +16,6 @@
 
 .aricle-down li {
     font: 500 14px/38px "微软雅黑";
+
     color: #7d7d7d;
 }

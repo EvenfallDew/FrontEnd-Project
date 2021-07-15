@@ -1,8 +1,9 @@
 @charset "utf-8";
+
 /* 主体 标题 */
 
 main h3 span {
-    color: #ff0000;
+    color: #f00;
 }
 
 /* 主体 关于 */
@@ -12,35 +13,40 @@ main h3 span {
 }
 
 .main-introduce {
-    height: 54px;
     margin-bottom: 40px;
+    height: 54px;
+
     text-align: center;
 }
 
 .main-introduce p {
     font-size: 12px;
+
     color: #aeaeae;
 }
 
 .about-pic {
     float: left;
+
     width: 500px;
     height: 300px;
 }
 
 .about-text {
     float: right;
+
     width: 640px;
 }
 
 .about-text p {
     font: normal 14px/28px "微软雅黑";
     text-indent: 2em;
+
     color: #7d7d7d;
 }
 
 .about-content a {
-    color: #ff0000;
+    color: #f00;
 }
 
 /* 主体 服务 */
@@ -51,27 +57,34 @@ main h3 span {
 
 .service li {
     float: left;
+
     position: relative;
 }
 
 .service li h4 {
     height: 28px;
+
     font: normal 14px/28px "微软雅黑";
     text-align: center;
-    color: #ffffff;
+
+    color: #fff;
     background-color: #3392ee;
 }
 
 .mask {
     display: none;
+
     position: absolute;
-    top: 0px;
+    top: 0;
+
     width: 100%;
     height: 100%;
+
     line-height: 328px;
     text-align: center;
-    color: #ffffff;
-    background-color: rgba(51, 146, 238, 0.8);
+
+    color: #fff;
+    background-color: rgba(51, 146, 238, .8);
 }
 
 .service li:hover .mask {
@@ -86,21 +99,23 @@ main h3 span {
 
 .product li {
     float: left;
+
     margin-right: 25px;
 }
 
 .product .product-right-pic {
-    margin-right: 0px;
+    margin-right: 0;
 }
 
 .product img {
     width: 220px;
     height: 220px;
-    transition: all 0.5s;
+
+    transition: all .5s;
 }
 
 .product img:hover {
-    transform: scale(0.95);
+    transform: scale(.95);
 }
 
 .product-text {
@@ -113,6 +128,7 @@ main h3 span {
 
 .product-text p a {
     font-size: 12px;
+
     color: #7d7d7d;
 }
 
@@ -129,19 +145,22 @@ main h3 span {
 }
 
 .news-list li {
+    box-sizing: border-box;
+    border-bottom: 1px solid #aeaeae;
+    padding: 30px 10px 20px 30px;
     width: 600px;
     height: 115px;
-    padding: 30px 10px 20px 30px;
-    border-bottom: 1px solid #aeaeae;
-    box-sizing: border-box;
 }
 
 .news-date {
     float: left;
+
     width: 60px;
     height: 60px;
+
     text-align: center;
-    color: #ffffff;
+
+    color: #fff;
     background-color: #0077ed;
 }
 
@@ -155,18 +174,22 @@ main h3 span {
 
 .news-text {
     float: left;
-    width: 485px;
+
     box-sizing: border-box;
+    width: 485px;
 }
 
 .news-text h4 {
     margin-left: 20px;
+
     line-height: 28px;
 }
 
 .news-text p {
     margin-left: 20px;
+
     font-size: 12px;
+
     color: #aeacb0;
 }
 
@@ -174,6 +197,7 @@ main h3 span {
 
 .news-pic {
     float: right;
+
     width: 548px;
 }
 
@@ -188,18 +212,22 @@ main h3 span {
 
 .news-pic-box a {
     display: inline-block;
+
+    box-sizing: border-box;
     width: 249px;
     height: 100px;
+
     font: normal 14px/100px "微软雅黑";
     text-align: center;
+
     background-color: #f5f5f5;
-    box-sizing: border-box;
 }
 
 .news-pic-box img {
     width: 299px;
     height: 100px;
-    transition: all 0.5s;
+
+    transition: all .5s;
 }
 
 .news-pic-box img:hover {
@@ -208,14 +236,16 @@ main h3 span {
 
 .news-pic-box .news-pic-box-right {
     float: right;
+    overflow: hidden;
+
     width: 299px;
     height: 100px;
-    overflow: hidden;
 }
 
 .news-pic-box .news-pic-box-left {
     float: left;
+    overflow: hidden;
+
     width: 299px;
     height: 100px;
-    overflow: hidden;
 }

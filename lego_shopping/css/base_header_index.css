@@ -1,8 +1,11 @@
 @charset "utf-8";
+
 header {
     height: 155px;
-    box-shadow: 0px 1px 0px 0px #f4f4f4;
-    background-color: #ffffff;
+
+    background-color: #fff;
+
+    box-shadow: 0 1px 0 0 #f4f4f4;
 }
 
 header a {
@@ -13,7 +16,9 @@ header a {
 
 .top {
     height: 40px;
+
     line-height: 40px;
+
     color: #e6e6e6;
     background-color: #101010;
 }
@@ -25,10 +30,12 @@ header a {
 /* 顶部logo */
 
 header .nav h1 {
-    left: 30px;
     top: 25px;
+    left: 30px;
+
     width: 170px;
     height: 76px;
+
     background-image: url(../images/logo.jpg);
     background-repeat: no-repeat;
     background-position-x: -10px;
@@ -36,9 +43,11 @@ header .nav h1 {
 
 header .nav h1 a {
     display: block;
-    font-size: 0;
+
     width: 170px;
     height: 76px;
+
+    font-size: 0;
 }
 
 /* 搜索框和购物车按钮 */
@@ -51,67 +60,75 @@ header .nav h1 a {
 /* 搜索 */
 
 .search-box {
+    margin-left: 300px;
+    box-sizing: border-box;
+    border: 2px solid #feb80f;
     width: 490px;
     height: 35px;
-    margin-left: 300px;
-    border: 2px solid #feb80f;
-    box-sizing: border-box;
 }
 
 .search-cont {
+    border: 0;
+    padding-left: 10px;
     width: 406px;
     height: 31px;
-    padding-left: 10px;
+
     outline: 0;
-    border: 0;
 }
 
 .search-btn {
+    border-radius: 0;
     width: 60px;
     height: 31px;
-    border-radius: 0;
+
     background-color: #feb80f;
     background-image: url(../images/search_button.png);
     background-repeat: no-repeat;
     background-position: center;
-    cursor: pointer;
     background-size: 30px;
+
+    cursor: pointer;
 }
 
 /* 购物车 */
 
 .buy {
+    margin-left: 30px;
     width: 280px;
     height: 35px;
-    margin-left: 30px;
 }
 
-.buy-box, .buy-order {
+.buy-box,
+.buy-order {
+    box-sizing: border-box;
     width: 130px;
     height: 35px;
-    box-sizing: border-box;
 }
 
 .buy-box {
+    border: 1px solid #dadada;
     border-radius: 5px;
+
     font: normal 14px/35px "微软雅黑";
     text-align: center;
     text-indent: 36px;
+
     color: #feb80f;
     background-image: url(../images/buy_box.png);
     background-repeat: no-repeat;
     background-position: 24px center;
-    border: 1px solid #dadada;
     background-size: 24px;
 }
 
 .buy-order {
     margin-left: 15px;
+    border: 1px solid #dadada;
     border-radius: 5px;
+
     font: bold 14px/35px "微软雅黑";
     text-align: center;
+
     color: #dadada;
-    border: 1px solid #dadada;
 }
 
 /* 导航 */
@@ -122,8 +139,11 @@ nav ul {
 
 nav li {
     float: left;
+
     margin-right: 30px;
+
     font: normal 16px/24px "微软雅黑";
+
     color: #9f9f9f;
 }
 

@@ -1,52 +1,64 @@
 @charset "utf-8";
+
 /* 购物车主体 */
 
-ul, li {
+ul,
+li {
     margin: 0;
     padding: 0;
 }
 
 .cart-box {
-    background-color: #ffffff;
     margin-top: 25px;
     margin-bottom: 30px;
     padding: 25px;
+
+    background-color: #fff;
 }
 
 /* 购物车统计栏 */
 
 .cart-label {
-    height: 40px;
-    color: #333333;
     border-bottom: 3px solid #d9d9d9;
+    height: 40px;
+
+    color: #333;
 }
 
-.cart-label h2, .cart-label p, .cart-label a {
+.cart-label h2,
+.cart-label p,
+.cart-label a {
     display: inline-block;
-    letter-spacing: 1px;
+
     font: bold 16px/30px "微软雅黑";
+    letter-spacing: 1px;
 }
 
 .cart-label p {
     float: right;
-    font: normal 12px/30px "微软雅黑";
+
     margin: 0 30px;
+
+    font: normal 12px/30px "微软雅黑";
 }
 
 .cart-label a {
     float: right;
+
     width: 75px;
     height: 30px;
-    background-color: #ff9c00;
-    color: #ffffff;
-    text-align: center;
+
     font: normal 12px/30px "微软雅黑";
+    text-align: center;
+
+    color: #fff;
+    background-color: #ff9c00;
 }
 
 /* 购物车统计栏-商品数量 */
 
 .cart-label h2 span {
-    color: #ff0000;
+    color: #f00;
 }
 
 /* 购物车商品 */
@@ -61,26 +73,31 @@ ul, li {
     text-align: left;
 }
 
-.totalprice, .total {
+.totalprice,
+.total {
     font: bold 20px/20px "微软雅黑";
-    color: #ff0000;
+
+    color: #f00;
 }
 
 .goToPay {
-    background-color: #ff9c00;
-    color: #ffffff;
     padding: 5px 10px;
+
     font: bold 14px/40px "微软雅黑";
+
+    color: #fff;
+    background-color: #ff9c00;
 }
 
 .goToPay:hover {
-    background-color: #ff0000;
+    background-color: #f00;
 }
 
 /* 购物车商品-具体-店铺 */
 
 .cart-shop {
     height: 40px;
+
     text-align: left;
     text-indent: 1em;
 }
@@ -88,9 +105,9 @@ ul, li {
 /* 购物车商品-具体-同款 */
 
 .cart-commodity td {
+    box-sizing: border-box;
     padding: 15px;
     height: 140px;
-    box-sizing: border-box;
 }
 
 /* 购物车商品-具体-同款-选择框 */
@@ -116,18 +133,23 @@ ul, li {
 }
 
 .cart-text p {
+    margin-bottom: 40px;
+
     font: normal 14px/18px "微软雅黑";
     letter-spacing: 1px;
-    color: #333333;
-    margin-bottom: 40px;
+
+    color: #333;
 }
 
 .cart-text span {
     display: inline-block;
+
     width: 40px;
     height: 20px;
-    color: #ffffff;
+
     text-align: center;
+
+    color: #fff;
 }
 
 .cart-text span {
@@ -147,18 +169,22 @@ ul, li {
 }
 
 .cart-price p {
-    font: bold 18px/20px "微软雅黑";
-    color: #e50500;
     margin-bottom: 10px;
+
+    font: bold 18px/20px "微软雅黑";
+
+    color: #e50500;
 }
 
 .cart-price span {
     font: bold 14px/20px "微软雅黑";
+
     color: #e50500;
 }
 
 .cart-price span i {
     font: italic 14px/20px "微软雅黑";
+
     color: #9f9f9f;
 }
 
@@ -166,6 +192,7 @@ ul, li {
 
 .cart-count {
     width: 220px;
+
     text-align: center;
 }
 
@@ -175,11 +202,13 @@ ul, li {
 }
 
 .cart-count input {
+    border: 1px solid #9f9f9f;
     width: 40px;
     height: 30px;
-    outline: none;
-    border: 1px solid #9f9f9f;
+
     text-align: center;
+
+    outline: none;
 }
 
 .cart-count .add {
@@ -199,17 +228,20 @@ ul, li {
 }
 
 .guess-like h2 {
-    color: #333333;
+    border-bottom: 1px solid #d9d9d9;
+
     font: normal 18px/30px "微软雅黑";
     letter-spacing: 1px;
-    border-bottom: 1px solid #d9d9d9;
+
+    color: #333;
 }
 
 /* 猜你喜欢-图片 */
 
 .guess-like-pics {
-    margin-top: 25px;
     overflow: hidden;
+
+    margin-top: 25px;
     width: 1150px;
     /* height: 400px; */
 }
@@ -218,26 +250,31 @@ ul, li {
 
 .guess-like-pic {
     float: left;
-    width: 175px;
-    height: 230px;
     overflow: hidden;
-    color: #333333;
+
     position: relative;
-    left: 0;
     top: 0;
+    left: 0;
+
+    width: 175px;
     width: 3450px;
+    height: 230px;
+
+    color: #333;
 }
 
 .guess-like-pic ul {
-    width: 1150px;
     float: left;
+
+    width: 1150px;
 }
 
 .guess-like-pic li {
     float: left;
+
+    margin-right: 20px;
     width: 175px;
     height: 230px;
-    margin-right: 20px;
 }
 
 .guess-like-pic li:last-child {
@@ -247,10 +284,11 @@ ul, li {
 /* 猜你喜欢-图片-圆角 */
 
 .guess-like-pic-radius {
+    overflow: hidden;
+
     border-radius: 15px;
     width: 175px;
     height: 175px;
-    overflow: hidden;
 }
 
 /* 猜你喜欢-图片-大小 */
@@ -262,17 +300,18 @@ ul, li {
 /* 猜你喜欢-图片-价格 */
 
 .guess-like-pic p {
-    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 16px;
-    letter-spacing: 1px;
+
     font: normal 16px/30px "微软雅黑";
+    font-size: 16px;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    text-overflow: ellipsis;
 }
 
 .guess-like-pic span {
-    letter-spacing: 1px;
     font: normal 14px/30px "微软雅黑";
+    letter-spacing: 1px;
 }
 
 .guess-change {

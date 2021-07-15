@@ -23,9 +23,9 @@ $(function () {
 var mySwiper = new Swiper(".mn-swiper", {
     autoplay: true,
     touchRatio: 1,
-    speed: 3000,  //匀速时间
+    speed: 3000, //匀速时间
     loop: true,
-    freeMode: true,  //设置为true则变为free模式
+    freeMode: true, //设置为true则变为free模式
     slidesPerView: 4,
     slidesPerGroup: 1,
 })
@@ -74,9 +74,9 @@ cutDown("2021/6/18 18:00:00", "#hour", "#minute", "#seconds");
 // 切换标签
 function contShow(tabElement, contElement, trigger, addTabClassName, speed) {
     $(tabElement).on(trigger, function () {
-        $(tabElement).removeClass();    //移除所有标签的样式
-        $(this).addClass(addTabClassName);      //给鼠标移入的标签添加样式
-        $(contElement).stop(true, false).fadeOut(speed);   //所有内容收起
+        $(tabElement).removeClass(); //移除所有标签的样式
+        $(this).addClass(addTabClassName); //给鼠标移入的标签添加样式
+        $(contElement).stop(true, false).fadeOut(speed); //所有内容收起
         $(contElement).eq($(this).index()).stop(true, false).fadeIn(speed); //鼠标移入的标签对应的内容展示
     });
 }

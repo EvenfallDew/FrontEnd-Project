@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /* 主体 内容 */
 
 .aricle-down form {
@@ -7,19 +8,25 @@
 
 .aricle-down p {
     margin-bottom: 15px;
+
     line-height: 40px;
+
     color: #7d7d7d;
 }
 
-.aricle-down input, .aricle-down textarea, .aricle-down button {
+.aricle-down input,
+.aricle-down textarea,
+.aricle-down button {
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 5px;
+    padding: 0 10px;
     width: 400px;
     height: 40px;
-    padding: 0 10px;
-    border-radius: 5px;
-    outline: none;
+
     background-color: #f2f2f2;
-    border: 0;
-    box-sizing: border-box;
+
+    outline: none;
 }
 
 .aricle-down textarea {
@@ -28,24 +35,30 @@
     height: 185px;
     min-height: 185px;
     max-height: 185px;
+
     font-size: 14px;
+
     resize: none;
 }
 
 .aricle-down button {
     margin-bottom: 10px;
-    color: #ffffff;
+
+    color: #fff;
     background-color: #0077ed;
+
     cursor: pointer;
 }
 
 .aricle-down .message-inf {
     float: right;
-    width: 400px;
+
     margin-top: 55px;
+    width: 400px;
 }
 
 .aricle-down .message-inf p {
     font: normal 14px/32px "微软雅黑";
+
     color: #949395;
 }

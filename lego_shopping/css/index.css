@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 /* 轮播图 */
 
 .banner {
@@ -12,58 +13,72 @@
 /* 轮播广告 */
 
 .slide {
+    overflow: hidden;
+
     position: absolute;
+
     width: 100%;
     min-width: 1200px;
-    overflow: hidden;
 }
 
 /* 目录 */
 
 .menu ul {
+    position: relative;
+
+    box-sizing: border-box;
+    padding-top: 20px;
     width: 230px;
     height: 450px;
-    opacity: 0.8;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding-top: 20px;
-    position: relative;
-    box-sizing: border-box;
+
+    background-color: rgba(0, 0, 0, .8);
+
+    opacity: .8;
 }
 
 .menu li {
+    height: 34px;
+
     font: bold 14px/34px "微软雅黑";
     letter-spacing: 1px;
-    color: #ffffff;
-    height: 34px;
+
+    color: #fff;
 }
 
 .menu li a {
-    color: #ffffff;
+    display: block;
+
     border: 1px solid transparent;
     padding-left: 30px;
-    display: block;
     height: 32px;
+
+    color: #fff;
 }
 
 .menu li:hover a {
     position: relative;
     z-index: 2;
+
     border: 1px solid #808080;
     border-right: 0;
-    color: #ff6600;
-    background-color: #ffffff;
+
+    color: #f60;
+    background-color: #fff;
 }
 
 /* 目录内容 */
 
 .menu .box {
     display: none;
+
     top: 0;
     left: 229px;
+
+    box-sizing: border-box;
+    border: 1px solid #808080;
     width: 600px;
     height: 450px;
-    border: 1px solid #808080;
-    box-sizing: border-box;
+
     background-color: #808080;
 }
 
@@ -71,16 +86,20 @@
     display: block;
 }
 
-.menu li .box>a {
+.menu li .box
+> a {
+    display: inline-block;
+
     margin: 5px;
     width: 100px;
-    display: inline-block;
-    color: #ff6600;
+
+    color: #f60;
 }
 
-.menu li .box>a:hover {
-    color: #ffffff;
-    background-color: #ff6600;
+.menu li .box
+> a:hover {
+    color: #fff;
+    background-color: #f60;
 }
 
 /* 今日推荐 */
@@ -89,7 +108,8 @@
     margin-top: 20px;
 }
 
-.recommend .rec, .recommend .rec img {
+.recommend .rec,
+.recommend .rec img {
     width: 285px;
     height: 154px;
 }
@@ -112,52 +132,61 @@
 .recommend-pic {
     width: 230px;
     height: 285px;
+
     background-image: url(../images/inde_time.png);
-    background-size: 300px;
+    background-repeat: no-repeat;
     background-position: top right;
     background-position: 50px -80px;
-    background-repeat: no-repeat;
+    background-size: 300px;
 }
 
 .recommend-time {
+    box-sizing: border-box;
+    padding: 20px;
     width: 230px;
     height: 285px;
-    background-color: rgba(241, 73, 56, 0.9);
-    padding: 20px;
-    box-sizing: border-box;
+
+    background-color: rgba(241, 73, 56, .9);
 }
 
 .recommend-time h2 {
-    color: #ffffff;
-    text-align: center;
     font: normal 25px/40px "微软雅黑";
+    text-align: center;
+
+    color: #fff;
 }
 
 .recommend-time img {
     display: block;
-    width: 40px;
+
     margin: 20px auto;
+    width: 40px;
 }
 
 .recommend-time h3 {
-    color: #ffffff;
-    text-align: center;
     font: normal 20px/40px "微软雅黑";
+    text-align: center;
+
+    color: #fff;
 }
 
 .recommend-time-on {
     font: normal 20px/50px "微软雅黑";
-    color: #ffffff;
+
+    color: #fff;
 }
 
 .recommend-time-on span {
-    margin-top: 20px;
     display: inline-block;
+
+    margin-top: 20px;
     width: 50px;
     height: 50px;
-    background-color: #666666;
-    text-align: center;
+
     font: normal 20px/50px "微软雅黑";
+    text-align: center;
+
+    background-color: #666;
 }
 
 .cutdown-box {
@@ -179,14 +208,15 @@
 
 .everyday {
     margin-top: 55px;
-    height: 654px;
-    background-color: #ffffff;
     padding-top: 60px;
+    height: 654px;
+
+    background-color: #fff;
 }
 
 .everyday h2 {
-    text-align: center;
     font: bold 30px/60px "微软雅黑";
+    text-align: center;
 }
 
 .everyday h3 {
@@ -196,16 +226,19 @@
 .everyday p {
     margin-top: 20px;
     margin-bottom: 20px;
+
     color: #9f9f9f;
 }
 
-.everyday-boxl, .everyday-boxr {
+.everyday-boxl,
+.everyday-boxr {
     margin-top: 55px;
+    box-sizing: border-box;
+    padding: 30px;
     width: 585px;
     height: 410px;
+
     background-color: #ffdbdb;
-    padding: 30px;
-    box-sizing: border-box;
 }
 
 .everyday-boxr {
@@ -214,10 +247,11 @@
 
 .everyday-pic {
     float: left;
+    overflow: hidden;
+
+    margin-right: 10px;
     width: 165px;
     height: 250px;
-    margin-right: 10px;
-    overflow: hidden;
 }
 
 .everyday-pic:last-child {
@@ -231,19 +265,21 @@
 /* 服装 */
 
 .cloth {
-    height: 650px;
     padding-top: 40px;
+    height: 650px;
 }
 
 /* 标题切换标签 */
 
 .cloth-title {
     height: 35px;
+
     font: bold 16px/24px "微软雅黑";
 }
 
 .cloth-tabs li {
     float: left;
+
     margin: 0 10px;
 }
 
@@ -272,16 +308,18 @@
 /* 内容 左边内容 */
 
 .cloth-cont .contl {
-    height: 465px;
-    width: 262px;
-    background-color: #ffffff;
     box-sizing: border-box;
+    width: 262px;
+    height: 465px;
+
+    background-color: #fff;
 }
 
 .cloth-cont .contl-pic {
-    height: 330px;
-    width: 262px;
     overflow: hidden;
+
+    width: 262px;
+    height: 330px;
 }
 
 .cloth-cont .contl img {
@@ -294,29 +332,33 @@
 
 .contl-lab a {
     display: inline-block;
-    width: 70px;
-    height: 24px;
+
+    margin-top: 14px;
     border: 1px solid black;
     border-radius: 12px;
+    width: 70px;
+    height: 24px;
+
     text-align: center;
+
     color: black;
-    margin-top: 14px;
 }
 
 /* 中间内容 */
 
 .contm {
-    width: 455px;
-    height: 465px;
     margin: auto 15px;
     box-sizing: border-box;
+    width: 455px;
+    height: 465px;
 }
 
 .contm-slide {
+    overflow: hidden;
+
+    box-sizing: border-box;
     width: 455px;
     height: 300px;
-    overflow: hidden;
-    box-sizing: border-box;
 }
 
 .contm-slide img {
@@ -324,10 +366,11 @@
 }
 
 .contm-down {
+    overflow: hidden;
+
     margin-top: 15px;
     width: 455px;
     height: 150px;
-    overflow: hidden;
 }
 
 .contm-down img {
@@ -344,24 +387,28 @@
 /* 右边内容 */
 
 .contr {
+    box-sizing: border-box;
     width: 450px;
     height: 465px;
-    box-sizing: border-box;
 }
 
 .contr-pic {
     float: left;
+
+    margin-right: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    padding: 10px 20px;
     width: 220px;
     height: 225px;
-    background-color: #ffffff;
-    margin-bottom: 15px;
-    margin-right: 10px;
+
     text-align: center;
-    padding: 10px 20px;
-    box-sizing: border-box;
+
+    background-color: #fff;
 }
 
-.contr-pic:nth-child(2), .contr-pic:nth-child(4) {
+.contr-pic:nth-child(2),
+.contr-pic:nth-child(4) {
     margin-right: 0;
 }
 
@@ -382,12 +429,13 @@
 }
 
 .contd-pic {
-    margin-top: 15px;
     float: left;
+    overflow: hidden;
+
+    margin-top: 15px;
+    margin-right: 6px;
     width: 128px;
     height: 65px;
-    overflow: hidden;
-    margin-right: 6px;
 }
 
 .contd-pic:last-child {
@@ -403,18 +451,22 @@
 
 .fixed-header {
     display: none;
+
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 10;
+
+    padding-top: 15px;
     width: 100%;
     height: 50px;
-    background-color: #ffffff;
-    padding-top: 15px;
-    z-index: 10;
+
+    background-color: #fff;
 }
 
 .fixed-header .search-box {
     float: none;
+
     margin: 0 auto;
 }
 
@@ -422,45 +474,54 @@
 
 .fixed-nav {
     display: none;
-    width: 50px;
-    /* background-color: #ffffff; */
+/* background-color: #ffffff; */
+
     position: fixed;
     top: 50%;
     left: 50%;
+
     margin-left: -670px;
     box-sizing: border-box;
+    width: 50px;
 }
 
 .fixed-nav li {
-    width: 40px;
-    text-align: center;
-    color: #fff;
-    padding: 5px;
     margin-bottom: 10px;
+    padding: 5px;
+    width: 40px;
+
+    text-align: center;
+
+    color: #fff;
     background: skyblue;
+
     cursor: pointer;
 }
 
 .fixed-nav li.current {
-    background: #ff6600;
+    background: #f60;
 }
 
 .fixed-nav li:hover {
-    background: #ff6600;
+    background: #f60;
 }
 
 /* 固定二维码 */
 
 .fixed-code {
     display: none;
-    text-align: center;
-    width: 100px;
-    height: 170px;
-    background-color: #ffffff;
+
     position: fixed;
     top: 50%;
     right: 50%;
+
     margin-right: -720px;
     box-sizing: border-box;
     padding: 20px 0;
+    width: 100px;
+    height: 170px;
+
+    text-align: center;
+
+    background-color: #fff;
 }

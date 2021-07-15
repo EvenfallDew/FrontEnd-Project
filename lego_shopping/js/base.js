@@ -18,7 +18,9 @@ $(".minus").on("click", function () {
     let num = $(this).siblings(".num").val();
     // 当商品只有一件时，不能继续点击减法按钮
     if (num == 1) {
-        $(this).css({ cursor: "not-allowed" });
+        $(this).css({
+            cursor: "not-allowed"
+        });
         return;
     }
     num--;

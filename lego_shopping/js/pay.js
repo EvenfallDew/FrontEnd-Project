@@ -22,8 +22,7 @@ function getSum(obj, num) {
     }
 }
 
-function getTotal() {
-}
+function getTotal() {}
 
 // 评论完毕跳转指定页面
 function cutDownOverToDo() {

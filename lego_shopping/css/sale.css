@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 body {
     background-color: #f7f7f7;
 }
@@ -7,38 +8,44 @@ body {
 
 .banner {
     height: 473px;
+
     background-image: url(../images/sale/sale_banner.jpg);
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .banner-inf {
+    top: 40px;
+    right: 40px;
+
+    box-sizing: border-box;
+    border-radius: 15px;
+    padding: 20px;
     width: 270px;
     height: 395px;
-    background-color: rgba(1, 126, 154, 0.7);
-    right: 40px;
-    top: 40px;
-    border-radius: 15px;
-    color: #ffffff;
-    box-sizing: border-box;
-    padding: 20px;
+
+    color: #fff;
+    background-color: rgba(1, 126, 154, .7);
 }
 
 .banner-inf h2 {
-    text-align: center;
     font: bold 24px/60px "微软雅黑";
+    text-align: center;
 }
 
 .banner-inf dt {
     margin-top: 8px;
+
     font: bold 16px/30px "微软雅黑";
 }
 
 .banner-inf dd {
     float: left;
+
     margin-left: 10px;
-    text-align: center;
+
     font: bold 14px/30px "微软雅黑";
+    text-align: center;
 }
 
 /* 推荐品牌*/
@@ -49,10 +56,12 @@ body {
 }
 
 .recommend h3 {
-    height: 50px;
-    background-color: #ffffff;
-    font: bold 24px/50px "微软雅黑";
     padding: 0 16px;
+    height: 50px;
+
+    font: bold 24px/50px "微软雅黑";
+
+    background-color: #fff;
 }
 
 .recommend-special {
@@ -65,10 +74,11 @@ body {
 }
 
 .recommend .special2 {
+    overflow: hidden;
+
     margin-left: 13px;
     width: 470px;
     height: 370px;
-    overflow: hidden;
 }
 
 .recommend .special2 img {
@@ -79,11 +89,12 @@ body {
 
 .recommend-ad div {
     float: left;
+    overflow: hidden;
+
     margin-top: 25px;
     margin-right: 20px;
     width: 285px;
     height: 101px;
-    overflow: hidden;
 }
 
 .recommend-ad div:last-child {
@@ -104,16 +115,20 @@ body {
 /* 标题栏 */
 
 .titles {
-    height: 60px;
     margin: 0 auto;
+    height: 60px;
+
     text-align: center;
 }
 
 .titles h2 {
     display: inline-block;
-    font: bold 30px/50px "微软雅黑";
-    color: #333333;
+
     margin: auto 40px;
+
+    font: bold 30px/50px "微软雅黑";
+
+    color: #333;
 }
 
 .titles img {
@@ -122,6 +137,7 @@ body {
 
 .titles h3 {
     font: normal 18px/10px "微软雅黑";
+
     color: #8f8f8f;
 }
 
@@ -133,10 +149,12 @@ body {
 /* 左边栏 */
 
 .show-picl {
+    overflow: hidden;
+
+    position: relative;
+
     width: 272px;
     height: 410px;
-    position: relative;
-    overflow: hidden;
 }
 
 .show-picl img {
@@ -144,44 +162,52 @@ body {
     height: 410px;
 }
 
-.show-picl>div {
+.show-picl
+> div {
     position: absolute;
+    top: 0;
+
     width: 272px;
     height: 100px;
-    top: 0;
 }
 
 .show-picl .show-pla {
     float: left;
+
+    margin: 20px 10px 0;
+    border: 1px solid #fff;
     width: 113px;
     height: 35px;
-    margin: 20px 10px 0;
-    border: 1px solid #ffffff;
+
     line-height: 35px;
     text-align: center;
-    color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.3);
+
+    color: #fff;
+    background-color: rgba(255, 255, 255, .3);
 }
 
 .show-picl .show-pla:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, .3);
+
     cursor: default;
 }
 
 /* 中间栏 */
 
 .show-picm {
-    height: 410px;
-    width: 624px;
     margin: auto 15px;
+    width: 624px;
+    height: 410px;
 }
 
 .show-picm div {
     float: left;
+    overflow: hidden;
+
     width: 312px;
     height: 205px;
-    overflow: hidden;
-    background-color: #ffffff;
+
+    background-color: #fff;
 }
 
 .show-picm1 img {
@@ -190,8 +216,8 @@ body {
 }
 
 .show-picm2 {
-    padding: 20px;
     box-sizing: border-box;
+    padding: 20px;
 }
 
 .show-picm2 div {
@@ -204,21 +230,25 @@ body {
 
 .show-picm2 span {
     font: normal 16px/24px "微软雅黑";
-    color: #ff0000;
+
+    color: #f00;
 }
 
 .show-picm2 h3 {
     margin-top: 58px;
+
     font: bold 20px/24px "微软雅黑";
 }
 
 .show-picm2 h4 {
     font: bold 12px/24px "微软雅黑";
-    color: #888888;
+
+    color: #888;
 }
 
 .show-picm2 img {
     float: right;
+
     width: 135px;
     height: 135px;
 }
@@ -226,15 +256,16 @@ body {
 /* 右边栏 背景图 */
 
 .show-picr {
+    box-sizing: border-box;
+    padding: 20px;
     width: 274px;
     height: 410px;
-    padding: 20px;
-    box-sizing: border-box;
+
+    background-color: #fff;
     background-image: url(../images/sale/sale_medal.png);
     background-repeat: no-repeat;
-    background-size: 88px;
     background-position: top right;
-    background-color: #ffffff;
+    background-size: 88px;
 }
 
 .show-picr h2 {
@@ -245,9 +276,10 @@ body {
 
 .show-top-pic {
     float: left;
+    overflow: hidden;
+
     width: 100px;
     height: 100px;
-    overflow: hidden;
 }
 
 .show-top-pic img {
@@ -255,9 +287,11 @@ body {
 }
 
 .show-picr dt {
-    color: #333333;
-    font: bold 14px/40px "微软雅黑";
     height: 40px;
+
+    font: bold 14px/40px "微软雅黑";
+
+    color: #333;
 }
 
 .show-picr dd {
@@ -266,10 +300,13 @@ body {
 
 .show-top-price {
     float: right;
+
     width: 130px;
     height: 100px;
-    color: #333333;
+
     font: bold 14px/24px "微软雅黑";
+
+    color: #333;
 }
 
 .show-top-price span {
@@ -297,9 +334,10 @@ body {
 }
 
 .brand-up-pic {
+    overflow: hidden;
+
     width: 565px;
     height: 275px;
-    overflow: hidden;
 }
 
 .brand-up span {
@@ -309,20 +347,25 @@ body {
 .brand-up p {
     width: 495px;
     height: 275px;
+
     font: normal 16px/36px "微软雅黑";
+
     color: #808080;
 }
 
 .brand-up a {
-    margin-top: 60px;
     display: inline-block;
+
+    margin-top: 60px;
+    border: 1px solid #000;
     width: 324px;
     height: 62px;
-    border: 1px solid #000000;
+
     font: bold 24px/62px "微软雅黑";
     text-align: center;
-    color: slategray;
     letter-spacing: 10px;
+
+    color: slategray;
 }
 
 /* 品牌下部 展览 */
@@ -333,10 +376,12 @@ body {
 
 .brand-down-pic {
     float: left;
+    overflow: hidden;
+
     margin-right: 20px;
     width: 285px;
     height: 250px;
-    overflow: hidden;
+
     text-align: center;
 }
 
@@ -351,10 +396,12 @@ body {
 .brand-down-pic h3 {
     font: normal 24px/36px "微软雅黑";
     letter-spacing: 1px;
-    color: #333333;
+
+    color: #333;
 }
 
 .brand-down-pic p {
     font: normal 14px/36px "微软雅黑";
+
     color: #808080;
 }

@@ -1,14 +1,16 @@
 @charset "utf-8";
+
 /* 底部页脚 */
 
 footer {
     height: 500px;
-    background-color: #ffffff;
+
+    background-color: #fff;
 }
 
 .foot-up {
-    height: 370px;
     padding-top: 50px;
+    height: 370px;
 }
 
 .foot-up a {
@@ -18,14 +20,14 @@ footer {
 /* 声明部分 */
 
 .foot-up-box {
-    padding-bottom: 30px;
     border-bottom: 2px solid #dadada;
+    padding-bottom: 30px;
 }
 
 .foot-up-inf {
+    border-right: 2px solid #dadada;
     width: 298px;
     height: 66px;
-    border-right: 2px solid #dadada;
 }
 
 .foot-up-inf:last-child {
@@ -34,6 +36,7 @@ footer {
 
 .foot-up-inf img {
     float: left;
+
     margin-right: 15px;
     margin-left: 20px;
 }
@@ -44,11 +47,13 @@ footer {
 
 .foot-up-inf span {
     font: normal 20px/33px "微软雅黑";
-    color: #000000;
+
+    color: #000;
 }
 
 .foot-up-inf span:last-child {
     font: normal 14px/33px "微软雅黑";
+
     color: #808080;
 }
 
@@ -63,8 +68,8 @@ footer {
 }
 
 .foot-up-link dl:nth-child(1) {
-    width: 220px;
     margin-left: 10px;
+    width: 220px;
 }
 
 .foot-up-link dl:nth-child(2) {
@@ -94,22 +99,27 @@ footer {
 /* 版权部分 */
 
 .foot-down {
-    height: 120px;
-    padding-top: 10px;
-    text-align: center;
-    background-color: #f4f4f4;
     box-sizing: border-box;
+    padding-top: 10px;
+    height: 120px;
+
+    text-align: center;
+
+    background-color: #f4f4f4;
 }
 
 .foot-down span {
     display: block;
+
     font: normal 12px/24px "微软雅黑";
+
     color: #808080;
 }
 
 .foot-down-pic {
-    height: 30px;
     margin-top: 10px;
+    height: 30px;
+
     font-size: 0;
 }
 

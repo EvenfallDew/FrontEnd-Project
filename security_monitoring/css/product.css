@@ -1,16 +1,18 @@
 @charset "UTF-8";
+
 /* 主体 内容 核心 */
 
 .aricle-down {
-    padding: 0;
     border: 0;
+    padding: 0;
 }
 
 .product-box {
     float: left;
+
+    margin-right: 20px;
     width: 210px;
     height: 287px;
-    margin-right: 20px;
 }
 
 .product-box-right {
@@ -25,11 +27,12 @@
 .product-pic img {
     width: 210px;
     height: 210px;
-    transition: all 0.5s;
+
+    transition: all .5s;
 }
 
 .product-pic img:hover {
-    transform: scale(0.95);
+    transform: scale(.95);
 }
 
 .product-box h3 {
@@ -38,13 +41,16 @@
 
 .product-box p a {
     font: normal 12px/18px "微软雅黑";
+
     color: #ada9a7;
 }
 
 .page {
     margin-top: 25px;
+
     font: normal 12px/18px "微软雅黑";
     text-align: center;
+
     color: #ada9a7;
 }
 
@@ -53,11 +59,13 @@
 }
 
 .page a {
-    color: #ada9a7;
     border: 1px solid #ada9a7;
+
+    color: #ada9a7;
 }
 
 .page .page-on {
-    color: #ff0000;
     border: 0;
+
+    color: #f00;
 }

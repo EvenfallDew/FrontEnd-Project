@@ -31,21 +31,21 @@ function nextShow(tabElement, contElement, trigger, addTabClassName = "", addCla
 // 倒计时
 function cutDown(sec, outputElement = "") {
     var startTime = new Date(); //开始时间
-    var endTime = new Date();   //结束时间为当前时间
-    var startTimeSec = startTime.getSeconds();//当前秒
+    var endTime = new Date(); //结束时间为当前时间
+    var startTimeSec = startTime.getSeconds(); //当前秒
     endTime.setSeconds(startTimeSec + sec); //结束秒+sec
 
     var timer = setInterval(function () {
-        var nowTime = new Date();   //每秒更新的现在时间
+        var nowTime = new Date(); //每秒更新的现在时间
         var nowTimeSec = Math.floor(nowTime.getTime() / 1000); //获取时间戳（秒）
-        var endTimeSec = Math.floor(endTime.getTime() / 1000);//获取时间戳（秒）
-        var resultSec = endTimeSec - nowTimeSec + 1;    //将计算差多少秒(优化显示+1s)
-        document.querySelector(outputElement).innerText = resultSec + "秒";  //输出形式
-        if (resultSec <= 0) {   //到点了,防止输入负数不结束计时
+        var endTimeSec = Math.floor(endTime.getTime() / 1000); //获取时间戳（秒）
+        var resultSec = endTimeSec - nowTimeSec + 1; //将计算差多少秒(优化显示+1s)
+        document.querySelector(outputElement).innerText = resultSec + "秒"; //输出形式
+        if (resultSec <= 0) { //到点了,防止输入负数不结束计时
             cutDownOverToDo();
             clearInterval(timer);
         }
-    }, 1000);   //每秒更新
+    }, 1000); //每秒更新
 }
 
 // 表单验证
@@ -79,7 +79,7 @@ function changeLike(changeBtn, changeConts, moveLength) {
         if (num >= 3) {
             num = 0;
         }
-        $(changeConts).css("left", - moveLength * num + 'px');
+        $(changeConts).css("left", -moveLength * num + 'px');
     });
 }
 
@@ -97,22 +97,22 @@ function asideAppear(outElement, inElement, trigger, speed) {
 
 // 倒计时禁用
 function disabledState(element, sec, elementText) {
-    element.disabled = true;    //禁用
+    element.disabled = true; //禁用
     var startTime = new Date(); //开始时间
-    var endTime = new Date();   //结束时间为当前时间
-    var startTimeSec = startTime.getSeconds();//当前秒
+    var endTime = new Date(); //结束时间为当前时间
+    var startTimeSec = startTime.getSeconds(); //当前秒
     endTime.setSeconds(startTimeSec + sec); //结束秒+sec
 
     var timer = setInterval(function () {
-        var nowTime = new Date();   //每秒更新的现在时间
+        var nowTime = new Date(); //每秒更新的现在时间
         var nowTimeSec = Math.floor(nowTime.getTime() / 1000); //获取时间戳（秒）
         var endTimeSec = Math.floor(endTime.getTime() / 1000); //获取时间戳（秒）
-        var resultSec = endTimeSec - nowTimeSec + 1;    //将计算差多少秒
-        element.innerText = " 请" + resultSec + "s后再试";    //改变元素文本显示为倒计时
-        if (resultSec <= 0) {    //到点了,防止输入负数
-            element.disabled = false;   //取消禁用
-            element.innerText = elementText;    //恢复元素默认文本
-            clearInterval(timer);   //清空计时器
+        var resultSec = endTimeSec - nowTimeSec + 1; //将计算差多少秒
+        element.innerText = " 请" + resultSec + "s后再试"; //改变元素文本显示为倒计时
+        if (resultSec <= 0) { //到点了,防止输入负数
+            element.disabled = false; //取消禁用
+            element.innerText = elementText; //恢复元素默认文本
+            clearInterval(timer); //清空计时器
         }
-    }, 1000);   //每秒更新
+    }, 1000); //每秒更新
 }
