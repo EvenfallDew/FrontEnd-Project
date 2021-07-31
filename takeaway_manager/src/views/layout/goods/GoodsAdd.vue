@@ -36,7 +36,7 @@
 </template>
 
 <script>
-    import Card from '@/components/Card.vue';
+    import Card from "@/components/Card.vue";
 
     export default {
         components: {
@@ -47,9 +47,9 @@
             return {
 
                 addForm: {
-                    acc: '',
-                    pwd: '',
-                    group: '',
+                    acc: "",
+                    pwd: "",
+                    group: "",
                 },
                 num: 1,
             }
@@ -61,13 +61,13 @@
                 // validate 按钮验证  valid验证结果
                 this.$refs.addForm.validate((valid) => {
                     if (valid) {
-                        console.log('ajax 添加')
+                        console.log("ajax 添加")
                         this.$message({
-                            type: 'success',
-                            message: '添加成功',
+                            type: "success",
+                            message: "添加成功",
                         })
                     } else {
-                        this.$message.error('添加失败')
+                        this.$message.error("添加失败")
                     }
                 })
             },

@@ -69,78 +69,59 @@
 </template>
 
 <script>
-    import Card from '@/components/Card.vue';
+    import Card from "@/components/Card.vue";
 
     export default {
         components: {
             Card,
         },
 
-        methods: {
-            // 查询
-            onSubmit() {
-                console.log('查询');
-            },
-            // 查看
-            handleClick(row) {
-                console.log(row);
-            },
-            // 每页显示条数
-            handleSizeChange() {
-                console.log('每页显示条数改变');
-            },
-            // 页数改变
-            handleCurrentChange() {
-                console.log('页数改变');
-            },
-        },
-
         data() {
             return {
                 // 查询
                 formInline: {
-                    num: '',
-                    name: '',
-                    tel: '',
-                    state: '',
-                    region: '',
-                    time: '',
+                    num: "",
+                    name: "",
+                    tel: "",
+                    state: "",
+                    region: "",
+                    time: "",
                 },
                 // 时间选择
                 pickerOptions: {
                     shortcuts: [{
-                        text: '最近一周',
+                        text: "最近一周",
                         onClick(picker) {
                             const end = new Date();
                             const start = new Date();
                             start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-                            picker.$emit('pick', [start, end]);
+                            picker.$emit("pick", [start, end]);
                         }
                     }, {
-                        text: '最近一个月',
+                        text: "最近一个月",
                         onClick(picker) {
                             const end = new Date();
                             const start = new Date();
                             start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-                            picker.$emit('pick', [start, end]);
+                            picker.$emit("pick", [start, end]);
                         }
                     }, {
-                        text: '最近三个月',
+                        text: "最近三个月",
                         onClick(picker) {
                             const end = new Date();
                             const start = new Date();
                             start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-                            picker.$emit('pick', [start, end]);
+                            picker.$emit("pick", [start, end]);
                         }
                     }]
                 },
                 // 表格
                 tableData: [{
-                    num: '12345678',
+                    num: "12345678",
                     date: "19:32:00",
-                    tel: '18888888888',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄',
+                    tel: "18888888888",
+                    name: "王小虎",
+                    address: "上海市普陀区金沙江路 1518 弄",
                     time: "19:32:00",
                     remark: "微辣",
                     price: "108",
@@ -153,6 +134,24 @@
             }
         },
 
+        methods: {
+            // 查询
+            onSubmit() {
+                console.log("查询");
+            },
+            // 查看
+            handleClick(row) {
+                console.log(row);
+            },
+            // 每页显示条数
+            handleSizeChange() {
+                console.log("每页显示条数改变");
+            },
+            // 页数改变
+            handleCurrentChange() {
+                console.log("页数改变");
+            },
+        },
     }
 </script>
 

@@ -1,27 +1,38 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+
 import Login from '@/views/Login.vue';
 import Layout from '@/views/layout/Layout.vue';
 
 Vue.use(VueRouter);
 
+// 一二级路由
 const routes = [{
         path: "/",
         redirect: "/login"
     },
-    // 登录页面
+    // 登录
     {
         path: "/login",
         component: Login
     },
-    // 布局组件 直接加载后台首页
+    // 后台首页
     {
         path: "/layout",
         component: Layout,
         children: [{
             path: "",
             component: () => import("@/views/layout/home/Home.vue")
+        }]
+    },
+    // 个人中心
+    {
+        path: "/user",
+        component: Layout,
+        children: [{
+            path: "",
+            component: () => import("@/views/layout/user/User.vue")
         }]
     },
     // 订单管理
@@ -95,10 +106,17 @@ const routes = [{
             }
         ]
     }
-]
+];
+
+// 当前页路由重访问
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch(err => err);
+}
+
 
 const router = new VueRouter({
     routes
-})
+});
 
-export default router
+export default router;

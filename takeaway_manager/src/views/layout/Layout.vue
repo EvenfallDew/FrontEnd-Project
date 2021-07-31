@@ -18,21 +18,22 @@
                 <!-- 头像相关 -->
                 <div class="acc-box">
                     <!-- 下拉 -->
-                    <el-dropdown>
+                    <el-dropdown @command="handleCommand">
                         <span class="el-dropdown-link">
-                            欢迎你<i class="el-icon-arrow-down el-icon--right"></i>
+                            欢迎你,
+                            <span>XXX</span>
+                            <i class="el-icon-arrow-down el-icon--right"></i>
                         </span>
                         <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item>黄金糕</el-dropdown-item>
-                            <el-dropdown-item>狮子头</el-dropdown-item>
-                            <el-dropdown-item>螺蛳粉</el-dropdown-item>
+                            <el-dropdown-item command="a">个人中心</el-dropdown-item>
+                            <el-dropdown-item command="b">注销登录</el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
                     <!-- 头像 -->
-                    <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                    <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png">
+                    </el-avatar>
                 </div>
             </header>
-
             <main>
                 <router-view></router-view>
             </main>
@@ -41,11 +42,17 @@
 </template>
 
 <script>
-    import LeftMenu from '@/components/LeftMenu.vue';
+    import LeftMenu from "@/components/LeftMenu.vue";
 
     export default {
         components: {
             LeftMenu,
+        },
+
+        methods: {
+            handleCommand(command) {
+                this.$router.push("/user");
+            }
         }
     }
 </script>
@@ -104,6 +111,7 @@
         }
 
         main {
+            overflow-x: hidden;
             overflow-y: auto;
 
             padding: 20px;

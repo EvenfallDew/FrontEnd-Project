@@ -1,8 +1,8 @@
 <template>
     <div class="acc-eidit">
         <Card>
-            <span slot="title">修改密码</span>
-            <div slot="content">
+            <header slot="title">修改密码</header>
+            <main slot="content">
                 <el-form :model="eiditForm" status-icon :rules="rules" ref="eiditForm" label-width="100px"
                     class="demo-ruleForm">
 
@@ -20,20 +20,20 @@
 
                     <el-form-item>
                         <el-button type="primary" @click="add()">确定</el-button>
-                        <el-button @click="cancel()">重置</el-button>
+                        <el-button @click="reset()">重置</el-button>
                     </el-form-item>
                 </el-form>
-            </div>
+            </main>
         </Card>
     </div>
 </template>
 
 <script>
-    import Card from '@/components/Card.vue';
+    import Card from "@/components/Card.vue";
 
     import {
-        PWD_REG
-    } from '@/utils/reg.js';
+        REG_PWD
+    } from "@/utils/reg.js";
 
     export default {
         components: {
@@ -44,7 +44,7 @@
             // 验证原密码
             const checkOldPwd = (rules, value, callback) => {
                 if (!value) {
-                    callback(new Error('原密码不能为空'))
+                    callback(new Error("原密码不能为空"))
                 } else {
                     callback()
                 }
@@ -52,9 +52,9 @@
             // 新密码
             const checkNewPwd = (rules, value, callback) => {
                 if (!value) {
-                    callback(new Error('新密码不能为空'))
-                } else if (!PWD_REG.test(value)) {
-                    callback(new Error('请输入6-12位密码'))
+                    callback(new Error("新密码不能为空"))
+                } else if (!REG_PWD.test(value)) {
+                    callback(new Error("请输入6-12位密码"))
                 } else {
                     callback()
                 }
@@ -62,9 +62,9 @@
             // 确认新密码
             const checkNewPwd2 = (rules, value, callback) => {
                 if (!value) {
-                    callback(new Error('确认新密码不能为空'))
+                    callback(new Error("确认密码不能为空"))
                 } else if (value != this.eiditForm.newPwd) {
-                    callback(new Error('2次密码不一致'))
+                    callback(new Error("2次密码不一致"))
                 } else {
                     callback()
                 }
@@ -72,22 +72,22 @@
 
             return {
                 eiditForm: {
-                    oldPwd: '',
-                    newPwd: '',
-                    newPwd2: '',
+                    oldPwd: "",
+                    newPwd: "",
+                    newPwd2: "",
                 },
                 rules: {
                     oldPwd: {
                         validator: checkOldPwd,
-                        trigger: 'blur'
+                        trigger: "blur"
                     },
                     newPwd: {
                         validator: checkNewPwd,
-                        trigger: 'blur'
+                        trigger: "blur"
                     },
                     newPwd2: {
                         validator: checkNewPwd2,
-                        trigger: 'blur'
+                        trigger: "blur"
                     },
                 },
             }
@@ -98,17 +98,16 @@
                 this.$refs.eiditForm.validate((valid) => {
                     if (valid) {
                         this.$message({
-                            message: '修改成功',
-                            type: 'success',
+                            message: "修改成功",
+                            type: "success",
                         })
                     } else {
-                        this.$message.error('参数错误')
+                        this.$message.error("参数错误")
                     }
                 })
             },
             // 重置按钮
-            cancel() {
-                // 重置表单
+            reset() {
                 this.$refs.eiditForm.resetFields()
             },
         },
@@ -116,9 +115,10 @@
 </script>
 
 <style lang="less" scoped>
-    .acc-eidit {
-        /deep/.el-input {
-            width: 300px;
-        }
+.acc-eidit {
+    /deep/ .el-input {
+        width: 300px;
     }
+}
+
 </style>

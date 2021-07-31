@@ -39,26 +39,26 @@
                     // 验证账号
                     acc: [{
                             required: true,
-                            message: '不能为空',
-                            trigger: 'blur'
-                        },
-                        {
-                            min: 3,
-                            max: 6,
-                            message: '长度在 3 到 6 个字符',
-                            trigger: 'blur'
-                        }
-                    ],
-                    pwd: [{
-                            required: true,
-                            message: "密码不能为空",
-                            trigger: 'blur'
+                            message: "不能为空",
+                            trigger: "blur"
                         },
                         {
                             min: 3,
                             max: 6,
                             message: "长度在 3 到 6 个字符",
-                            trigger: 'blur'
+                            trigger: "blur"
+                        }
+                    ],
+                    pwd: [{
+                            required: true,
+                            message: "密码不能为空",
+                            trigger: "blur"
+                        },
+                        {
+                            min: 3,
+                            max: 6,
+                            message: "长度在 3 到 6 个字符",
+                            trigger: "blur"
                         }
                     ]
                 }
@@ -71,18 +71,18 @@
                 this.$refs.loginForm.validate((valid) => {
                     if (valid) {
                         this.$message({
-                            message: '登录成功',
-                            type: 'success'
+                            message: "登录成功",
+                            type: "success"
                         });
                         this.$router.push("/layout");
                     } else {
-                        this.$message.error('账号或密码错误');
+                        this.$message.error("账号或密码错误");
                     }
                 });
             },
             // 点击眼睛触发的事件
             changeType(e) {
-                if (e.target.className.includes('eye')) {
+                if (e.target.className.includes("eye")) {
                     this.isShow = !this.isShow
                 }
             }

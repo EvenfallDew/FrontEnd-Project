@@ -66,7 +66,7 @@
 </template>
 
 <script>
-    import Card from '@/components/Card.vue';
+    import Card from "@/components/Card.vue";
 
     export default {
         components: {
@@ -76,22 +76,22 @@
         data() {
             return {
                 tableData: [{
-                    id: '41',
-                    name: '田园蔬菜粥',
-                    category: '特色粥品',
-                    price: '16',
-                    img: '图',
-                    date: '2020-05-02',
+                    id: "41",
+                    name: "田园蔬菜粥",
+                    category: "特色粥品",
+                    price: "16",
+                    img: "图",
+                    date: "2020-05-02",
                     comment: "100",
                     count: "288",
                     desc: "荷兰优质淡奶"
                 }, {
-                    id: '51',
-                    name: '田园蔬菜粥',
-                    category: '特色粥品',
-                    price: '16',
-                    img: '图',
-                    date: '2020-05-02',
+                    id: "51",
+                    name: "田园蔬菜粥",
+                    category: "特色粥品",
+                    price: "16",
+                    img: "图",
+                    date: "2020-05-02",
                     comment: "100",
                     count: "288",
                     desc: "奶香浓而不腻"
@@ -106,19 +106,19 @@
         methods: {
             // 每页显示条数
             handleSizeChange() {
-                console.log('每页显示条数改变');
+                console.log("每页显示条数改变");
             },
             // 页数改变
             handleCurrentChange() {
-                console.log('页数改变');
+                console.log("页数改变");
             },
             // 编辑操作
             eidit() {
-                console.log('编辑');
+                console.log("编辑");
             },
             // 删除操作
             del() {
-                console.log('删除');
+                console.log("删除");
             },
         }
     }

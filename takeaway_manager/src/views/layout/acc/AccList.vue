@@ -11,13 +11,13 @@
                     <el-table-column type="selection" width="55">
                     </el-table-column>
                     <!-- 账号 -->
-                    <el-table-column label="账号" width="180">
+                    <el-table-column label="账号">
                         <template slot-scope="scope">
                             {{ scope.row.name }}
                         </template>
                     </el-table-column>
                     <!-- 用户组 -->
-                    <el-table-column label="用户组" width="220">
+                    <el-table-column label="用户组">
                         <template slot-scope="scope">
                             {{ scope.row.group }}
                         </template>
@@ -29,7 +29,7 @@
                         </template>
                     </el-table-column>
                     <!-- 操作 -->
-                    <el-table-column prop="name" label="操作" width="220">
+                    <el-table-column prop="name" label="操作" width="150">
                         <template slot-scope="scope">
                             <el-button size="mini" @click="edit(scope.row)">编辑</el-button>
                             <el-button size="mini" type="danger" @click="del(scope.row.id)">删除</el-button>
@@ -75,7 +75,7 @@
 </template>
 
 <script>
-    import Card from '@/components/Card.vue';
+    import Card from "@/components/Card.vue";
 
     export default {
         components: {
@@ -86,42 +86,30 @@
             return {
                 isshow: false, // 控制弹窗显示或者隐藏
                 eiditForm: {
-                    name: '',
-                    group: '',
+                    name: "",
+                    group: "",
                 }, //  编辑弹窗的数据
                 curPage: 1, // 当前分页器要显示第几页数据
                 pageSize: 1, // 每页显示几条数据
                 total: 20, // 总条数
                 accData: [{
                         id: 1,
-                        name: 'zs1',
-                        group: '超级管理员',
-                        date: '2021-7-30'
+                        name: "zs1",
+                        group: "超级管理员",
+                        date: "2021-07-30"
                     },
                     {
                         id: 2,
-                        name: 'zs2',
-                        group: '超级管理员',
-                        date: '2021-7-31'
+                        name: "zs2",
+                        group: "超级管理员",
+                        date: "2021-07-31"
                     },
                     {
                         id: 3,
-                        name: 'zs3',
-                        group: '普通管理员',
-                        date: '2021-7-32'
-                    },
-                    {
-                        id: 4,
-                        name: 'zs4',
-                        group: '超级管理员',
-                        date: '2021-7-33'
-                    },
-                    {
-                        id: 5,
-                        name: 'zs5',
-                        group: '普通管理员',
-                        date: '2021-7-34'
-                    },
+                        name: "zs3",
+                        group: "普通管理员",
+                        date: "2021-08-01"
+                    }
                 ],
                 ids: [], // 批量删除需要的数组
             }
@@ -130,12 +118,12 @@
         methods: {
             // 弹窗的确定按钮
             dialogOk() {
-                console.log('确定后要发ajax请求', this.eiditForm)
+                console.log("确定后要发ajax请求", this.eiditForm)
                 this.isshow = false
             },
             // 编辑按钮
             edit(row) {
-                console.log('编辑', row)
+                console.log("编辑", row)
                 // 先打开弹窗  把值赋值给 eiditForm
                 this.isshow = true
                 this.eiditForm = {
@@ -144,7 +132,7 @@
             },
             // 删除按钮
             del(id) {
-                console.log('点击删除获取到id', id)
+                console.log("点击删除获取到id", id)
             },
             // 批量删除
             delAll() {
@@ -157,11 +145,11 @@
             },
             // 条数发生变化触发的函数
             handleSizeChange(val) {
-                console.log('条数改变', val)
+                console.log("条数改变", val)
             },
             // 页数改变触发的函数
             handleCurrentChange(val) {
-                console.log('页数改变', val)
+                console.log("页数改变", val)
             },
             // 多选触发的方法
             sel(val) {
