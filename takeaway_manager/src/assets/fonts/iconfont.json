@@ -1,0 +1,107 @@
+{
+  "id": "2709288",
+  "name": "takeaway_manager",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "356464",
+      "name": "商品",
+      "font_class": "menu-goods",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "791883",
+      "name": "店铺",
+      "font_class": "menu-shop",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "845828",
+      "name": "眼睛",
+      "font_class": "login-eye-open",
+      "unicode": "e668",
+      "unicode_decimal": 58984
+    },
+    {
+      "icon_id": "902044",
+      "name": "用户",
+      "font_class": "login-acc",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
+      "icon_id": "1206766",
+      "name": "订单",
+      "font_class": "menu-order",
+      "unicode": "e68d",
+      "unicode_decimal": 59021
+    },
+    {
+      "icon_id": "5342983",
+      "name": "订单",
+      "font_class": "home-order",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "7158874",
+      "name": "净利润",
+      "font_class": "home-moneys",
+      "unicode": "e665",
+      "unicode_decimal": 58981
+    },
+    {
+      "icon_id": "7708024",
+      "name": "眼睛_闭",
+      "font_class": "login-eye-close",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "8094217",
+      "name": "统计",
+      "font_class": "menu-count",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "9454431",
+      "name": "账号",
+      "font_class": "menu-acc",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "14445364",
+      "name": "锁",
+      "font_class": "login-psw",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "17602729",
+      "name": "订单-",
+      "font_class": "home-orders",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "22572685",
+      "name": "钱包",
+      "font_class": "home-money",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "22696453",
+      "name": "首页",
+      "font_class": "menu-home",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}

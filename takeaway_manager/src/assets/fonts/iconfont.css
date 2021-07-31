@@ -1,0 +1,71 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2709288 */
+  src: url('iconfont.woff2?t=1627548007144') format('woff2'),
+       url('iconfont.woff?t=1627548007144') format('woff'),
+       url('iconfont.ttf?t=1627548007144') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-menu-goods:before {
+  content: "\e624";
+}
+
+.icon-menu-shop:before {
+  content: "\e645";
+}
+
+.icon-login-eye-open:before {
+  content: "\e668";
+}
+
+.icon-login-acc:before {
+  content: "\e634";
+}
+
+.icon-menu-order:before {
+  content: "\e68d";
+}
+
+.icon-home-order:before {
+  content: "\e61c";
+}
+
+.icon-home-moneys:before {
+  content: "\e665";
+}
+
+.icon-login-eye-close:before {
+  content: "\e61b";
+}
+
+.icon-menu-count:before {
+  content: "\e64d";
+}
+
+.icon-menu-acc:before {
+  content: "\e66d";
+}
+
+.icon-login-psw:before {
+  content: "\e623";
+}
+
+.icon-home-orders:before {
+  content: "\e648";
+}
+
+.icon-home-money:before {
+  content: "\e603";
+}
+
+.icon-menu-home:before {
+  content: "\e600";
+}
+
