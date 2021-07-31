@@ -4,6 +4,7 @@
             <header slot="title">商品列表</header>
             <main slot="content">
                 <el-table :data="tableData" style="width: 100%">
+                    <!-- 拓展 -->
                     <el-table-column type="expand">
                         <template slot-scope="props">
                             <el-form label-position="left" inline class="demo-table-expand">
@@ -46,9 +47,19 @@
                     </el-table-column>
                     <el-table-column label="商品图片" prop="img">
                     </el-table-column>
-                    <el-table-column label="操作" prop="desc">
+                    <el-table-column label="商品描述" prop="desc">
+                    </el-table-column>
+                    <el-table-column label="操作" prop="desc" min-width="100px">
+                        <el-button type="primary" @click="eidit()">编辑</el-button>
+                        <el-button type="danger" @click="del()">删除</el-button>
                     </el-table-column>
                 </el-table>
+
+                <!-- 分页器 -->
+                <el-pagination :current-page="curPage" :page-size="pageSize" @size-change="handleSizeChange()"
+                    @current-change="handleCurrentChange()" :total="total" :page-sizes="[1, 5, 10, 20]"
+                    layout="total, sizes, prev, pager, next, jumper">
+                </el-pagination>
             </main>
         </Card>
     </div>
@@ -84,28 +95,47 @@
                     comment: "100",
                     count: "288",
                     desc: "奶香浓而不腻"
-                }]
+                }],
+
+                curPage: 1, // 当前分页器要显示第几页数据
+                pageSize: 1, // 每页显示几条数据
+                total: 20, // 总条数
             }
+        },
+
+        methods: {
+            // 每页显示条数
+            handleSizeChange() {
+                console.log('每页显示条数改变');
+            },
+            // 页数改变
+            handleCurrentChange() {
+                console.log('页数改变');
+            },
+            // 编辑操作
+            eidit() {
+                console.log('编辑');
+            },
+            // 删除操作
+            del() {
+                console.log('删除');
+            },
         }
     }
 </script>
 
 <style lang="less" scoped>
 .goods-list {
-    .demo-table-expand {
-        font-size: 0;
-    }
-
-    .demo-table-expand label {
-        width: 90px;
-
-        color: #99a9bf;
-    }
-
+    // 表格
     .demo-table-expand .el-form-item {
         margin-right: 0;
         margin-bottom: 0;
         width: 50%;
+    }
+
+    // 分页器
+    .el-pagination {
+        margin-top: 20px;
     }
 }
 

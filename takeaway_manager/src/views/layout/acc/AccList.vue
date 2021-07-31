@@ -2,9 +2,9 @@
     <div class="acc-eidit">
         <Card>
             <!-- 卡头 -->
-            <span slot="title">账号列表</span>
+            <header slot="title">账号列表</header>
             <!-- 卡内容 -->
-            <div slot="content">
+            <main slot="content">
                 <el-table ref="accData" :data="accData" tooltip-effect="dark" style="width: 100%"
                     @selection-change="sel">
                     <!-- 选择框 -->
@@ -38,15 +38,15 @@
                 </el-table>
 
                 <!-- 分页器 -->
-                <el-pagination :current-page="curPage" :page-size="pageSize" @size-change="handleSizeChange"
-                    @current-change="handleCurrentChange" :total="total" :page-sizes="[1, 5, 10, 20]"
+                <el-pagination :current-page="curPage" :page-size="pageSize" @size-change="handleSizeChange()"
+                    @current-change="handleCurrentChange()" :total="total" :page-sizes="[1, 5, 10, 20]"
                     layout="total, sizes, prev, pager, next, jumper">
                 </el-pagination>
 
-                <!-- 取消选择的按钮 -->
-                <div style="margin-top: 20px">
-                    <el-button type="danger" @click="delAll">批量删除</el-button>
-                    <el-button type="primary" @click="cancel">取消选择</el-button>
+                <!-- 操作按钮 -->
+                <div class="operate-btn">
+                    <el-button type="danger" @click="delAll()">批量删除</el-button>
+                    <el-button type="primary" @click="cancel()">取消选择</el-button>
                 </div>
 
                 <!-- 弹窗 -->
@@ -69,7 +69,7 @@
                         </div>
                     </el-dialog>
                 </div>
-            </div>
+            </main>
         </Card>
     </div>
 </template>
@@ -81,6 +81,7 @@
         components: {
             Card,
         },
+
         data() {
             return {
                 isshow: false, // 控制弹窗显示或者隐藏
@@ -173,11 +174,23 @@
 </script>
 
 <style lang="less" scoped>
-    .acc-eidit {
-        .dialog {
-            /deep/ .el-input__inner {
-                width: 240px;
-            }
+.acc-eidit {
+    // 分页器
+    .el-pagination {
+        margin-top: 20px;
+    }
+
+    // 操作按钮
+    .operate-btn {
+        margin-top: 20px;
+    }
+
+    // 弹窗
+    .dialog {
+        /deep/ .el-input__inner {
+            width: 240px;
         }
     }
+}
+
 </style>
