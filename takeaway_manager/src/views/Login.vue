@@ -16,7 +16,7 @@
                     </el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="submitForm">登录</el-button>
+                    <el-button type="primary" @click="submitForm()">登录</el-button>
                 </el-form-item>
             </el-form>
         </main>
@@ -24,6 +24,10 @@
 </template>
 
 <script>
+    import {
+        login_api
+    } from "@/api/acc.js";
+
     export default {
         data() {
             return {
@@ -45,7 +49,7 @@
                         {
                             min: 3,
                             max: 6,
-                            message: "长度在 3 到 6 个字符",
+                            message: "长度在 5 到 12 个字符",
                             trigger: "blur"
                         }
                     ],
@@ -57,33 +61,43 @@
                         {
                             min: 3,
                             max: 6,
-                            message: "长度在 3 到 6 个字符",
+                            message: "长度在 5 到 12 个字符",
                             trigger: "blur"
                         }
                     ]
                 }
             }
         },
+
         methods: {
             // 点击登录按钮
             submitForm() {
                 // ui框架自带的方法 validate((valid)=>{ valid就是验证结果 });
-                this.$refs.loginForm.validate((valid) => {
+                this.$refs.loginForm.validate(async (valid) => {
                     if (valid) {
-                        this.$message({
-                            message: "登录成功",
-                            type: "success"
-                        });
-                        this.$router.push("/layout");
+                        // 调用api函数
+                        let res = await login_api({
+                            account: this.loginForm.acc,
+                            password: this.loginForm.pwd,
+                        })
+                        let {
+                            code,
+                            role,
+                            token
+                        } = res.data
+                        // 判断一下 code
+                        if (code == 0) {
+                            this.$router.push("/layout");
+                        }
                     } else {
-                        this.$message.error("账号或密码错误");
+                        return;
                     }
                 });
             },
             // 点击眼睛触发的事件
             changeType(e) {
                 if (e.target.className.includes("eye")) {
-                    this.isShow = !this.isShow
+                    this.isShow = !this.isShow;
                 }
             }
         }
@@ -91,43 +105,42 @@
 </script>
 
 <style lang="less" scoped>
-.login {
-    display: flex;
+    .login {
+        display: flex;
 
-    width: 100%;
-    height: 100%;
+        width: 100%;
+        height: 100%;
 
-    background: #2d3a4b;
+        background: #2d3a4b;
 
-    justify-content: center;
-    align-items: center;
+        justify-content: center;
+        align-items: center;
 
-    main {
-        width: 600px;
+        main {
+            width: 600px;
 
-        text-align: center;
+            text-align: center;
 
-        .title {
-            margin-bottom: 20px;
+            .title {
+                margin-bottom: 20px;
 
-            font-size: 30px;
+                font-size: 30px;
 
-            color: #fff;
-        }
+                color: #fff;
+            }
 
-        // 修改UI框架的样式
-        /deep/ .el-form-item__label {
-            color: #fff;
-        }
+            // 修改UI框架的样式
+            /deep/ .el-form-item__label {
+                color: #fff;
+            }
 
-        /deep/ .el-form-item__content {
-            margin-right: 100px;
-        }
+            /deep/ .el-form-item__content {
+                margin-right: 100px;
+            }
 
-        .el-button--primary {
-            width: 100%;
+            /deep/ .el-button--primary {
+                width: 100%;
+            }
         }
     }
-}
-
 </style>
