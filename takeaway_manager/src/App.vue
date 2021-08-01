@@ -1,19 +1,16 @@
 <template>
-    <div class="container">
-        <router-view></router-view>
-    </div>
+  <div class="container">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-    export default {
-
-    }
+export default {};
 </script>
 
 <style lang="less">
-    .container {
-        width: 100%;
-        height: 100%;
-    }
-
+.container {
+  width: 100%;
+  height: 100%;
+}
 </style>

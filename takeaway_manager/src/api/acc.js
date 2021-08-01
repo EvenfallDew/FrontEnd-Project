@@ -1,4 +1,4 @@
-// 账号模块  专门管理账号
+// 账号模块
 import request from '@/utils/request';
 // 引入qs
 import Qs from 'qs';
@@ -13,12 +13,41 @@ export const login_api = (data) => {
 }
 
 // 添加账号
+export const addList_api = (data) => {
+    return request({
+        method: "post",
+        url: "/users/add",
+        data: Qs.stringify(data)
+    })
+}
 
 // 获取账号列表
+export const accList_api = (data) => {
+    return request({
+        method: "get",
+        url: "/users/list",
+        params: data
+    })
+}
 
 // 删除账号
+export const delAcc_api = (data) => {
+    return request({
+        method: "get",
+        url: "/users/del",
+        params: data
+    })
+}
 
 // 批量删除账号
+export const delAll_api = (data) => {
+    return request({
+        method: "get",
+        url: "/users/batchdel",
+        params: data
+    })
+}
+
 
 // 修改账号
 
