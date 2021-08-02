@@ -51,13 +51,39 @@ export const delAll_api = (data) => {
 // 修改账号
 
 // 检测旧密码正确
+export const checkOldPwd_api = (data) => {
+	return request({
+		method: "get",
+		url: "/users/checkoldpwd",
+		params: data,
+	});
+};
 
 // 修改密码
+export const changePwd_api = (data) => {
+	return request({
+		method: "post",
+		url: "/users/editpwd",
+		data: Qs.stringify(data),
+	});
+};
 
 // 获取个人信息
+export const getInfo_api = () => {
+	return request({
+		method: "get",
+		url: "/users/info",
+	});
+};
 
 // 头像上传
 
 // 修改头像
-
+export const editImg_api = (data) => {
+	return request({
+		method: "get",
+		url: "/users/avataredit",
+		params: data,
+	});
+};
 // 获取身份角色

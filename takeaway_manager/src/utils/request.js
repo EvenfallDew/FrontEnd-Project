@@ -40,6 +40,7 @@ axios.interceptors.response.use(
 					type: "success",
 					message: msg,
 				});
+			} else if (code == "00" || code == "11") {
 			} else {
 				// 错误弹窗
 				Message.error(msg);
@@ -48,6 +49,13 @@ axios.interceptors.response.use(
 		return response;
 	},
 	(error) => {
+		// 在失败回调获取到code 如果是401 说明是一个错误的token
+		if (error.response.data.code == 401) {
+			// 清空本地
+			local.clear();
+			// 退回登录
+			router.push("/login");
+		}
 		// 失败回调
 		return Promise.reject(error);
 	}
