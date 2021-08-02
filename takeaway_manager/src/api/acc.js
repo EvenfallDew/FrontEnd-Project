@@ -1,53 +1,52 @@
 // 账号模块
-import request from '@/utils/request';
-// 引入qs
-import Qs from 'qs';
+import request from "@/utils/request";
+// 引入qs转post请求
+import Qs from "qs";
 
 // 登录接口
 export const login_api = (data) => {
-    return request({
-        method: 'post', // 请求方式
-        url: '/users/checkLogin', // 请求地址
-        data: Qs.stringify(data) // 参数
-    });
-}
+	return request({
+		method: "post",
+		url: "/users/checkLogin",
+		data: Qs.stringify(data),
+	});
+};
 
 // 添加账号
 export const addList_api = (data) => {
-    return request({
-        method: "post",
-        url: "/users/add",
-        data: Qs.stringify(data)
-    })
-}
+	return request({
+		method: "post",
+		url: "/users/add",
+		data: Qs.stringify(data),
+	});
+};
 
 // 获取账号列表
 export const accList_api = (data) => {
-    return request({
-        method: "get",
-        url: "/users/list",
-        params: data
-    })
-}
+	return request({
+		method: "get",
+		url: "/users/list",
+		params: data,
+	});
+};
 
 // 删除账号
 export const delAcc_api = (data) => {
-    return request({
-        method: "get",
-        url: "/users/del",
-        params: data
-    })
-}
+	return request({
+		method: "get",
+		url: "/users/del",
+		params: data,
+	});
+};
 
 // 批量删除账号
 export const delAll_api = (data) => {
-    return request({
-        method: "get",
-        url: "/users/batchdel",
-        params: data
-    })
-}
-
+	return request({
+		method: "get",
+		url: "/users/batchdel",
+		params: data,
+	});
+};
 
 // 修改账号
 

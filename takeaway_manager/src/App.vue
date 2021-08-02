@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <router-view></router-view>
-  </div>
+	<div class="container">
+		<router-view></router-view>
+	</div>
 </template>
 
 <script>
@@ -10,7 +10,8 @@ export default {};
 
 <style lang="less">
 .container {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
+
 </style>
