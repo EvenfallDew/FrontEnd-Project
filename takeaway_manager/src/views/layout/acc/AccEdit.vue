@@ -4,12 +4,12 @@
 			<header slot="title">修改密码</header>
 			<main slot="content">
 				<el-form
-					:model="editForm"
-					status-icon
-					:rules="rules"
+					class="demo-ruleForm"
 					ref="editForm"
 					label-width="100px"
-					class="demo-ruleForm"
+					status-icon
+					:model="editForm"
+					:rules="rules"
 				>
 					<el-form-item label="原密码" prop="oldPwd">
 						<el-input v-model="editForm.oldPwd"></el-input>
@@ -57,7 +57,7 @@ export default {
 			if (!value) {
 				callback(new Error("新密码不能为空"));
 			} else if (!REG_PWD.test(value)) {
-				callback(new Error("请输入6-12位密码"));
+				callback(new Error("请输入5-12位密码"));
 			} else {
 				callback();
 			}
@@ -95,6 +95,7 @@ export default {
 			},
 		};
 	},
+
 	methods: {
 		// 添加
 		add() {

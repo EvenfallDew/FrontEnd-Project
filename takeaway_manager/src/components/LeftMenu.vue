@@ -1,13 +1,13 @@
 <template>
 	<div class="left-menu">
 		<el-menu
+			class="el-menu-vertical-demo"
+			text-color="#fff"
+			active-text-color="#3f9af8"
+			background-color="#304156"
 			router
 			unique-opened
 			:default-active="this.$route.path"
-			class="el-menu-vertical-demo"
-			background-color="#304156"
-			text-color="#fff"
-			active-text-color="#3f9af8"
 		>
 			<!-- 后台首页 -->
 			<el-menu-item index="/layout">
@@ -28,7 +28,7 @@
 				<el-menu-item-group>
 					<el-menu-item index="/goods/goods-list">商品列表</el-menu-item>
 					<el-menu-item index="/goods/goods-add">商品添加</el-menu-item>
-					<el-menu-item index="/goods/goods-type">商品分类</el-menu-item>
+					<el-menu-item index="/goods/goods-cate">商品分类</el-menu-item>
 				</el-menu-item-group>
 			</el-submenu>
 			<!-- 店铺管理 -->

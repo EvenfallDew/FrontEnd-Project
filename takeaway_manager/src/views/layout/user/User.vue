@@ -45,10 +45,10 @@ export default {
 			baseUrl: "http://127.0.0.1:5000/upload/imgs/acc_img/",
 			imageUrl: "",
 			info: {
-				account: "",
-				ctime: "",
 				id: "",
+				account: "",
 				userGroup: "",
+				ctime: "",
 			},
 		};
 	},
@@ -77,7 +77,6 @@ export default {
 				this.imageUrl = "";
 			}
 		},
-
 		// 上传成功的回调函数
 		handleAvatarSuccess(res) {
 			// 上传成功后 对组件中的图片赋值

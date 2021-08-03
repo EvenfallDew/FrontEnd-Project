@@ -25,7 +25,7 @@
 					></el-input>
 				</el-form-item>
 				<el-form-item>
-					<el-button type="primary" @click="login()" @keyup.enter.native="loginEnter()">
+					<el-button type="primary" @click="login()" @keyup.native="loginEnter()">
 						登录
 					</el-button>
 				</el-form-item>
@@ -81,9 +81,11 @@ export default {
 			},
 		};
 	},
+
 	created() {
 		this.loginEnter();
 	},
+
 	methods: {
 		// 登录
 		login() {

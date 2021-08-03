@@ -2,10 +2,9 @@
 	<div class="right-top">
 		<div class="bread-crumb">
 			<el-breadcrumb separator-class="el-icon-arrow-right">
-				<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-				<el-breadcrumb-item>活动管理</el-breadcrumb-item>
-				<el-breadcrumb-item>活动列表</el-breadcrumb-item>
-				<el-breadcrumb-item>活动详情</el-breadcrumb-item>
+				<el-breadcrumb-item v-for="(item, i) in breadArr" :key="i" :to="{ path: item.path }">
+					{{ item.title }}
+				</el-breadcrumb-item>
 			</el-breadcrumb>
 		</div>
 		<div class="account">
@@ -18,7 +17,7 @@
 					</span>
 					<el-dropdown-menu slot="dropdown">
 						<el-dropdown-item command="user">个人中心</el-dropdown-item>
-						<el-dropdown-item command="outlogin">退出登录</el-dropdown-item>
+						<el-dropdown-item command="logout">退出登录</el-dropdown-item>
 					</el-dropdown-menu>
 				</el-dropdown>
 			</div>
@@ -35,28 +34,54 @@ export default {
 	data() {
 		return {
 			info: {},
+			breadArr: [],
 		};
 	},
+
 	created() {
-		// 调用函数
+		// 信息绘制
 		this.getInfo();
 		// 接收$bus
 		this.$bus.$on("uploadImg", () => {
 			// 重绘
 			this.getInfo();
 		});
+		this.filterBread();
 	},
+
+	watch: {
+		// 监听hash变化
+		"$route.path"() {
+			this.filterBread();
+		},
+	},
+
 	methods: {
-		// 获取用户信息的函数
+		// 遍历路由对象 得到面包屑所需要的数据
+		filterBread() {
+			let newArr = [{ path: "/layout", title: "后台首页" }];
+			this.$route.matched.forEach((item) => {
+				// 如果path不是空
+				if (item.path != "") {
+					newArr.push({
+						path: item.path,
+						title: item.meta.title,
+					});
+				}
+			});
+			// 赋值
+			this.breadArr = newArr;
+		},
+		// 获取用户信息
 		async getInfo() {
 			let res = await getInfo_api();
+			// 解构赋值
 			let { accountInfo } = res.data;
-			// 赋值
 			this.info = accountInfo;
-			// 拿到数据后，存入本地 给个人中心用
+			// 存入本地
 			local.set("info", this.info);
 		},
-		// 下拉选择框触发的函数
+		// 下拉选择框
 		selItem(val) {
 			// val 就是command 绑定的值 形参随便叫什么无所谓
 			if (val == "user") {

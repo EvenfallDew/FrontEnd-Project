@@ -4,12 +4,12 @@
 			<span slot="title">账号添加</span>
 			<div slot="content">
 				<el-form
-					:model="addForm"
-					status-icon
-					:rules="rules"
+					class="demo-ruleForm"
 					ref="addForm"
 					label-width="100px"
-					class="demo-ruleForm"
+					status-icon
+					:rules="rules"
+					:model="addForm"
 				>
 					<el-form-item label="账号" prop="acc">
 						<el-input v-model="addForm.acc"></el-input>
@@ -53,7 +53,7 @@ export default {
 			if (!value) {
 				callback(new Error("账号不能为空"));
 			} else if (!REG_ACC.test(value)) {
-				callback(new Error("请输入5-12位"));
+				callback(new Error("请输入5-12位账号"));
 			} else {
 				callback();
 			}

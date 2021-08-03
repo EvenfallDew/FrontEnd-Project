@@ -22,33 +22,36 @@ const routes = [
 	},
 	// 后台首页
 	{
-		path: "/layout",
+		path: "",
 		component: Layout,
 		children: [
 			{
-				path: "",
+				path: "/layout",
+				meta: { title: "后台首页" },
 				component: () => import("@/views/layout/home/Home.vue"),
 			},
 		],
 	},
 	// 个人中心
 	{
-		path: "/user",
+		path: "",
 		component: Layout,
 		children: [
 			{
-				path: "",
+				path: "/user",
+				meta: { title: "个人中心" },
 				component: () => import("@/views/layout/user/User.vue"),
 			},
 		],
 	},
 	// 订单管理
 	{
-		path: "/order",
+		path: "",
 		component: Layout,
 		children: [
 			{
-				path: "",
+				path: "/order",
+				meta: { title: "订单管理" },
 				component: () => import("@/views/layout/order/Order.vue"),
 			},
 		],
@@ -56,30 +59,35 @@ const routes = [
 	// 商品管理
 	{
 		path: "/goods",
+		meta: { title: "商品管理" },
 		component: Layout,
 		redirect: "/goods/goods-list",
 		children: [
 			{
 				path: "goods-list",
+				meta: { title: "商品列表" },
 				component: () => import("@/views/layout/goods/GoodsList.vue"),
 			},
 			{
 				path: "goods-add",
+				meta: { title: "商品添加" },
 				component: () => import("@/views/layout/goods/GoodsAdd.vue"),
 			},
 			{
-				path: "goods-type",
-				component: () => import("@/views/layout/goods/GoodsType.vue"),
+				path: "goods-cate",
+				meta: { title: "商品类型" },
+				component: () => import("@/views/layout/goods/GoodsCate.vue"),
 			},
 		],
 	},
 	// 店铺管理
 	{
-		path: "/shop",
+		path: "",
 		component: Layout,
 		children: [
 			{
-				path: "",
+				path: "/shop",
+				meta: { title: "店铺管理" },
 				component: () => import("@/views/layout/shop/Shop.vue"),
 			},
 		],
@@ -87,19 +95,23 @@ const routes = [
 	// 账号管理
 	{
 		path: "/acc",
+		meta: { title: "账号管理" },
 		component: Layout,
 		redirect: "/acc/acc-list",
 		children: [
 			{
 				path: "acc-list",
+				meta: { title: "账号列表" },
 				component: () => import("@/views/layout/acc/AccList.vue"),
 			},
 			{
 				path: "acc-add",
+				meta: { title: "账号添加" },
 				component: () => import("@/views/layout/acc/AccAdd.vue"),
 			},
 			{
 				path: "acc-edit",
+				meta: { title: "账号修改" },
 				component: () => import("@/views/layout/acc/AccEdit.vue"),
 			},
 		],
@@ -107,15 +119,18 @@ const routes = [
 	// 销售统计
 	{
 		path: "/count",
+		meta: { title: "销售统计" },
 		component: Layout,
 		redirect: "/count/count-goods",
 		children: [
 			{
 				path: "count-goods",
+				meta: { title: "商品统计" },
 				component: () => import("@/views/layout/count/CountGoods.vue"),
 			},
 			{
 				path: "count-order",
+				meta: { title: "订单统计" },
 				component: () => import("@/views/layout/count/CountOrder.vue"),
 			},
 		],
