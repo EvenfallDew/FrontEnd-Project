@@ -3,11 +3,11 @@
 		<Card>
 			<header slot="title">商品列表</header>
 			<main slot="content">
-				<el-table :data="tableData" style="width: 100%">
-					<!-- 拓展 -->
+				<el-table style="width: 100%" :data="goodsData">
+					<!-- 下拉拓展 -->
 					<el-table-column type="expand">
 						<template slot-scope="props">
-							<el-form label-position="left" inline class="demo-table-expand">
+							<el-form class="demo-table-expand" label-position="left" inline>
 								<el-form-item label="商品ID">
 									<span>{{ props.row.id }}</span>
 								</el-form-item>
@@ -21,19 +21,24 @@
 									<span>{{ props.row.price }}</span>
 								</el-form-item>
 								<el-form-item label="商品图片">
-									<span>{{ props.row.img }}</span>
+									<el-image
+										style="width: 100px; height: 100px"
+										fit="cover"
+										:src="baseUrl + props.row.imgUrl"
+										:preview-src-list="[baseUrl + props.row.imgUrl]"
+									></el-image>
 								</el-form-item>
 								<el-form-item label="创建时间">
-									<span>{{ props.row.date }}</span>
+									<span>{{ props.row.ctime }}</span>
 								</el-form-item>
 								<el-form-item label="商品评价">
-									<span>{{ props.row.comment }}</span>
+									<span>{{ props.row.rating }}</span>
 								</el-form-item>
 								<el-form-item label="商品销量">
-									<span>{{ props.row.count }}</span>
+									<span>{{ props.row.sellCount }}</span>
 								</el-form-item>
 								<el-form-item label="商品描述">
-									<span>{{ props.row.desc }}</span>
+									<span>{{ props.row.goodsDesc }}</span>
 								</el-form-item>
 							</el-form>
 						</template>
@@ -42,24 +47,91 @@
 					<el-table-column label="商品名称" prop="name"></el-table-column>
 					<el-table-column label="所属分类" prop="category"></el-table-column>
 					<el-table-column label="商品价格" prop="price"></el-table-column>
-					<el-table-column label="商品图片" prop="img"></el-table-column>
-					<el-table-column label="商品描述" prop="desc"></el-table-column>
-					<el-table-column label="操作" prop="desc" min-width="100px">
-						<el-button type="primary" @click="eidit()">编辑</el-button>
-						<el-button type="danger" @click="del()">删除</el-button>
+					<el-table-column label="商品图片">
+						<template slot-scope="scope">
+							<el-image
+								style="width: 50px; height: 50px"
+								fit="cover"
+								:src="baseUrl + scope.row.imgUrl"
+								:preview-src-list="[baseUrl + scope.row.imgUrl]"
+							></el-image>
+						</template>
+					</el-table-column>
+					<el-table-column label="商品描述" prop="goodsDesc"></el-table-column>
+					<el-table-column label="操作" prop="desc" width="150px">
+						<template slot-scope="scope">
+							<el-button type="primary" size="mini" @click="edit(scope.row)">编辑</el-button>
+							<el-button type="danger" size="mini" @click="del(scope.row)">删除</el-button>
+						</template>
 					</el-table-column>
 				</el-table>
 
 				<!-- 分页器 -->
 				<el-pagination
-					:current-page="curPage"
-					:page-size="pageSize"
-					@size-change="handleSizeChange()"
-					@current-change="handleCurrentChange()"
-					:total="total"
-					:page-sizes="[1, 5, 10, 20]"
 					layout="total, sizes, prev, pager, next, jumper"
+					:total="total"
+					:page-size="pageSize"
+					:current-page="currentPage"
+					:page-sizes="[5, 10, 20]"
+					@size-change="handleSizeChange($event)"
+					@current-change="handleCurrentChange($event)"
 				></el-pagination>
+
+				<!-- 弹窗 -->
+				<el-dialog class="dialog" title="编辑商品" :visible.sync="isShow">
+					<el-form :model="editForm">
+						<el-form-item label="商品名称" label-width="100px">
+							<el-input v-model="editForm.name"></el-input>
+						</el-form-item>
+
+						<el-form-item label="所属分类" label-width="100px">
+							<el-select placeholder="请选择商品分类" v-model="editForm.category">
+								<el-option
+									v-for="(item, index) in cateArr"
+									:key="index"
+									:label="item.cateName"
+									:value="item.cateName"
+								></el-option>
+							</el-select>
+						</el-form-item>
+
+						<el-form-item label="商品价格" label-width="100px">
+							<el-input-number
+								v-model="editForm.price"
+								:min="1"
+								:max="99999"
+								:precision="2"
+							></el-input-number>
+						</el-form-item>
+
+						<el-form-item label="商品描述" label-width="100px">
+							<el-input type="textarea" v-model="editForm.goodsDesc"></el-input>
+						</el-form-item>
+
+						<el-form-item label="商品图片" label-width="100px">
+							<el-upload
+								class="avatar-uploader"
+								action="http://127.0.0.1:5000/goods/goods_img_upload"
+								:show-file-list="false"
+								:on-success="handleAvatarSuccess"
+							>
+								<img
+									class="avatar"
+									style="width: 100px"
+									v-if="editForm.imgUrl"
+									v-model="editForm.imgUrl"
+									:src="baseUrl + editForm.imgUrl"
+								/>
+								<i class="el-icon-plus avatar-uploader-icon" v-else></i>
+							</el-upload>
+						</el-form-item>
+					</el-form>
+
+					<div slot="footer" class="dialog-footer">
+						<el-button @click="isShow = false">取消</el-button>
+						<el-button type="primary" @click="finish()">确定</el-button>
+					</div>
+				</el-dialog>
 			</main>
 		</Card>
 	</div>
@@ -67,6 +139,7 @@
 
 <script>
 import Card from "@/components/Card.vue";
+import { getGoodsList_api, delGoods_api, editGoods_api, getGoodsCate_api } from "@/api/goods";
 
 export default {
 	components: {
@@ -75,71 +148,112 @@ export default {
 
 	data() {
 		return {
-			tableData: [
-				{
-					id: "41",
-					name: "田园蔬菜粥",
-					category: "特色粥品",
-					price: "16",
-					img: "图",
-					date: "2020-05-02",
-					comment: "100",
-					count: "288",
-					desc: "荷兰优质淡奶",
-				},
-				{
-					id: "51",
-					name: "田园蔬菜粥",
-					category: "特色粥品",
-					price: "16",
-					img: "图",
-					date: "2020-05-02",
-					comment: "100",
-					count: "288",
-					desc: "奶香浓而不腻",
-				},
-			],
-
-			curPage: 1, // 当前分页器要显示第几页数据
-			pageSize: 1, // 每页显示几条数据
-			total: 20, // 总条数
+			goodsData: [],
+			currentPage: 1, // 当前分页器要显示第几页数据
+			pageSize: 5, // 每页显示几条数据
+			total: 0, // 总条数
+			// 图片地址
+			baseUrl: "http://127.0.0.1:5000/upload/imgs/goods_img/",
+			isShow: false,
+			editForm: {
+				name: "",
+				category: "",
+				price: "",
+				imgUrl: "",
+				goodsDesc: "",
+				id: "",
+			},
+			cateArr: [],
 		};
 	},
 
+	created() {
+		this.getList();
+		this.getGoodsCate();
+	},
+
 	methods: {
-		// 每页显示条数
-		handleSizeChange() {
-			console.log("每页显示条数改变");
+		// 获取列表
+		async getList() {
+			let res = await getGoodsList_api({
+				currentPage: this.currentPage,
+				pageSize: this.pageSize,
+			});
+			let { data, total } = res.data;
+			// 页码必须大于0
+			if (data.length == 0 && this.currentPage > 1) {
+				this.currentPage--;
+				// 重绘
+				this.getList();
+			}
+			// 数据
+			this.goodsData = data;
+			// 总条数
+			this.total = total;
 		},
-		// 页数改变
-		handleCurrentChange() {
-			console.log("页数改变");
+		// 获取分类
+		async getGoodsCate() {
+			let res = await getGoodsCate_api();
+			let { categories } = res.data;
+			this.cateArr = categories;
 		},
-		// 编辑操作
-		eidit() {
-			console.log("编辑");
+		// 编辑
+		edit(row) {
+			// 打开弹窗
+			this.isShow = true;
+			// 浅拷贝
+			this.editForm = {
+				...row,
+			};
 		},
-		// 删除操作
-		del() {
-			console.log("删除");
+		// 删除
+		del(row) {
+			this.$confirm(`此操作将永久删除 ${row.name} ，是否继续？`, "提示", {
+				confirmButtonText: "确定",
+				cancelButtonText: "取消",
+				type: "warning",
+			})
+				.then(async () => {
+					// 确定
+					let res = await delGoods_api({
+						id: row.id,
+					});
+					// 成功
+					if (res.data.code == 0) {
+						// 重绘
+						this.getList();
+					}
+				})
+				.catch(() => {});
+		},
+		// 完成修改
+		async finish() {
+			let res = await editGoods_api(this.editForm);
+			let { code } = res.data;
+			if (code == 0) {
+				this.isShow = false;
+				this.getList();
+			}
+		},
+		// 图片上传成功
+		handleAvatarSuccess(res) {
+			let { code, imgUrl } = res;
+			if (code == 0) {
+				this.editForm.imgUrl = imgUrl;
+			}
+		},
+		// 条数
+		handleSizeChange(val) {
+			this.pageSize = val;
+			this.getList();
+		},
+		// 页数
+		handleCurrentChange(val) {
+			this.currentPage = val;
+			this.getList();
 		},
 	},
 };
 </script>
 
-<style lang="less" scoped>
-.goods-list {
-    // 表格
-    .demo-table-expand .el-form-item {
-        margin-right: 0;
-        margin-bottom: 0;
-        width: 50%;
-    }
-
-    // 分页器
-    .el-pagination {
-        margin-top: 20px;
-    }
-}
-
-</style>
+<style lang="less" scoped src="../../../assets/styles/goods_list.less"></style>

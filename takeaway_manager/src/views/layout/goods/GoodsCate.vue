@@ -1,9 +1,9 @@
 <template>
-	<div>
-		<Card class="goods-cate">
+	<div class="goods-cate">
+		<Card>
 			<header slot="title">
 				<span>商品分类</span>
-				<el-button @click="isShow = true" type="primary" size="mini">添加分类</el-button>
+				<el-button type="primary" size="mini" @click="isShow = true">添加分类</el-button>
 			</header>
 			<!-- 表格 -->
 			<main slot="content">
@@ -14,7 +14,7 @@
 							<div v-if="scope.row.isEdit">
 								{{ scope.row.cateName }}
 							</div>
-							<el-input v-else size="mini" v-model="scope.row.cateName"></el-input>
+							<el-input size="mini" v-else v-model="scope.row.cateName"></el-input>
 						</template>
 					</el-table-column>
 					<el-table-column label="是否启用">
@@ -26,11 +26,13 @@
 							></el-switch>
 						</template>
 					</el-table-column>
-					<el-table-column label="操作">
+					<el-table-column label="操作" width="150px">
 						<template slot-scope="scope">
-							<el-button v-if="scope.row.isEdit" size="mini" @click="edit(scope.row)">编辑</el-button>
-							<el-button v-else type="success" size="mini" @click="ok(scope.row)">完成</el-button>
-							<el-button @click="del(scope.row.id)" size="mini" type="danger">删除</el-button>
+							<el-button type="primary" size="mini" v-if="scope.row.isEdit" @click="edit(scope.row)">
+								编辑
+							</el-button>
+							<el-button type="success" size="mini" v-else @click="finish(scope.row)">完成</el-button>
+							<el-button type="danger" size="mini" @click="del(scope.row)">删除</el-button>
 						</template>
 					</el-table-column>
 				</el-table>
@@ -38,13 +40,29 @@
 				<!-- 分页器 -->
 				<el-pagination
 					layout="total, sizes, prev, pager, next, jumper"
-					:current-page="currentPage"
-					:page-size="pageSize"
 					:total="total"
-					:page-sizes="[1, 5, 10, 20]"
+					:page-size="pageSize"
+					:current-page="currentPage"
+					:page-sizes="[5, 10, 20]"
 					@size-change="handleSizeChange($event)"
 					@current-change="handleCurrentChange($event)"
 				></el-pagination>
+
+				<!-- 弹窗 -->
+				<el-dialog title="添加分类" :visible.sync="isShow">
+					<el-form :model="editForm">
+						<el-form-item label="分类名称" label-width="100px">
+							<el-input v-model="editForm.cateName"></el-input>
+						</el-form-item>
+						<el-form-item label="是否启用" label-width="100px">
+							<el-switch active-color="#13ce66" v-model="editForm.state"></el-switch>
+						</el-form-item>
+					</el-form>
+					<div slot="footer" class="dialog-footer">
+						<el-button @click="isShow = false">取消</el-button>
+						<el-button type="primary" @click="addCate()">确定</el-button>
+					</div>
+				</el-dialog>
 			</main>
 		</Card>
 	</div>
@@ -71,60 +89,11 @@ export default {
 	},
 
 	created() {
-		// 调用函数
+		// 获取列表
 		this.getList();
 	},
 
 	methods: {
-		// 删除分类
-		async del(id) {
-			console.log(id);
-			let res = await delGoodsCate_api({
-				id,
-			});
-			let { code } = res.data;
-			if (code == 0) {
-				// 重绘视图
-				this.getList();
-			}
-		},
-		// 添加分类
-		async addType() {
-			let res = await addGoodsCate_api({
-				cateName: this.editForm.cateName,
-				state: this.editForm.state,
-			});
-			let { code } = res.data;
-			if (code == 0) {
-				// 调用函数 重绘视图
-				this.getList();
-				// 清空 弹窗表单的数据
-				this.editForm = {};
-			}
-			// 关闭弹窗
-			this.isShow = false;
-		},
-		// 点击完成按钮
-		async ok(row) {
-			// 发请求 并改变编辑状态
-			let res = await editGoodsCate_api({
-				id: row.id,
-				cateName: row.cateName,
-				state: row.state,
-			});
-			let { code } = res.data;
-			if (code == 0) {
-				// 调用函数
-				this.getList();
-				// 改变当前行的激活状态 关闭不可编辑
-				row.isEdit = true;
-			}
-		},
-		// 点击编辑的事件
-		edit(row) {
-			// 改变 当前这一行的编辑状态
-			row.isEdit = false;
-		},
 		// 封装获取分类的函数
 		async getList() {
 			let res = await getGoodsCateList_api({
@@ -132,7 +101,6 @@ export default {
 				pageSize: this.pageSize,
 			});
 			let { data, total } = res.data;
-
 			data.forEach((item) => {
 				item.state = item.state == 1 ? true : false;
 				// 自己给自己加一个编辑状态
@@ -142,16 +110,73 @@ export default {
 			this.goodsData = data;
 			this.total = total;
 		},
-		// 当条数发生变化
+		// 编辑
+		edit(row) {
+			row.isEdit = false;
+		},
+		// 编辑完成
+		async finish(row) {
+			// 发请求 并改变编辑状态
+			let res = await editGoodsCate_api({
+				id: row.id,
+				cateName: row.cateName,
+				state: row.state,
+			});
+			if (res.data.code == 0) {
+				// 调用函数
+				this.getList();
+				// 改变当前行的激活状态 关闭不可编辑
+				row.isEdit = true;
+			}
+		},
+		// 删除分类
+		del(row) {
+			this.$confirm(`此操作将永久删除 ${row.cateName} ，是否继续？`, "提示", {
+				confirmButtonText: "确定",
+				cancelButtonText: "取消",
+				type: "warning",
+			})
+				.then(async () => {
+					// 确定
+					let res = await delGoodsCate_api({
+						id: row.id,
+					});
+					// 成功
+					if (res.data.code == 0) {
+						// 重绘
+						this.getList();
+					}
+				})
+				.catch(() => {});
+		},
+		// 添加分类
+		async addCate() {
+			if (this.editForm.state == undefined) {
+				this.editForm.state = false;
+			}
+			let res = await addGoodsCate_api({
+				cateName: this.editForm.cateName,
+				state: this.editForm.state,
+			});
+			// 如果成功
+			if (res.data.code == 0) {
+				// 重绘
+				this.getList();
+			}
+			// 清空
+			this.editForm = {};
+			// 关闭弹窗
+			this.isShow = false;
+		},
+
+		// 条数
 		handleSizeChange(val) {
 			this.pageSize = val;
-			// 重绘视图
 			this.getList();
 		},
-		// 当页数发生变化
+		// 页数
 		handleCurrentChange(val) {
 			this.currentPage = val;
-			// 重绘视图
 			this.getList();
 		},
 	},
@@ -160,18 +185,19 @@ export default {
 
 <style lang="less" scoped>
 .goods-cate {
-	header {
-		display: flex;
+    header {
+        display: flex;
 
-		justify-content: space-between;
-		align-items: center;
-	}
+        justify-content: space-between;
+        align-items: center;
+    }
 
-	main {
-		// 分页器
-		.el-pagination {
-			margin-top: 20px;
-		}
-	}
+    main {
+        // 分页器
+        .el-pagination {
+            margin-top: 20px;
+        }
+    }
 }
+
 </style>

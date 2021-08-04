@@ -3,7 +3,7 @@
 		<Card>
 			<header slot="title">商品添加</header>
 			<main slot="content">
-				<el-form ref="addForm" label-width="80px" :model="addForm">
+				<el-form ref="addForm" label-width="100px" :model="addForm">
 					<el-form-item label="商品名称">
 						<el-input v-model="addForm.name"></el-input>
 					</el-form-item>
@@ -11,8 +11,8 @@
 					<el-form-item label="商品分类">
 						<el-select placeholder="请选择商品分类" v-model="addForm.category">
 							<el-option
-								v-for="(item, i) in cateArr"
-								:key="i"
+								v-for="(item, index) in cateArr"
+								:key="index"
 								:label="item.cateName"
 								:value="item.cateName"
 							></el-option>
@@ -20,13 +20,7 @@
 					</el-form-item>
 
 					<el-form-item label="商品价格">
-						<el-input-number
-							label="描述文字"
-							v-model="addForm.price"
-							:precision="2"
-							:min="1"
-							:max="99999"
-						></el-input-number>
+						<el-input-number v-model="addForm.price" :min="1" :max="99999" :precision="2"></el-input-number>
 					</el-form-item>
 
 					<el-form-item label="商品图片">
@@ -34,11 +28,10 @@
 							class="avatar-uploader"
 							action="http://127.0.0.1:5000/goods/goods_img_upload"
 							:show-file-list="false"
-							:on-success="handleAvatarSuccess($event)"
-							:before-upload="beforeAvatarUpload()"
+							:on-success="handleAvatarSuccess"
 						>
 							<img class="avatar" v-if="addForm.imgUrl" :src="baseUrl + addForm.imgUrl" />
-							<i v-else class="el-icon-plus avatar-uploader-icon"></i>
+							<i class="el-icon-plus avatar-uploader-icon" v-else></i>
 						</el-upload>
 					</el-form-item>
 
@@ -107,8 +100,6 @@ export default {
 				this.addForm.imgUrl = imgUrl;
 			}
 		},
-		// 上传图片之前
-		beforeAvatarUpload() {},
 	},
 };
 </script>

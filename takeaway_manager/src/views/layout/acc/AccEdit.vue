@@ -24,7 +24,7 @@
 					</el-form-item>
 
 					<el-form-item>
-						<el-button type="primary" @click="add()">确定</el-button>
+						<el-button type="primary" @click="edit()">确定</el-button>
 						<el-button @click="reset()">重置</el-button>
 					</el-form-item>
 				</el-form>
@@ -35,7 +35,6 @@
 
 <script>
 import Card from "@/components/Card.vue";
-
 import { REG_PWD } from "@/utils/reg.js";
 
 export default {
@@ -98,17 +97,18 @@ export default {
 
 	methods: {
 		// 添加
-		add() {
+		edit() {
 			this.$refs.editForm.validate(async (valid) => {
 				if (valid) {
 					let res = await changePwd_api({
 						newPwd: this.eiditForm.confirmPwd,
 					});
 					let { code } = res.data;
-					// 判断 如果code=0 说明修改成功 重新登录并清空本地存储
+					// 修改成功
 					if (code == 0) {
+						// 清空本地存储
 						local.clear();
-						// 跳转页面
+						// 跳转登录页面
 						this.$router.push("/login");
 					}
 				}
