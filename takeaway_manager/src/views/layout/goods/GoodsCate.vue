@@ -79,12 +79,12 @@ export default {
 
 	data() {
 		return {
-			goodsData: [], // 数据
+			goodsData: [], // 商品数据
 			currentPage: 1, // 当前显示页数
 			pageSize: 5, // 一页显示条数
 			total: 0, // 总条数
 			isShow: false, // 弹窗显示或者隐藏
-			editForm: {}, // 弹窗数据
+			editForm: {}, // 弹窗编辑数据
 		};
 	},
 
@@ -168,7 +168,6 @@ export default {
 			// 关闭弹窗
 			this.isShow = false;
 		},
-
 		// 条数
 		handleSizeChange(val) {
 			this.pageSize = val;
@@ -185,19 +184,18 @@ export default {
 
 <style lang="less" scoped>
 .goods-cate {
-    header {
-        display: flex;
+	header {
+		display: flex;
 
-        justify-content: space-between;
-        align-items: center;
-    }
+		justify-content: space-between;
+		align-items: center;
+	}
 
-    main {
-        // 分页器
-        .el-pagination {
-            margin-top: 20px;
-        }
-    }
+	main {
+		// 分页器
+		.el-pagination {
+			margin-top: 20px;
+		}
+	}
 }
-
 </style>
