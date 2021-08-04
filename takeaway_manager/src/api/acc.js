@@ -1,4 +1,4 @@
-// 账号模块
+// 账号api模块
 import request from "@/utils/request";
 // 引入qs转post请求
 import Qs from "qs";

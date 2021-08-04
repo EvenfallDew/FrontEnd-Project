@@ -105,7 +105,11 @@
 						</el-form-item>
 
 						<el-form-item label="商品描述" label-width="100px">
-							<el-input type="textarea" v-model="editForm.goodsDesc"></el-input>
+							<el-input
+								type="textarea"
+								v-model="editForm.goodsDesc"
+								:autosize="{ minRows: 5 }"
+							></el-input>
 						</el-form-item>
 
 						<el-form-item label="商品图片" label-width="100px">
@@ -140,6 +144,7 @@
 <script>
 import Card from "@/components/Card.vue";
 import { getGoodsList_api, delGoods_api, editGoods_api, getGoodsCate_api } from "@/api/goods";
+import moment from "moment";
 
 export default {
 	components: {
@@ -149,20 +154,12 @@ export default {
 	data() {
 		return {
 			goodsData: [],
-			currentPage: 1, // 当前分页器要显示第几页数据
+			currentPage: 1, // 当前页
 			pageSize: 5, // 每页显示几条数据
 			total: 0, // 总条数
-			// 图片地址
-			baseUrl: "http://127.0.0.1:5000/upload/imgs/goods_img/",
+			baseUrl: "http://127.0.0.1:5000/upload/imgs/goods_img/", // 图片地址
 			isShow: false,
-			editForm: {
-				name: "",
-				category: "",
-				price: "",
-				imgUrl: "",
-				goodsDesc: "",
-				id: "",
-			},
+			editForm: {},
 			cateArr: [],
 		};
 	},
@@ -186,6 +183,8 @@ export default {
 				// 重绘
 				this.getList();
 			}
+			// 转换时间
+			data.forEach((item) => (item.ctime = moment(item.ctime).format("YYYY-MM-DD HH:mm:ss")));
 			// 数据
 			this.goodsData = data;
 			// 总条数
@@ -196,15 +195,6 @@ export default {
 			let res = await getGoodsCate_api();
 			let { categories } = res.data;
 			this.cateArr = categories;
-		},
-		// 编辑
-		edit(row) {
-			// 打开弹窗
-			this.isShow = true;
-			// 浅拷贝
-			this.editForm = {
-				...row,
-			};
 		},
 		// 删除
 		del(row) {
@@ -226,11 +216,19 @@ export default {
 				})
 				.catch(() => {});
 		},
-		// 完成修改
+		// 编辑
+		edit(row) {
+			// 弹窗
+			this.isShow = true;
+			// 浅拷贝
+			this.editForm = {
+				...row,
+			};
+		},
+		// 完成编辑
 		async finish() {
 			let res = await editGoods_api(this.editForm);
-			let { code } = res.data;
-			if (code == 0) {
+			if (res.data.code == 0) {
 				this.isShow = false;
 				this.getList();
 			}

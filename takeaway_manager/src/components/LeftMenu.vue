@@ -14,6 +14,11 @@
 				<i class="iconfont icon-menu-home"></i>
 				<span slot="title">后台首页</span>
 			</el-menu-item>
+			<!-- 店铺管理 -->
+			<el-menu-item index="/shop">
+				<i class="iconfont icon-menu-shop"></i>
+				<span slot="title">店铺管理</span>
+			</el-menu-item>
 			<!-- 订单管理 -->
 			<el-menu-item index="/order">
 				<i class="iconfont icon-menu-order"></i>
@@ -31,11 +36,6 @@
 					<el-menu-item index="/goods/goods-cate">商品分类</el-menu-item>
 				</el-menu-item-group>
 			</el-submenu>
-			<!-- 店铺管理 -->
-			<el-menu-item index="/shop">
-				<i class="iconfont icon-menu-shop"></i>
-				<span slot="title">店铺管理</span>
-			</el-menu-item>
 			<!-- 账号管理 -->
 			<el-submenu index="/acc">
 				<template slot="title">

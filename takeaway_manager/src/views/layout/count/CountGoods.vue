@@ -4,18 +4,20 @@
 		<header>
 			<span>时间范围</span>
 			<el-time-picker
-				is-range
-				v-model="value1"
-				range-separator="至"
 				start-placeholder="开始时间"
+				range-separator="至"
 				end-placeholder="结束时间"
 				placeholder="选择时间范围"
+				is-range
+				v-model="value1"
 			></el-time-picker>
 			<el-button type="primary">查询</el-button>
 		</header>
 
-		<!-- 图标 -->
-		<main ref="table"></main>
+		<!-- 图表 -->
+		<el-card class="main">
+			<div ref="table"></div>
+		</el-card>
 	</div>
 </template>
 
@@ -98,32 +100,4 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-.count-goods {
-    // 时间范围
-    header {
-        // 时间选择器与左右元素距离
-        .el-date-editor--timerange {
-            margin: 0 20px;
-        }
-
-        // “至”间隔
-        /deep/ .el-date-editor .el-range-separator {
-            padding: 0;
-        }
-    }
-
-    // 图表
-    main {
-        margin-top: 40px;
-        border-radius: 4px;
-        padding: 20px;
-        height: 500px;
-
-        background-color: #fff;
-
-        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
-    }
-}
-
-</style>
+<style lang="less" scoped src="../../../assets/styles/count.less"></style>

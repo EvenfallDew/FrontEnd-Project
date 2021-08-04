@@ -34,7 +34,7 @@
 					<el-table-column prop="name" label="操作" width="150px">
 						<template slot-scope="scope">
 							<el-button type="primary" size="mini" @click="edit(scope.row)">编辑</el-button>
-							<el-button type="danger" size="mini" @click="del(scope.row.id)">删除</el-button>
+							<el-button type="danger" size="mini" @click="del(scope.row)">删除</el-button>
 						</template>
 					</el-table-column>
 				</el-table>
@@ -84,6 +84,7 @@
 <script>
 import Card from "@/components/Card.vue";
 import { accList_api, delAcc_api, delAll_api } from "@/api/acc";
+import moment from "moment";
 
 export default {
 	components: {
@@ -107,11 +108,9 @@ export default {
 	},
 
 	created() {
-		// 调用函数
 		this.getList();
 	},
 
-	// 准备函数
 	methods: {
 		// 获取列表
 		async getList() {
@@ -120,44 +119,47 @@ export default {
 				pageSize: this.pageSize,
 			});
 			let { data, total } = res.data;
-			// 判断 如果data的取值为[] 说明当前这一页已经没有数据了 找前一页的数据
+			// 页码必须大于0
 			if (data.length == 0 && this.currentPage > 1) {
 				this.currentPage--;
-				// 减完页数 不要忘了重绘视图哦~~~
+				// 重绘
 				this.getList();
 			}
-			// 把获取到的后台数据 赋值给组件
+			// 转换时间
+			data.forEach((item) => (item.ctime = moment(item.ctime).format("YYYY-MM-DD HH:mm:ss")));
+			// 数据
 			this.accData = data;
 			// 总条数
 			this.total = total;
 		},
-		// 弹窗的确定按钮
+		// 完成
 		finish() {
 			this.isShow = false;
 		},
-		// 编辑按钮
+		// 编辑
 		edit(row) {
-			// 先打开弹窗  把值赋值给 eiditForm
+			// 弹窗
 			this.isShow = true;
 			this.eiditForm = {
+				// 浅拷贝
 				...row,
-			}; // 浅拷贝一份
+			};
 		},
-		// 删除按钮
-		del(id) {
-			this.$confirm("此操作将永久删除该用户, 是否继续?", "提示", {
+		// 删除
+		del(row) {
+			this.$confirm(`此操作将永久删除 ${row.account} ，是否继续?`, "提示", {
 				confirmButtonText: "确定",
 				cancelButtonText: "取消",
 				type: "warning",
 			})
 				.then(async () => {
-					// 确定事件
+					// 确定
 					let res = await delAcc_api({
-						id: id,
+						id: row.id,
 					});
-					// 如果成功
+					// 成功
 					if (res.data.code == 0) {
-						// 重绘视图
+						// 重绘
 						this.getList();
 					}
 				})
@@ -171,38 +173,38 @@ export default {
 				type: "warning",
 			})
 				.then(async () => {
-					// 判断 数组是不是空数组
+					// 判断是否为空
 					if (this.ids.length != 0) {
+						// 确定
 						let res = await delAll_api({
 							ids: JSON.stringify(this.ids),
 						});
-						// 判断一下 删除成功 重绘视图
+						// 成功
 						if (res.data.code == 0) {
+							// 重绘
 							this.getList();
 						}
 					}
 				})
-				.catch(() => {
-					// 点击的是弹窗的取消事件
-				});
+				.catch(() => {});
+		},
+		// 多选
+		sel(val) {
+			this.ids = val.map((item) => item.id);
 		},
 		// 取消选择
 		cancel() {
 			this.$refs.accData.clearSelection();
 		},
-		// 条数发生变化触发的函数
+		// 条数
 		handleSizeChange(val) {
 			this.pageSize = val;
 			this.getList();
 		},
-		// 页数改变触发的函数
+		// 页数
 		handleCurrentChange(val) {
 			this.currentPage = val;
 			this.getList();
-		},
-		// 多选
-		sel(val) {
-			this.ids = val.map((item) => item.id);
 		},
 	},
 };

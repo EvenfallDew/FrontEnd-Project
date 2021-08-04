@@ -2,16 +2,16 @@
 	<div class="home">
 		<!-- 数据 -->
 		<header>
-			<div class="data">
+			<el-card class="box-card">
 				<svg class="icon" aria-hidden="true">
 					<use xlink:href="#icon-home-orders"></use>
 				</svg>
 				<div class="data-name">
-					<h3>总订单</h3>
+					<h3>总订单数</h3>
 					<p>999999</p>
 				</div>
-			</div>
-			<div class="data">
+			</el-card>
+			<el-card class="box-card">
 				<svg class="icon" aria-hidden="true">
 					<use xlink:href="#icon-home-moneys"></use>
 				</svg>
@@ -19,8 +19,8 @@
 					<h3>总销售额</h3>
 					<p>999999</p>
 				</div>
-			</div>
-			<div class="data">
+			</el-card>
+			<el-card class="box-card">
 				<svg class="icon" aria-hidden="true">
 					<use xlink:href="#icon-home-order"></use>
 				</svg>
@@ -28,8 +28,8 @@
 					<h3>今日订单数</h3>
 					<p>999999</p>
 				</div>
-			</div>
-			<div class="data">
+			</el-card>
+			<el-card class="box-card">
 				<svg class="icon" aria-hidden="true">
 					<use xlink:href="#icon-home-money"></use>
 				</svg>
@@ -37,11 +37,13 @@
 					<h3>今日销售额</h3>
 					<p>999999</p>
 				</div>
-			</div>
+			</el-card>
 		</header>
 
 		<!-- 图表 -->
-		<main ref="table"></main>
+		<el-card class="main">
+			<div ref="table"></div>
+		</el-card>
 	</div>
 </template>
 

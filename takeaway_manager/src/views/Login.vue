@@ -5,9 +5,9 @@
 			<h2 class="title">外卖管理系统登录</h2>
 			<el-form
 				class="demo-ruleForm"
-				status-icon
 				ref="loginForm"
 				label-width="100px"
+				status-icon
 				:model="loginForm"
 				:rules="rules"
 			>
@@ -107,7 +107,7 @@ export default {
 				}
 			});
 		},
-		// 点击眼睛隐藏或显示密码
+		// 隐藏或显示密码
 		changeType(e) {
 			if (e.target.className.includes("eye")) {
 				this.isShow = !this.isShow;

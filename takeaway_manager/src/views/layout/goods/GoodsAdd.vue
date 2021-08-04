@@ -36,7 +36,7 @@
 					</el-form-item>
 
 					<el-form-item label="商品描述">
-						<el-input type="textarea" v-model="addForm.goodsDesc"></el-input>
+						<el-input type="textarea" v-model="addForm.goodsDesc" :autosize="{ minRows: 5 }"></el-input>
 					</el-form-item>
 
 					<el-form-item>
