@@ -3,30 +3,51 @@
 		<Card>
 			<header slot="title">商品添加</header>
 			<main slot="content">
-				<el-form :model="addForm" status-icon ref="addForm" label-width="100px" class="demo-ruleForm">
-					<!-- 商品名称 -->
-					<el-form-item label="商品名称" prop="acc">
-						<el-input v-model="addForm.acc" placeholder="商品名称"></el-input>
+				<el-form ref="addForm" label-width="80px" :model="addForm">
+					<el-form-item label="商品名称">
+						<el-input v-model="addForm.name"></el-input>
 					</el-form-item>
-					<!-- 商品分类 -->
-					<el-form-item label="商品分类" prop="group">
-						<el-select v-model="addForm.group" placeholder="请选择分类">
-							<el-option label="类别1" value="类别1"></el-option>
-							<el-option label="类别2" value="类别2"></el-option>
+
+					<el-form-item label="商品分类">
+						<el-select placeholder="请选择商品分类" v-model="addForm.category">
+							<el-option
+								v-for="(item, i) in cateArr"
+								:key="i"
+								:label="item.cateName"
+								:value="item.cateName"
+							></el-option>
 						</el-select>
 					</el-form-item>
-					<!-- 商品价格 -->
-					<el-form-item label="商品价格" prop="group">
-						<el-input-number v-model="num" :precision="2" :step="0.1" :min="0"></el-input-number>
+
+					<el-form-item label="商品价格">
+						<el-input-number
+							label="描述文字"
+							v-model="addForm.price"
+							:precision="2"
+							:min="1"
+							:max="99999"
+						></el-input-number>
 					</el-form-item>
-					<!-- 商品描述 -->
-					<el-form-item label="商品描述" prop="desc">
-						<el-input type=" textarea" v-model="addForm.desc"></el-input>
+
+					<el-form-item label="商品图片">
+						<el-upload
+							class="avatar-uploader"
+							action="http://127.0.0.1:5000/goods/goods_img_upload"
+							:show-file-list="false"
+							:on-success="handleAvatarSuccess($event)"
+							:before-upload="beforeAvatarUpload()"
+						>
+							<img class="avatar" v-if="addForm.imgUrl" :src="baseUrl + addForm.imgUrl" />
+							<i v-else class="el-icon-plus avatar-uploader-icon"></i>
+						</el-upload>
 					</el-form-item>
-					<!-- 操作 -->
+
+					<el-form-item label="商品描述">
+						<el-input type="textarea" v-model="addForm.goodsDesc"></el-input>
+					</el-form-item>
+
 					<el-form-item>
 						<el-button type="primary" @click="add()">添加商品</el-button>
-						<el-button @click="cancel()">重置内容</el-button>
 					</el-form-item>
 				</el-form>
 			</main>
@@ -36,6 +57,7 @@
 
 <script>
 import Card from "@/components/Card.vue";
+import { addGoods_api, getGoodsCate_api } from "@/api/goods";
 
 export default {
 	components: {
@@ -44,53 +66,51 @@ export default {
 
 	data() {
 		return {
+			// 分类数组
+			cateArr: [],
+			// 添加数据
 			addForm: {
-				acc: "",
-				pwd: "",
-				group: "",
+				name: "",
+				category: "",
+				price: "",
+				goodsDesc: "",
+				imgUrl: "",
 			},
-			num: 1,
+			// 图片地址
+			baseUrl: "http://127.0.0.1:5000/upload/imgs/goods_img/",
 		};
 	},
 
+	created() {
+		this.getGoodsCate();
+	},
+
 	methods: {
-		// 添加按钮
-		add() {
-			// validate 按钮验证  valid验证结果
-			this.$refs.addForm.validate((valid) => {
-				if (valid) {
-					console.log("ajax 添加");
-					this.$message({
-						type: "success",
-						message: "添加成功",
-					});
-				} else {
-					this.$message.error("添加失败");
-				}
-			});
+		// 获取商品分类
+		async getGoodsCate() {
+			let res = await getGoodsCate_api();
+			let { categories } = res.data;
+			this.cateArr = categories;
 		},
-		// 重置按钮
-		cancel() {
-			// 重置表单
-			this.$refs.addForm.resetFields();
+		// 添加商品
+		async add() {
+			let res = await addGoods_api(this.addForm);
+			let { code } = res.data;
+			if (code == 0) {
+				this.$router.push("/goods/goods-list");
+			}
 		},
+		// 上传图片成功
+		handleAvatarSuccess(res) {
+			let { code, imgUrl } = res;
+			if (code == 0) {
+				this.addForm.imgUrl = imgUrl;
+			}
+		},
+		// 上传图片之前
+		beforeAvatarUpload() {},
 	},
 };
 </script>
 
-<style lang="less" scoped>
-.goods-add {
-    /deep/ .el-input {
-        width: 300px;
-    }
-
-    /deep/ .el-textarea__inner {
-        width: 300px;
-    }
-
-    /deep/ .el-input-number {
-        width: 300px;
-    }
-}
-
-</style>
+<style lang="less" scoped src="../../../assets/styles/goods_add.less"></style>

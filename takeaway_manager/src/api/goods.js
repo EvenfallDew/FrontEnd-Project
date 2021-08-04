@@ -3,7 +3,7 @@ import request from "@/utils/request";
 // 引入qs转post请求
 import Qs from "qs";
 
-// 获取商品分类列表
+// 获取 商品分类列表
 export const getGoodsCateList_api = (data) => {
 	return request({
 		method: "get",
@@ -12,7 +12,7 @@ export const getGoodsCateList_api = (data) => {
 	});
 };
 
-// 编辑修改 商品分类
+// 编辑 商品分类
 export const editGoodsCate_api = (data) => {
 	return request({
 		method: "post",
@@ -39,7 +39,7 @@ export const addGoods_api = (data) => {
 	});
 };
 
-// 获取所有商品分类
+// 获取 商品分类
 export const getGoodsCate_api = () => {
 	return request({
 		method: "get",
@@ -47,7 +47,7 @@ export const getGoodsCate_api = () => {
 	});
 };
 
-// 获取商品列表
+// 获取 商品列表
 export const getGoodsList_api = (data) => {
 	return request({
 		method: "get",

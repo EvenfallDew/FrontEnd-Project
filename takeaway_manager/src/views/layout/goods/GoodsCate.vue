@@ -1,11 +1,11 @@
 <template>
 	<div>
-		<Card class="goods-type">
+		<Card class="goods-cate">
 			<header slot="title">
 				<span>商品分类</span>
 				<el-button @click="isShow = true" type="primary" size="mini">添加分类</el-button>
 			</header>
-
+			<!-- 表格 -->
 			<main slot="content">
 				<el-table ref="goodsData" style="width: 100%" :data="goodsData">
 					<el-table-column type="index" label="序号"></el-table-column>
@@ -58,7 +58,7 @@ export default {
 	components: {
 		Card,
 	},
-    
+
 	data() {
 		return {
 			goodsData: [], // 数据
@@ -159,21 +159,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.goods-type {
-    header {
-        display: flex;
+.goods-cate {
+	header {
+		display: flex;
 
-        justify-content: space-between;
-        align-items: center;
-    }
+		justify-content: space-between;
+		align-items: center;
+	}
 
-    main {
-        // 分页器
-        .el-pagination {
-            margin-top: 20px;
-        }
-    }
+	main {
+		// 分页器
+		.el-pagination {
+			margin-top: 20px;
+		}
+	}
 }
-
-
 </style>

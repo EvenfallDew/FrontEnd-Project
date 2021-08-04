@@ -47,7 +47,6 @@ export default {
 	},
 
 	data() {
-		// 验证函数，一定要在return之前写。
 		// 在这个验证函数中要传递3个参数，rules验证规则 value值 callback回调函数
 		const checkAcc = (rules, value, callback) => {
 			if (!value) {
@@ -68,6 +67,7 @@ export default {
 				callback();
 			}
 		};
+
 		return {
 			rules: {
 				acc: {
@@ -82,7 +82,7 @@ export default {
 				},
 				group: {
 					required: true,
-					message: "用户组不能为空",
+					message: "请选择用户组",
 					trigger: "blur",
 				},
 			},
@@ -122,9 +122,8 @@ export default {
 
 <style lang="less" scoped>
 .acc-add {
-    /deep/ .el-input {
-        width: 300px;
-    }
+	/deep/ .el-input {
+		width: 300px;
+	}
 }
-
 </style>

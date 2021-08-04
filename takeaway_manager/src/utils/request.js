@@ -39,6 +39,7 @@ axios.interceptors.response.use(
 				Message({
 					type: "success",
 					message: msg,
+					center: true,
 				});
 			} else if (code == "00" || code == "11") {
 			} else {
