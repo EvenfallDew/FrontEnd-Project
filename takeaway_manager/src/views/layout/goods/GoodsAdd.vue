@@ -62,13 +62,7 @@ export default {
 			// 分类数组
 			cateArr: [],
 			// 添加数据
-			addForm: {
-				name: "",
-				category: "",
-				price: "",
-				goodsDesc: "",
-				imgUrl: "",
-			},
+			addForm: {},
 			// 图片地址
 			baseUrl: "http://127.0.0.1:5000/upload/imgs/goods_img/",
 		};

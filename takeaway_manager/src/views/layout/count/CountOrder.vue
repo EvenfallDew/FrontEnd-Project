@@ -2,120 +2,89 @@
 	<div class="count-order">
 		<!-- 时间范围 -->
 		<header>
-			<span>时间范围</span>
-			<el-time-picker
-				start-placeholder="开始时间"
-				range-separator="至"
-				end-placeholder="结束时间"
-				placeholder="选择时间范围"
-				is-range
-				v-model="value1"
-			></el-time-picker>
-			<el-button type="primary">查询</el-button>
+			<el-form ref="searchForm" label-width="80px" :model="searchForm">
+				<el-form-item label="时间范围">
+					<el-date-picker
+						type="daterange"
+						start-placeholder="开始日期"
+						range-separator="至"
+						end-placeholder="结束日期"
+						value-format="yyyy-MM-dd HH:mm:ss"
+						is-range
+						v-model="searchForm.date"
+					></el-date-picker>
+					<el-button type="primary" @click="search()">查询</el-button>
+					<el-button type="primary" @click="reset()">重置</el-button>
+				</el-form-item>
+			</el-form>
 		</header>
 
 		<!-- 图表 -->
 		<el-card class="main">
-			<div ref="table"></div>
+			<TableEcharts v-if="isShow" :msg="myOptions"></TableEcharts>
 		</el-card>
 	</div>
 </template>
 
 <script>
+import TableEcharts from "@/components/TableEcharts.vue";
+import { getOrderData_api } from "@/api/count";
 import * as echarts from "echarts";
+import moment from "moment";
 
 export default {
+	components: {
+		TableEcharts,
+	},
+
 	data() {
 		return {
-			value1: [new Date(2016, 9, 10, 8, 40), new Date()],
+			isShow: false,
+			myOptions: {
+				title: "订单统计",
+				legend: ["订单统计"],
+				xData: [], // x轴数据
+				amountData: [], // y轴 金额数据
+				orderData: [], // y轴 订单数据
+			},
+			searchForm: {
+				date: "",
+			},
 		};
 	},
 
-	mounted() {
-		var myChart = echarts.init(this.$refs.table);
-		var option = {
-			tooltip: {
-				trigger: "axis",
-				axisPointer: {
-					type: "cross",
-					crossStyle: {
-						color: "#999",
-					},
-				},
-			},
-			toolbox: {
-				feature: {
-					dataView: {
-						show: true,
-						readOnly: false,
-					},
-					magicType: {
-						show: true,
-						type: ["line", "bar"],
-					},
-					restore: {
-						show: true,
-					},
-					saveAsImage: {
-						show: true,
-					},
-				},
-			},
-			legend: {
-				data: ["蒸发量", "降水量", "平均温度"],
-			},
-			xAxis: [
-				{
-					type: "category",
-					data: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
-					axisPointer: {
-						type: "shadow",
-					},
-				},
-			],
-			yAxis: [
-				{
-					type: "value",
-					name: "水量",
-					min: 0,
-					max: 250,
-					interval: 50,
-					axisLabel: {
-						formatter: "{value} ml",
-					},
-				},
-				{
-					type: "value",
-					name: "温度",
-					min: 0,
-					max: 25,
-					interval: 5,
-					axisLabel: {
-						formatter: "{value} °C",
-					},
-				},
-			],
-			series: [
-				{
-					name: "蒸发量",
-					type: "bar",
-					data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
-				},
-				{
-					name: "降水量",
-					type: "bar",
-					data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
-				},
-				{
-					name: "平均温度",
-					type: "line",
-					yAxisIndex: 1,
-					data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2],
-				},
-			],
-		};
-		// 把核心配置参数 噻进去
-		myChart.setOption(option);
+	created() {
+		this.getOrderData();
+	},
+
+	methods: {
+		// 获取数据
+		async getOrderData() {
+			this.isShow = false;
+			let res = await getOrderData_api({
+				date: JSON.stringify(this.searchForm.date),
+			});
+			let timeArr = [];
+			let amountArr = [];
+			res.data.data.forEach((item) => {
+				// 直接把数据 push到我们需要传给echarts的数据格式
+				timeArr.push(moment(item.orderTime).format("YYYY-MM-DD HH:mm"));
+				amountArr.push(item.orderAmount);
+			});
+			this.myOptions.xData = timeArr;
+			this.myOptions.amountData = amountArr;
+			// 数据获取完毕后，显示echarts组件
+			this.isShow = true;
+		},
+		// 查询
+		search() {
+			this.getGoodsData();
+		},
+		// 重置
+		reset() {
+			this.searchForm.date = "";
+			this.getGoodsData();
+		},
 	},
 };
 </script>

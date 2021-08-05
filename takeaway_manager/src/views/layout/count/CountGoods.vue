@@ -2,100 +2,89 @@
 	<div class="count-goods">
 		<!-- 时间范围 -->
 		<header>
-			<span>时间范围</span>
-			<el-time-picker
-				start-placeholder="开始时间"
-				range-separator="至"
-				end-placeholder="结束时间"
-				placeholder="选择时间范围"
-				is-range
-				v-model="value1"
-			></el-time-picker>
-			<el-button type="primary">查询</el-button>
+			<el-form ref="searchForm" label-width="80px" :model="searchForm">
+				<el-form-item label="时间范围">
+					<el-date-picker
+						type="daterange"
+						start-placeholder="开始日期"
+						range-separator="至"
+						end-placeholder="结束日期"
+						value-format="yyyy-MM-dd HH:mm:ss"
+						is-range
+						v-model="searchForm.date"
+					></el-date-picker>
+					<el-button type="primary" @click="search()">查询</el-button>
+					<el-button type="primary" @click="reset()">重置</el-button>
+				</el-form-item>
+			</el-form>
 		</header>
 
 		<!-- 图表 -->
 		<el-card class="main">
-			<div ref="table"></div>
+			<TableEcharts v-if="isShow" :msg="myOptions"></TableEcharts>
 		</el-card>
 	</div>
 </template>
 
 <script>
+import TableEcharts from "@/components/TableEcharts.vue";
+import { getGoodsData_api } from "@/api/count";
 import * as echarts from "echarts";
+import moment from "moment";
 
 export default {
+	components: {
+		TableEcharts,
+	},
+
 	data() {
 		return {
-			value1: [new Date(2016, 9, 10, 8, 40), new Date(2016, 9, 10, 9, 40)],
+			isShow: false,
+			myOptions: {
+				title: "商品统计",
+				legend: ["商品统计"],
+				xData: [], // x轴数据
+				amountData: [], // y轴 金额数据
+				orderData: [], // y轴 订单数据
+			},
+			searchForm: {
+				date: "",
+			},
 		};
 	},
-	mounted() {
-		var myChart = echarts.init(this.$refs.table);
-		var option = {
-			title: {
-				text: "堆叠区域图",
-			},
-			tooltip: {
-				trigger: "axis",
-				axisPointer: {
-					type: "cross",
-					label: {
-						backgroundColor: "#6a7985",
-					},
-				},
-			},
-			legend: {
-				data: ["邮件营销", "联盟广告"],
-			},
-			toolbox: {
-				feature: {
-					saveAsImage: {},
-				},
-			},
-			grid: {
-				left: "3%",
-				right: "4%",
-				bottom: "3%",
-				containLabel: true,
-			},
-			xAxis: [
-				{
-					type: "category",
-					boundaryGap: false,
-					data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
-				},
-			],
-			yAxis: [
-				{
-					type: "value",
-				},
-			],
-			series: [
-				{
-					name: "邮件营销",
-					type: "line",
-					stack: "总量",
-					areaStyle: {},
-					emphasis: {
-						focus: "series",
-					},
-					data: [120, 132, 101, 134, 90, 230, 210],
-				},
-				{
-					name: "联盟广告",
-					type: "line",
-					stack: "总量",
-					areaStyle: {},
-					emphasis: {
-						focus: "series",
-					},
-					data: [220, 182, 191, 234, 290, 330, 310],
-				},
-			],
-		};
-		// 把核心配置参数 噻进去
-		myChart.setOption(option);
+
+	created() {
+		this.getGoodsData();
+	},
+
+	methods: {
+		// 获取数据
+		async getGoodsData() {
+			this.isShow = false;
+			let res = await getGoodsData_api({
+				date: JSON.stringify(this.searchForm.date),
+			});
+			let timeArr = [];
+			let amountArr = [];
+			res.data.data.forEach((item) => {
+				// 直接把数据 push到我们需要传给echarts的数据格式
+				timeArr.push(moment(item.orderTime).format("YYYY-MM-DD HH:mm"));
+				amountArr.push(item.orderAmount);
+			});
+			this.myOptions.xData = timeArr;
+			this.myOptions.amountData = amountArr;
+			// 数据获取完毕后，显示echarts组件
+			this.isShow = true;
+		},
+		// 查询
+		search() {
+			this.getGoodsData();
+		},
+		// 重置
+		reset() {
+			this.searchForm.date = "";
+			this.getGoodsData();
+		},
 	},
 };
 </script>

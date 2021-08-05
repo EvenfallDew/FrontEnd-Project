@@ -8,7 +8,7 @@
 				</svg>
 				<div class="data-name">
 					<h3>总订单数</h3>
-					<p>999999</p>
+					<p>{{ totalData.totalOrder }}</p>
 				</div>
 			</el-card>
 			<el-card class="box-card">
@@ -17,7 +17,7 @@
 				</svg>
 				<div class="data-name">
 					<h3>总销售额</h3>
-					<p>999999</p>
+					<p>{{ totalData.totalAmount }}</p>
 				</div>
 			</el-card>
 			<el-card class="box-card">
@@ -26,7 +26,7 @@
 				</svg>
 				<div class="data-name">
 					<h3>今日订单数</h3>
-					<p>999999</p>
+					<p>{{ totalData.todayOrder }}</p>
 				</div>
 			</el-card>
 			<el-card class="box-card">
@@ -35,66 +35,63 @@
 				</svg>
 				<div class="data-name">
 					<h3>今日销售额</h3>
-					<p>999999</p>
+					<p>{{ totalData.totayAmount }}</p>
 				</div>
 			</el-card>
 		</header>
 
 		<!-- 图表 -->
 		<el-card class="main">
-			<div ref="table"></div>
+			<TableEcharts v-if="isShow" :msg="myOptions"></TableEcharts>
 		</el-card>
 	</div>
 </template>
 
 <script>
+import TableEcharts from "@/components/TableEcharts.vue";
 import iconfont from "../../../assets/fonts/iconfont";
+import { getTotaldData_api } from "@/api/home";
 import * as echarts from "echarts";
 
 export default {
-	mounted() {
-		var myChart = echarts.init(this.$refs.table);
-		var option = {
-			title: {
-				text: "折线图堆叠",
+	components: {
+		TableEcharts,
+	},
+
+	data() {
+		return {
+			totalData: {},
+			isShow: false,
+			myOptions: {
+				title: "首页数据",
+				legend: ["金额数据", "订单数据"],
+				xData: [], // x轴数据
+				amountData: [], // y轴 金额数据
+				orderData: [], // y轴 订单数据
 			},
-			tooltip: {
-				trigger: "axis",
-			},
-			legend: {
-				data: ["邮件营销", "联盟广告"],
-			},
-			grid: {
-				left: "3%",
-				right: "4%",
-				bottom: "3%",
-				containLabel: true,
-			},
-			xAxis: {
-				type: "category",
-				boundaryGap: false,
-				data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
-			},
-			yAxis: {
-				type: "value",
-			},
-			series: [
-				{
-					name: "邮件营销",
-					type: "line",
-					stack: "总量",
-					data: [120, 132, 101, 134, 90, 230, 210],
-				},
-				{
-					name: "联盟广告",
-					type: "line",
-					stack: "总量",
-					data: [220, 182, 191, 234, 290, 330, 310],
-				},
-			],
 		};
-		// 把核心配置参数 噻进去
-		myChart.setOption(option);
+	},
+
+	created() {
+		this.getTotaldData();
+	},
+
+	methods: {
+		// 获取首页数据
+		async getTotaldData() {
+			let res = await getTotaldData_api();
+			this.totalData = res.data;
+			let {
+				xData, // x轴数据
+				amountData, // y轴数据
+				orderData, // y轴数据
+			} = res.data;
+			// 赋值
+			this.myOptions.xData = xData; // x轴数据
+			this.myOptions.amountData = amountData; // y轴数据1
+			this.myOptions.orderData = orderData; // y轴数据2
+			this.isShow = true;
+		},
 	},
 };
 </script>

@@ -4,35 +4,38 @@
 			<header slot="title">订单管理</header>
 			<main slot="content">
 				<!-- 查询 -->
-				<el-form class="demo-form-inline" :inline="true" :model="formInline">
-					<el-form-item label="订单号">
-						<el-input v-model="formInline.user" placeholder="订单号"></el-input>
+				<el-form class="demo-form-inline" :inline="true" :model="searchForm">
+					<el-form-item label="订单号" label-width="80px">
+						<el-input v-model="searchForm.orderNo" placeholder="订单号" size="small"></el-input>
 					</el-form-item>
-					<el-form-item label="收货人">
-						<el-input v-model="formInline.user" placeholder="收货人"></el-input>
+					<el-form-item label="收货人" label-width="80px">
+						<el-input v-model="searchForm.consignee" placeholder="收货人" size="small"></el-input>
 					</el-form-item>
-					<el-form-item label="手机号">
-						<el-input v-model="formInline.user" placeholder="手机号"></el-input>
+					<el-form-item label="手机号" label-width="80px">
+						<el-input v-model="searchForm.phone" placeholder="手机号" size="small"></el-input>
 					</el-form-item>
-					<el-form-item label="订单状态">
-						<el-select v-model="formInline.region" placeholder="订单状态">
-							<el-option label="区域一" value="shanghai"></el-option>
-							<el-option label="区域二" value="beijing"></el-option>
+					<el-form-item label="订单状态" label-width="80px">
+						<el-select size="small" v-model="searchForm.orderState" placeholder="订单状态">
+							<el-option label="已受理" value="已受理"></el-option>
+							<el-option label="已完成" value="已完成"></el-option>
+							<el-option label="派送中" value="派送中"></el-option>
 						</el-select>
 					</el-form-item>
-					<el-form-item label="选择时间">
+					<el-form-item label="选择时间" label-width="80px">
 						<el-date-picker
-							v-model="formInline.time"
 							type="datetimerange"
-							:picker-options="pickerOptions"
-							range-separator="至"
-							start-placeholder="开始日期"
-							end-placeholder="结束日期"
+							size="small"
 							align="right"
+							start-placeholder="开始日期"
+							range-separator="至"
+							end-placeholder="结束日期"
+							v-model="searchForm.date"
+							:picker-options="pickerOptions"
 						></el-date-picker>
 					</el-form-item>
 					<el-form-item>
-						<el-button type="primary" @click="onSubmit()">查询</el-button>
+						<el-button type="primary" size="small" @click="find()">查询</el-button>
+						<el-button type="primary" size="small" @click="reset()">重置</el-button>
 					</el-form-item>
 				</el-form>
 
@@ -41,15 +44,15 @@
 					<el-table-column fixed prop="orderNo" label="订单号" width="100px"></el-table-column>
 					<el-table-column prop="orderTime" label="下单时间" width="170px"></el-table-column>
 					<el-table-column prop="phone" label="手机号" width="120px"></el-table-column>
-					<el-table-column prop="consignee" label="收货人"></el-table-column>
+					<el-table-column prop="consignee" label="收货人" width="120px"></el-table-column>
 					<el-table-column prop="deliverAddress" label="配送地址" width="300px"></el-table-column>
 					<el-table-column prop="deliveryTime" label="送达时间" width="170px"></el-table-column>
 					<el-table-column prop="remarks" label="用户备注"></el-table-column>
 					<el-table-column prop="orderAmount" label="订单金额"></el-table-column>
 					<el-table-column prop="orderState" label="订单状态"></el-table-column>
-					<el-table-column fixed="right" label="操作" width="150px">
+					<el-table-column fixed="right" label="操作" width="100px">
 						<template slot-scope="scope">
-							<el-button type="primary" size="small" @click="edit(scope.row)">编辑</el-button>
+							<el-button type="primary" size="mini" @click="edit(scope.row)">编辑</el-button>
 						</template>
 					</el-table-column>
 				</el-table>
@@ -69,7 +72,7 @@
 				<el-dialog class="dialog" title="编辑订单" :visible.sync="isShow">
 					<el-form :model="editForm">
 						<el-form-item label="订单号" label-width="100px">
-							<el-input v-model="editForm.orderNo"></el-input>
+							<el-input v-model="editForm.orderNo" :disabled="true"></el-input>
 						</el-form-item>
 						<el-form-item label="下单时间" label-width="100px">
 							<el-input v-model="editForm.orderTime"></el-input>
@@ -126,7 +129,7 @@ export default {
 	data() {
 		return {
 			// 查询
-			formInline: {
+			searchForm: {
 				num: "",
 				name: "",
 				tel: "",
@@ -167,11 +170,13 @@ export default {
 				],
 			},
 
+			// 订单数据
 			orderData: [],
 			// 分页器
-			currentPage: 1, // 当前分页器要显示第几页数据
-			pageSize: 5, // 每页显示几条数据
+			currentPage: 1, // 当前页
+			pageSize: 5, // 显示条数
 			total: 0, // 总条数
+			// 编辑弹窗
 			isShow: false,
 			editForm: {},
 		};
@@ -185,6 +190,11 @@ export default {
 		// 获取列表
 		async getList() {
 			let res = await getOrderList_api({
+				orderNo: this.searchForm.orderNo,
+				consignee: this.searchForm.consignee,
+				phone: this.searchForm.phone,
+				orderState: this.searchForm.orderState,
+				date: this.searchForm.date == null ? "[]" : JSON.stringify(this.searchForm.date),
 				currentPage: this.currentPage,
 				pageSize: this.pageSize,
 			});
@@ -204,8 +214,13 @@ export default {
 			this.total = total;
 		},
 		// 查询
-		onSubmit() {
-			console.log("查询");
+		find() {
+			this.getList();
+		},
+		// 重置
+		reset() {
+			this.searchForm = {};
+			this.getList();
 		},
 		// 编辑
 		edit(row) {
@@ -240,14 +255,13 @@ export default {
 
 <style lang="less" scoped>
 .order {
-    .el-table {
-        margin-top: 40px;
-    }
+	.el-table {
+		margin-top: 40px;
+	}
 
-    // 分页器
-    .el-pagination {
-        margin-top: 20px;
-    }
+	// 分页器
+	.el-pagination {
+		margin-top: 20px;
+	}
 }
-
 </style>

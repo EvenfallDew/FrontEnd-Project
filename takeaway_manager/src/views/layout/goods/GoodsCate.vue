@@ -162,9 +162,9 @@ export default {
 			if (res.data.code == 0) {
 				// 重绘
 				this.getList();
+				// 清空
+				this.editForm = {};
 			}
-			// 清空
-			this.editForm = {};
 			// 关闭弹窗
 			this.isShow = false;
 		},
