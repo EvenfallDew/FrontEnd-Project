@@ -14,11 +14,20 @@ header {
 }
 
 // 图表
+/deep/ .el-card {
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 15px;
+
+    color: #fff;
+    background-color: rgba(0, 0, 0, .24);
+
+    box-shadow: 0 .1rem .7rem rgba(0, 0, 0, .18);
+}
+
+// 图表
 .main {
     margin-top: 40px;
     height: 500px;
-
-    background-color: #fff;
 
     /deep/ .el-card__body {
         width: 100%;
@@ -26,6 +35,14 @@ header {
 
         div {
             height: 100%;
+
+            div {
+                height: 60px;
+
+                div {
+                    height: 20px;
+                }
+            }
         }
     }
 }

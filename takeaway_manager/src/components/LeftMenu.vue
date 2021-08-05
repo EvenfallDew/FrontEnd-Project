@@ -3,8 +3,7 @@
 		<el-menu
 			class="el-menu-vertical-demo"
 			text-color="#fff"
-			active-text-color="#3f9af8"
-			background-color="#304156"
+			active-text-color="gray"
 			router
 			unique-opened
 			:default-active="this.$route.path"
@@ -71,6 +70,8 @@ export default {};
 .left-menu {
     /deep/ .el-menu {
         border: none;
+
+        background-color: rgba(0, 0, 0, .24);
     }
 
     /deep/ .iconfont {

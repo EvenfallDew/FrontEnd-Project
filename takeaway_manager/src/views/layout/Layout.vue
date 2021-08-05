@@ -8,7 +8,7 @@
 		<!-- 右边部分 -->
 		<div class="content">
 			<header>
-				<RightTop></RightTop>
+				<TopNav></TopNav>
 			</header>
 			<main>
 				<router-view></router-view>
@@ -19,12 +19,12 @@
 
 <script>
 import LeftMenu from "@/components/LeftMenu.vue";
-import RightTop from "@/components/RightTop.vue";
+import TopNav from "@/components/TopNav.vue";
 
 export default {
 	components: {
 		LeftMenu,
-		RightTop,
+		TopNav,
 	},
 };
 </script>

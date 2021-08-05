@@ -7,12 +7,24 @@
 
         justify-content: space-between;
 
+        /deep/ .el-card {
+            border: 1px solid rgba(0, 0, 0, 0);
+            border-radius: 15px;
+
+            color: #fff;
+            background-color: rgba(0, 0, 0, .24);
+
+            box-shadow: 0 .1rem .7rem rgba(0, 0, 0, .18);
+        }
+
         .box-card {
             /deep/ .el-card__body {
                 display: flex;
 
                 width: 240px;
                 height: 120px;
+
+                color: #fff;
 
                 justify-content: space-between;
                 align-items: center;
@@ -27,8 +39,6 @@
 
                 h3 {
                     font: normal 22px/35px "微软雅黑";
-
-                    color: #a8a8a8;
                 }
 
                 p {
@@ -39,11 +49,19 @@
     }
 
     // 图表
+    /deep/ .el-card {
+        border: 1px solid rgba(0, 0, 0, 0);
+        border-radius: 15px;
+
+        color: #fff;
+        background-color: rgba(0, 0, 0, .24);
+
+        box-shadow: 0 .1rem .7rem rgba(0, 0, 0, .18);
+    }
+
     .main {
         margin-top: 40px;
         height: 500px;
-
-        background-color: #fff;
 
         /deep/ .el-card__body {
             width: 100%;
@@ -51,6 +69,14 @@
 
             div {
                 height: 100%;
+
+                div {
+                    height: 100px;
+
+                    div {
+                        height: 20px;
+                    }
+                }
             }
         }
     }

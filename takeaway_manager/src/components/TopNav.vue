@@ -1,5 +1,5 @@
 <template>
-	<div class="right-top">
+	<div class="top-nav">
 		<div class="bread-crumb">
 			<el-breadcrumb separator-class="el-icon-arrow-right">
 				<el-breadcrumb-item v-for="(item, i) in breadArr" :key="i" :to="{ path: item.path }">
@@ -98,14 +98,31 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.right-top {
+.top-nav {
     display: flex;
 
+    border: 1px solid rgba(0, 0, 0, 0);
     padding: 0 20px;
     width: 100%;
 
+    background-color: rgba(0, 0, 0, .24);
+
+    box-shadow: 0 .1rem .7rem rgba(0, 0, 0, .18);
+
     justify-content: space-between;
     align-items: center;
+
+    /deep/ .el-breadcrumb__inner {
+        color: #fff;
+    }
+
+    /deep/ .el-breadcrumb__item:last-child .el-breadcrumb__inner {
+        color: #fff;
+    }
+
+    .el-dropdown {
+        color: #fff;
+    }
 
     .account {
         display: flex;
