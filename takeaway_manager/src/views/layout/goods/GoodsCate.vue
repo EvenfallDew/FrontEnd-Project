@@ -49,7 +49,7 @@
 				></el-pagination>
 
 				<!-- 弹窗 -->
-				<el-dialog title="添加分类" :visible.sync="isShow">
+				<el-dialog class="dialog" title="添加分类" :visible.sync="isShow">
 					<el-form :model="editForm">
 						<el-form-item label="分类名称" label-width="100px">
 							<el-input v-model="editForm.cateName"></el-input>
@@ -184,18 +184,13 @@ export default {
 
 <style lang="less" scoped>
 .goods-cate {
-	header {
-		display: flex;
+    header {
+        display: flex;
 
-		justify-content: space-between;
-		align-items: center;
-	}
-
-	main {
-		// 分页器
-		.el-pagination {
-			margin-top: 20px;
-		}
-	}
+        justify-content: space-between;
+        align-items: center;
+    }
 }
+
 </style>
+<style lang="less" scoped src="../../../assets/styles/common.less"></style>

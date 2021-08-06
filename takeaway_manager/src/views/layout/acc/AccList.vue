@@ -52,30 +52,28 @@
 
 				<!-- 操作按钮 -->
 				<div class="operate-btn">
-					<el-button type="danger" @click="delAll()">批量删除</el-button>
-					<el-button type="primary" @click="cancel()">取消选择</el-button>
+					<el-button type="danger" size="medium" round @click="delAll()">批量删除</el-button>
+					<el-button type="primary" size="medium" round @click="cancel()">取消选择</el-button>
 				</div>
 
 				<!-- 弹窗 -->
-				<div class="dialog">
-					<el-dialog title="修改信息" :visible.sync="isShow">
-						<el-form :model="eiditForm">
-							<el-form-item label="账号" label-width="100px">
-								<el-input v-model="eiditForm.account" autocomplete="off"></el-input>
-							</el-form-item>
-							<el-form-item label="用户组" label-width="100px">
-								<el-select v-model="eiditForm.userGroup" placeholder="请选择用户组">
-									<el-option label="超级管理员" value="超级管理员"></el-option>
-									<el-option label="普通管理员" value="普通管理员"></el-option>
-								</el-select>
-							</el-form-item>
-						</el-form>
-						<div slot="footer" class="dialog-footer">
-							<el-button @click="isShow = false">取消</el-button>
-							<el-button type="primary" @click="finish()">确定</el-button>
-						</div>
-					</el-dialog>
-				</div>
+				<el-dialog class="dialog" title="修改信息" :visible.sync="isShow">
+					<el-form :model="eiditForm">
+						<el-form-item label="账号" label-width="100px">
+							<el-input v-model="eiditForm.account" autocomplete="off"></el-input>
+						</el-form-item>
+						<el-form-item label="用户组" label-width="100px">
+							<el-select v-model="eiditForm.userGroup" placeholder="请选择用户组">
+								<el-option label="超级管理员" value="超级管理员"></el-option>
+								<el-option label="普通管理员" value="普通管理员"></el-option>
+							</el-select>
+						</el-form-item>
+					</el-form>
+					<div slot="footer" class="dialog-footer">
+						<el-button size="medium" round @click="isShow = false">取消</el-button>
+						<el-button type="primary" size="medium" round @click="finish()">确定</el-button>
+					</div>
+				</el-dialog>
 			</main>
 		</Card>
 	</div>
@@ -212,22 +210,11 @@ export default {
 
 <style lang="less" scoped>
 .acc-eidit {
-    // 分页器
-    .el-pagination {
-        margin-top: 20px;
-    }
-
     // 操作按钮
     .operate-btn {
         margin-top: 20px;
     }
-
-    // 弹窗
-    .dialog {
-        /deep/ .el-input__inner {
-            width: 240px;
-        }
-    }
 }
 
 </style>
+<style lang="less" scoped src="../../../assets/styles/common.less"></style>

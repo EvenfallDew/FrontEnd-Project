@@ -101,8 +101,8 @@ export default {
         background-color: rgba(0, 0, 0, .24);
     }
 
-    /deep/ .el-menu-item-group .el-menu-item {
-        padding-left: 80px;
+    /deep/ .el-submenu .el-menu-item {
+        text-align: center;
     }
 
     /deep/ .iconfont {

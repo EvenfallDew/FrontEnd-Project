@@ -21,6 +21,7 @@ export default {
 		drawTable() {
 			let myCharts = echarts.init(this.$refs.table);
 			let option = {
+				color: ["#fff", "#7183f1"],
 				title: {
 					text: this.msg.title,
 					textStyle: {
@@ -90,6 +91,14 @@ export default {
 					axisLine: {
 						lineStyle: {
 							color: "#fff",
+						},
+					},
+					splitLine: {
+						show: true,
+						lineStyle: {
+							color: ["#5e656d"],
+							width: 1,
+							type: "solid",
 						},
 					},
 				},

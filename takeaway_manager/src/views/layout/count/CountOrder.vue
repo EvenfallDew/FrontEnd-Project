@@ -13,8 +13,8 @@
 						is-range
 						v-model="searchForm.date"
 					></el-date-picker>
-					<el-button type="primary" @click="search()">查询</el-button>
-					<el-button type="primary" @click="reset()">重置</el-button>
+					<el-button type="primary" size="medium" round @click="search()">查询</el-button>
+					<el-button type="info" size="medium" round @click="reset()">重置</el-button>
 				</el-form-item>
 			</el-form>
 		</header>

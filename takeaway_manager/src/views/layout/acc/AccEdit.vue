@@ -24,8 +24,8 @@
 					</el-form-item>
 
 					<el-form-item>
-						<el-button type="primary" @click="edit()">确定</el-button>
-						<el-button @click="reset()">重置</el-button>
+						<el-button type="primary" size="medium" round @click="edit()">确定</el-button>
+						<el-button type="info" size="medium" round @click="reset()">重置</el-button>
 					</el-form-item>
 				</el-form>
 			</main>

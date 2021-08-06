@@ -99,8 +99,8 @@ export default {
 					let { code, role, token } = res.data;
 					// 判断一下 code
 					if (code == 0) {
-						this.$router.push("/layout");
 						local.set("token", token);
+						this.$router.push("/layout");
 					}
 				} else {
 					return;

@@ -255,3 +255,4 @@ export default {
 </script>
 
 <style lang="less" scoped src="../../../assets/styles/goods_list.less"></style>
+<style lang="less" scoped src="../../../assets/styles/common.less"></style>

@@ -40,7 +40,7 @@
 					</el-form-item>
 
 					<el-form-item>
-						<el-button type="primary" @click="add()">添加商品</el-button>
+						<el-button type="primary" size="medium" round @click="add()">添加商品</el-button>
 					</el-form-item>
 				</el-form>
 			</main>
