@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+.shop {
+    header {
+        display: flex;
+
+        justify-content: space-between;
+    }
+
+    /deep/ .avatar-uploader .el-upload {
+        overflow: hidden;
+
+        position: relative;
+
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+
+        cursor: pointer;
+    }
+
+    .avatar-uploader .el-upload:hover {
+        border-color: #409eff;
+    }
+
+    /deep/ .avatar-uploader-icon {
+        width: 148px;
+        height: 148px;
+
+        font-size: 28px;
+        line-height: 148px;
+        text-align: center;
+
+        color: #8c939d;
+    }
+
+    .avatar {
+        display: block;
+
+        width: 178px;
+        height: 178px;
+    }
+
+    main {
+        width: 50%;
+
+        // “至”间隔
+        /deep/ .el-date-editor .el-range-separator {
+            padding: 0;
+        }
+    }
+}

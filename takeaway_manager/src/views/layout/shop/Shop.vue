@@ -1,87 +1,99 @@
 <template>
 	<div class="shop">
 		<Card>
-			<header slot="title">店铺管理</header>
+			<header slot="title">
+				<span>店铺管理</span>
+				<el-button type="primary" size="mini" @click="edit()">{{ disabled ? "编辑" : "完成" }}</el-button>
+			</header>
 			<main slot="content">
-				<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-					<el-form-item label="店铺名称" prop="name">
-						<el-input v-model="ruleForm.name"></el-input>
-					</el-form-item>
-					<el-form-item label="店铺公告" prop="desc">
-						<el-input type="textarea" v-model="ruleForm.desc"></el-input>
+				<el-form
+					class="demo-shopForm"
+					ref="shopForm"
+					label-width="100px"
+					:model="shopForm"
+					:disabled="disabled"
+				>
+					<el-form-item label="店铺名称">
+						<el-input v-model="shopForm.name"></el-input>
 					</el-form-item>
 
-					<el-form-item label="店铺图片" prop="img">
-						<el-upload action="#" list-type="picture-card" :auto-upload="false">
-							<i slot="default" class="el-icon-plus"></i>
-							<div slot="file" slot-scope="{ file }">
-								<img class="el-upload-list__item-thumbnail" :src="file.url" alt="" />
-								<span class="el-upload-list__item-actions">
-									<span class="el-upload-list__item-preview" @click="handlePictureCardPreview(file)">
-										<i class="el-icon-zoom-in"></i>
-									</span>
-									<span
-										v-if="!disabled"
-										class="el-upload-list__item-delete"
-										@click="handleDownload(file)"
-									>
-										<i class="el-icon-download"></i>
-									</span>
-									<span
-										v-if="!disabled"
-										class="el-upload-list__item-delete"
-										@click="handleRemove(file)"
-									>
-										<i class="el-icon-delete"></i>
-									</span>
-								</span>
-							</div>
+					<el-form-item label="店铺公告">
+						<el-input type="textarea" v-model="shopForm.bulletin" :autosize="{ minRows: 5 }"></el-input>
+					</el-form-item>
+
+					<el-form-item label="店铺头像">
+						<el-upload
+							class="avatar-uploader"
+							action="http://127.0.0.1:5000/shop/upload"
+							:show-file-list="false"
+							:on-success="handleAvatarSuccess"
+							:before-upload="beforeAvatarUpload"
+						>
+							<img class="avatar" v-if="shopForm.avatar" :src="baseUrl + shopForm.avatar" />
+							<i v-else class="el-icon-plus avatar-uploader-icon"></i>
+						</el-upload>
+					</el-form-item>
+
+					<el-form-item label="店铺图片">
+						<el-upload
+							list-type="picture-card"
+							action="http://127.0.0.1:5000/shop/upload"
+							:on-success="handleImgSuccess"
+							:on-preview="handlePictureCardPreview"
+							:on-remove="handleRemove"
+							:file-list="fileList"
+						>
+							<i class="el-icon-plus"></i>
 						</el-upload>
 						<el-dialog :visible.sync="dialogVisible">
-							<img width="100%" :src="dialogImageUrl" alt="" />
+							<img width="100%" :src="dialogImageUrl" alt />
 						</el-dialog>
 					</el-form-item>
 
-					<el-form-item label="配送费" prop="fare">
-						<el-input v-model="ruleForm.name"></el-input>
-					</el-form-item>
-					<el-form-item label="配送时间" prop="name">
-						<el-input v-model="ruleForm.name"></el-input>
-					</el-form-item>
-					<el-form-item label="配送描述" prop="name">
-						<el-input v-model="ruleForm.name"></el-input>
-					</el-form-item>
-					<el-form-item label="配送评分" prop="name">
-						<el-input v-model="ruleForm.name"></el-input>
-					</el-form-item>
-					<el-form-item label="销量" prop="name">
-						<el-input v-model="ruleForm.name"></el-input>
+					<el-form-item label="配送费">
+						<el-input-number
+							label="金额"
+							v-model="shopForm.deliveryPrice"
+							:min="0"
+							:max="99999"
+							:precision="2"
+						></el-input-number>
 					</el-form-item>
 
-					<el-form-item label="店铺活动" prop="type">
-						<el-checkbox-group v-model="ruleForm.type">
-							<el-checkbox label="在线支付满28判5年" name="type"></el-checkbox>
-							<el-checkbox label="VC无限橙汁全场8折" name="type"></el-checkbox>
-							<el-checkbox label="特价饮品8折抢购" name="type"></el-checkbox>
-							<el-checkbox label="单人精彩套餐" name="type"></el-checkbox>
-							<el-checkbox label="单人特色套餐" name="type"></el-checkbox>
+					<el-form-item label="配送时间">
+						<el-input v-model="shopForm.deliveryTime"></el-input>
+					</el-form-item>
+
+					<el-form-item label="配送描述">
+						<el-input v-model="shopForm.description"></el-input>
+					</el-form-item>
+
+					<el-form-item label="配送评分">
+						<el-input v-model="shopForm.score"></el-input>
+					</el-form-item>
+
+					<el-form-item label="销量">
+						<el-input v-model="shopForm.sellCount"></el-input>
+					</el-form-item>
+
+					<el-form-item label="活动">
+						<el-checkbox-group v-model="shopForm.supports">
+							<el-checkbox label="单人精彩套餐"></el-checkbox>
+							<el-checkbox label="VC无限橙果汁全场8折"></el-checkbox>
+							<el-checkbox label="在线支付满28减5"></el-checkbox>
+							<el-checkbox label="单人豪华套餐"></el-checkbox>
+							<el-checkbox label="限时优惠"></el-checkbox>
 						</el-checkbox-group>
 					</el-form-item>
 
-					<el-form-item label="营业时间" required>
-						<el-time-picker
-							is-range
-							v-model="value1"
+					<el-form-item label="营业时间">
+						<el-date-picker
+							type="datetimerange"
+							start-placeholder="开始日期"
 							range-separator="至"
-							start-placeholder="开始时间"
-							end-placeholder="结束时间"
-							placeholder="选择时间范围"
-						></el-time-picker>
-					</el-form-item>
-
-					<el-form-item>
-						<el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
-						<el-button @click="resetForm('ruleForm')">重置</el-button>
+							end-placeholder="结束日期"
+							v-model="shopForm.date"
+						></el-date-picker>
 					</el-form-item>
 				</el-form>
 			</main>
@@ -91,127 +103,112 @@
 
 <script>
 import Card from "@/components/Card.vue";
+import { getShop_api, editShop_api } from "@/api/shop";
 
 export default {
 	components: {
 		Card,
 	},
+
 	data() {
 		return {
-			ruleForm: {
-				name: "",
-				region: "",
-				date1: "",
-				date2: "",
-				delivery: false,
-				type: [],
-				resource: "",
-				desc: "",
+			disabled: true, // 表单禁用状态
+			dialogVisible: false, // 控制弹窗
+			dialogImageUrl: "", // 弹窗中的图片路径
+			baseUrl: "http://127.0.0.1:5000/upload/shop/", // 前半截路径
+			shopForm: {
+				avatar: "", // 店铺头像
+				supports: [], // 活动
+				pics: [], // 后台需要的数据数组
 			},
-			dialogImageUrl: "",
-			dialogVisible: false,
-			disabled: false,
-			value1: [new Date(2016, 9, 10, 8, 40), new Date(2016, 9, 10, 9, 40)],
-
-			rules: {
-				name: [
-					{
-						required: true,
-						message: "请输入活动名称",
-						trigger: "blur",
-					},
-					{
-						min: 3,
-						max: 5,
-						message: "长度在 3 到 5 个字符",
-						trigger: "blur",
-					},
-				],
-				region: [
-					{
-						required: true,
-						message: "请选择活动区域",
-						trigger: "change",
-					},
-				],
-				date1: [
-					{
-						type: "date",
-						required: true,
-						message: "请选择日期",
-						trigger: "change",
-					},
-				],
-				date2: [
-					{
-						type: "date",
-						required: true,
-						message: "请选择时间",
-						trigger: "change",
-					},
-				],
-				type: [
-					{
-						type: "array",
-						required: true,
-						message: "请至少选择一个活动性质",
-						trigger: "change",
-					},
-				],
-				resource: [
-					{
-						required: true,
-						message: "请选择活动资源",
-						trigger: "change",
-					},
-				],
-				desc: [
-					{
-						required: true,
-						message: "请填写活动形式",
-						trigger: "blur",
-					},
-				],
-			},
+			fileList: [], // 前端需要的数组 [{name:1,url: 2}]
 		};
 	},
+
+	created() {
+		this.getData();
+	},
+
 	methods: {
-		handleRemove(file) {
-			console.log(file);
-		},
-		handlePictureCardPreview(file) {
-			this.dialogImageUrl = file.url;
-			this.dialogVisible = true;
-		},
-		handleDownload(file) {
-			console.log(file);
-		},
-		submitForm(formName) {
-			this.$refs[formName].validate((valid) => {
-				if (valid) {
-					alert("submit!");
-				} else {
-					console.log("error submit!!");
-					return false;
-				}
+		// 获取店铺数据
+		async getData() {
+			let res = await getShop_api();
+			let { data } = res.data;
+			// 赋值
+			this.shopForm = data;
+			// 头像赋值
+			this.shopForm.avatar = data.avatar;
+			// 循环遍历data中的pics数组 把后台返回的数组改成前端需要的数据解构
+			// 前端需要的数据解构 [{name,url},{name,url}]
+			data.pics.forEach((item) => {
+				this.fileList.push({
+					name: item, // name属性不能重复
+					url: this.baseUrl + item, // 把前半截路径拼完
+				});
 			});
 		},
-		resetForm(formName) {
-			this.$refs[formName].resetFields();
+		// 编辑和完成
+		async edit() {
+			// 改变编辑状态
+			if (this.disabled == false) {
+				// 把数组转成字符串类型
+				this.shopForm.pics = JSON.stringify(this.shopForm.pics);
+				this.shopForm.date = JSON.stringify(this.shopForm.date);
+				this.shopForm.supports = JSON.stringify(this.shopForm.supports);
+				// 等于false 代表可以编辑表单的状态==完成按钮==发请求
+				let res = await editShop_api(this.shopForm);
+				// 关闭弹窗
+				this.disabled = true;
+			} else {
+				// 全部禁用
+				this.disabled = false;
+			}
+		},
+		// 店铺头像上传成功
+		handleAvatarSuccess(res) {
+			let { code, imgUrl } = res;
+			if (code == 0) {
+				this.shopForm.avatar = imgUrl;
+			}
+		},
+		// 店铺头像上传检测
+		beforeAvatarUpload(file) {
+			const isJPG = file.type.includes("image");
+			const isLt2M = file.size / 1024 / 1024 < 2;
+			if (!isJPG) {
+				this.$message.error("上传头像图片只能是 图片 格式!");
+			}
+			if (!isLt2M) {
+				this.$message.error("上传头像图片大小不能超过 2MB!");
+			}
+			return isJPG && isLt2M;
+		},
+		// 店铺多图上传成功
+		handleImgSuccess(res) {
+			let { code, imgUrl } = res;
+			if (code == 0) {
+				this.shopForm.pics.push(imgUrl);
+			}
+		},
+		// 图片预览
+		handlePictureCardPreview(file) {
+			// 显示弹窗
+			this.dialogVisible = true;
+			// 给图片赋值
+			this.dialogImageUrl = file.url;
+		},
+		// 图片删除
+		handleRemove(file) {
+			let imgName = file.url.split("/");
+			let imgTarget = imgName[imgName.length - 1];
+			this.shopForm.pics.forEach((item, i) => {
+				if (imgTarget == item) {
+					this.shopForm.pics.splice(i, 1);
+				}
+			});
 		},
 	},
 };
 </script>
 
-<style lang="less" scoped>
-.shop {
-	main {
-		width: 50%;
-
-		// “至”间隔
-		/deep/ .el-date-editor .el-range-separator {
-			padding: 0;
-		}
-	}
-}
-</style>
+<style lang="less" scoped src="../../../assets/styles/shop.less"></style>

@@ -1,8 +1,8 @@
 <template>
 	<div class="acc-add">
 		<Card>
-			<span slot="title">账号添加</span>
-			<div slot="content">
+			<header slot="title">账号添加</header>
+			<main slot="content">
 				<el-form
 					class="demo-ruleForm"
 					ref="addForm"
@@ -20,7 +20,7 @@
 					</el-form-item>
 
 					<el-form-item label="用户组" prop="group">
-						<el-select v-model="addForm.group" placeholder="请选择用户组">
+						<el-select placeholder="请选择用户组" v-model="addForm.group">
 							<el-option label="超级管理员" value="超级管理员"></el-option>
 							<el-option label="普通管理员" value="普通管理员"></el-option>
 						</el-select>
@@ -31,7 +31,7 @@
 						<el-button @click="reset()">重置</el-button>
 					</el-form-item>
 				</el-form>
-			</div>
+			</main>
 		</Card>
 	</div>
 </template>
@@ -122,8 +122,9 @@ export default {
 
 <style lang="less" scoped>
 .acc-add {
-	/deep/ .el-input {
-		width: 300px;
-	}
+    /deep/ .el-input {
+        width: 300px;
+    }
 }
+
 </style>

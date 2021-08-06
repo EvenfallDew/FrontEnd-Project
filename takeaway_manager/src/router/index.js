@@ -9,26 +9,30 @@ import Layout from "@/views/layout/Layout.vue";
 Vue.use(VueRouter);
 
 // 一二级路由
-const routes = [
+export const aysncRoutes = [
 	// 首页重定向
 	{
 		path: "/",
 		redirect: "/login",
+		isShow: false,
 	},
 	// 登录
 	{
 		path: "/login",
 		component: Login,
+		isShow: false,
 	},
 	// 后台首页
 	{
 		path: "",
 		component: Layout,
+		isShow: true,
 		children: [
 			{
 				path: "/layout",
 				meta: { title: "后台首页" },
 				component: () => import("@/views/layout/home/Home.vue"),
+				isShow: true,
 			},
 		],
 	},
@@ -41,6 +45,21 @@ const routes = [
 				path: "/user",
 				meta: { title: "个人中心" },
 				component: () => import("@/views/layout/user/User.vue"),
+				isShow: false,
+			},
+		],
+	},
+	// 店铺管理
+	{
+		path: "",
+		component: Layout,
+		isShow: true,
+		children: [
+			{
+				path: "/shop",
+				meta: { title: "店铺管理" },
+				component: () => import("@/views/layout/shop/Shop.vue"),
+				isShow: true,
 			},
 		],
 	},
@@ -53,6 +72,7 @@ const routes = [
 				path: "/order",
 				meta: { title: "订单管理" },
 				component: () => import("@/views/layout/order/Order.vue"),
+				isShow: true,
 			},
 		],
 	},
@@ -62,78 +82,89 @@ const routes = [
 		meta: { title: "商品管理" },
 		component: Layout,
 		redirect: "/goods/goods-list",
+		isShow: true,
 		children: [
 			{
 				path: "goods-list",
 				meta: { title: "商品列表" },
 				component: () => import("@/views/layout/goods/GoodsList.vue"),
+				isShow: true,
 			},
 			{
 				path: "goods-add",
 				meta: { title: "商品添加" },
 				component: () => import("@/views/layout/goods/GoodsAdd.vue"),
+				isShow: true,
 			},
 			{
 				path: "goods-cate",
 				meta: { title: "商品类型" },
 				component: () => import("@/views/layout/goods/GoodsCate.vue"),
-			},
-		],
-	},
-	// 店铺管理
-	{
-		path: "",
-		component: Layout,
-		children: [
-			{
-				path: "/shop",
-				meta: { title: "店铺管理" },
-				component: () => import("@/views/layout/shop/Shop.vue"),
+				isShow: true,
 			},
 		],
 	},
 	// 账号管理
 	{
 		path: "/acc",
-		meta: { title: "账号管理" },
+		meta: { title: "账号管理", roles: ["super", "normal"] },
 		component: Layout,
+		isShow: true,
 		redirect: "/acc/acc-list",
 		children: [
 			{
 				path: "acc-list",
-				meta: { title: "账号列表" },
+				meta: { title: "账号列表", roles: ["super"] },
 				component: () => import("@/views/layout/acc/AccList.vue"),
+				isShow: true,
 			},
 			{
 				path: "acc-add",
-				meta: { title: "账号添加" },
+				meta: { title: "账号添加", roles: ["super", "normal"] },
 				component: () => import("@/views/layout/acc/AccAdd.vue"),
+				isShow: true,
 			},
 			{
 				path: "acc-edit",
-				meta: { title: "账号修改" },
+				meta: { title: "账号修改", roles: ["super", "normal"] },
 				component: () => import("@/views/layout/acc/AccEdit.vue"),
+				isShow: true,
 			},
 		],
 	},
 	// 销售统计
 	{
 		path: "/count",
-		meta: { title: "销售统计" },
+		meta: { title: "销售统计", roles: ["super"] },
 		component: Layout,
+		isShow: true,
 		redirect: "/count/count-goods",
 		children: [
 			{
 				path: "count-goods",
-				meta: { title: "商品统计" },
+				meta: { title: "商品统计", roles: ["super"] },
 				component: () => import("@/views/layout/count/CountGoods.vue"),
+				isShow: true,
 			},
 			{
 				path: "count-order",
-				meta: { title: "订单统计" },
+				meta: { title: "订单统计", roles: ["super"] },
 				component: () => import("@/views/layout/count/CountOrder.vue"),
+				isShow: true,
 			},
 		],
+	},
+	// 错误页面
+	{
+		path: "/error",
+		isShow: false,
+		component: () => import("@/views/layout/error/Error.vue"),
+	},
+	// 重定向
+	{
+		path: "*",
+		isShow: false,
+		redirect: "/error",
 	},
 ];
 
@@ -144,7 +175,7 @@ VueRouter.prototype.push = function push(location) {
 };
 
 const router = new VueRouter({
-	routes,
+	routes: aysncRoutes,
 });
 
 // 路由守卫

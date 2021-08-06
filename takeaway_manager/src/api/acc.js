@@ -86,4 +86,11 @@ export const editImg_api = (data) => {
 		params: data,
 	});
 };
+
 // 获取身份角色
+export const getRole_api = () => {
+	return request({
+		method: "get",
+		url: "/users/role",
+	});
+};

@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import LeftMenu from "@/components/LeftMenu.vue";
+import LeftMenu from "@/components/LeftMenuX.vue";
 import TopNav from "@/components/TopNav.vue";
 
 export default {

@@ -19,11 +19,11 @@
 						:on-success="handleAvatarSuccess"
 						:before-upload="beforeAvatarUpload"
 					>
-						<img v-if="imageUrl" :src="baseUrl + imageUrl" class="avatar" />
-						<i v-else class="el-icon-plus avatar-uploader-icon"></i>
+						<img class="avatar" v-if="imageUrl" :src="baseUrl + imageUrl" />
+						<i class="el-icon-plus avatar-uploader-icon" v-else></i>
 					</el-upload>
 				</div>
-				<el-button @click="uploadImg()" type="primary">修改头像</el-button>
+				<el-button type="primary" @click="uploadImg()">修改头像</el-button>
 			</main>
 		</Card>
 	</div>
@@ -54,7 +54,6 @@ export default {
 	},
 
 	created() {
-		// 调用函数
 		this.info = local.get("info");
 	},
 
