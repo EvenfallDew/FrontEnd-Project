@@ -35,7 +35,7 @@ axios.interceptors.response.use(
 		let { code, msg } = response.data;
 		// 判断 如果msg存在 才走弹窗 否则不走弹窗
 		if (msg) {
-			if (code == 0) {
+			if (code === 0) {
 				// 成功弹窗
 				Message({
 					type: "success",
@@ -45,7 +45,11 @@ axios.interceptors.response.use(
 			} else if (code == "00" || code == "11") {
 			} else {
 				// 错误弹窗
-				Message.error(msg);
+				Message({
+					type: "error",
+					message: msg,
+					center: true,
+				});
 			}
 		}
 		return response;

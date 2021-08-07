@@ -89,4 +89,4 @@ export default {
 };
 </script>
 
-<style lang="less" scoped src="../../../assets/styles/user.less"></style>
+<style lang="less" scoped src="../../../assets/styles/acc_user.less"></style>

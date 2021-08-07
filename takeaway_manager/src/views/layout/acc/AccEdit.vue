@@ -35,8 +35,9 @@
 
 <script>
 import Card from "@/components/Card.vue";
+import local from "@/utils/local";
 import { REG_PWD } from "@/utils/reg.js";
-import { changePwd_api, checkOldPwd_api } from "@/api/acc";
+import { checkOldPwd_api, changePwd_api } from "@/api/acc";
 
 export default {
 	components: {
@@ -56,7 +57,7 @@ export default {
 				if (code == "00") {
 					callback();
 				} else {
-					callback();
+					callback(new Error(msg));
 				}
 			}
 		};
@@ -110,7 +111,7 @@ export default {
 			this.$refs.editForm.validate(async (valid) => {
 				if (valid) {
 					let res = await changePwd_api({
-						newPwd: this.eiditForm.confirmPwd,
+						newPwd: this.editForm.confirmPwd,
 					});
 					let { code } = res.data;
 					// 修改成功

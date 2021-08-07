@@ -96,10 +96,7 @@ export default {
 		return {
 			isShow: false, // 控制弹窗显示或者隐藏
 			//  编辑弹窗的数据
-			eiditForm: {
-				name: "",
-				group: "",
-			},
+			eiditForm: {},
 			currentPage: 1, // 当前分页器要显示第几页数据
 			pageSize: 5, // 每页显示几条数据
 			total: 20, // 总条数
@@ -143,19 +140,18 @@ export default {
 			};
 		},
 		// 编辑完成
-		finish() {
-			let res = changeGroup_api({
-				id: this.accData.id,
-				account: this.accData.name,
-				userGroup: this.accData.group,
+		async finish() {
+			let res = await changeGroup_api({
+				id: this.eiditForm.id,
+				account: this.eiditForm.account,
+				userGroup: this.eiditForm.userGroup,
 			});
 			// 成功
-			console.log(res.data);
-			// if (res.data.code == 0) {
-			// 	// 重绘
-			// 	this.getList();
-			// }
-			// this.isShow = false;
+			if (res.data.code == 0) {
+				// 重绘
+				this.getList();
+			}
+			this.isShow = false;
 		},
 		// 删除
 		del(row) {

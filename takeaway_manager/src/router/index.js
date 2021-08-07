@@ -36,19 +36,6 @@ export const aysncRoutes = [
 			},
 		],
 	},
-	// 个人中心
-	{
-		path: "",
-		component: Layout,
-		children: [
-			{
-				path: "/user",
-				meta: { title: "个人中心" },
-				component: () => import("@/views/layout/user/User.vue"),
-				isShow: false,
-			},
-		],
-	},
 	// 店铺管理
 	{
 		path: "",
@@ -120,7 +107,7 @@ export const aysncRoutes = [
 			},
 			{
 				path: "acc-add",
-				meta: { title: "账号添加", roles: ["super", "normal"] },
+				meta: { title: "账号添加", roles: ["super"] },
 				component: () => import("@/views/layout/acc/AccAdd.vue"),
 				isShow: true,
 			},
@@ -128,6 +115,12 @@ export const aysncRoutes = [
 				path: "acc-edit",
 				meta: { title: "账号修改", roles: ["super", "normal"] },
 				component: () => import("@/views/layout/acc/AccEdit.vue"),
+				isShow: true,
+			},
+			{
+				path: "acc-user",
+				meta: { title: "个人中心", roles: ["super", "normal"] },
+				component: () => import("@/views/layout/acc/AccUser.vue"),
 				isShow: true,
 			},
 		],

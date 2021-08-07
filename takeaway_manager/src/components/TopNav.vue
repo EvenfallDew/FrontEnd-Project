@@ -89,7 +89,7 @@ export default {
 			// val 就是command 绑定的值 形参随便叫什么无所谓
 			if (val == "user") {
 				// 如果点击的是个人中心 就应该跳转页面
-				this.$router.push("/user");
+				this.$router.push("/acc/acc-user");
 			} else {
 				// 点击退出登录
 				local.clear();
