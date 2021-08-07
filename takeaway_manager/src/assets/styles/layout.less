@@ -8,21 +8,38 @@
     height: 100%;
 
     background-image: linear-gradient(45deg, #29323c, #485563);
-
-// background-image: linear-gradient(45deg, #0c675e, #069e90);
     background-repeat: no-repeat;
     background-size: cover;
 
     aside {
+        display: flex;
+
         width: 200px;
         height: 100%;
 
         background-color: rgba(0, 0, 0, .24);
 
+        flex-direction: column;
+        justify-content: space-between;
+
         .title {
             font: 20px/60px "微软雅黑";
             text-align: center;
 
+            color: #fff;
+        }
+
+        .change-color {
+            margin-bottom: 10px;
+
+            text-align: center;
+
+            color: rgba(255, 255, 255, .5);
+
+            cursor: pointer;
+        }
+
+        .change-color:hover {
             color: #fff;
         }
     }
