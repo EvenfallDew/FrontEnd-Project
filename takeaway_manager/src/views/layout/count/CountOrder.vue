@@ -78,12 +78,12 @@ export default {
 		},
 		// 查询
 		search() {
-			this.getGoodsData();
+			this.getOrderData();
 		},
 		// 重置
 		reset() {
 			this.searchForm.date = "";
-			this.getGoodsData();
+			this.getOrderData();
 		},
 	},
 };

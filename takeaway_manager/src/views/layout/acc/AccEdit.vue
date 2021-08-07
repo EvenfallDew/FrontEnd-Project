@@ -36,6 +36,7 @@
 <script>
 import Card from "@/components/Card.vue";
 import { REG_PWD } from "@/utils/reg.js";
+import { changePwd_api, checkOldPwd_api } from "@/api/acc";
 
 export default {
 	components: {
@@ -44,11 +45,19 @@ export default {
 
 	data() {
 		// 验证原密码
-		const checkOldPwd = (rules, value, callback) => {
+		const checkOldPwd = async (rules, value, callback) => {
 			if (!value) {
 				callback(new Error("原密码不能为空"));
 			} else {
-				callback();
+				let res = await checkOldPwd_api({
+					oldPwd: value,
+				});
+				let { code, msg } = res.data;
+				if (code == "00") {
+					callback();
+				} else {
+					callback();
+				}
 			}
 		};
 		// 新密码
@@ -124,9 +133,8 @@ export default {
 
 <style lang="less" scoped>
 .acc-edit {
-    /deep/ .el-input {
-        width: 300px;
-    }
+	/deep/ .el-input {
+		width: 300px;
+	}
 }
-
 </style>

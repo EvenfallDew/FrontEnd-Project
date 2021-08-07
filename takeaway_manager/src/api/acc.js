@@ -49,6 +49,13 @@ export const delAll_api = (data) => {
 };
 
 // 修改账号
+export const changeGroup_api = (data) => {
+	return request({
+		method: "post",
+		url: "/users/edit",
+		data: Qs.stringify(data),
+	});
+};
 
 // 检测旧密码正确
 export const checkOldPwd_api = (data) => {

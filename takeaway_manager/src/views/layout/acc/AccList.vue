@@ -84,7 +84,7 @@
 
 <script>
 import Card from "@/components/Card.vue";
-import { accList_api, delAcc_api, delAll_api } from "@/api/acc";
+import { accList_api, delAcc_api, delAll_api, changeGroup_api } from "@/api/acc";
 import moment from "moment";
 
 export default {
@@ -133,10 +133,6 @@ export default {
 			// 总条数
 			this.total = total;
 		},
-		// 完成
-		finish() {
-			this.isShow = false;
-		},
 		// 编辑
 		edit(row) {
 			// 弹窗
@@ -145,6 +141,21 @@ export default {
 				// 浅拷贝
 				...row,
 			};
+		},
+		// 编辑完成
+		finish() {
+			let res = changeGroup_api({
+				id: this.accData.id,
+				account: this.accData.name,
+				userGroup: this.accData.group,
+			});
+			// 成功
+			console.log(res.data);
+			// if (res.data.code == 0) {
+			// 	// 重绘
+			// 	this.getList();
+			// }
+			// this.isShow = false;
 		},
 		// 删除
 		del(row) {
@@ -227,18 +238,17 @@ export default {
 
 <style lang="less" scoped>
 .acc-eidit {
-    header {
-        display: flex;
+	header {
+		display: flex;
 
-        align-items: center;
-        justify-content: space-between;
-    }
+		align-items: center;
+		justify-content: space-between;
+	}
 
-    // 操作按钮
-    .operate-btn {
-        margin-top: 20px;
-    }
+	// 操作按钮
+	.operate-btn {
+		margin-top: 20px;
+	}
 }
-
 </style>
 <style lang="less" scoped src="../../../assets/styles/common.less"></style>
