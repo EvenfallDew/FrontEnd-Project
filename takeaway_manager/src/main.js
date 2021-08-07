@@ -8,6 +8,9 @@ import "@/assets/fonts/iconfont.css";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 
+import XLSX from "xlsx";
+Vue.use(XLSX);
+
 Vue.use(ElementUI);
 
 Vue.prototype.$bus = new Vue();

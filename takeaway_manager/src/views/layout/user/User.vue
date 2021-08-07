@@ -14,7 +14,7 @@
 				<div>
 					<el-upload
 						class="avatar-uploader"
-						action="http://127.0.0.1:5000/users/avatar_upload"
+						:action="baseImgUrl"
 						:show-file-list="false"
 						:on-success="handleAvatarSuccess"
 						:before-upload="beforeAvatarUpload"
@@ -34,6 +34,7 @@ import Card from "@/components/Card.vue";
 import local from "@/utils/local";
 import moment from "moment";
 import { getInfo_api, editImg_api } from "@/api/acc";
+import base from "@/utils/base";
 
 export default {
 	components: {
@@ -42,7 +43,8 @@ export default {
 
 	data() {
 		return {
-			baseUrl: "http://127.0.0.1:5000/upload/imgs/acc_img/",
+			baseUrl: base.url + "upload/imgs/acc_img/",
+			baseImgUrl: base.url + "users/avatar_upload",
 			imageUrl: "",
 			info: {
 				id: "",

@@ -24,7 +24,7 @@
 					<el-form-item label="店铺头像">
 						<el-upload
 							class="avatar-uploader"
-							action="http://127.0.0.1:5000/shop/upload"
+							:action="baseAction"
 							:show-file-list="false"
 							:on-success="handleAvatarSuccess"
 							:before-upload="beforeAvatarUpload"
@@ -37,7 +37,7 @@
 					<el-form-item label="店铺图片">
 						<el-upload
 							list-type="picture-card"
-							action="http://127.0.0.1:5000/shop/upload"
+							:action="baseAction"
 							:on-success="handleImgSuccess"
 							:on-preview="handlePictureCardPreview"
 							:on-remove="handleRemove"
@@ -104,6 +104,7 @@
 <script>
 import Card from "@/components/Card.vue";
 import { getShop_api, editShop_api } from "@/api/shop";
+import base from "@/utils/base";
 
 export default {
 	components: {
@@ -115,7 +116,8 @@ export default {
 			disabled: true, // 表单禁用状态
 			dialogVisible: false, // 控制弹窗
 			dialogImageUrl: "", // 弹窗中的图片路径
-			baseUrl: "http://127.0.0.1:5000/upload/shop/", // 前半截路径
+			baseUrl: base.url + "upload/shop/", // 前半截路径
+			baseAction: base.url + "shop/upload",
 			shopForm: {
 				avatar: "", // 店铺头像
 				supports: [], // 活动

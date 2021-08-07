@@ -1,7 +1,10 @@
 <template>
 	<div class="goods-list">
 		<Card>
-			<header slot="title">商品列表</header>
+			<header slot="title">
+				<span>商品列表</span>
+				<el-button type="info" size="mini" round @click="export2Excel()">导出表格</el-button>
+			</header>
 			<main slot="content">
 				<el-table style="width: 100%" :data="goodsData">
 					<!-- 下拉拓展 -->
@@ -115,7 +118,7 @@
 						<el-form-item label="商品图片" label-width="100px">
 							<el-upload
 								class="avatar-uploader"
-								action="http://127.0.0.1:5000/goods/goods_img_upload"
+								:action="baseAction"
 								:show-file-list="false"
 								:on-success="handleAvatarSuccess"
 							>
@@ -143,6 +146,7 @@
 
 <script>
 import Card from "@/components/Card.vue";
+import base from "@/utils/base";
 import { getGoodsList_api, delGoods_api, editGoods_api, getGoodsCate_api } from "@/api/goods";
 import moment from "moment";
 
@@ -157,7 +161,8 @@ export default {
 			currentPage: 1, // 当前页
 			pageSize: 5, // 每页显示几条数据
 			total: 0, // 总条数
-			baseUrl: "http://127.0.0.1:5000/upload/imgs/goods_img/", // 图片地址
+			baseUrl: base.url + "upload/imgs/goods_img/", // 图片地址
+			baseAction: base.url + "goods/goods_img_upload",
 			isShow: false,
 			editForm: {},
 			cateArr: [],
@@ -239,6 +244,29 @@ export default {
 			if (code == 0) {
 				this.editForm.imgUrl = imgUrl;
 			}
+		},
+		// 导出数据
+		export2Excel() {
+			require.ensure([], () => {
+				const { export_json_to_excel } = require("../../../excel/Export2Excel"); // 这里 require 写你的Export2Excel.js的绝对地址
+				const tHeader = [
+					"商品ID",
+					"商品名称",
+					"所属分类",
+					"商品价格",
+					"创建时间",
+					"商品评价",
+					"商品销量",
+					"商品描述",
+				]; //对应表格输出的title
+				const filterVal = ["id", "name", "category", "price", "ctime", "rating", "sellCount", "goodsDesc"]; // 对应表格输出的数据
+				const list = this.goodsData;
+				const data = this.formatJson(filterVal, list);
+				export_json_to_excel(tHeader, data, "商品列表"); //对应下载文件的名字
+			});
+		},
+		formatJson(filterVal, jsonData) {
+			return jsonData.map((v) => filterVal.map((j) => v[j]));
 		},
 		// 条数
 		handleSizeChange(val) {

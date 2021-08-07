@@ -28,6 +28,7 @@
 
 <script>
 import local from "@/utils/local";
+import base from "@/utils/base";
 import { getInfo_api } from "@/api/acc";
 
 export default {
@@ -37,7 +38,6 @@ export default {
 			breadArr: [],
 		};
 	},
-
 	created() {
 		// 信息绘制
 		this.getInfo();
@@ -80,6 +80,9 @@ export default {
 			this.info = accountInfo;
 			// 存入本地
 			local.set("info", this.info);
+			let imgHead = this.info.imgUrl.split("/");
+			let imgTarget = imgHead[imgHead.length - 1];
+			this.info.imgUrl = base.url + "/upload/imgs/acc_img/" + imgTarget;
 		},
 		// 下拉选择框
 		selItem(val) {

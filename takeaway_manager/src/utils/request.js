@@ -4,9 +4,10 @@ import axios from "axios";
 import { Message } from "element-ui";
 // 引入local工具
 import local from "@/utils/local";
+import base from "@/utils/base";
 
 // 请求默认地址
-axios.defaults.baseURL = "http://127.0.0.1:5000/";
+axios.defaults.baseURL = base.url;
 
 // 请求超时
 axios.defaults.timeout = 3000;

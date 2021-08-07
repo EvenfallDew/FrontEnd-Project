@@ -26,7 +26,7 @@
 					<el-form-item label="商品图片">
 						<el-upload
 							class="avatar-uploader"
-							action="http://127.0.0.1:5000/goods/goods_img_upload"
+							:action="baseAction"
 							:show-file-list="false"
 							:on-success="handleAvatarSuccess"
 						>
@@ -50,6 +50,7 @@
 
 <script>
 import Card from "@/components/Card.vue";
+import base from "@/utils/base";
 import { addGoods_api, getGoodsCate_api } from "@/api/goods";
 
 export default {
@@ -64,7 +65,8 @@ export default {
 			// 添加数据
 			addForm: {},
 			// 图片地址
-			baseUrl: "http://127.0.0.1:5000/upload/imgs/goods_img/",
+			baseUrl: base.url + "upload/imgs/goods_img/",
+			baseAction: base.url + "goods/goods_img_upload",
 		};
 	},
 

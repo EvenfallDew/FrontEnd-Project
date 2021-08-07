@@ -1,7 +1,10 @@
 <template>
 	<div class="acc-eidit">
 		<Card>
-			<header slot="title">账号列表</header>
+			<header slot="title">
+				<span>账号列表</span>
+				<el-button type="info" size="mini" round @click="export2Excel()">导出表格</el-button>
+			</header>
 			<main slot="content">
 				<el-table
 					ref="accData"
@@ -194,6 +197,20 @@ export default {
 		cancel() {
 			this.$refs.accData.clearSelection();
 		},
+		// 导出数据
+		export2Excel() {
+			require.ensure([], () => {
+				const { export_json_to_excel } = require("../../../excel/Export2Excel"); // 这里 require 写你的Export2Excel.js的绝对地址
+				const tHeader = ["账号", "用户组", "创建时间"]; //对应表格输出的title
+				const filterVal = ["account", "userGroup", "ctime"]; // 对应表格输出的数据
+				const list = this.accData;
+				const data = this.formatJson(filterVal, list);
+				export_json_to_excel(tHeader, data, "账号列表"); //对应下载文件的名字
+			});
+		},
+		formatJson(filterVal, jsonData) {
+			return jsonData.map((v) => filterVal.map((j) => v[j]));
+		},
 		// 条数
 		handleSizeChange(val) {
 			this.pageSize = val;
@@ -210,6 +227,13 @@ export default {
 
 <style lang="less" scoped>
 .acc-eidit {
+    header {
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+    }
+
     // 操作按钮
     .operate-btn {
         margin-top: 20px;
