@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+.order {
+    header {
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /deep/ .el-table {
+        margin-top: 40px;
+    }
+
+    /deep/ .el-table,
+    .el-table__expanded-cell {
+        color: #fff;
+        background-color: rgba(38, 46, 55, .8);
+    }
+
+    /deep/ .el-table th {
+        background-color: rgba(38, 46, 55, .8) !important;
+    }
+
+    /deep/ .el-table tr {
+        background-color: rgba(38, 46, 55, .8) !important;
+    }
+
+    /deep/ .el-table--enable-row-transition .el-table__body td,
+    .el-table .cell {
+        background-color: rgba(38, 46, 55, .8);
+    }
+}

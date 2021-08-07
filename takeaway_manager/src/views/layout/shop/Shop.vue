@@ -3,7 +3,9 @@
 		<Card>
 			<header slot="title">
 				<span>店铺管理</span>
-				<el-button type="primary" size="mini" @click="edit()">{{ disabled ? "编辑" : "完成" }}</el-button>
+				<el-button type="primary" size="mini" round @click="edit()">
+					{{ disabled ? "编辑信息" : "完成编辑" }}
+				</el-button>
 			</header>
 			<main slot="content">
 				<el-form

@@ -13,7 +13,7 @@
 					<!-- 没有子菜单 -->
 					<el-menu-item v-if="item.children.length == 1" :index="item.children[0].path">
 						<span slot="title">
-							<i class="iconfont icon-menu-home"></i>
+							<i :class="icon + item.children[0].meta.tag"></i>
 							{{ item.children[0].meta.title }}
 						</span>
 					</el-menu-item>
@@ -21,7 +21,7 @@
 					<el-submenu v-else :index="item.path">
 						<template slot="title">
 							<span>
-								<i class="iconfont icon-menu-goods"></i>
+								<i :class="icon + item.meta.tag"></i>
 								{{ item.meta.title }}
 							</span>
 						</template>
@@ -49,6 +49,7 @@ export default {
 	data() {
 		return {
 			menu: [],
+			icon: "iconfont icon-menu-",
 		};
 	},
 
@@ -56,7 +57,6 @@ export default {
 		// 获取到身份角色
 		let res = await getRole_api();
 		let { role } = res.data;
-
 		// 判断当前路由是否有身份权限
 		function hasRole(roles, routers) {
 			if (routers.meta && routers.meta.roles) {
@@ -66,7 +66,6 @@ export default {
 				return true;
 			}
 		}
-
 		// 过滤路由数组
 		function filterRouters(roles, routers) {
 			let accRouter = routers.filter((item) => {

@@ -1,7 +1,10 @@
 <template>
 	<div class="order">
 		<Card>
-			<header slot="title">订单管理</header>
+			<header slot="title">
+				<span>订单管理</span>
+				<el-button type="info" size="mini" round @click="export2Excel()">导出表格</el-button>
+			</header>
 			<main slot="content">
 				<!-- 查询 -->
 				<el-form class="demo-form-inline" :inline="true" :model="searchForm">
@@ -35,13 +38,13 @@
 					</el-form-item>
 					<el-form-item>
 						<el-button type="primary" size="small" @click="find()">查询</el-button>
-						<el-button type="primary" size="small" @click="reset()">重置</el-button>
+						<el-button type="info" size="small" @click="reset()">重置</el-button>
 					</el-form-item>
 				</el-form>
 
 				<!-- 表格 -->
 				<el-table :data="orderData" border style="width: 100%">
-					<el-table-column fixed prop="orderNo" label="订单号" width="100px"></el-table-column>
+					<el-table-column fixed="left" prop="orderNo" label="订单号" width="100px"></el-table-column>
 					<el-table-column prop="orderTime" label="下单时间" width="170px"></el-table-column>
 					<el-table-column prop="phone" label="手机号" width="120px"></el-table-column>
 					<el-table-column prop="consignee" label="收货人" width="120px"></el-table-column>
@@ -50,7 +53,7 @@
 					<el-table-column prop="remarks" label="用户备注"></el-table-column>
 					<el-table-column prop="orderAmount" label="订单金额"></el-table-column>
 					<el-table-column prop="orderState" label="订单状态"></el-table-column>
-					<el-table-column fixed="right" label="操作" width="100px">
+					<el-table-column fixed="right" label="操作" width="100px" style="background-color:red">
 						<template slot-scope="scope">
 							<el-button type="primary" size="mini" @click="edit(scope.row)">编辑</el-button>
 						</template>
@@ -239,6 +242,40 @@ export default {
 				this.getList();
 			}
 		},
+		// 导出数据
+		export2Excel() {
+			require.ensure([], () => {
+				const { export_json_to_excel } = require("../../../excel/Export2Excel"); // 这里 require 写你的Export2Excel.js的绝对地址
+				const tHeader = [
+					"订单号",
+					"下单时间",
+					"手机号",
+					"收货人",
+					"配送地址",
+					"送达时间",
+					"用户备注",
+					"订单金额",
+					"订单状态",
+				]; //对应表格输出的title
+				const filterVal = [
+					"orderNo",
+					"orderTime",
+					"phone",
+					"consignee",
+					"deliverAddress",
+					"deliveryTime",
+					"remarks",
+					"orderAmount",
+					"orderState",
+				]; // 对应表格输出的数据
+				const list = this.orderData;
+				const data = this.formatJson(filterVal, list);
+				export_json_to_excel(tHeader, data, "订单列表"); //对应下载文件的名字
+			});
+		},
+		formatJson(filterVal, jsonData) {
+			return jsonData.map((v) => filterVal.map((j) => v[j]));
+		},
 		// 条数
 		handleSizeChange(val) {
 			this.pageSize = val;
@@ -253,15 +290,5 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-.order {
-	.el-table {
-		margin-top: 40px;
-	}
-
-	// 分页器
-	.el-pagination {
-		margin-top: 20px;
-	}
-}
-</style>
+<style lang="less" scoped src="../../../assets/styles/common.less"></style>
+<style lang="less" scoped src="../../../assets/styles/order.less"></style>

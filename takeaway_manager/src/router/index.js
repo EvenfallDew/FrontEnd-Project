@@ -30,7 +30,7 @@ export const aysncRoutes = [
 		children: [
 			{
 				path: "/layout",
-				meta: { title: "后台首页" },
+				meta: { title: "后台首页", tag: "home" },
 				component: () => import("@/views/layout/home/Home.vue"),
 				isShow: true,
 			},
@@ -44,7 +44,7 @@ export const aysncRoutes = [
 		children: [
 			{
 				path: "/shop",
-				meta: { title: "店铺管理" },
+				meta: { title: "店铺管理", tag: "shop" },
 				component: () => import("@/views/layout/shop/Shop.vue"),
 				isShow: true,
 			},
@@ -54,10 +54,12 @@ export const aysncRoutes = [
 	{
 		path: "",
 		component: Layout,
+		isShow: true,
+
 		children: [
 			{
 				path: "/order",
-				meta: { title: "订单管理" },
+				meta: { title: "订单管理", tag: "order" },
 				component: () => import("@/views/layout/order/Order.vue"),
 				isShow: true,
 			},
@@ -66,7 +68,7 @@ export const aysncRoutes = [
 	// 商品管理
 	{
 		path: "/goods",
-		meta: { title: "商品管理" },
+		meta: { title: "商品管理", tag: "goods" },
 		component: Layout,
 		redirect: "/goods/goods-list",
 		isShow: true,
@@ -94,7 +96,7 @@ export const aysncRoutes = [
 	// 账号管理
 	{
 		path: "/acc",
-		meta: { title: "账号管理", roles: ["super", "normal"] },
+		meta: { title: "账号管理", tag: "acc", roles: ["super", "normal"] },
 		component: Layout,
 		isShow: true,
 		redirect: "/acc/acc-list",
@@ -128,7 +130,7 @@ export const aysncRoutes = [
 	// 销售统计
 	{
 		path: "/count",
-		meta: { title: "销售统计", roles: ["super"] },
+		meta: { title: "销售统计", tag: "count", roles: ["super"] },
 		component: Layout,
 		isShow: true,
 		redirect: "/count/count-goods",

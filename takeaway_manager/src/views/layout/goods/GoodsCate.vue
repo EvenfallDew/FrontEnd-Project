@@ -3,7 +3,7 @@
 		<Card>
 			<header slot="title">
 				<span>商品分类</span>
-				<el-button type="primary" size="mini" @click="isShow = true">添加分类</el-button>
+				<el-button type="primary" size="mini" round @click="isShow = true">添加分类</el-button>
 			</header>
 			<!-- 表格 -->
 			<main slot="content">
