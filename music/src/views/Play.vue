@@ -1,30 +1,24 @@
 <template>
 	<div class="play">
-		<h2>播放页面</h2>
-		<h3 @click="goList()">返回结果</h3>
+		<h2>
+			<button type="button" @click="goList()">返回结果</button>
+		</h2>
+		<hr />
 		<main>
-			<div class="play-box" @click="play()">
-				<img id="playBtn" class="play-btn play-rotate" src="../assets/images/1.jpg" alt="album_pic" />
-				<audio id="song" :src="src" controls></audio>
-			</div>
-			<!-- 进度条 -->
-			<div id="progressBar" class="progress-bar"></div>
-			<!-- 时长 -->
-			<div class="play-time">
-				<span id="musicCurrent">0:00</span>
-				/
-				<span id="musicDuration">0:00</span>
+			<div class="play-box">
+				<img ref="playBtn" class="play-btn play-rotate" :src="pic" alt="album_pic" @click="play()" />
+				<audio ref="song" :src="src" controls></audio>
 			</div>
 		</main>
 		<div>
-			<h2>热门留言</h2>
+			<h3>热门留言</h3>
 			<table>
 				<tr v-for="(item, index) in commentList" :key="index">
 					<td>
 						<img class="avatar" :src="item.user.avatarUrl" alt="ava" />
 					</td>
 					<td>{{ item.user.nickname }}</td>
-					<td>{{ item.content }}</td>
+					<td class="content">{{ item.content }}</td>
 					<td class="time">{{ item.time | formatTime() }}</td>
 				</tr>
 			</table>
@@ -36,11 +30,7 @@
 import { play_api, comment_api } from "@/api/music";
 import local from "@/utils/local";
 import moment from "moment";
-let playBtn = document.querySelector("#playBtn");
-let song = document.querySelector("#song");
-let progressBar = document.querySelector("#progressBar");
-let musicDuration = document.querySelector("#musicDuration");
-let musicCurrent = document.querySelector("#musicCurrent");
+
 let main = document.querySelector("main");
 
 export default {
@@ -49,7 +39,7 @@ export default {
 			musicId: "",
 			src: "",
 			commentList: [],
-
+			pic: "",
 			isPlay: false,
 			timer: null,
 		};
@@ -58,6 +48,7 @@ export default {
 	created() {
 		// 调用函数
 		this.musicId = local.get("id");
+		this.pic = local.get("img");
 		this.getList();
 		this.getComment();
 	},
@@ -89,30 +80,30 @@ export default {
 
 			this.commentList = data.hotComments;
 		},
+
 		// 返回搜索
 		goList() {
 			this.$router.push("/list");
 		},
 
+		// 播放
 		play() {
-			// 播放
 			if (this.isPlay == false) {
 				this.toPlay();
-				musicDuration.innerHTML = format(song.duration);
 			} else {
 				this.toPause();
 			}
-			this.isPlay = !isPlay;
+			this.isPlay = !this.isPlay;
 		},
+
 		toPlay() {
-			song.play();
-			playBtn.style.animationPlayState = "running";
-			progress();
+			this.$refs.song.play();
+			this.$refs.playBtn.style.animationPlayState = "running";
 		},
 
 		toPause() {
-			song.pause();
-			playBtn.style.animationPlayState = "paused";
+			this.$refs.song.pause();
+			this.$refs.playBtn.style.animationPlayState = "paused";
 			clearInterval(this.timer);
 		},
 	},
@@ -125,7 +116,23 @@ export default {
     color: #fff;
     background-color: #212124;
 
+    h2 {
+        margin: 0;
+        padding: 0;
+    }
+
+    hr {
+        width: 1000px;
+    }
+
+    h2,
+    h3 {
+        margin: 0 auto;
+        width: 1000px;
+    }
+
     table {
+        margin: 0 auto;
         width: 1000px;
 
         tr {
@@ -140,8 +147,31 @@ export default {
         height: 50px;
     }
 
+    .content {
+        font-size: 14px;
+    }
+
     .time {
         width: 200px;
+
+        font-size: 14px;
+    }
+
+    button {
+        border: none;
+        width: 100px;
+        height: 40px;
+
+        color: #fff;
+        background-color: #df0036;
+
+        outline: none;
+
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #930702;
     }
 }
 

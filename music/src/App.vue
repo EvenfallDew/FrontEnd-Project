@@ -21,4 +21,9 @@ export default {
 	},
 };
 </script>
-<style lang="less"></style>
+<style lang="less">
+.app {
+    background-color: #212124;
+}
+
+</style>
