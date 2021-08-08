@@ -1,6 +1,7 @@
 <template>
 	<div class="list">
 		<h2>播放列表</h2>
+		<h3 @click="goSearch()">返回搜索</h3>
 		<table>
 			<thead>
 				<tr>
@@ -51,9 +52,14 @@ export default {
 			this.musicList = data.result.songs;
 		},
 
-		getId(music) {
-			local.set("id", music.id);
+		// 获取并跳转播放
+		getId(item) {
+			local.set("id", item.id);
 			this.$router.push("/play");
+		},
+		// 返回搜索
+		goSearch() {
+			this.$router.push("/search");
 		},
 	},
 };

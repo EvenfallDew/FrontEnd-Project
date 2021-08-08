@@ -1,10 +1,21 @@
 <template>
 	<div class="play">
 		<h2>播放页面</h2>
-		<div>
-			<audio :src="src" controls></audio>
-		</div>
-
+		<h3 @click="goList()">返回结果</h3>
+		<main>
+			<div class="play-box" @click="play()">
+				<img id="playBtn" class="play-btn play-rotate" src="../assets/images/1.jpg" alt="album_pic" />
+				<audio id="song" :src="src" controls></audio>
+			</div>
+			<!-- 进度条 -->
+			<div id="progressBar" class="progress-bar"></div>
+			<!-- 时长 -->
+			<div class="play-time">
+				<span id="musicCurrent">0:00</span>
+				/
+				<span id="musicDuration">0:00</span>
+			</div>
+		</main>
 		<div>
 			<h2>热门留言</h2>
 			<table>
@@ -25,6 +36,12 @@
 import { play_api, comment_api } from "@/api/music";
 import local from "@/utils/local";
 import moment from "moment";
+let playBtn = document.querySelector("#playBtn");
+let song = document.querySelector("#song");
+let progressBar = document.querySelector("#progressBar");
+let musicDuration = document.querySelector("#musicDuration");
+let musicCurrent = document.querySelector("#musicCurrent");
+let main = document.querySelector("main");
 
 export default {
 	data() {
@@ -32,6 +49,9 @@ export default {
 			musicId: "",
 			src: "",
 			commentList: [],
+
+			isPlay: false,
+			timer: null,
 		};
 	},
 
@@ -69,29 +89,60 @@ export default {
 
 			this.commentList = data.hotComments;
 		},
+		// 返回搜索
+		goList() {
+			this.$router.push("/list");
+		},
+
+		play() {
+			// 播放
+			if (this.isPlay == false) {
+				this.toPlay();
+				musicDuration.innerHTML = format(song.duration);
+			} else {
+				this.toPause();
+			}
+			this.isPlay = !isPlay;
+		},
+		toPlay() {
+			song.play();
+			playBtn.style.animationPlayState = "running";
+			progress();
+		},
+
+		toPause() {
+			song.pause();
+			playBtn.style.animationPlayState = "paused";
+			clearInterval(this.timer);
+		},
 	},
 };
 </script>
+<style lang="less" scoped src="../assets/styles/play.less"></style>
 
 <style lang="less" scoped>
 .play {
-	table {
-		width: 1000px;
-		tr {
-			border: 1px solid red;
-			td {
-				border-collapse: collapse;
-				border: 1px solid black;
-			}
-		}
-	}
-	.avatar {
-		width: 50px;
-		height: 50px;
-	}
+    color: #fff;
+    background-color: #212124;
 
-	.time {
-		width: 200px;
-	}
+    table {
+        width: 1000px;
+
+        tr {
+            td {
+                border-collapse: collapse;
+            }
+        }
+    }
+
+    .avatar {
+        width: 50px;
+        height: 50px;
+    }
+
+    .time {
+        width: 200px;
+    }
 }
+
 </style>

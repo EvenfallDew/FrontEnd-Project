@@ -8,7 +8,6 @@ import Play from "@/views/Play.vue";
 
 Vue.use(VueRouter);
 
-// routes是路由的核心配置
 const routes = [
 	{
 		path: "/",
