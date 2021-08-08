@@ -47,14 +47,11 @@ export default {
 	methods: {
 		// 获取列表
 		async getList() {
-			// this.musicName = local.get("music");
 			let res = await search_api({
 				keywords: this.musicName,
 			});
 			let data = res.data;
-			setTimeout(() => {
-				this.musicList = data.result.songs;
-			}, 1000);
+			this.musicList = data.result.songs;
 		},
 
 		// 获取并跳转播放
@@ -76,72 +73,71 @@ export default {
 
 <style lang="less" scoped>
 .list {
-    color: #fff;
-    background-color: #212124;
+	color: #fff;
+	background-color: #212124;
 
-    h2 {
-        display: flex;
+	h2 {
+		display: flex;
 
-        margin: 0;
-        padding: 0;
+		margin: 0;
+		padding: 0;
 
-        justify-content: space-between;
-    }
+		justify-content: space-between;
+	}
 
-    button {
-        border: none;
-        width: 100px;
-        height: 40px;
+	button {
+		border: none;
+		width: 100px;
+		height: 40px;
 
-        color: #fff;
-        background-color: #df0036;
+		color: #fff;
+		background-color: #df0036;
 
-        outline: none;
+		outline: none;
 
-        cursor: pointer;
-    }
+		cursor: pointer;
+	}
 
-    button:hover {
-        background-color: #930702;
-    }
+	button:hover {
+		background-color: #930702;
+	}
 
-    h2,
-    h3 {
-        margin: 0 auto;
-        margin-bottom: 20px;
-        width: 1000px;
-    }
+	h2,
+	h3 {
+		margin: 0 auto;
+		margin-bottom: 20px;
+		width: 1000px;
+	}
 
-    hr {
-        width: 1000px;
-    }
+	hr {
+		width: 1000px;
+	}
 
-    table {
-        margin: 0 auto;
-        width: 1000px;
-    }
+	table {
+		margin: 0 auto;
+		width: 1000px;
+	}
 
-    thead {
-        text-align: left;
-    }
+	thead {
+		text-align: left;
+	}
 
-    tbody {
-        tr {
-            height: 30px;
+	tbody {
+		tr {
+			height: 30px;
 
-            .num {
-                width: 50px;
-            }
+			.num {
+				width: 50px;
+			}
 
-            .names {
-                cursor: pointer;
-            }
-        }
+			.names {
+				cursor: pointer;
+			}
+		}
 
-        tr:hover {
-            background-color: #404040;
-        }
-    }
+		tr:hover {
+			background-color: #404040;
+		}
+	}
 }
-
 </style>
