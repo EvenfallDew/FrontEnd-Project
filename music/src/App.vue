@@ -1,7 +1,7 @@
 <template>
 	<div class="app">
 		<TopHeader></TopHeader>
-		<!-- <Search></Search> -->
+		<Search></Search>
 		<!-- <List></List>
 		<Play></Play> -->
 

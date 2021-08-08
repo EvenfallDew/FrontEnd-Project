@@ -21,7 +21,6 @@ export default {
 
 	methods: {
 		searchMusic() {
-			console.log(this.inp);
 			local.set("music", this.inp);
 			this.$router.push("/list");
 		},

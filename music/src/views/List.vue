@@ -40,7 +40,9 @@ export default {
 		this.getList();
 	},
 	methods: {
+		// 获取列表
 		async getList() {
+			this.musicName = local.get("music");
 			let res = await search_api({
 				keywords: this.musicName,
 			});
@@ -51,6 +53,7 @@ export default {
 
 		getId(music) {
 			local.set("id", music.id);
+			this.$router.push("/play");
 		},
 	},
 };
