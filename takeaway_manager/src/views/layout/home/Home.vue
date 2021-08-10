@@ -87,9 +87,10 @@ export default {
 				orderData, // y轴数据
 			} = res.data;
 			// 赋值
-			this.myOptions.xData = xData; // x轴数据
-			this.myOptions.amountData = amountData; // y轴数据1
-			this.myOptions.orderData = orderData; // y轴数据2
+			this.myOptions.xData = xData;
+			this.myOptions.amountData = amountData;
+			this.myOptions.orderData = orderData;
+			// 显示
 			this.isShow = true;
 		},
 	},

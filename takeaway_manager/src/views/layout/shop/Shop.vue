@@ -119,13 +119,14 @@ export default {
 			dialogVisible: false, // 控制弹窗
 			dialogImageUrl: "", // 弹窗中的图片路径
 			baseUrl: base.url + "upload/shop/", // 前半截路径
-			baseAction: base.url + "shop/upload",
+			baseAction: base.url + "shop/upload", //图片上传路径
 			shopForm: {
 				avatar: "", // 店铺头像
 				supports: [], // 活动
 				pics: [], // 后台需要的数据数组
 			},
-			fileList: [], // 前端需要的数组 [{name:1,url: 2}]
+			// 图片列表
+			fileList: [],
 		};
 	},
 
@@ -142,12 +143,12 @@ export default {
 			this.shopForm = data;
 			// 头像赋值
 			this.shopForm.avatar = data.avatar;
-			// 循环遍历data中的pics数组 把后台返回的数组改成前端需要的数据解构
-			// 前端需要的数据解构 [{name,url},{name,url}]
+			// 循环遍历，将需要的数据解构
 			data.pics.forEach((item) => {
 				this.fileList.push({
-					name: item, // name属性不能重复
-					url: this.baseUrl + item, // 把前半截路径拼完
+					name: item,
+					// 路径拼接
+					url: this.baseUrl + item,
 				});
 			});
 		},
@@ -159,7 +160,7 @@ export default {
 				this.shopForm.pics = JSON.stringify(this.shopForm.pics);
 				this.shopForm.date = JSON.stringify(this.shopForm.date);
 				this.shopForm.supports = JSON.stringify(this.shopForm.supports);
-				// 等于false 代表可以编辑表单的状态==完成按钮==发请求
+				// 编辑表单的状态
 				let res = await editShop_api(this.shopForm);
 				// 关闭弹窗
 				this.disabled = true;

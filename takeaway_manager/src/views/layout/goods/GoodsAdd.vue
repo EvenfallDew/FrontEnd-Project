@@ -60,14 +60,10 @@ export default {
 
 	data() {
 		return {
-			// 分类数组
-			cateArr: [],
-			// 添加数据
-			addForm: {},
-			// 图片地址
-			baseUrl: base.url + "upload/imgs/goods_img/",
-			// 图片上传地址
-			baseAction: base.url + "goods/goods_img_upload",
+			cateArr: [], // 分类数组
+			addForm: {}, // 添加数据
+			baseUrl: base.url + "upload/imgs/goods_img/", // 图片地址
+			baseAction: base.url + "goods/goods_img_upload", // 图片上传地址
 		};
 	},
 
@@ -79,14 +75,12 @@ export default {
 		// 获取商品分类
 		async getGoodsCate() {
 			let res = await getGoodsCate_api();
-			let { categories } = res.data;
-			this.cateArr = categories;
+			this.cateArr = res.data.categories;
 		},
 		// 添加商品
 		async add() {
 			let res = await addGoods_api(this.addForm);
-			let { code } = res.data;
-			if (code == 0) {
+			if (res.data.code == 0) {
 				this.$router.push("/goods/goods-list");
 			}
 		},

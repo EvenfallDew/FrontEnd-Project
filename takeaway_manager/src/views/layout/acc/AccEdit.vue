@@ -61,7 +61,7 @@ export default {
 				}
 			}
 		};
-		// 新密码
+		// 验证新密码
 		const checkNewPwd = (rules, value, callback) => {
 			if (!value) {
 				callback(new Error("新密码不能为空"));
@@ -113,9 +113,8 @@ export default {
 					let res = await changePwd_api({
 						newPwd: this.editForm.confirmPwd,
 					});
-					let { code } = res.data;
 					// 修改成功
-					if (code == 0) {
+					if (res.data.code == 0) {
 						// 清空本地存储
 						local.clear();
 						// 跳转登录页面
@@ -134,8 +133,9 @@ export default {
 
 <style lang="less" scoped>
 .acc-edit {
-	/deep/ .el-input {
-		width: 300px;
-	}
+    /deep/ .el-input {
+        width: 300px;
+    }
 }
+
 </style>

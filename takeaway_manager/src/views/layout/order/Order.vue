@@ -11,12 +11,15 @@
 					<el-form-item label="订单号" label-width="80px">
 						<el-input size="small" placeholder="订单号" v-model="searchForm.orderNo"></el-input>
 					</el-form-item>
+
 					<el-form-item label="收货人" label-width="80px">
 						<el-input size="small" placeholder="收货人" v-model="searchForm.consignee"></el-input>
 					</el-form-item>
+
 					<el-form-item label="手机号" label-width="80px">
 						<el-input size="small" placeholder="手机号" v-model="searchForm.phone"></el-input>
 					</el-form-item>
+
 					<el-form-item label="订单状态" label-width="80px">
 						<el-select size="small" placeholder="订单状态" v-model="searchForm.orderState">
 							<el-option label="已受理" value="已受理"></el-option>
@@ -24,6 +27,7 @@
 							<el-option label="派送中" value="派送中"></el-option>
 						</el-select>
 					</el-form-item>
+
 					<el-form-item label="选择时间" label-width="80px">
 						<el-date-picker
 							type="datetimerange"
@@ -36,6 +40,7 @@
 							:picker-options="pickerOptions"
 						></el-date-picker>
 					</el-form-item>
+
 					<el-form-item>
 						<el-button type="primary" size="small" @click="find()">查询</el-button>
 						<el-button type="info" size="small" @click="reset()">重置</el-button>
@@ -175,16 +180,12 @@ export default {
 					},
 				],
 			},
-
-			// 订单数据
-			orderData: [],
-			// 分页器
-			currentPage: 1, // 当前页
-			pageSize: 5, // 显示条数
-			total: 0, // 总条数
-			// 编辑弹窗
+			orderData: [], // 订单数据
+			currentPage: 1,
+			pageSize: 5,
+			total: 0,
 			isShow: false,
-			editForm: {},
+			editForm: {}, // 编辑弹窗
 		};
 	},
 

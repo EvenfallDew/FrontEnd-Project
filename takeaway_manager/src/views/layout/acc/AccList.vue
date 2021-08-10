@@ -6,6 +6,7 @@
 				<el-button type="info" size="mini" round @click="export2Excel()">导出表格</el-button>
 			</header>
 			<main slot="content">
+				<!-- 表格 -->
 				<el-table
 					ref="accData"
 					tooltip-effect="dark"
@@ -13,27 +14,26 @@
 					:data="accData"
 					@selection-change="sel"
 				>
-					<!-- 选择框 -->
 					<el-table-column type="selection" width="55px"></el-table-column>
-					<!-- 账号 -->
+
 					<el-table-column label="账号">
 						<template slot-scope="scope">
 							{{ scope.row.account }}
 						</template>
 					</el-table-column>
-					<!-- 用户组 -->
+
 					<el-table-column label="用户组">
 						<template slot-scope="scope">
 							{{ scope.row.userGroup }}
 						</template>
 					</el-table-column>
-					<!-- 创建时间 -->
+
 					<el-table-column label="创建时间" show-overflow-tooltip>
 						<template slot-scope="scope">
 							{{ scope.row.ctime }}
 						</template>
 					</el-table-column>
-					<!-- 操作 -->
+
 					<el-table-column prop="name" label="操作" width="150px">
 						<template slot-scope="scope">
 							<el-button type="primary" size="mini" @click="edit(scope.row)">编辑</el-button>
@@ -95,12 +95,11 @@ export default {
 	data() {
 		return {
 			isShow: false, // 控制弹窗显示或者隐藏
-			//  编辑弹窗的数据
-			eiditForm: {},
+			eiditForm: {}, // 编辑弹窗的数据
 			currentPage: 1, // 当前分页器要显示第几页数据
 			pageSize: 5, // 每页显示几条数据
 			total: 20, // 总条数
-			accData: [],
+			accData: [], // 账号数据
 			ids: [], // 批量删除需要的数组
 		};
 	},
@@ -234,17 +233,18 @@ export default {
 
 <style lang="less" scoped>
 .acc-eidit {
-	header {
-		display: flex;
+    header {
+        display: flex;
 
-		align-items: center;
-		justify-content: space-between;
-	}
+        align-items: center;
+        justify-content: space-between;
+    }
 
-	// 操作按钮
-	.operate-btn {
-		margin-top: 20px;
-	}
+    // 操作按钮
+    .operate-btn {
+        margin-top: 20px;
+    }
 }
+
 </style>
 <style lang="less" scoped src="../../../assets/styles/common.less"></style>

@@ -47,7 +47,7 @@ export default {
 	},
 
 	data() {
-		// 在这个验证函数中要传递3个参数，rules验证规则 value值 callback回调函数
+		// 验证账号
 		const checkAcc = (rules, value, callback) => {
 			if (!value) {
 				callback(new Error("账号不能为空"));
@@ -97,7 +97,7 @@ export default {
 	methods: {
 		// 添加
 		add() {
-			// validate 按钮验证  valid验证结果
+			// 按钮验证
 			this.$refs.addForm.validate(async (valid) => {
 				if (valid) {
 					let res = await addList_api({
@@ -105,8 +105,9 @@ export default {
 						password: this.addForm.pwd,
 						userGroup: this.addForm.group,
 					});
-					// 判断 如果添加成功 跳转到列表页
+					// 添加成功
 					if (res.data.code == 0) {
+						// 跳转列表页
 						this.$router.push("/acc/acc-list");
 					}
 				}

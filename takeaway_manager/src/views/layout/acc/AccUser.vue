@@ -14,7 +14,7 @@
 				<div>
 					<el-upload
 						class="avatar-uploader"
-						:action="baseImgUrl"
+						:action="baseAction"
 						:show-file-list="false"
 						:on-success="handleAvatarSuccess"
 					>
@@ -43,8 +43,9 @@ export default {
 	data() {
 		return {
 			baseUrl: base.url + "upload/imgs/acc_img/",
-			baseImgUrl: base.url + "users/avatar_upload",
+			baseAction: base.url + "users/avatar_upload",
 			imageUrl: "",
+			// 信息
 			info: {
 				id: "",
 				account: "",
@@ -66,20 +67,21 @@ export default {
 	},
 
 	methods: {
-		// 点击按钮修改头像
+		// 修改头像
 		async uploadImg() {
 			let res = await editImg_api({
 				imgUrl: this.imageUrl,
 			});
-			// 图片上传成功后乱传
+			// 上传成功
 			if (res.data.code == 0) {
+				// 乱传
 				this.$bus.$emit("uploadImg");
 				this.imageUrl = "";
 			}
 		},
-		// 上传成功的回调函数
+		// 成功回调
 		handleAvatarSuccess(res) {
-			// 上传成功后 对组件中的图片赋值
+			// 对组件中的图片赋值
 			this.imageUrl = res.imgUrl;
 		},
 	},

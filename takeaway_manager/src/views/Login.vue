@@ -18,9 +18,9 @@
 					<el-input
 						prefix-icon="iconfont icon-login-psw"
 						size="medium"
+						v-model="loginForm.pwd"
 						:type="isShow ? 'text' : 'password'"
 						:suffix-icon="isShow ? 'iconfont icon-login-eye-open' : 'iconfont icon-login-eye-close'"
-						v-model="loginForm.pwd"
 						@click.native="changeType($event)"
 					></el-input>
 				</el-form-item>
@@ -91,13 +91,13 @@ export default {
 		login() {
 			this.$refs.loginForm.validate(async (valid) => {
 				if (valid) {
-					// 调用api函数
+					// 登录api
 					let res = await login_api({
 						account: this.loginForm.acc,
 						password: this.loginForm.pwd,
 					});
 					let { code, role, token } = res.data;
-					// 判断一下 code
+					// 判断code
 					if (code == 0) {
 						local.set("token", token);
 						this.$router.push("/layout");

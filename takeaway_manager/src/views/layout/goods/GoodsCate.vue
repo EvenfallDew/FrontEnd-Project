@@ -17,6 +17,7 @@
 							<el-input size="mini" v-else v-model="scope.row.cateName"></el-input>
 						</template>
 					</el-table-column>
+
 					<el-table-column label="是否启用">
 						<template slot-scope="scope">
 							<el-switch
@@ -26,6 +27,7 @@
 							></el-switch>
 						</template>
 					</el-table-column>
+
 					<el-table-column label="操作" width="150px">
 						<template slot-scope="scope">
 							<el-button type="primary" size="mini" v-if="scope.row.isEdit" @click="edit(scope.row)">
@@ -89,12 +91,11 @@ export default {
 	},
 
 	created() {
-		// 获取列表
 		this.getList();
 	},
 
 	methods: {
-		// 封装获取分类的函数
+		// 获取分类列表
 		async getList() {
 			let res = await getGoodsCateList_api({
 				currentPage: this.currentPage,
@@ -116,7 +117,7 @@ export default {
 		},
 		// 编辑完成
 		async finish(row) {
-			// 发请求 并改变编辑状态
+			// 发请求改变编辑状态
 			let res = await editGoodsCate_api({
 				id: row.id,
 				cateName: row.cateName,
@@ -158,7 +159,7 @@ export default {
 				cateName: this.editForm.cateName,
 				state: this.editForm.state,
 			});
-			// 如果成功
+			// 成功
 			if (res.data.code == 0) {
 				// 重绘
 				this.getList();

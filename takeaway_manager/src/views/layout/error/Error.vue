@@ -1,6 +1,5 @@
 <template>
 	<div class="error">
-		<!--end row-->
 		<main>
 			<div class="text">
 				<h2>ERROR</h2>
@@ -18,7 +17,7 @@
 					</button>
 				</p>
 			</div>
-			<img class="pic" src="../../../assets/images/error.png" alt="" />
+			<img class="pic" src="../../../assets/images/error.png" alt="error" />
 		</main>
 	</div>
 </template>

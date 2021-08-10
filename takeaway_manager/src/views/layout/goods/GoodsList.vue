@@ -198,8 +198,7 @@ export default {
 		// 获取分类
 		async getGoodsCate() {
 			let res = await getGoodsCate_api();
-			let { categories } = res.data;
-			this.cateArr = categories;
+			this.cateArr = res.data.categories;
 		},
 		// 删除
 		del(row) {

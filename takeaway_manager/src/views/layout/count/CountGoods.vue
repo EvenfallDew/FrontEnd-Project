@@ -2,6 +2,7 @@
 	<div class="count-goods">
 		<!-- 时间范围 -->
 		<header>
+			<!-- 查询 -->
 			<el-form ref="searchForm" label-width="80px" :model="searchForm">
 				<el-form-item label="时间范围">
 					<el-date-picker
@@ -40,6 +41,7 @@ export default {
 	data() {
 		return {
 			isShow: false,
+			// 要插入的数据
 			myOptions: {
 				title: "商品统计",
 				legend: ["商品统计"],
@@ -47,6 +49,7 @@ export default {
 				amountData: [], // y轴 金额数据
 				orderData: [], // y轴 订单数据
 			},
+			// 查询表单
 			searchForm: {
 				date: "",
 			},
@@ -67,13 +70,13 @@ export default {
 			let timeArr = [];
 			let amountArr = [];
 			res.data.data.forEach((item) => {
-				// 直接把数据 push到我们需要传给echarts的数据格式
+				// 数据push到echarts
 				timeArr.push(moment(item.orderTime).format("YYYY-MM-DD HH:mm"));
 				amountArr.push(item.orderAmount);
 			});
 			this.myOptions.xData = timeArr;
 			this.myOptions.amountData = amountArr;
-			// 数据获取完毕后，显示echarts组件
+			// 显示echarts组件
 			this.isShow = true;
 		},
 		// 查询
