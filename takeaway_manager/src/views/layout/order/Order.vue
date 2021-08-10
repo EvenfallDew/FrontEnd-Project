@@ -9,16 +9,16 @@
 				<!-- 查询 -->
 				<el-form class="demo-form-inline" :inline="true" :model="searchForm">
 					<el-form-item label="订单号" label-width="80px">
-						<el-input v-model="searchForm.orderNo" placeholder="订单号" size="small"></el-input>
+						<el-input size="small" placeholder="订单号" v-model="searchForm.orderNo"></el-input>
 					</el-form-item>
 					<el-form-item label="收货人" label-width="80px">
-						<el-input v-model="searchForm.consignee" placeholder="收货人" size="small"></el-input>
+						<el-input size="small" placeholder="收货人" v-model="searchForm.consignee"></el-input>
 					</el-form-item>
 					<el-form-item label="手机号" label-width="80px">
-						<el-input v-model="searchForm.phone" placeholder="手机号" size="small"></el-input>
+						<el-input size="small" placeholder="手机号" v-model="searchForm.phone"></el-input>
 					</el-form-item>
 					<el-form-item label="订单状态" label-width="80px">
-						<el-select size="small" v-model="searchForm.orderState" placeholder="订单状态">
+						<el-select size="small" placeholder="订单状态" v-model="searchForm.orderState">
 							<el-option label="已受理" value="已受理"></el-option>
 							<el-option label="已完成" value="已完成"></el-option>
 							<el-option label="派送中" value="派送中"></el-option>
@@ -100,12 +100,15 @@
 								:precision="2"
 							></el-input-number>
 						</el-form-item>
-
 						<el-form-item label="用户备注" label-width="100px">
-							<el-input type="textarea" v-model="editForm.remarks" :autosize="{ minRows: 5 }"></el-input>
+							<el-input type="textarea" v-model="editForm.remarks" :autosize="{ minRows: 2 }"></el-input>
 						</el-form-item>
 						<el-form-item label="订单状态" label-width="100px">
-							<el-input v-model="editForm.orderState"></el-input>
+							<el-select v-model="editForm.orderState">
+								<el-option label="已受理" value="已受理"></el-option>
+								<el-option label="已完成" value="已完成"></el-option>
+								<el-option label="派送中" value="派送中"></el-option>
+							</el-select>
 						</el-form-item>
 					</el-form>
 

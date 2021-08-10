@@ -17,7 +17,6 @@
 						:action="baseImgUrl"
 						:show-file-list="false"
 						:on-success="handleAvatarSuccess"
-						:before-upload="beforeAvatarUpload"
 					>
 						<img class="avatar" v-if="imageUrl" :src="baseUrl + imageUrl" />
 						<i class="el-icon-plus avatar-uploader-icon" v-else></i>
@@ -83,8 +82,6 @@ export default {
 			// 上传成功后 对组件中的图片赋值
 			this.imageUrl = res.imgUrl;
 		},
-		// 上传之前的回调函数
-		beforeAvatarUpload() {},
 	},
 };
 </script>

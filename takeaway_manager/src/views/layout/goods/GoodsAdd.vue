@@ -66,6 +66,7 @@ export default {
 			addForm: {},
 			// 图片地址
 			baseUrl: base.url + "upload/imgs/goods_img/",
+			// 图片上传地址
 			baseAction: base.url + "goods/goods_img_upload",
 		};
 	},

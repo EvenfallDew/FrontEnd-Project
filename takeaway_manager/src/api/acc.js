@@ -3,7 +3,7 @@ import request from "@/utils/request";
 // 引入qs转post请求
 import Qs from "qs";
 
-// 登录接口
+// 获取 登录接口
 export const login_api = (data) => {
 	return request({
 		method: "post",
@@ -12,16 +12,7 @@ export const login_api = (data) => {
 	});
 };
 
-// 添加账号
-export const addList_api = (data) => {
-	return request({
-		method: "post",
-		url: "/users/add",
-		data: Qs.stringify(data),
-	});
-};
-
-// 获取账号列表
+// 获取 账号列表
 export const accList_api = (data) => {
 	return request({
 		method: "get",
@@ -30,7 +21,16 @@ export const accList_api = (data) => {
 	});
 };
 
-// 删除账号
+// 添加 账号
+export const addList_api = (data) => {
+	return request({
+		method: "post",
+		url: "/users/add",
+		data: Qs.stringify(data),
+	});
+};
+
+// 删除 账号
 export const delAcc_api = (data) => {
 	return request({
 		method: "get",
@@ -39,7 +39,7 @@ export const delAcc_api = (data) => {
 	});
 };
 
-// 批量删除账号
+// 删除 批量账号
 export const delAll_api = (data) => {
 	return request({
 		method: "get",
@@ -48,7 +48,7 @@ export const delAll_api = (data) => {
 	});
 };
 
-// 修改账号
+// 修改 账号
 export const changeGroup_api = (data) => {
 	return request({
 		method: "post",
@@ -57,16 +57,7 @@ export const changeGroup_api = (data) => {
 	});
 };
 
-// 检测旧密码正确
-export const checkOldPwd_api = (data) => {
-	return request({
-		method: "get",
-		url: "/users/checkoldpwd",
-		params: data,
-	});
-};
-
-// 修改密码
+// 修改 密码
 export const changePwd_api = (data) => {
 	return request({
 		method: "post",
@@ -75,7 +66,16 @@ export const changePwd_api = (data) => {
 	});
 };
 
-// 获取个人信息
+// 检测 旧密码正确
+export const checkOldPwd_api = (data) => {
+	return request({
+		method: "get",
+		url: "/users/checkoldpwd",
+		params: data,
+	});
+};
+
+// 获取 个人信息
 export const getInfo_api = () => {
 	return request({
 		method: "get",
@@ -83,21 +83,19 @@ export const getInfo_api = () => {
 	});
 };
 
-// 头像上传
+// 获取 身份角色
+export const getRole_api = () => {
+	return request({
+		method: "get",
+		url: "/users/role",
+	});
+};
 
-// 修改头像
+// 修改 头像
 export const editImg_api = (data) => {
 	return request({
 		method: "get",
 		url: "/users/avataredit",
 		params: data,
-	});
-};
-
-// 获取身份角色
-export const getRole_api = () => {
-	return request({
-		method: "get",
-		url: "/users/role",
 	});
 };
