@@ -3,7 +3,15 @@
 		<Card>
 			<header slot="title">
 				<span>订单管理</span>
-				<el-button type="info" size="mini" round @click="export2Excel()">导出表格</el-button>
+				<el-button
+					type="info"
+					size="mini"
+					round
+					v-if="role == '超级管理员' ? true : false"
+					@click="export2Excel()"
+				>
+					导出表格
+				</el-button>
 			</header>
 			<main slot="content">
 				<!-- 查询 -->
@@ -48,7 +56,7 @@
 				</el-form>
 
 				<!-- 表格 -->
-				<el-table :data="orderData" border style="width: 100%">
+				<el-table style="width: 100%" border :data="orderData">
 					<el-table-column fixed="left" prop="orderNo" label="订单号" width="100px"></el-table-column>
 					<el-table-column prop="orderTime" label="下单时间" width="170px"></el-table-column>
 					<el-table-column prop="phone" label="手机号" width="120px"></el-table-column>
@@ -58,7 +66,7 @@
 					<el-table-column prop="remarks" label="用户备注"></el-table-column>
 					<el-table-column prop="orderAmount" label="订单金额"></el-table-column>
 					<el-table-column prop="orderState" label="订单状态"></el-table-column>
-					<el-table-column fixed="right" label="操作" width="100px" style="background-color:red">
+					<el-table-column fixed="right" label="操作" width="100px">
 						<template slot-scope="scope">
 							<el-button type="primary" size="mini" @click="edit(scope.row)">编辑</el-button>
 						</template>
@@ -131,6 +139,7 @@
 import Card from "@/components/Card.vue";
 import { getOrderList_api, getOrderDetail_api, editOrder_api } from "@/api/order";
 import moment from "moment";
+import local from "@/utils/local";
 
 export default {
 	components: {
@@ -186,10 +195,13 @@ export default {
 			total: 0,
 			isShow: false,
 			editForm: {}, // 编辑弹窗
+			role: "", //获取身份
 		};
 	},
 
 	created() {
+		// 身份
+		this.role = local.get("info").userGroup;
 		this.getList();
 	},
 

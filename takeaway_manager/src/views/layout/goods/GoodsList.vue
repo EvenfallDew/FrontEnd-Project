@@ -3,7 +3,15 @@
 		<Card>
 			<header slot="title">
 				<span>商品列表</span>
-				<el-button type="info" size="mini" round @click="export2Excel()">导出表格</el-button>
+				<el-button
+					type="info"
+					size="mini"
+					round
+					v-if="role == '超级管理员' ? true : false"
+					@click="export2Excel()"
+				>
+					导出表格
+				</el-button>
 			</header>
 			<main slot="content">
 				<el-table style="width: 100%" :data="goodsData">
@@ -149,6 +157,7 @@ import Card from "@/components/Card.vue";
 import base from "@/utils/base";
 import { getGoodsList_api, delGoods_api, editGoods_api, getGoodsCate_api } from "@/api/goods";
 import moment from "moment";
+import local from "@/utils/local";
 
 export default {
 	components: {
@@ -166,10 +175,13 @@ export default {
 			isShow: false,
 			editForm: {},
 			cateArr: [],
+			role: "", //获取身份
 		};
 	},
 
 	created() {
+		// 身份
+		this.role = local.get("info").userGroup;
 		this.getList();
 		this.getGoodsCate();
 	},
