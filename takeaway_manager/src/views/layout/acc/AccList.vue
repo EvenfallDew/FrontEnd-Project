@@ -14,7 +14,7 @@
 					:data="accData"
 					@selection-change="sel"
 				>
-					<el-table-column type="selection" width="55px"></el-table-column>
+					<el-table-column type="selection" width="55px" :selectable="selectEnable"></el-table-column>
 
 					<el-table-column label="账号">
 						<template slot-scope="scope">
@@ -37,7 +37,14 @@
 					<el-table-column prop="name" label="操作" width="150px">
 						<template slot-scope="scope">
 							<el-button type="primary" size="mini" @click="edit(scope.row)">编辑</el-button>
-							<el-button type="danger" size="mini" @click="del(scope.row)">删除</el-button>
+							<el-button
+								type="danger"
+								size="mini"
+								:disabled="scope.row.id == currentId ? true : false"
+								@click="del(scope.row)"
+							>
+								删除
+							</el-button>
 						</template>
 					</el-table-column>
 				</el-table>
@@ -86,6 +93,7 @@
 import Card from "@/components/Card.vue";
 import { accList_api, delAcc_api, delAll_api, changeGroup_api } from "@/api/acc";
 import moment from "moment";
+import local from "@/utils/local";
 
 export default {
 	components: {
@@ -101,10 +109,12 @@ export default {
 			total: 20, // 总条数
 			accData: [], // 账号数据
 			ids: [], // 批量删除需要的数组
+			currentId: "",
 		};
 	},
 
 	created() {
+		this.currentId = local.get("info").id;
 		this.getList();
 	},
 
@@ -203,6 +213,14 @@ export default {
 		cancel() {
 			this.$refs.accData.clearSelection();
 		},
+		// 禁用当前账号多选框
+		selectEnable(row, rowIndex) {
+			if (this.currentId == row.id) {
+				return false;
+			} else {
+				return true; // 不禁用
+			}
+		},
 		// 导出数据
 		export2Excel() {
 			require.ensure([], () => {
@@ -233,18 +251,17 @@ export default {
 
 <style lang="less" scoped>
 .acc-eidit {
-    header {
-        display: flex;
+	header {
+		display: flex;
 
-        align-items: center;
-        justify-content: space-between;
-    }
+		align-items: center;
+		justify-content: space-between;
+	}
 
-    // 操作按钮
-    .operate-btn {
-        margin-top: 20px;
-    }
+	// 操作按钮
+	.operate-btn {
+		margin-top: 20px;
+	}
 }
-
 </style>
 <style lang="less" scoped src="../../../assets/styles/common.less"></style>
