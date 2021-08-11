@@ -94,19 +94,26 @@ export default {
 
 <style lang="less" scoped>
 .left-menu {
-    /deep/ .el-menu {
-        border: none;
+	/deep/ .el-menu {
+		border: none;
 
-        background-color: rgba(0, 0, 0, .24);
-    }
+		background-color: rgba(0, 0, 0, 0.24);
+	}
 
-    /deep/ .el-submenu .el-menu-item {
-        text-align: center;
-    }
+	/deep/ .el-submenu .el-menu-item {
+		text-indent: 20px;
+	}
 
-    /deep/ .iconfont {
-        margin-right: 10px;
-    }
+	/deep/.el-menu-item:hover {
+		color: black !important;
+	}
+
+	/deep/.el-submenu__title:hover {
+		color: black !important;
+	}
+
+	/deep/ .iconfont {
+		margin-right: 10px;
+	}
 }
-
 </style>
