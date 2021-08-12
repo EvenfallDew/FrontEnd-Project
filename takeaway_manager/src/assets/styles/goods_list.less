@@ -9,7 +9,16 @@
     }
 
     main {
+        // 修改 表格 详细信息宽度占比
+        .demo-table-expand .el-form-item {
+            margin-right: 0;
+            margin-bottom: 0;
+            width: 25%;
+        }
+
+        // 弹窗
         .dialog {
+            // 默认样式
             /deep/ .avatar-uploader .el-upload {
                 overflow: hidden;
 
@@ -42,17 +51,6 @@
                 width: 100px;
                 height: 100px;
             }
-
-            /deep/ .el-dialog {
-                width: 500px;
-            }
-        }
-
-        // 表格
-        .demo-table-expand .el-form-item {
-            margin-right: 0;
-            margin-bottom: 0;
-            width: 25%;
         }
     }
 }

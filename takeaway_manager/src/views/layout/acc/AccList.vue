@@ -249,19 +249,20 @@ export default {
 };
 </script>
 
+<style lang="less" scoped src="../../../assets/styles/common.less"></style>
 <style lang="less" scoped>
 .acc-eidit {
-	header {
-		display: flex;
+    header {
+        display: flex;
 
-		align-items: center;
-		justify-content: space-between;
-	}
+        align-items: center;
+        justify-content: space-between;
+    }
 
-	// 操作按钮
-	.operate-btn {
-		margin-top: 20px;
-	}
+    // 操作按钮
+    .operate-btn {
+        margin-top: 20px;
+    }
 }
+
 </style>
-<style lang="less" scoped src="../../../assets/styles/common.less"></style>

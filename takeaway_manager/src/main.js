@@ -17,6 +17,9 @@ Vue.prototype.$bus = new Vue();
 
 Vue.config.productionTip = false;
 
+const bus = new Vue();
+Vue.prototype.$bus = bus;
+
 new Vue({
 	router,
 	render: (h) => h(App),

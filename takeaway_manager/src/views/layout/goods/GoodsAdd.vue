@@ -95,4 +95,5 @@ export default {
 };
 </script>
 
+<style lang="less" scoped src="../../../assets/styles/common.less"></style>
 <style lang="less" scoped src="../../../assets/styles/goods_add.less"></style>

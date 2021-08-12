@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import LeftMenu from "@/components/LeftMenuX.vue";
+import LeftMenu from "@/components/LeftMenu.vue";
 import TopNav from "@/components/TopNav.vue";
 
 export default {
@@ -40,7 +40,19 @@ export default {
 				"linear-gradient(45deg, #29323c, #485563)",
 			],
 			colorNum: 0,
+			nowBgColor: "",
 		};
+	},
+
+	watch: {
+		nowBgColor() {
+			this.$nextTick(() => {
+				console.dir(this.$refs.bg.$el);
+				this.nowBgColor = this.$refs.bg.$el.style.backgroundImage;
+				console.log(this.nowBgColor);
+				this.$bus.$emit("bgColor", this.nowBgColor);
+			});
+		},
 	},
 
 	methods: {
@@ -49,6 +61,7 @@ export default {
 				this.colorNum = 0;
 			}
 			this.$refs.bg.style.backgroundImage = this.bgColor[this.colorNum];
+			this.$bus.$emit("bgColor", this.bgColor[this.colorNum]);
 			this.colorNum = this.colorNum + 1;
 		},
 	},

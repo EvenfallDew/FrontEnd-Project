@@ -96,7 +96,7 @@ export default {
 					splitLine: {
 						show: true,
 						lineStyle: {
-							color: ["#5e656d"],
+							color: ["#ccc"],
 							width: 1,
 							type: "solid",
 						},

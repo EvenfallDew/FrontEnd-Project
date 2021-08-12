@@ -121,11 +121,4 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-.acc-add {
-    /deep/ .el-input {
-        width: 300px;
-    }
-}
-
-</style>
+<style lang="less" scoped src="../../../assets/styles/common.less"></style>

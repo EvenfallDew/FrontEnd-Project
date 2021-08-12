@@ -1,8 +1,12 @@
 @charset "utf-8";
 
-// 输入框样式
+// 修改 输入框样式
 /deep/ .el-form-item {
     margin-bottom: 15px;
+}
+
+/deep/ .el-input {
+    width: 300px;
 }
 
 /deep/ .el-textarea__inner {
@@ -13,39 +17,31 @@
     width: 300px;
 }
 
-// 表格样式
-/deep/ .el-table,
-.el-table__expanded-cell {
-    color: #fff;
-    background-color: transparent;
+// 修改 表格 hover颜色
+/deep/ .el-table--enable-row-hover .el-table__body tr:hover
+> td {
+    background-color: rgba(0, 0, 0, .25) !important;
 }
 
-/deep/ .el-table th {
-    background-color: transparent !important;
-}
-
-/deep/ .el-table tr {
-    background-color: transparent !important;
-}
-
-/deep/ .el-table--enable-row-transition .el-table__body td,
-.el-table .cell {
-    background-color: transparent;
-}
-
-// 弹窗样式
+// 修改 弹窗 样式
 /deep/ .el-dialog {
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 15px;
     width: 500px;
 
-    background-color: rgba(41, 49, 58, .9);
+    background-color: rgba(80, 80, 80, .7);
 
     box-shadow: 0 .1rem .7rem rgba(0, 0, 0, .18);
 }
 
+// 修改 弹窗 标题
+/deep/ .el-dialog__title {
+    color: #fff;
+}
+
+// 修改 弹窗 内部输入框
 .dialog {
-    /deep/ .el-form-item {
+    .el-form-item {
         margin-bottom: 15px;
     }
 
@@ -62,11 +58,6 @@
     }
 }
 
-// 弹窗标题
-/deep/ .el-dialog__title {
-    color: #fff;
-}
-
 // 分页器
 /deep/ .el-pagination {
     margin-top: 20px;
@@ -78,4 +69,12 @@
 
 /deep/ .el-pagination__jump {
     color: #fff;
+}
+
+/deep/ .el-pagination .el-input {
+    width: 80px;
+}
+
+/deep/ .el-pagination__editor.el-input .el-input__inner {
+    width: 50px;
 }
