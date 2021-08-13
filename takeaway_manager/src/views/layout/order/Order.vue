@@ -59,17 +59,11 @@
 				<el-table
 					style="width: 100%"
 					border
-					v-if="isShow"
 					:data="orderData"
-					:style="{ backgroundImage: tableBgColor }"
+					:cell-style="{ backgroundColor: tableBgColor }"
+					:header-row-style="{ backgroundColor: tableBgColor + '!important' }"
 				>
-					<el-table-column
-						fixed="left"
-						prop="orderNo"
-						label="订单号"
-						width="100px"
-						:style="{ backgroundImage: tableBgColor }"
-					></el-table-column>
+					<el-table-column fixed="left" prop="orderNo" label="订单号" width="100px"></el-table-column>
 					<el-table-column prop="orderTime" label="下单时间" width="170px"></el-table-column>
 					<el-table-column prop="phone" label="手机号" width="120px"></el-table-column>
 					<el-table-column prop="consignee" label="收货人" width="120px"></el-table-column>
@@ -209,27 +203,20 @@ export default {
 			editForm: {}, // 编辑弹窗
 			role: "", //获取身份
 			tableBgColor: "",
-			isShow: false,
 		};
 	},
 
 	watch: {
-		tableBgColor() {},
+		tableBgColor: "columnColor",
 	},
 
 	created() {
 		// 身份
 		this.role = local.get("info").userGroup;
 		// 颜色
-		this.$bus.$on("bgColor", (data) => {
-			this.tableBgColor = data;
-		});
+		this.tableBgColor = local.get("bgColor");
 		// 获取
 		this.getList();
-	},
-
-	mounted() {
-		this.getBgColor();
 	},
 
 	methods: {
@@ -259,10 +246,7 @@ export default {
 			// 总条数
 			this.total = total;
 		},
-		// test
-		getBgColor() {
-			console.log("tableBgColor", this.tableBgColor);
-		},
+
 		// 查询
 		find() {
 			this.getList();
@@ -333,6 +317,12 @@ export default {
 			this.currentPage = val;
 			this.getList();
 		},
+		// 变色
+		columnColor({ row, column, rowIndex, columnIndex }) {
+			if (columnIndex == 0 || columnIndex == 9) {
+				return this.tableBgColor;
+			}
+		},
 	},
 };
 </script>
@@ -340,17 +330,18 @@ export default {
 <style lang="less" scoped src="../../../assets/styles/common.less"></style>
 <style lang="less" scoped>
 .order {
-	header {
-		display: flex;
+    header {
+        display: flex;
 
-		align-items: center;
-		justify-content: space-between;
-	}
+        align-items: center;
+        justify-content: space-between;
+    }
 
-	main {
-		.el-table {
-			margin-top: 40px;
-		}
-	}
+    main {
+        .el-table {
+            margin-top: 40px;
+        }
+    }
 }
+
 </style>

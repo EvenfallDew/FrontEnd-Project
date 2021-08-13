@@ -55,12 +55,12 @@ export default {
 				this.colorNum = 0;
 			}
 			this.nowBgColor = this.bgColor[this.colorNum];
-			this.$bus.$emit("bgColor", this.nowBgColor);
+			local.set("bgColor", this.nowBgColor.split(",")[1]);
 			this.colorNum = this.colorNum + 1;
 		},
 
 		getColor() {
-			this.$bus.$emit("bgColor", this.nowBgColor);
+			local.set("bgColor", this.nowBgColor.split(",")[1]);
 		},
 	},
 };
