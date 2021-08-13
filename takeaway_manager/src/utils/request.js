@@ -1,15 +1,16 @@
-// 引入axios
+// 引入 axios
 import axios from "axios";
-// 引入element-ui的方式  Message === this.$message
+// 引入 element-ui的方式  Message === this.$message
 import { Message } from "element-ui";
-// 引入local工具
+// 引入 local工具
 import local from "@/utils/local";
+// 引入 服务器地址
 import base from "@/utils/base";
 
-// 请求默认地址
+// 请求 默认地址
 axios.defaults.baseURL = base.url;
 
-// 请求超时
+// 请求 超时
 axios.defaults.timeout = 3000;
 
 // 请求 拦截器  携带请求头 token

@@ -1,5 +1,5 @@
 <template>
-	<div class="container" ref="bg">
+	<div class="container" :style="{ backgroundImage: nowBgColor }">
 		<!-- 左边部分 -->
 		<aside>
 			<div>
@@ -23,6 +23,7 @@
 <script>
 import LeftMenu from "@/components/LeftMenu.vue";
 import TopNav from "@/components/TopNav.vue";
+import local from "@/utils/local";
 
 export default {
 	components: {
@@ -40,19 +41,12 @@ export default {
 				"linear-gradient(45deg, #29323c, #485563)",
 			],
 			colorNum: 0,
-			nowBgColor: "",
+			nowBgColor: "linear-gradient(45deg, #29323c, #485563)",
 		};
 	},
 
-	watch: {
-		nowBgColor() {
-			this.$nextTick(() => {
-				console.dir(this.$refs.bg.$el);
-				this.nowBgColor = this.$refs.bg.$el.style.backgroundImage;
-				console.log(this.nowBgColor);
-				this.$bus.$emit("bgColor", this.nowBgColor);
-			});
-		},
+	mounted() {
+		this.getColor();
 	},
 
 	methods: {
@@ -60,9 +54,13 @@ export default {
 			if (this.colorNum == this.bgColor.length) {
 				this.colorNum = 0;
 			}
-			this.$refs.bg.style.backgroundImage = this.bgColor[this.colorNum];
-			this.$bus.$emit("bgColor", this.bgColor[this.colorNum]);
+			this.nowBgColor = this.bgColor[this.colorNum];
+			this.$bus.$emit("bgColor", this.nowBgColor);
 			this.colorNum = this.colorNum + 1;
+		},
+
+		getColor() {
+			this.$bus.$emit("bgColor", this.nowBgColor);
 		},
 	},
 };

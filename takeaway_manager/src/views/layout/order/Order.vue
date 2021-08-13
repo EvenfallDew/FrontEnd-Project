@@ -56,8 +56,20 @@
 				</el-form>
 
 				<!-- 表格 -->
-				<el-table ref="bg" style="width: 100%" border :data="orderData">
-					<el-table-column fixed="left" prop="orderNo" label="订单号" width="100px"></el-table-column>
+				<el-table
+					style="width: 100%"
+					border
+					v-if="isShow"
+					:data="orderData"
+					:style="{ backgroundImage: tableBgColor }"
+				>
+					<el-table-column
+						fixed="left"
+						prop="orderNo"
+						label="订单号"
+						width="100px"
+						:style="{ backgroundImage: tableBgColor }"
+					></el-table-column>
 					<el-table-column prop="orderTime" label="下单时间" width="170px"></el-table-column>
 					<el-table-column prop="phone" label="手机号" width="120px"></el-table-column>
 					<el-table-column prop="consignee" label="收货人" width="120px"></el-table-column>
@@ -196,26 +208,28 @@ export default {
 			isShow: false,
 			editForm: {}, // 编辑弹窗
 			role: "", //获取身份
-			bgColor: "",
+			tableBgColor: "",
+			isShow: false,
 		};
 	},
 
+	watch: {
+		tableBgColor() {},
+	},
+
 	created() {
-		// 背景
-		this.$bus.$on("bgColor", (data) => {
-			this.bgColor = data;
-		});
 		// 身份
 		this.role = local.get("info").userGroup;
+		// 颜色
+		this.$bus.$on("bgColor", (data) => {
+			this.tableBgColor = data;
+		});
+		// 获取
 		this.getList();
 	},
 
-	watch: {
-		bgColor() {
-			this.$refs.bg.$el.style.backgroundImage = this.bgColor;
-			this.$refs.bg.$el.children[3].style.backgroundImage = this.bgColor;
-			this.$refs.bg.$el.children[4].style.backgroundImage = this.bgColor;
-		},
+	mounted() {
+		this.getBgColor();
 	},
 
 	methods: {
@@ -244,12 +258,10 @@ export default {
 			this.orderData = data;
 			// 总条数
 			this.total = total;
-
-			console.log(this.$refs.bg);
-			console.log(this.bgColor);
-			// this.$refs.bg.$el.style.backgroundImage = this.bgColor;
-			// this.$refs.bg.$el.children[3].style.backgroundImage = this.bgColor;
-			// this.$refs.bg.$el.children[4].style.backgroundImage = this.bgColor;
+		},
+		// test
+		getBgColor() {
+			console.log("tableBgColor", this.tableBgColor);
 		},
 		// 查询
 		find() {
@@ -328,18 +340,17 @@ export default {
 <style lang="less" scoped src="../../../assets/styles/common.less"></style>
 <style lang="less" scoped>
 .order {
-    header {
-        display: flex;
+	header {
+		display: flex;
 
-        align-items: center;
-        justify-content: space-between;
-    }
+		align-items: center;
+		justify-content: space-between;
+	}
 
-    main {
-        .el-table {
-            margin-top: 40px;
-        }
-    }
+	main {
+		.el-table {
+			margin-top: 40px;
+		}
+	}
 }
-
 </style>

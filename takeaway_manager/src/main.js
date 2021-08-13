@@ -13,12 +13,10 @@ Vue.use(XLSX);
 
 Vue.use(ElementUI);
 
-Vue.prototype.$bus = new Vue();
-
-Vue.config.productionTip = false;
-
 const bus = new Vue();
 Vue.prototype.$bus = bus;
+
+Vue.config.productionTip = false;
 
 new Vue({
 	router,
