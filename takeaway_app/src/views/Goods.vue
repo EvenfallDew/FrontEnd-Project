@@ -1,30 +1,33 @@
 <template>
-    <div>
-        {{ this.list }}
-    </div>
+	<div class="goods">
+		<!-- {{ goodsData }} -->
+		goods
+	</div>
 </template>
 
 <script>
-// 引入API
-import { getGoods_api } from '@/api/apis'
+import { getGoods_api } from "@/api/apis";
+
 export default {
-    data() {
-        return {
-            list: [],
-        }
-    },
-    methods: {
-        // 封装获取商品的函数
-        async getGoods() {
-            let res = await getGoods_api()
-            let { goodsList } = res.data
-            this.list = goodsList
-        },
-    },
-    created() {
-        this.getGoods()
-    },
-}
+	data() {
+		return {
+			goodsData: [],
+		};
+	},
+
+	created() {
+		this.getGoods();
+	},
+
+	methods: {
+		// 获取 商品
+		async getGoods() {
+			let res = await getGoods_api();
+			let { goodsList } = res.data;
+			this.goodsData = goodsList;
+		},
+	},
+};
 </script>
 
 <style lang="less" scoped></style>

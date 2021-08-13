@@ -2,16 +2,20 @@
 	<div class="header-home">
 		<header :style="{ '--backgroundImage': 'url(' + sellerInfo.avatar + ')' }">
 			<div class="left">
-				<img :src="sellerInfo.avatar" class="avatar" />
+				<img class="avatar" :src="sellerInfo.avatar" />
 			</div>
+
 			<div class="right">
 				<div class="title">{{ sellerInfo.name }}</div>
+
 				<div class="dis">{{ sellerInfo.description }} / {{ sellerInfo.deliveryTime }}分钟送达</div>
+
 				<div class="activeBox">
 					<div class="box" v-if="sellerInfo.supports">
 						{{ sellerInfo.supports[0] }}
 					</div>
-					<div @click="isShow = true" class="boxNum" v-if="sellerInfo.supports">
+
+					<div class="boxNum" v-if="sellerInfo.supports" @click="openDialog()">
 						{{ sellerInfo.supports.length }}个 >
 					</div>
 				</div>
@@ -19,21 +23,12 @@
 		</header>
 
 		<div class="bottom" @click="isShow = true">bottom{{ sellerInfo.bulletin }}</div>
-
-		<!-- 弹窗 -->
-		<transition name="a">
-			<Dialog @closeDialog="fn" v-if="isShow" :sellerInfo="sellerInfo" />
-		</transition>
 	</div>
 </template>
 
 <script>
-// 引入弹窗组件
-import Dialog from "@/components/Dialog.vue";
 export default {
-	components: {
-		Dialog,
-	},
+	components: {},
 
 	props: {
 		sellerInfo: {
@@ -52,10 +47,9 @@ export default {
 	},
 
 	methods: {
-		// 父组件接收子组件传递的函数名
-		fn() {
-			// 关闭弹窗
-			this.isShow = false;
+		openDialog() {
+			this.isShow = true;
+			this.$emit("open", this.isShow);
 		},
 	},
 };
@@ -121,26 +115,6 @@ export default {
                 }
             }
         }
-    }
-
-    header::before {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -3;
-
-        margin: -30px;
-
-        background-image: var(--width);
-        background-attachment: fixed;
-        background-position: center top;
-        background-size: cover;
-
-        content: "";
-
-        filter: blur(20px);
     }
 
     .bottom {

@@ -1,24 +1,26 @@
 <template>
-    <div>
-        评价组件
-    </div>
+	<div class="rating">
+		rating
+	</div>
 </template>
 
 <script>
 // 引入API
-import { getRating_api } from '@/api/apis'
+import { getRating_api } from "@/api/apis";
+
 export default {
-    methods: {
-        // 封装评价的函数
-        async getRating() {
-            let res = await getRating_api()
-            console.log(res)
-        },
-    },
-    created() {
-        this.getRating()
-    },
-}
+	created() {
+		this.getRating();
+	},
+
+	methods: {
+		// 获取 评价
+		async getRating() {
+			let res = await getRating_api();
+			console.log(res);
+		},
+	},
+};
 </script>
 
 <style lang="less" scoped></style>

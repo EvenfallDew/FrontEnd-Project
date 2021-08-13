@@ -7,8 +7,10 @@ import "@/assets/styles/reset.css";
 
 import Vant from "vant";
 import "vant/lib/index.css";
-
 Vue.use(Vant);
+
+import animated from "animate.css";
+Vue.use(animated);
 
 Vue.config.productionTip = false;
 

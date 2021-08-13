@@ -1,13 +1,14 @@
 <template>
-    <div>
-        {{ sellerInfo }}
-    </div>
+	<div class="seller">
+		<!-- {{ sellerInfo }} -->
+		seller
+	</div>
 </template>
 
 <script>
 export default {
-    props: ['sellerInfo'],
-}
+	props: ["sellerInfo"],
+};
 </script>
 
 <style lang="less" scoped></style>
