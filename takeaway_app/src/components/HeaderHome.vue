@@ -1,6 +1,10 @@
 <template>
 	<div class="header-home">
-		<header :style="{ '--backgroundImage': 'url(' + sellerInfo.avatar + ')' }">
+		<header>
+			<div class="bg-img" :style="{ backgroundImage: 'url(' + sellerInfo.avatar + ')' }">
+				test
+			</div>
+
 			<div class="left">
 				<img class="avatar" :src="sellerInfo.avatar" />
 			</div>
@@ -11,6 +15,7 @@
 				<div class="dis">{{ sellerInfo.description }} / {{ sellerInfo.deliveryTime }}分钟送达</div>
 
 				<div class="activeBox">
+					<!-- 需要filter -->
 					<div class="box" v-if="sellerInfo.supports">
 						{{ sellerInfo.supports[0] }}
 					</div>
@@ -22,7 +27,8 @@
 			</div>
 		</header>
 
-		<div class="bottom" @click="isShow = true">bottom{{ sellerInfo.bulletin }}</div>
+		<div class="van-ellipsis">{{ sellerInfo.bulletin }}</div>
+		<!-- <div class="bottom" @click="isShow = true">bottom{{ sellerInfo.bulletin }}</div> -->
 	</div>
 </template>
 
@@ -128,19 +134,6 @@ export default {
 
         background: rgba(0, 0, 0, .7);
     }
-}
-
-// 过渡动画的样式
-.a-enter-active,
-.a-leave-active {
-    // 进入和离开 第一帧样式
-    transition: all .5s;
-    transform: translateY(0px);
-}
-
-.a-enter,
-.a-leave-to /* 要执行到的动画效果 */ {
-    transform: translateY(100%);
 }
 
 </style>

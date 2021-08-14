@@ -35,20 +35,48 @@
 			enter-active-class="animate__animated animate__fadeInUp"
 			leave-active-class="animate__animated animate__fadeOutDown"
 		>
-			<div class="dialog animated" v-if="isShow">
-				{{ sellerInfo.name }}
-				<van-divider :style="{ color: '#fff', borderColor: '#fff', padding: '0 16px', fontSize: '20px' }">
-					优惠信息
-				</van-divider>
-				{{ sellerInfo.supports[0] }}
-				{{ sellerInfo.supports[1] }}
+			<div class="dialog-box" v-if="isShow">
+				<main>
+					<section class="name-star">
+						<h2>
+							{{ sellerInfo.name }}
+						</h2>
+						<p>
+							<van-rate
+								v-model="starValue"
+								:size="25"
+								color="#ffd21e"
+								void-icon="star"
+								void-color="#eee"
+							/>
+						</p>
+					</section>
 
-				<van-divider :style="{ color: '#fff', borderColor: '#fff', padding: '0 16px', fontSize: '20px' }">
-					商家公告
-				</van-divider>
-				{{ sellerInfo.bulletin }}
+					<section class="discount-info">
+						<van-divider :style="{ color: '#fff', borderColor: '#fff', fontSize: '18px' }">
+							优惠信息
+						</van-divider>
+						<ul>
+							<li v-for="(item, index) in sellerInfo.supports" :key="index">
+								<van-icon :name="imagesList[0]" />
+								{{ item }}
+							</li>
+						</ul>
+					</section>
 
-				<div class="close-btn" @click="closeDialog">X</div>
+					<section class="seller-ad">
+						<van-divider :style="{ color: '#fff', borderColor: '#fff', fontSize: '18px' }">
+							商家公告
+						</van-divider>
+						<p>
+							{{ sellerInfo.bulletin }}
+						</p>
+					</section>
+
+					<section class="close-btn">
+						<van-icon name="cross" size="35px" color="#eee" @click="closeDialog()" />
+					</section>
+				</main>
 			</div>
 		</transition>
 	</div>
@@ -76,6 +104,12 @@ export default {
 			sellerInfo: {}, // 商家数据
 			isShow: false, //弹窗显示
 			show: true,
+			starValue: 4,
+			imagesList: [
+				require("./assets/images/decrease.png"),
+				require("./assets/images/discount.png"),
+				require("./assets/images/special.png"),
+			],
 		};
 	},
 
