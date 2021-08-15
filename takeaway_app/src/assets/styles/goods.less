@@ -1,0 +1,316 @@
+@charset "utf-8";
+
+.goods {
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+
+    .cate-left {
+        width: 100px;
+
+        font-size: 14px;
+
+        color: #646464;
+        background: #f4f5f7;
+
+        .cate-item {
+            box-sizing: border-box;
+            padding: 15px;
+            width: 100%;
+
+            &.active {
+                color: #202a35;
+                background: #fff;
+            }
+        }
+    }
+
+    .goods-right {
+        flex: 1;
+
+        .cate-item {
+            width: 100%;
+
+            .cate-title {
+                box-sizing: border-box;
+                border-left: 2px solid #aaa;
+                padding-left: 10px;
+                height: 30px;
+
+                font-size: 15px;
+                line-height: 30px;
+
+                color: #646464;
+                background: #f4f5f7;
+            }
+
+            .goods-box {
+                display: flex;
+
+                box-sizing: border-box;
+                padding: 15px 5px;
+                height: 110px;
+
+                background-color: #fff;
+
+                .goods-img {
+                    width: 80px;
+                    height: 80px;
+                }
+
+                .goods-info {
+                    margin-left: 5px;
+
+                    flex: 1;
+
+                    .goods-name {
+                        overflow: hidden;
+
+                        width: 175px;
+
+                        font-size: 16px;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+
+                    .goods-desc,
+                    .goods-sell {
+                        overflow: hidden;
+
+                        width: 175px;
+
+                        font-size: 12px;
+                        line-height: 20px;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+
+                        color: #646464;
+                    }
+
+                    .goods-price {
+                        font-weight: bold;
+
+                        color: red;
+
+                        span {
+                            font-size: 14px;
+                        }
+                    }
+
+                    .goods-ctrl {
+                        display: flex;
+
+                        align-items: center;
+                        justify-content: space-between;
+
+                        .ctrl-btns {
+                            span {
+                                margin: 0 10px;
+
+                                color: #646464;
+                            }
+
+                            button {
+                                border: none;
+                                border-radius: 50%;
+                                width: 25px;
+                                height: 25px;
+
+                                font-size: 20px;
+                                text-align: center;
+                            }
+
+                            .min-btn {
+                                border: 3px solid #00a0dd;
+
+                                line-height: 18px;
+
+                                color: #00a0dd;
+                                background-color: #fff;
+                            }
+
+                            .add-btn {
+                                line-height: 20px;
+
+                                color: #fff;
+                                background-color: #00a0dd;
+
+                                outline: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 弹窗
+.dialog {
+    overflow-y: scroll;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: #f4f5f7;
+
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 99;
+
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+
+        line-height: 30px;
+        text-align: center;
+
+        color: #fff;
+        background: rgba(0, 0, 0, .6);
+    }
+
+    .goods-des,
+    .goods-ad,
+    .goods-rate {
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        padding: 20px;
+
+        background-color: #fff;
+
+        box-shadow: 0 .1rem .7rem rgba(0, 0, 0, .18);
+
+        h2 {
+            font: 600 17px/1em "微软雅黑";
+        }
+    }
+
+    .goods-des {
+        border-top: 0;
+
+        h2 {
+            font-weight: bolder;
+        }
+
+        p {
+            font: normal 14px/1.8em "微软雅黑";
+
+            color: #646464;
+        }
+
+        .goods-buy {
+            display: flex;
+
+            margin-top: 20px;
+
+            justify-content: space-between;
+
+            .now-price {
+                font-size: 16px;
+                font-weight: bold;
+
+                color: red;
+
+                span {
+                    font-size: 12px;
+                }
+            }
+
+            .van-button {
+                padding: 0 4px;
+                height: 28px;
+
+                color: #fff;
+            }
+        }
+    }
+
+    .goods-ad {
+        margin-top: 25px;
+
+        p {
+            padding: 10px;
+            padding-bottom: 0;
+
+            font: normal 14px/1.8em "微软雅黑";
+
+            color: #646464;
+        }
+    }
+
+    .goods-rate {
+        margin-top: 25px;
+        border-bottom: 0;
+
+        .btns {
+            padding: 20px 0;
+
+            .van-button {
+                margin-right: 8px;
+                width: 75px;
+                height: 35px;
+            }
+        }
+
+        .only-conts {
+            border-top: 1px solid #eee;
+            padding: 20px 0;
+        }
+    }
+
+    ul {
+        border-top: 1px solid #ccc;
+
+        font-size: 14px;
+
+        .user-rate {
+            border-bottom: 1px solid #ccc;
+            padding: 20px 0;
+
+            .user-info {
+                display: flex;
+
+                justify-content: space-between;
+
+                p {
+                    line-height: 28px;
+                }
+
+                div {
+                    line-height: 28px;
+
+                    .van-image {
+                        margin-left: 10px;
+
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 弹窗动画
+// 过渡动画的样式
+.b-enter-active,
+.b-leave-active {
+    opacity: 1;
+
+// 进入和离开 第一帧样式
+
+    transition: all .5s;
+}
+
+.b-enter,
+.b-leave-to
+
+/* 要执行到的动画效果 */ {
+    opacity: 0;
+}

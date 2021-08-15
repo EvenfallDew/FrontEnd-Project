@@ -139,11 +139,7 @@ export default {
 		},
 
 		// 只看有内容
-		onlyText() {
-            this.rateData.forEach(item,i){
-                if()
-            }
-        },
+		onlyText() {},
 	},
 };
 </script>

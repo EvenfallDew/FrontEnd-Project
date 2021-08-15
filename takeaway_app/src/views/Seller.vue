@@ -16,15 +16,15 @@
 							v-model="sellerInfo.score"
 							:size="16"
 						/>
-						<span>月售{{ sellerInfo.sellCount }}</span>
+						<span>月售{{ sellerInfo.sellCount }}单</span>
 					</p>
 				</div>
 				<van-checkbox v-model="checked">
 					<template #icon="props">
 						<!-- <img class="img-icon" /> -->
 						<van-icon name="like" />
+						<p>已收藏</p>
 					</template>
-					<p>已收藏</p>
 				</van-checkbox>
 			</section>
 
@@ -68,22 +68,24 @@
 
 		<div class="shop-pic">
 			<h2>商家实景</h2>
-			<van-image
-				width="150px"
-				height="100px"
-				fit="cover"
-				v-for="(item, index) in sellerInfo.pics"
-				:key="index"
-				:src="item"
-				@click="showPic()"
-			/>
+			<p>
+				<van-image
+					width="150px"
+					height="100px"
+					fit="cover"
+					v-for="(item, index) in sellerInfo.pics"
+					:key="index"
+					:src="item"
+					@click="showPic()"
+				/>
+			</p>
 		</div>
 
-		<div class="time-info">
+		<div class="shop-time">
 			<h2>商家信息</h2>
-			<p>12121212</p>
-			<p>1</p>
-			<p>1</p>
+			<p>该商家支持开发票，请在下单时填写好发票抬头</p>
+			<p>品类：其他菜系</p>
+			<p>地址：北京市昌平区回龙观西大街龙冠置业大厦底商B座102单元1340</p>
 			<p>
 				营业时间：
 				{{ sellerInfo.date[0].split(" ")[1] }}

@@ -18,12 +18,9 @@
 
 			<!-- 主体 -->
 			<main>
-				<!-- <transition
-					enter-active-class="animate__animated animate__fadeInUp"
-					leave-active-class="animate__animated animate__fadeOutDown"
-				> -->
-				<router-view :sellerInfo="sellerInfo" />
-				<!-- </transition> -->
+				<transition enter-active-class="animate__animated animate__fadeIn">
+					<router-view :sellerInfo="sellerInfo" />
+				</transition>
 			</main>
 
 			<!-- 底部 -->
@@ -32,8 +29,8 @@
 
 		<!-- 弹窗 -->
 		<transition
-			enter-active-class="animate__animated animate__fadeInUp"
-			leave-active-class="animate__animated animate__fadeOutDown"
+			enter-active-class="animate__animated animate__fadeIn"
+			leave-active-class="animate__animated animate__fadeOut"
 		>
 			<div class="dialog-box" v-if="isShow">
 				<main>
