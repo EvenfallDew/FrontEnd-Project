@@ -18,12 +18,12 @@
 
 			<!-- 主体 -->
 			<main>
-				<transition
+				<!-- <transition
 					enter-active-class="animate__animated animate__fadeInUp"
 					leave-active-class="animate__animated animate__fadeOutDown"
-				>
-					<router-view :sellerInfo="sellerInfo" />
-				</transition>
+				> -->
+				<router-view :sellerInfo="sellerInfo" />
+				<!-- </transition> -->
 			</main>
 
 			<!-- 底部 -->
@@ -87,6 +87,7 @@ import HeaderHome from "@/components/HeaderHome.vue";
 import FooterHome from "@/components/FooterHome.vue";
 import { getSeller_api } from "@/api/apis";
 import { animateCss } from "@/utils/animate";
+import local from "@/utils/local";
 
 export default {
 	components: {
@@ -123,6 +124,8 @@ export default {
 			let res = await getSeller_api();
 			let { data } = res.data;
 			this.sellerInfo = data;
+			local.set("sellerInfo", data);
+			console.log(data);
 		},
 
 		// 打开 弹窗

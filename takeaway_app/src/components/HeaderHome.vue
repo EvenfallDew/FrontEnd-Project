@@ -1,34 +1,39 @@
 <template>
 	<div class="header-home">
 		<header>
-			<div class="bg-img" :style="{ backgroundImage: 'url(' + sellerInfo.avatar + ')' }">
-				test
-			</div>
+			<!-- 店铺背景 -->
+			<div class="bg-img" :style="{ backgroundImage: 'url(' + sellerInfo.avatar + ')' }"></div>
 
-			<div class="left">
-				<img class="avatar" :src="sellerInfo.avatar" />
-			</div>
+			<!-- 店铺信息 -->
+			<div class="shop-info">
+				<!-- 店铺头像 -->
+				<van-image class="shop-avatar" width="70px" height="70px " fit="cover" :src="sellerInfo.avatar">
+					<template v-slot:loading>
+						<van-loading type="spinner" size="20" />
+					</template>
+				</van-image>
+				<!-- 店铺名称 -->
+				<div class="info">
+					<h3 class="title">{{ sellerInfo.name }}</h3>
 
-			<div class="right">
-				<div class="title">{{ sellerInfo.name }}</div>
+					<p class="time">{{ sellerInfo.description }} / {{ sellerInfo.deliveryTime }}分钟送达</p>
 
-				<div class="dis">{{ sellerInfo.description }} / {{ sellerInfo.deliveryTime }}分钟送达</div>
+					<div class="actives">
+						<!-- 需要filter -->
+						<div class="box" v-if="sellerInfo.supports">
+							{{ sellerInfo.supports[0] }}
+						</div>
 
-				<div class="activeBox">
-					<!-- 需要filter -->
-					<div class="box" v-if="sellerInfo.supports">
-						{{ sellerInfo.supports[0] }}
-					</div>
-
-					<div class="boxNum" v-if="sellerInfo.supports" @click="openDialog()">
-						{{ sellerInfo.supports.length }}个 >
+						<div class="num" v-if="sellerInfo.supports" @click="openDialog()">
+							{{ sellerInfo.supports.length }}个 >
+						</div>
 					</div>
 				</div>
 			</div>
-		</header>
 
-		<div class="van-ellipsis">{{ sellerInfo.bulletin }}</div>
-		<!-- <div class="bottom" @click="isShow = true">bottom{{ sellerInfo.bulletin }}</div> -->
+			<!-- 店铺公告 -->
+			<div class="van-ellipsis">{{ sellerInfo.bulletin }}</div>
+		</header>
 	</div>
 </template>
 
@@ -66,73 +71,103 @@ export default {
     overflow: scroll;
 
     width: 100%;
-    height: 130px;
+    height: 140px;
 
-    color: #cac8c5;
+    color: #fff;
 
     header {
-        display: flex;
+        overflow: hidden;
+
+        position: relative;
 
         width: 100%;
-        height: 100px;
+        height: 100%;
 
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
+        // 店铺背景
+        .bg-img {
+            position: absolute;
+            z-index: -1;
 
-        .left {
-            width: 100px;
+            width: 100%;
+            height: 100%;
+
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+
+            transform: scale(1.2);
+
+            filter: blur(5px) brightness(.3);
         }
 
-        .avatar {
-            margin: 15px;
-            width: 70px;
-            height: 70px;
-        }
+        // 店铺信息
+        .shop-info {
+            display: flex;
 
-        .right {
-            box-sizing: border-box;
-            padding: 15px;
+            padding: 20px;
 
-            flex: 1;
+            justify-content: space-between;
 
-            .title {
-                font-size: 18px;
-                font-weight: 600;
-
-                color: #fff;
-            }
-
-            .dis {
-                line-height: 35px;
-            }
-
-            .activeBox {
+            .info {
                 display: flex;
 
+                margin-left: 20px;
+                height: 70px;
+
+                flex: 1;
+                flex-direction: column;
                 justify-content: space-between;
-                align-items: center;
 
-                .boxNum {
-                    border-radius: 20px;
-                    padding: 5px 10px;
+                .title {
+                    font-size: 22px;
+                    font-weight: bold;
+                }
 
-                    background: rgba(0, 0, 0, .6);
+                .time {
+                    font-size: 16px;
+                }
+
+                .actives {
+                    display: flex;
+
+                    position: relative;
+
+                    font-size: 14px;
+                    font-size: 14px;
+
+                    justify-content: space-between;
+
+                    .num {
+                        position: absolute;
+                        right: 0;
+                        bottom: -8px;
+
+                        border-radius: 15px;
+                        width: 60px;
+                        height: 30px;
+
+                        line-height: 30px;
+                        text-align: center;
+
+                        background-color: rgba(0, 0, 0, .4);
+                    }
                 }
             }
         }
-    }
 
-    .bottom {
-        overflow: hidden;
+        // 店铺公告
+        .van-ellipsis {
+            position: absolute;
 
-        height: 30px;
+            padding: 0 10px;
+            width: 100%;
+            height: 28px;
 
-        line-height: 30px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+            font-size: 14px;
+            line-height: 28px;
 
-        background: rgba(0, 0, 0, .7);
+            background-color: rgba(0, 0, 0, .5);
+        }
     }
 }
 

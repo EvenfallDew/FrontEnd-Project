@@ -1,0 +1,144 @@
+@charset "utf-8";
+
+.rating {
+    header {
+        display: flex;
+
+        padding: 20px 15px;
+
+        font-size: 14px;
+
+        background-color: #fff;
+
+        box-shadow: 0 .1rem .7rem rgba(0, 0, 0, .18);
+
+        justify-content: space-around;
+
+        .shop-rate {
+            display: flex;
+
+            text-align: center;
+
+            flex-direction: column;
+            justify-content: space-between;
+
+            h2 {
+                font-size: 32px;
+
+                color: #fe9900;
+            }
+
+            h3 {
+                font-size: 14px;
+            }
+
+            p {
+                font-size: 12px;
+
+                color: gray;
+            }
+        }
+
+        .shop-star {
+            p {
+                margin-top: 10px;
+                height: 16px;
+
+                line-height: 16px;
+
+                .van-rate {
+                    vertical-align: bottom;
+                }
+
+                span {
+                    color: #fe9900;
+                }
+
+                .time {
+                    color: #c3c4c7;
+                }
+            }
+
+            p:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+
+    main {
+        margin-top: 30px;
+        border-top: 1px solid #ccc;
+
+        background-color: #fff;
+
+        box-shadow: 0 .1rem .7rem rgba(0, 0, 0, .18);
+
+        .btns {
+            padding: 20px 15px;
+
+            .van-button {
+                margin-right: 8px;
+                width: 75px;
+                height: 35px;
+            }
+        }
+
+        .only-conts {
+            border-top: 1px solid #eee;
+            padding: 20px 15px;
+        }
+    }
+
+    ul {
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        padding: 20px 15px;
+    }
+
+    .user-rate {
+        display: flex;
+
+        border-bottom: 1px solid #ccc;
+        padding: 15px 0;
+
+        section {
+            margin-bottom: 10px;
+        }
+
+        .user-comment {
+            margin-left: 10px;
+
+            font-size: 14px;
+
+            flex: 1;
+
+            .user-info {
+                display: flex;
+
+                justify-content: space-between;
+            }
+
+            .user-score {
+                display: flex;
+
+                p {
+                    color: #696969;
+                }
+            }
+
+            .user-text {
+                color: #090b11;
+            }
+
+            .user-type {
+                display: flex;
+
+                margin-bottom: 0;
+
+                .van-tag {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}
