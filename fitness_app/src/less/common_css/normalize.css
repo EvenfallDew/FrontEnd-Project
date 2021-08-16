@@ -14,6 +14,7 @@ html {
 /* 1 */
 
     -webkit-text-size-adjust: 100%;
+
     /* 2 */
 }
 
@@ -56,13 +57,14 @@ h1 {
  */
 
 hr {
-/* 1 */
+    /* 1 */
     overflow: visible;
 
     box-sizing: content-box;
 
 /* 1 */
     height: 0;
+
     /* 2 */
 }
 
@@ -76,6 +78,7 @@ pre {
 
 /* 1 */
     font-size: 1em;
+
     /* 2 */
 }
 
@@ -104,6 +107,7 @@ abbr[title] {
 
 /* 2 */
     text-decoration: underline dotted;
+
     /* 2 */
 }
 
@@ -128,6 +132,7 @@ samp {
 
 /* 1 */
     font-size: 1em;
+
     /* 2 */
 }
 
@@ -185,7 +190,7 @@ input,
 optgroup,
 select,
 textarea {
-/* 1 */
+    /* 1 */
     margin: 0;
 
     font-family: inherit;
@@ -195,6 +200,7 @@ textarea {
 
 /* 1 */
     line-height: 1.15;
+
     /* 2 */
 }
 
@@ -270,7 +276,7 @@ fieldset {
  */
 
 legend {
-/* 2 */
+    /* 2 */
     display: table;
 
     box-sizing: border-box;
@@ -288,6 +294,7 @@ legend {
 /* 1 */
 
     color: inherit;
+
     /* 1 */
 }
 
@@ -318,6 +325,7 @@ textarea {
 
 /* 1 */
     padding: 0;
+
     /* 2 */
 }
 
@@ -336,7 +344,7 @@ textarea {
  */
 
 [type="search"] {
-/* 1 */
+    /* 1 */
     outline-offset: -2px;
 
     -webkit-appearance: textfield;
@@ -357,7 +365,7 @@ textarea {
  */
 
 ::-webkit-file-upload-button {
-/* 1 */
+    /* 1 */
     font: inherit;
 
     -webkit-appearance: button;

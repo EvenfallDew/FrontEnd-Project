@@ -42,15 +42,15 @@
 							<van-rate
 								v-model="starValue"
 								:size="25"
-								color="#ffd21e"
+								color="#fe9900"
 								void-icon="star"
-								void-color="#eee"
+								void-color="#464b51"
 							/>
 						</p>
 					</section>
 
 					<section class="discount-info">
-						<van-divider :style="{ color: '#fff', borderColor: '#fff', fontSize: '18px' }">
+						<van-divider :style="{ color: '#fff', borderColor: '#fff', fontSize: '16px' }">
 							优惠信息
 						</van-divider>
 						<ul>
@@ -62,7 +62,7 @@
 					</section>
 
 					<section class="seller-ad">
-						<van-divider :style="{ color: '#fff', borderColor: '#fff', fontSize: '18px' }">
+						<van-divider :style="{ color: '#fff', borderColor: '#fff', fontSize: '16px' }">
 							商家公告
 						</van-divider>
 						<p>

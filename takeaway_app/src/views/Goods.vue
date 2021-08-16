@@ -4,7 +4,7 @@
 		<aside class="cate-left" ref="left">
 			<div>
 				<div
-					v-for="(item, i) in goodsData"
+					v-for="(item, i) in list"
 					:key="i"
 					:class="curPage == item.name ? 'cate-item active' : 'cate-item'"
 					@click="changeCate(item.name)"
@@ -16,7 +16,7 @@
 		<!-- 右侧商品 -->
 		<main class="goods-right" ref="right">
 			<div>
-				<div class="cate-item" :id="item.name" v-for="(item, i) in goodsData" :key="i">
+				<div class="cate-item" :id="item.name" v-for="(item, i) in list" :key="i">
 					<h2 class="cate-title">{{ item.name }}</h2>
 					<div class="goods-box" v-for="(v, j) in item.foods" :key="j" @click="showDialog(v)">
 						<img class="goods-img" :src="v.imgUrl" />
@@ -30,9 +30,9 @@
 									{{ v.price }}
 								</div>
 								<div class="ctrl-btns">
-									<button class="min-btn" v-if="v.num >= 1" @click.stop="v.num--">-</button>
+									<button class="min-btn" v-if="v.num >= 1" @click.stop="del(v.id, -1)">-</button>
 									<span v-if="v.num >= 1">{{ v.num }}</span>
-									<button class="add-btn" @click.stop="v.num++">+</button>
+									<button class="add-btn" @click.stop="add(v.id, +1)">+</button>
 								</div>
 							</div>
 						</div>
@@ -126,11 +126,19 @@ export default {
 		this.getGoods();
 	},
 
+	computed: {
+		// 取出状态机中的数据
+		list() {
+			return this.$store.state.list;
+		},
+	},
+
 	filters: {
 		filtime(val) {
 			return moment(val).format("YYYY-MM-DD HH:mm");
 		},
 	},
+
 	methods: {
 		// 获取 商品
 		async getGoods() {
@@ -142,6 +150,8 @@ export default {
 				}
 			}
 			this.goodsData = goodsList;
+			// 存入状态机
+			this.$store.commit("SETLIST", goodsList);
 
 			// 在created生命周期中  获取dom节点的方式
 			this.$nextTick(() => {
@@ -195,7 +205,15 @@ export default {
 			this.isShow = true;
 			// 赋值
 			this.goodsInfo = goodsInfo;
-			console.dir(this.goodsInfo);
+		},
+		// 点击加号和减号，往状态机中存入对应的数据
+		del(id, num) {
+			// 发通知
+			this.$store.commit("DEL", { id, num });
+		},
+		add(id, num) {
+			// 发通知
+			this.$store.commit("DEL", { id, num });
 		},
 	},
 };

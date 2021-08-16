@@ -114,17 +114,21 @@ export default {
                 margin-left: 20px;
                 height: 70px;
 
+                color: #bbb;
+
                 flex: 1;
                 flex-direction: column;
                 justify-content: space-between;
 
                 .title {
-                    font-size: 22px;
+                    font-size: 20px;
                     font-weight: bold;
+
+                    color: #fff;
                 }
 
                 .time {
-                    font-size: 16px;
+                    font-size: 14px;
                 }
 
                 .actives {
@@ -132,8 +136,7 @@ export default {
 
                     position: relative;
 
-                    font-size: 14px;
-                    font-size: 14px;
+                    font-size: 12px;
 
                     justify-content: space-between;
 
@@ -143,10 +146,10 @@ export default {
                         bottom: -8px;
 
                         border-radius: 15px;
-                        width: 60px;
-                        height: 30px;
+                        width: 50px;
+                        height: 25px;
 
-                        line-height: 30px;
+                        line-height: 25px;
                         text-align: center;
 
                         background-color: rgba(0, 0, 0, .4);
@@ -163,9 +166,10 @@ export default {
             width: 100%;
             height: 28px;
 
-            font-size: 14px;
+            font-size: 12px;
             line-height: 28px;
 
+            color: #bbb;
             background-color: rgba(0, 0, 0, .5);
         }
     }

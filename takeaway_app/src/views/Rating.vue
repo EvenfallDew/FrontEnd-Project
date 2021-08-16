@@ -43,9 +43,9 @@
 
 		<main>
 			<p class="btns">
-				<van-button color="#00a0dc">全部</van-button>
-				<van-button color="#ccecf7">满意</van-button>
-				<van-button color="#eaebed">不满意</van-button>
+				<van-button color="#00a0dc" @click="filterComment = 'all'">全部{{ rateData.length }}</van-button>
+				<van-button color="#ccecf7" @click="filterComment = 'good'">满意{{ goodNum }}</van-button>
+				<van-button color="#eaebed" @click="filterComment = 'bad'">不满意{{ badNum }}</van-button>
 			</p>
 
 			<p class="only-conts">
@@ -53,7 +53,7 @@
 			</p>
 
 			<ul>
-				<li class="user-rate" v-if="isShow" v-for="(item, index) in rateData" :key="item.id">
+				<li class="user-rate" v-for="(item, index) in filterArr" :key="item.id">
 					<!-- 用户头像 -->
 					<van-image round width="40px" height="40px" :src="item.avatar" />
 					<!-- 评价内容 -->
@@ -72,7 +72,13 @@
 								readonly
 								:size="14"
 							/>
-							<p>{{ item.deliveryTime }}分钟送达</p>
+							<p>
+								{{
+									item.deliveryTime == "" || item.deliveryTime == undefined
+										? "已"
+										: item.deliveryTime + "分钟"
+								}}送达
+							</p>
 						</section>
 
 						<section class="user-text">{{ item.text }}</section>
@@ -101,7 +107,6 @@
 </template>
 
 <script>
-// 引入API
 import { getRating_api } from "@/api/apis";
 import moment from "moment";
 import local from "@/utils/local";
@@ -115,6 +120,8 @@ export default {
 			activeIcon: "https://img01.yzcdn.cn/vant/user-active.png",
 			inactiveIcon: "https://img01.yzcdn.cn/vant/user-inactive.png",
 			isShow: true,
+			filterComment: "all",
+			newArr: [], // 监听到值变化的数组
 		};
 	},
 
@@ -128,6 +135,30 @@ export default {
 		},
 	},
 
+	watch: {
+		filterArr(newVal, oldVal) {
+			this.newArr = newVal;
+		},
+	},
+
+	computed: {
+		goodNum() {
+			return this.rateData.filter((item) => item.rateType == 0).length;
+		},
+		badNum() {
+			return this.rateData.filter((item) => item.rateType == 1).length;
+		},
+		filterArr() {
+			switch (this.filterComment) {
+				case "all":
+					return this.rateData;
+				case "good":
+					return this.rateData.filter((item) => item.rateType == 0);
+				case "bad":
+					return this.rateData.filter((item) => item.rateType == 1);
+			}
+		},
+	},
 	methods: {
 		// 获取 评价
 		async getRating() {
@@ -139,7 +170,17 @@ export default {
 		},
 
 		// 只看有内容
-		onlyText() {},
+		onlyText() {
+			this.checked = !this.checked;
+			// if (this.checked == true) {
+			// 	// 过滤一下新数组的数据
+			// 	if (this.checked == true) {
+			// 		this.newArr = this.newArr.filter((item) => item.text != "");
+			// 		this.filterArr = this.newArr;
+			// 		console.log(this.newArr);
+			// 	}
+			// }
+		},
 	},
 };
 </script>
