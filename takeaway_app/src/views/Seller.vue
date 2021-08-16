@@ -2,7 +2,7 @@
 	<div class="seller">
 		<header>
 			<section class="top">
-				<div>
+				<div class="top-left">
 					<h2>
 						{{ sellerInfo.name }}
 					</h2>
@@ -19,13 +19,11 @@
 						<span>月售{{ sellerInfo.sellCount }}单</span>
 					</p>
 				</div>
-				<van-checkbox v-model="checked">
-					<template #icon="props">
-						<!-- <img class="img-icon" /> -->
-						<van-icon name="like" />
-						<p>已收藏</p>
-					</template>
-				</van-checkbox>
+				<p class="top-right">
+					<van-icon name="like" size="30" :color="collectColor" @click="collect()" />
+					<br />
+					<span ref="collectText">未收藏</span>
+				</p>
 			</section>
 
 			<section class="bottom">
@@ -68,17 +66,19 @@
 
 		<div class="shop-pic">
 			<h2>商家实景</h2>
-			<p>
-				<van-image
-					width="150px"
-					height="100px"
-					fit="cover"
-					v-for="(item, index) in sellerInfo.pics"
-					:key="index"
-					:src="item"
-					@click="showPic()"
-				/>
-			</p>
+			<section ref="box">
+				<p class="picBox" :style="{ width: sellerInfo.pics.length * 150 + 'px' }">
+					<van-image
+						width="150px"
+						height="100px"
+						fit="cover"
+						v-for="(item, index) in sellerInfo.pics"
+						:key="index"
+						:src="item"
+						@click="showPic()"
+					/>
+				</p>
+			</section>
 		</div>
 
 		<div class="shop-time">
@@ -100,6 +100,7 @@
 import moment from "moment";
 import local from "@/utils/local";
 import { ImagePreview } from "vant";
+import BScroll from "better-scroll";
 
 export default {
 	data() {
@@ -111,11 +112,19 @@ export default {
 				require("./../assets/images/special.png"),
 			],
 			checked: false,
+			collectColor: "gray",
 		};
 	},
 
 	created() {
 		this.sellerInfo = local.get("sellerInfo");
+	},
+
+	mounted() {
+		let box = new BScroll(this.$refs.box, {
+			scrollX: true,
+			click: true,
+		});
 	},
 	// 过滤器
 	filters: {
@@ -125,6 +134,17 @@ export default {
 	},
 
 	methods: {
+		// 收藏
+		collect() {
+			if (this.collectColor == "gray") {
+				this.collectColor = "red";
+				this.$refs.collectText.textContent = "已收藏";
+			} else {
+				this.collectColor = "gray";
+				this.$refs.collectText.textContent = "未收藏";
+			}
+		},
+		// 图片预览
 		showPic() {
 			ImagePreview(this.sellerInfo.pics);
 		},

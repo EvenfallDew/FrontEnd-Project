@@ -40,11 +40,13 @@
 						</h2>
 						<p>
 							<van-rate
-								v-model="starValue"
-								:size="25"
 								color="#fe9900"
 								void-icon="star"
 								void-color="#464b51"
+								readonly
+								allow-half
+								v-model="sellerInfo.score"
+								:size="25"
 							/>
 						</p>
 					</section>
@@ -102,7 +104,6 @@ export default {
 			sellerInfo: {}, // 商家数据
 			isShow: false, //弹窗显示
 			show: true,
-			starValue: 4,
 			imagesList: [
 				require("./assets/images/decrease.png"),
 				require("./assets/images/discount.png"),
@@ -122,7 +123,6 @@ export default {
 			let { data } = res.data;
 			this.sellerInfo = data;
 			local.set("sellerInfo", data);
-			console.log(data);
 		},
 
 		// 打开 弹窗

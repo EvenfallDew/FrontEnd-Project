@@ -1,17 +1,31 @@
 <template>
 	<div class="footer">
 		<van-cell is-link @click="showPopup">
-			<section class="cart"><van-icon name="shopping-cart" size="40" /></section>
-			<section class="price">￥xx</section>
-			<section class="take">另需配送费￥XX元</section>
+			<section class="cart">
+				<div class="cart-border">
+					<van-icon name="shopping-cart" size="30" :class="selNum > 0 ? 'cart-active' : ''" />
+				</div>
+			</section>
+
+			<section class="price">
+				<p>￥{{ selPrice }}</p>
+				<p class="take">另需配送费{{ sellerInfo.deliveryPrice }}元</p>
+			</section>
+
 			<section class="btns">
-				<van-button type="primary" color="#2b343b">满XX起送</van-button>
-				<van-button type="primary" color="#2b343b">还差XX钱起送</van-button>
-				<van-button type="primary" color="#38ca73">结算</van-button>
+				<van-button type="primary" color="#2b343b" v-if="selPrice == 0">
+					满{{ sellerInfo.minPrice }}起送
+				</van-button>
+				<van-button type="primary" color="#fe9900" v-else-if="selPrice > 0 && selPrice < sellerInfo.minPrice">
+					还差{{ sellerInfo.minPrice - selPrice }}元起送
+				</van-button>
+				<van-button type="primary" color="#38ca73" v-else-if="selPrice >= sellerInfo.minPrice">
+					结算
+				</van-button>
 			</section>
 		</van-cell>
 
-		<van-popup v-model="isShow" round position="bottom" :style="{ height: '50%' }">
+		<van-popup v-model="isShow" round position="bottom">
 			<h2 class="buy-title">
 				<p>已选商品</p>
 				<button type="button" @click="clear()">
@@ -23,7 +37,7 @@
 			<ul class="buy-list">
 				<li class="buy-good" v-for="(item, i) in sel" :key="i">
 					<div class="van-ellipsis good-name">{{ item.name }}</div>
-					<div>
+					<div class="operation">
 						<span class="single-price">￥{{ (item.price * item.num).toFixed(2) }}</span>
 						<span class="admi-btns">
 							<van-icon name="close" @click.stop="del(item.id, -1)" />
@@ -38,13 +52,18 @@
 </template>
 
 <script>
+import local from "@/utils/local";
+
 export default {
 	data() {
 		return {
 			isShow: false,
+			sellerInfo: {},
 		};
 	},
-
+	created() {
+		this.sellerInfo = local.get("sellerInfo");
+	},
 	computed: {
 		// 取出仓库中的计算出来的已选商品
 		sel() {
@@ -76,7 +95,7 @@ export default {
 		// 清空 购物车
 		clear() {
 			this.$store.commit("CLEAR");
-			this.showDialog = false;
+			this.isShow = false;
 		},
 		// 点击加号和减号，往状态机中存入对应的数据
 		del(id, num) {
@@ -88,40 +107,84 @@ export default {
 
 <style lang="less" scoped>
 .footer {
+    position: relative;
+
     width: 100%;
-    height: 60px;
+    height: 45px;
 
     .van-cell {
+        overflow: visible;
+
+        z-index: 2055;
+
         padding: 0;
         height: 100%;
 
-        background-color: #131d26;
+        background-color: #505052;
 
         .van-cell__value--alone {
             display: flex;
+
+            padding-left: 15px;
 
             color: #bbb;
 
             justify-content: space-between;
 
             .cart {
+                display: flex;
+
                 position: relative;
-                top: -20px;
+                top: -5px;
 
                 border-radius: 50%;
-                width: 70px;
-                height: 70px;
+                width: 50px;
+                height: 50px;
 
-                background-color: #2d353e;
+                background-color: #444;
 
-                .van-icon {
-                    line-height: 70px;
-                    text-align: center;
+                justify-content: center;
+                align-items: center;
+
+                .cart-border {
+                    display: flex;
+
+                    border-radius: 50%;
+                    width: 40px;
+                    height: 40px;
+
+                    background-color: #3190e8;
+
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .cart-active {
+                    color: #fff;
+                }
+            }
+
+            .price {
+                display: flex;
+
+                flex-direction: column;
+                justify-content: space-around;
+
+                p {
+                    font-size: 14px;
+                    line-height: 14px;
                 }
             }
 
             .btns {
                 width: 120px;
+
+                .van-button {
+                    width: 100%;
+                    height: 100%;
+
+                    letter-spacing: 2px;
+                }
             }
         }
 
@@ -131,13 +194,26 @@ export default {
         }
     }
 
+    .van-cell__value {
+        overflow: visible;
+    }
+
+    // 去掉伪元素
+    .van-cell::after {
+        border-bottom: none;
+    }
+
+    .van-popup--bottom {
+        bottom: 45px;
+    }
+
     .buy-title {
         display: flex;
 
         padding: 10px 15px;
         height: 50px;
 
-        font-size: 18px;
+        font-size: 16px;
         line-height: 30px;
 
         color: #666;
@@ -148,7 +224,7 @@ export default {
         button {
             border: none;
 
-            font-size: 15px;
+            font-size: 16px;
             line-height: 30px;
 
             outline: none;
@@ -169,43 +245,54 @@ export default {
             width: 100%;
             height: 50px;
 
-            font-size: 18px;
+            font-size: 16px;
             line-height: 50px;
 
             justify-content: space-between;
 
             .good-name {
-                width: 200px;
+                width: 140px;
 
                 color: #333;
             }
 
-            .single-price {
-                width: 100px;
-
-                font-weight: 700;
-
-                color: #ff5339;
-            }
-
-            .admi-btns {
+            .operation {
                 display: flex;
 
-                text-align: right;
-
-                background-color: aquamarine;
+                width: 180px;
 
                 justify-content: space-between;
 
-                .van-icon {
-                    font-size: 25px;
-                    vertical-align: middle;
+                .single-price {
+                    width: 120px;
 
-                    color: #3190e8;
+                    font-weight: 700;
+
+                    color: #ff5339;
                 }
 
-                .good-num {
-                    margin: 0 5px;
+                .admi-btns {
+                    display: flex;
+
+                    margin-left: 10px;
+
+                    text-align: right;
+
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .van-icon {
+                        font-size: 25px;
+                        vertical-align: middle;
+
+                        color: #3190e8;
+                    }
+
+                    .good-num {
+                        width: 35px;
+
+                        text-align: center;
+                    }
                 }
             }
         }

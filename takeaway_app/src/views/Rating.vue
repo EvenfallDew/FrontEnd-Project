@@ -53,7 +53,7 @@
 			</p>
 
 			<ul>
-				<li class="user-rate" v-for="(item, index) in filterArr" :key="item.id">
+				<li class="user-rate" v-for="(item, index) in newArr" :key="index">
 					<!-- 用户头像 -->
 					<van-image round width="40px" height="40px" :src="item.avatar" />
 					<!-- 评价内容 -->
@@ -117,8 +117,6 @@ export default {
 			rateData: [],
 			sellerInfo: {},
 			checked: false,
-			activeIcon: "https://img01.yzcdn.cn/vant/user-active.png",
-			inactiveIcon: "https://img01.yzcdn.cn/vant/user-inactive.png",
 			isShow: true,
 			filterComment: "all",
 			newArr: [], // 监听到值变化的数组
@@ -138,6 +136,21 @@ export default {
 	watch: {
 		filterArr(newVal, oldVal) {
 			this.newArr = newVal;
+			console.log("1", newVal);
+		},
+
+		// newArr(newVal, oldVal) {
+		// 	this.newArr = newVal;
+		// 	console.log(newVal);
+		// },
+
+		newArr: {
+			handler(newVal) {
+				console.log(newVal);
+				this.newArr = newVal;
+			},
+			deep: true,
+			immediate: true,
 		},
 	},
 
@@ -149,16 +162,17 @@ export default {
 			return this.rateData.filter((item) => item.rateType == 1).length;
 		},
 		filterArr() {
-			switch (this.filterComment) {
-				case "all":
-					return this.rateData;
-				case "good":
-					return this.rateData.filter((item) => item.rateType == 0);
-				case "bad":
-					return this.rateData.filter((item) => item.rateType == 1);
+			if (this.filterComment == "all") {
+				this.newArr = this.rateData;
+			} else if (this.filterComment == "good") {
+				this.newArr = this.rateData.filter((item) => item.rateType == 0);
+			} else {
+				this.newArr = this.rateData.filter((item) => item.rateType == 1);
 			}
+			return this.newArr;
 		},
 	},
+
 	methods: {
 		// 获取 评价
 		async getRating() {
@@ -171,15 +185,11 @@ export default {
 
 		// 只看有内容
 		onlyText() {
-			this.checked = !this.checked;
-			// if (this.checked == true) {
-			// 	// 过滤一下新数组的数据
-			// 	if (this.checked == true) {
-			// 		this.newArr = this.newArr.filter((item) => item.text != "");
-			// 		this.filterArr = this.newArr;
-			// 		console.log(this.newArr);
-			// 	}
-			// }
+			if (this.checked == true) {
+				// this.newArr = this.newArr.filter((item) => item.text != "");
+				this.newArr = this.newArr.shift();
+				console.log("only", this.newArr);
+			}
 		},
 	},
 };
