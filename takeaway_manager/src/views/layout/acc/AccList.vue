@@ -30,7 +30,7 @@
 
 					<el-table-column label="创建时间" show-overflow-tooltip>
 						<template slot-scope="scope">
-							{{ scope.row.ctime }}
+							{{ scope.row.ctime | filtime }}
 						</template>
 					</el-table-column>
 
@@ -67,7 +67,7 @@
 				</div>
 
 				<!-- 弹窗 -->
-				<el-dialog class="dialog" title="修改信息" :visible.sync="isShow">
+				<el-dialog class="dialog" ref="dialog" title="修改信息" :visible.sync="isShow">
 					<el-form :model="eiditForm">
 						<el-form-item label="账号" label-width="100px">
 							<el-input v-model="eiditForm.account" autocomplete="off"></el-input>
@@ -116,6 +116,35 @@ export default {
 	created() {
 		this.currentId = local.get("info").id;
 		this.getList();
+		// 颜色
+		this.$nextTick(function() {
+			this.bgColor = this.$store.state.nowColor;
+		});
+	},
+
+	mounted() {
+		this.$refs.dialog.$el.children[0].style.backgroundColor = this.bgColor;
+	},
+
+	computed: {
+		bgColor: {
+			get() {
+				return this.$store.state.nowColor;
+			},
+			set(v) {},
+		},
+	},
+
+	watch: {
+		bgColor(newVal) {
+			document.getElementsByClassName("el-dialog")[0].style.backgroundColor = newVal;
+		},
+	},
+	// 过滤器
+	filters: {
+		filtime(val) {
+			return moment(val).format("YYYY/MM/DD HH:mm");
+		},
 	},
 
 	methods: {
@@ -132,8 +161,6 @@ export default {
 				// 重绘
 				this.getList();
 			}
-			// 转换时间
-			data.forEach((item) => (item.ctime = moment(item.ctime).format("YYYY-MM-DD HH:mm:ss")));
 			// 数据
 			this.accData = data;
 			// 总条数

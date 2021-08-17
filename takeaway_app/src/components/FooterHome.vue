@@ -61,9 +61,11 @@ export default {
 			sellerInfo: {},
 		};
 	},
+
 	created() {
 		this.sellerInfo = local.get("sellerInfo");
 	},
+
 	computed: {
 		// 取出仓库中的计算出来的已选商品
 		sel() {
@@ -107,196 +109,195 @@ export default {
 
 <style lang="less" scoped>
 .footer {
-    position: relative;
+	position: relative;
 
-    width: 100%;
-    height: 45px;
+	width: 100%;
+	height: 45px;
 
-    .van-cell {
-        overflow: visible;
+	.van-cell {
+		overflow: visible;
 
-        z-index: 2055;
+		z-index: 2055;
 
-        padding: 0;
-        height: 100%;
+		padding: 0;
+		height: 100%;
 
-        background-color: #505052;
+		background-color: #505052;
 
-        .van-cell__value--alone {
-            display: flex;
+		.van-cell__value--alone {
+			display: flex;
 
-            padding-left: 15px;
+			padding-left: 15px;
 
-            color: #bbb;
+			color: #bbb;
 
-            justify-content: space-between;
+			justify-content: space-between;
 
-            .cart {
-                display: flex;
+			.cart {
+				display: flex;
 
-                position: relative;
-                top: -5px;
+				position: relative;
+				top: -5px;
 
-                border-radius: 50%;
-                width: 50px;
-                height: 50px;
+				border-radius: 50%;
+				width: 50px;
+				height: 50px;
 
-                background-color: #444;
+				background-color: #444;
 
-                justify-content: center;
-                align-items: center;
+				justify-content: center;
+				align-items: center;
 
-                .cart-border {
-                    display: flex;
+				.cart-border {
+					display: flex;
 
-                    border-radius: 50%;
-                    width: 40px;
-                    height: 40px;
+					border-radius: 50%;
+					width: 40px;
+					height: 40px;
 
-                    background-color: #3190e8;
+					background-color: #3190e8;
 
-                    justify-content: center;
-                    align-items: center;
-                }
+					justify-content: center;
+					align-items: center;
+				}
 
-                .cart-active {
-                    color: #fff;
-                }
-            }
+				.cart-active {
+					color: #fff;
+				}
+			}
 
-            .price {
-                display: flex;
+			.price {
+				display: flex;
 
-                flex-direction: column;
-                justify-content: space-around;
+				flex-direction: column;
+				justify-content: space-around;
 
-                p {
-                    font-size: 14px;
-                    line-height: 14px;
-                }
-            }
+				p {
+					font-size: 14px;
+					line-height: 14px;
+				}
+			}
 
-            .btns {
-                width: 120px;
+			.btns {
+				width: 120px;
 
-                .van-button {
-                    width: 100%;
-                    height: 100%;
+				.van-button {
+					width: 100%;
+					height: 100%;
 
-                    letter-spacing: 2px;
-                }
-            }
-        }
+					letter-spacing: 2px;
+				}
+			}
+		}
 
-        // 去掉箭头
-        .van-cell__right-icon {
-            display: none;
-        }
-    }
+		// 去掉箭头
+		.van-cell__right-icon {
+			display: none;
+		}
+	}
 
-    .van-cell__value {
-        overflow: visible;
-    }
+	.van-cell__value {
+		overflow: visible;
+	}
 
-    // 去掉伪元素
-    .van-cell::after {
-        border-bottom: none;
-    }
+	// 去掉伪元素
+	.van-cell::after {
+		border-bottom: none;
+	}
 
-    .van-popup--bottom {
-        bottom: 45px;
-    }
+	.van-popup--bottom {
+		bottom: 45px;
+	}
 
-    .buy-title {
-        display: flex;
+	.buy-title {
+		display: flex;
 
-        padding: 10px 15px;
-        height: 50px;
+		padding: 10px 15px;
+		height: 50px;
 
-        font-size: 16px;
-        line-height: 30px;
+		font-size: 16px;
+		line-height: 30px;
 
-        color: #666;
-        background-color: #eceff1;
+		color: #666;
+		background-color: #eceff1;
 
-        justify-content: space-between;
+		justify-content: space-between;
 
-        button {
-            border: none;
+		button {
+			border: none;
 
-            font-size: 16px;
-            line-height: 30px;
+			font-size: 16px;
+			line-height: 30px;
 
-            outline: none;
+			outline: none;
 
-            .van-icon {
-                vertical-align: middle;
-            }
-        }
-    }
+			.van-icon {
+				vertical-align: middle;
+			}
+		}
+	}
 
-    .buy-list {
-        padding: 0 15px;
+	.buy-list {
+		padding: 0 15px;
 
-        .buy-good {
-            display: flex;
+		.buy-good {
+			display: flex;
 
-            border-bottom: 1px solid #eceff1;
-            width: 100%;
-            height: 50px;
+			border-bottom: 1px solid #eceff1;
+			width: 100%;
+			height: 50px;
 
-            font-size: 16px;
-            line-height: 50px;
+			font-size: 16px;
+			line-height: 50px;
 
-            justify-content: space-between;
+			justify-content: space-between;
 
-            .good-name {
-                width: 140px;
+			.good-name {
+				width: 140px;
 
-                color: #333;
-            }
+				color: #333;
+			}
 
-            .operation {
-                display: flex;
+			.operation {
+				display: flex;
 
-                width: 180px;
+				width: 180px;
 
-                justify-content: space-between;
+				justify-content: space-between;
 
-                .single-price {
-                    width: 120px;
+				.single-price {
+					width: 120px;
 
-                    font-weight: 700;
+					font-weight: 700;
 
-                    color: #ff5339;
-                }
+					color: #ff5339;
+				}
 
-                .admi-btns {
-                    display: flex;
+				.admi-btns {
+					display: flex;
 
-                    margin-left: 10px;
+					margin-left: 10px;
 
-                    text-align: right;
+					text-align: right;
 
-                    align-items: center;
-                    justify-content: space-between;
+					align-items: center;
+					justify-content: space-between;
 
-                    .van-icon {
-                        font-size: 25px;
-                        vertical-align: middle;
+					.van-icon {
+						font-size: 25px;
+						vertical-align: middle;
 
-                        color: #3190e8;
-                    }
+						color: #3190e8;
+					}
 
-                    .good-num {
-                        width: 35px;
+					.good-num {
+						width: 35px;
 
-                        text-align: center;
-                    }
-                }
-            }
-        }
-    }
+						text-align: center;
+					}
+				}
+			}
+		}
+	}
 }
-
 </style>

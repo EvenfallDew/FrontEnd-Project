@@ -1,5 +1,5 @@
 <template>
-	<div class="container" :style="{ backgroundImage: nowBgColor }">
+	<div class="container" :style="{ backgroundImage: nowColor }">
 		<!-- 左边部分 -->
 		<aside>
 			<div>
@@ -23,7 +23,6 @@
 <script>
 import LeftMenu from "@/components/LeftMenu.vue";
 import TopNav from "@/components/TopNav.vue";
-import local from "@/utils/local";
 
 export default {
 	components: {
@@ -41,12 +40,12 @@ export default {
 				"linear-gradient(45deg, #29323c, #485563)",
 			],
 			colorNum: 0,
-			nowBgColor: "linear-gradient(45deg, #29323c, #485563)",
+			nowColor: "linear-gradient(45deg, #29323c, #485563)",
 		};
 	},
 
 	mounted() {
-		this.getColor();
+		this.$store.commit("GETBGCOLOR", this.nowColor.split(",")[1]);
 	},
 
 	methods: {
@@ -54,13 +53,9 @@ export default {
 			if (this.colorNum == this.bgColor.length) {
 				this.colorNum = 0;
 			}
-			this.nowBgColor = this.bgColor[this.colorNum];
-			local.set("bgColor", this.nowBgColor.split(",")[1]);
+			this.nowColor = this.bgColor[this.colorNum];
+			this.$store.commit("GETBGCOLOR", this.nowColor.split(",")[1]);
 			this.colorNum = this.colorNum + 1;
-		},
-
-		getColor() {
-			local.set("bgColor", this.nowBgColor.split(",")[1]);
 		},
 	},
 };

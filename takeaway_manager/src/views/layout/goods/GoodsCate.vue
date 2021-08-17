@@ -51,7 +51,7 @@
 				></el-pagination>
 
 				<!-- 弹窗 -->
-				<el-dialog class="dialog" title="添加分类" :visible.sync="isShow">
+				<el-dialog class="dialog" ref="dialog" title="添加分类" :visible.sync="isShow">
 					<el-form :model="editForm">
 						<el-form-item label="分类名称" label-width="100px">
 							<el-input v-model="editForm.cateName"></el-input>
@@ -92,6 +92,29 @@ export default {
 
 	created() {
 		this.getList();
+		// 颜色
+		this.$nextTick(function() {
+			this.bgColor = this.$store.state.nowColor;
+		});
+	},
+
+	mounted() {
+		this.$refs.dialog.$el.children[0].style.backgroundColor = this.bgColor;
+	},
+
+	computed: {
+		bgColor: {
+			get() {
+				return this.$store.state.nowColor;
+			},
+			set(v) {},
+		},
+	},
+
+	watch: {
+		bgColor(newVal) {
+			document.getElementsByClassName("el-dialog")[0].style.backgroundColor = newVal;
+		},
 	},
 
 	methods: {

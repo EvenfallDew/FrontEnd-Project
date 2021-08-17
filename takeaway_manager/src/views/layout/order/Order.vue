@@ -60,8 +60,8 @@
 					style="width: 100%"
 					border
 					:data="orderData"
-					:cell-style="{ backgroundColor: tableBgColor }"
-					:header-row-style="{ backgroundColor: tableBgColor + '!important' }"
+					:cell-style="{ backgroundColor: bgColor }"
+					:header-row-style="{ backgroundColor: bgColor + '!important' }"
 				>
 					<el-table-column fixed="left" prop="orderNo" label="订单号" width="100px"></el-table-column>
 					<el-table-column prop="orderTime" label="下单时间" width="170px"></el-table-column>
@@ -91,7 +91,7 @@
 				></el-pagination>
 
 				<!-- 弹窗 -->
-				<el-dialog class="dialog" title="编辑订单" :visible.sync="isShow">
+				<el-dialog class="dialog" ref="dialog" title="编辑订单" :visible.sync="isShow">
 					<el-form :model="editForm">
 						<el-form-item label="订单号" label-width="100px">
 							<el-input v-model="editForm.orderNo" :disabled="true"></el-input>
@@ -202,21 +202,37 @@ export default {
 			isShow: false,
 			editForm: {}, // 编辑弹窗
 			role: "", //获取身份
-			tableBgColor: "",
 		};
-	},
-
-	watch: {
-		tableBgColor: "columnColor",
 	},
 
 	created() {
 		// 身份
 		this.role = local.get("info").userGroup;
-		// 颜色
-		this.tableBgColor = local.get("bgColor");
 		// 获取
 		this.getList();
+		// 颜色
+		this.$nextTick(function() {
+			this.bgColor = this.$store.state.nowColor;
+		});
+	},
+
+	mounted() {
+		this.$refs.dialog.$el.children[0].style.backgroundColor = this.bgColor;
+	},
+
+	computed: {
+		bgColor: {
+			get() {
+				return this.$store.state.nowColor;
+			},
+			set(v) {},
+		},
+	},
+
+	watch: {
+		bgColor(newVal) {
+			document.getElementsByClassName("el-dialog")[0].style.backgroundColor = newVal;
+		},
 	},
 
 	methods: {
@@ -316,12 +332,6 @@ export default {
 		handleCurrentChange(val) {
 			this.currentPage = val;
 			this.getList();
-		},
-		// 变色
-		columnColor({ row, column, rowIndex, columnIndex }) {
-			if (columnIndex == 0 || columnIndex == 9) {
-				return this.tableBgColor;
-			}
 		},
 	},
 };

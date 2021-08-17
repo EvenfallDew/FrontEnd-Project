@@ -40,7 +40,7 @@
 									></el-image>
 								</el-form-item>
 								<el-form-item label="创建时间">
-									<span>{{ props.row.ctime }}</span>
+									<span>{{ props.row.ctime | filtime }}</span>
 								</el-form-item>
 								<el-form-item label="商品评价">
 									<span>{{ props.row.rating }}</span>
@@ -89,7 +89,7 @@
 				></el-pagination>
 
 				<!-- 弹窗 -->
-				<el-dialog class="dialog" title="编辑商品" :visible.sync="isShow">
+				<el-dialog class="dialog" ref="dialog" title="编辑商品" :visible.sync="isShow">
 					<el-form :model="editForm">
 						<el-form-item label="商品名称" label-width="100px">
 							<el-input v-model="editForm.name"></el-input>
@@ -184,6 +184,35 @@ export default {
 		this.role = local.get("info").userGroup;
 		this.getList();
 		this.getGoodsCate();
+		// 颜色
+		this.$nextTick(function() {
+			this.bgColor = this.$store.state.nowColor;
+		});
+	},
+
+	mounted() {
+		this.$refs.dialog.$el.children[0].style.backgroundColor = this.bgColor;
+	},
+
+	computed: {
+		bgColor: {
+			get() {
+				return this.$store.state.nowColor;
+			},
+			set(v) {},
+		},
+	},
+
+	watch: {
+		bgColor(newVal) {
+			document.getElementsByClassName("el-dialog")[0].style.backgroundColor = newVal;
+		},
+	},
+	// 过滤器
+	filters: {
+		filtime(val) {
+			return moment(val).format("YYYY/MM/DD HH:mm");
+		},
 	},
 
 	methods: {
@@ -200,8 +229,6 @@ export default {
 				// 重绘
 				this.getList();
 			}
-			// 转换时间
-			data.forEach((item) => (item.ctime = moment(item.ctime).format("YYYY-MM-DD HH:mm:ss")));
 			// 数据
 			this.goodsData = data;
 			// 总条数
