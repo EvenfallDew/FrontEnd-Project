@@ -1,0 +1,37 @@
+{
+  "id": "2754446",
+  "name": "takeaway_app",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "9559066",
+      "name": "减",
+      "font_class": "minus",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "579286",
+      "name": "点赞",
+      "font_class": "good",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "23024986",
+      "name": "踩",
+      "font_class": "bad",
+      "unicode": "e663",
+      "unicode_decimal": 58979
+    },
+    {
+      "icon_id": "23026508",
+      "name": "加",
+      "font_class": "add",
+      "unicode": "e67a",
+      "unicode_decimal": 59002
+    }
+  ]
+}

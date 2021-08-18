@@ -42,7 +42,6 @@ export default new Vuex.Store({
 	// 仓库中的计算属性
 	getters: {
 		// 仓库中的计算属性
-		// [{ name: xxx, foods: [{xx....}] }, {}]
 		selList(state) {
 			let arr = [];
 			for (let obj of state.list) {

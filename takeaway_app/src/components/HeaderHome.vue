@@ -14,13 +14,16 @@
 				</van-image>
 				<!-- 店铺名称 -->
 				<div class="info">
-					<h3 class="title">{{ sellerInfo.name }}</h3>
+					<h3 class="title">
+						<van-icon :name="imagesTitle" size="30px" />
+						{{ sellerInfo.name }}
+					</h3>
 
 					<p class="time">{{ sellerInfo.description }} / {{ sellerInfo.deliveryTime }}分钟送达</p>
 
 					<div class="actives">
-						<!-- 需要filter -->
 						<div class="box" v-if="sellerInfo.supports">
+							<van-icon :name="imagesList[0]" />
 							{{ sellerInfo.supports[0] }}
 						</div>
 
@@ -32,7 +35,10 @@
 			</div>
 
 			<!-- 店铺公告 -->
-			<div class="van-ellipsis">{{ sellerInfo.bulletin }}</div>
+			<div class="van-ellipsis" @click="openDialog()">
+				<van-icon :name="imagesAd" size="22px" />
+				{{ sellerInfo.bulletin }}
+			</div>
 		</header>
 	</div>
 </template>
@@ -54,6 +60,13 @@ export default {
 	data() {
 		return {
 			isShow: false,
+			imagesTitle: require("../assets/images/brand.png"),
+			imagesAd: require("../assets/images/bulletin.png"),
+			imagesList: [
+				require("../assets/images/decrease.png"),
+				require("../assets/images/discount.png"),
+				require("../assets/images/special.png"),
+			],
 		};
 	},
 
@@ -123,8 +136,13 @@ export default {
                 .title {
                     font-size: 20px;
                     font-weight: bold;
+                    line-height: 30px;
 
                     color: #fff;
+
+                    .van-icon {
+                        vertical-align: bottom;
+                    }
                 }
 
                 .time {
@@ -171,6 +189,11 @@ export default {
 
             color: #bbb;
             background-color: rgba(0, 0, 0, .5);
+
+            .van-icon {
+                line-height: 28px;
+                vertical-align: bottom;
+            }
         }
     }
 }

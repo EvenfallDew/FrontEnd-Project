@@ -30,9 +30,13 @@
 									{{ v.price }}
 								</div>
 								<div class="ctrl-btns">
-									<button class="min-btn" v-if="v.num >= 1" @click.stop="del(v.id, -1)">-</button>
-									<span v-if="v.num >= 1">{{ v.num }}</span>
-									<button class="add-btn" @click.stop="add(v.id, +1)">+</button>
+									<span
+										class="min-btn iconfont icon-minus"
+										v-if="v.num >= 1"
+										@click.stop="del(v.id, -1)"
+									></span>
+									<span class="good-num" v-if="v.num >= 1">{{ v.num }}</span>
+									<span class="add-btn iconfont icon-add" @click.stop="add(v.id, +1)"></span>
 								</div>
 							</div>
 						</div>
@@ -43,8 +47,8 @@
 
 		<!-- 弹窗 -->
 		<transition name="b">
-			<div class="dialog" v-if="isShow">
-				<div class="close-btn" @click="isShow = false">X</div>
+			<div class="dialog" v-if="isDialogShow">
+				<div class="close-btn" @click="isDialogShow = false">X</div>
 				<van-image width="100%" height="400px" fit="cover" :src="goodsInfo.imgUrl">
 					<template v-slot:loading>
 						<van-loading type="spinner" size="20" />
@@ -53,13 +57,17 @@
 
 				<div class="goods-des">
 					<h2>{{ goodsInfo.name }}</h2>
-					<p>月售{{ goodsInfo.sellCount }}份 &emsp; 好评率100%</p>
+					<p>
+						月售{{ goodsInfo.sellCount }}份 &emsp; 好评率{{
+							((goodNum / goodsInfo.ratings.length) * 100) | filNumber
+						}}%
+					</p>
 					<p class="goods-buy">
 						<span class="now-price">
 							<span>￥</span>
 							{{ goodsInfo.price }}
 						</span>
-						<van-button round type="info">加入购物车</van-button>
+						<van-button round type="info" @click.stop="add(goodsInfo.id, +1)">加入购物车</van-button>
 					</p>
 				</div>
 
@@ -73,17 +81,26 @@
 				<div class="goods-rate">
 					<h2>商品评价</h2>
 					<p class="btns">
-						<van-button color="#00a0dc">全部</van-button>
-						<van-button color="#ccecf7">推荐</van-button>
-						<van-button color="#eaebed">吐槽</van-button>
+						<van-button color="#00a0dc" @click="filterComment = 'all'">
+							全部
+							<span class="btn-size">{{ goodsInfo.ratings.length }}</span>
+						</van-button>
+						<van-button color="#ccecf7" @click="filterComment = 'good'">
+							推荐
+							<span class="btn-size">{{ goodNum }}</span>
+						</van-button>
+						<van-button color="#eaebed" @click="filterComment = 'bad'">
+							吐槽
+							<span class="btn-size">{{ badNum }}</span>
+						</van-button>
 					</p>
 
 					<p class="only-conts">
 						<van-checkbox v-model="checked" @click="onlyText()">只看有内容的评价</van-checkbox>
 					</p>
 
-					<ul>
-						<li class="user-rate" v-if="isShow" v-for="(item, index) in goodsInfo.ratings" :key="item.id">
+					<ul v-if="isShow == true">
+						<li class="user-rate" v-for="(item, index) in filterArr" :key="item.id">
 							<!-- 评价内容 -->
 							<section class="user-info">
 								<p>{{ item.rateTime | filtime }}</p>
@@ -93,8 +110,29 @@
 								</div>
 							</section>
 
-							<section>
-								<van-icon :name="item.rateType == 1 ? 'play' : 'good-job'" />
+							<section class="user-type">
+								<van-icon
+									:class-prefix="item.rateType == 0 ? 'iconfont icon-good' : 'iconfont icon-bad'"
+								/>
+								<p class="user-text">{{ item.text }}</p>
+							</section>
+						</li>
+					</ul>
+					<ul v-if="isShow == false">
+						<li class="user-rate" v-for="(item, index) in newArr" :key="item.id">
+							<!-- 评价内容 -->
+							<section class="user-info">
+								<p>{{ item.rateTime | filtime }}</p>
+								<div>
+									<span>{{ item.username }}</span>
+									<van-image round width="20px" height="20px" :src="item.avatar" />
+								</div>
+							</section>
+
+							<section class="user-type">
+								<van-icon
+									:class-prefix="item.rateType == 0 ? 'iconfont icon-good' : 'iconfont icon-bad'"
+								/>
 								<p class="user-text">{{ item.text }}</p>
 							</section>
 						</li>
@@ -114,11 +152,13 @@ export default {
 	data() {
 		return {
 			goodsData: [],
-
-			isShow: false, // 模态框显示和隐藏
+			isDialogShow: false, // 模态框显示和隐藏
 			curPage: "收藏门店超值专享",
 			goodsInfo: {}, // 模态框需要的数据
 			checked: false,
+			isShow: true,
+			filterComment: "all",
+			newArr: [], // 监听到值变化的数组
 		};
 	},
 
@@ -131,14 +171,43 @@ export default {
 		list() {
 			return this.$store.state.list;
 		},
+		goodNum() {
+			return this.goodsInfo.ratings.filter((item) => item.rateType == 0).length;
+		},
+		badNum() {
+			return this.goodsInfo.ratings.filter((item) => item.rateType == 1).length;
+		},
+		filterArr() {
+			this.isShow = true;
+			this.checked = false;
+			if (this.filterComment == "all") {
+				return this.goodsInfo.ratings;
+			} else if (this.filterComment == "good") {
+				return this.goodsInfo.ratings.filter((item) => item.rateType == 0);
+			} else {
+				return this.goodsInfo.ratings.filter((item) => item.rateType == 1);
+			}
+		},
 	},
 
 	filters: {
 		filtime(val) {
 			return moment(val).format("YYYY-MM-DD HH:mm");
 		},
+		filNumber(val) {
+			return val.toFixed(2);
+		},
 	},
 
+	watch: {
+		// 监听到计算属性 过滤出来的数组值的变化
+		filterArr(newVal) {
+			this.newArr = newVal;
+		},
+		checked(newVal) {
+			console.log(newVal);
+		},
+	},
 	methods: {
 		// 获取 商品
 		async getGoods() {
@@ -168,7 +237,7 @@ export default {
 				});
 				// 直接派发滚动事件
 				this.rightScroll.on("scroll", (pos) => {
-					let newArr = []; // 定义空数组 [{min,max,title},{min,max,title}...]
+					let newArr = []; // 定义空数组
 					let start = 0; // 初始值
 					// 取出y轴的绝对值
 					let y = Math.abs(pos.y);
@@ -202,7 +271,7 @@ export default {
 		// 商品弹窗
 		showDialog(goodsInfo) {
 			// 显示
-			this.isShow = true;
+			this.isDialogShow = true;
 			// 赋值
 			this.goodsInfo = goodsInfo;
 		},
@@ -214,6 +283,13 @@ export default {
 		add(id, num) {
 			// 发通知
 			this.$store.commit("DEL", { id, num });
+		},
+		// 只看有内容
+		onlyText() {
+			this.isShow = !this.isShow;
+			if (this.checked == true) {
+				this.newArr = this.newArr.filter((item) => item.text != "");
+			}
 		},
 	},
 };

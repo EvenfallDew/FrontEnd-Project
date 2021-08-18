@@ -9,7 +9,7 @@
 
 			<div class="shop-star">
 				<p>
-					服务态度：
+					店铺评分：
 					<van-rate
 						color="#fe9900"
 						void-icon="star"
@@ -43,17 +43,26 @@
 
 		<main>
 			<p class="btns">
-				<van-button color="#00a0dc" @click="filterComment = 'all'">全部{{ rateData.length }}</van-button>
-				<van-button color="#ccecf7" @click="filterComment = 'good'">满意{{ goodNum }}</van-button>
-				<van-button color="#eaebed" @click="filterComment = 'bad'">不满意{{ badNum }}</van-button>
+				<van-button color="#00a0dc" @click="filterComment = 'all'">
+					全部
+					<span class="btn-size">{{ rateData.length }}</span>
+				</van-button>
+				<van-button color="#ccecf7" @click="filterComment = 'good'">
+					满意
+					<span class="btn-size">{{ goodNum }}</span>
+				</van-button>
+				<van-button color="#eaebed" @click="filterComment = 'bad'">
+					不满意
+					<span class="btn-size">{{ badNum }}</span>
+				</van-button>
 			</p>
 
 			<p class="only-conts">
 				<van-checkbox v-model="checked" @click="onlyText()">只看有内容的评价</van-checkbox>
 			</p>
 
-			<ul>
-				<li class="user-rate" v-for="(item, index) in newArr" :key="index">
+			<ul v-if="isShow == true">
+				<li class="user-rate" v-for="(item, index) in filterArr" :key="index">
 					<!-- 用户头像 -->
 					<van-image round width="40px" height="40px" :src="item.avatar" />
 					<!-- 评价内容 -->
@@ -62,7 +71,7 @@
 							<h4>{{ item.username }}</h4>
 							<p>{{ item.rateTime | filtime }}</p>
 						</section>
-
+						<!-- 用户评分 -->
 						<section class="user-score">
 							<van-rate
 								color="#fe9900"
@@ -72,6 +81,7 @@
 								readonly
 								:size="14"
 							/>
+							<!-- 送达时间 -->
 							<p>
 								{{
 									item.deliveryTime == "" || item.deliveryTime == undefined
@@ -80,12 +90,65 @@
 								}}送达
 							</p>
 						</section>
-
+						<!-- 用户评论 -->
 						<section class="user-text">{{ item.text }}</section>
 
 						<section class="user-type">
-							<van-icon :name="item.rateType == 1 ? 'play' : 'good-job'" />
+							<!-- 点赞点踩 -->
+							<van-icon :class-prefix="item.rateType == 0 ? 'iconfont icon-good' : 'iconfont icon-bad'" />
+							<!-- 商品标签 -->
+							<p>
+								<van-tag
+									class="tag"
+									type="primary"
+									color="#aaa"
+									plain
+									v-for="(item, index) in item.recommend"
+									:key="index"
+								>
+									{{ item }}
+								</van-tag>
+							</p>
+						</section>
+					</div>
+				</li>
+			</ul>
+			<ul v-if="isShow == false">
+				<li class="user-rate" v-for="(item, index) in newArr" :key="index">
+					<!-- 用户头像 -->
+					<van-image round width="40px" height="40px" :src="item.avatar" />
+					<!-- 评价内容 -->
+					<div class="user-comment">
+						<section class="user-info">
+							<h4>{{ item.username }}</h4>
+							<p>{{ item.rateTime | filtime }}</p>
+						</section>
+						<!-- 用户评分 -->
+						<section class="user-score">
+							<van-rate
+								color="#fe9900"
+								void-icon="star"
+								void-color="#eee"
+								v-model="item.score"
+								readonly
+								:size="14"
+							/>
+							<!-- 送达时间 -->
+							<p>
+								{{
+									item.deliveryTime == "" || item.deliveryTime == undefined
+										? "已"
+										: item.deliveryTime + "分钟"
+								}}送达
+							</p>
+						</section>
+						<!-- 用户评论 -->
+						<section class="user-text">{{ item.text }}</section>
 
+						<section class="user-type">
+							<!-- 点赞点踩 -->
+							<van-icon :class-prefix="item.rateType == 0 ? 'iconfont icon-good' : 'iconfont icon-bad'" />
+							<!-- 商品标签 -->
 							<p>
 								<van-tag
 									class="tag"
@@ -132,28 +195,12 @@ export default {
 			return moment(val).format("YYYY-MM-DD HH:mm");
 		},
 	},
-
 	watch: {
-		filterArr(newVal, oldVal) {
+		// 监听到计算属性 过滤出来的数组值的变化
+		filterArr(newVal) {
 			this.newArr = newVal;
-			console.log("1", newVal);
-		},
-
-		// newArr(newVal, oldVal) {
-		// 	this.newArr = newVal;
-		// 	console.log(newVal);
-		// },
-
-		newArr: {
-			handler(newVal) {
-				console.log(newVal);
-				this.newArr = newVal;
-			},
-			deep: true,
-			immediate: true,
 		},
 	},
-
 	computed: {
 		goodNum() {
 			return this.rateData.filter((item) => item.rateType == 0).length;
@@ -162,14 +209,15 @@ export default {
 			return this.rateData.filter((item) => item.rateType == 1).length;
 		},
 		filterArr() {
+			this.isShow = true;
+			this.checked = false;
 			if (this.filterComment == "all") {
-				this.newArr = this.rateData;
+				return this.rateData;
 			} else if (this.filterComment == "good") {
-				this.newArr = this.rateData.filter((item) => item.rateType == 0);
+				return this.rateData.filter((item) => item.rateType == 0);
 			} else {
-				this.newArr = this.rateData.filter((item) => item.rateType == 1);
+				return this.rateData.filter((item) => item.rateType == 1);
 			}
-			return this.newArr;
 		},
 	},
 
@@ -185,10 +233,9 @@ export default {
 
 		// 只看有内容
 		onlyText() {
+			this.isShow = !this.isShow;
 			if (this.checked == true) {
-				// this.newArr = this.newArr.filter((item) => item.text != "");
-				this.newArr = this.newArr.shift();
-				console.log("only", this.newArr);
+				this.newArr = this.newArr.filter((item) => item.text != "");
 			}
 		},
 	},

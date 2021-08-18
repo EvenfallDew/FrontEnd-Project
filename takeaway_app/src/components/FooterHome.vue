@@ -9,7 +9,7 @@
 
 			<section class="price">
 				<p>￥{{ selPrice }}</p>
-				<p class="take">另需配送费{{ sellerInfo.deliveryPrice }}元</p>
+				<p class="take">另需配送费{{ sellerInfo.deliveryPrice | filtersPrice }}元</p>
 			</section>
 
 			<section class="btns">
@@ -17,7 +17,7 @@
 					满{{ sellerInfo.minPrice }}起送
 				</van-button>
 				<van-button type="primary" color="#fe9900" v-else-if="selPrice > 0 && selPrice < sellerInfo.minPrice">
-					还差{{ sellerInfo.minPrice - selPrice }}元起送
+					还差{{ (sellerInfo.minPrice - selPrice) | filtersPrice }}元起送
 				</van-button>
 				<van-button type="primary" color="#38ca73" v-else-if="selPrice >= sellerInfo.minPrice">
 					结算
@@ -25,7 +25,7 @@
 			</section>
 		</van-cell>
 
-		<van-popup v-model="isShow" round position="bottom">
+		<van-popup v-model="isShow" round position="bottom" :style="{ maxHeight: '50%' }">
 			<h2 class="buy-title">
 				<p>已选商品</p>
 				<button type="button" @click="clear()">
@@ -38,11 +38,15 @@
 				<li class="buy-good" v-for="(item, i) in sel" :key="i">
 					<div class="van-ellipsis good-name">{{ item.name }}</div>
 					<div class="operation">
-						<span class="single-price">￥{{ (item.price * item.num).toFixed(2) }}</span>
+						<span class="single-price">￥{{ (item.price * item.num) | filtersPrice }}</span>
 						<span class="admi-btns">
-							<van-icon name="close" @click.stop="del(item.id, -1)" />
+							<span
+								class="min-btn iconfont icon-minus"
+								v-if="item.num >= 1"
+								@click.stop="del(item.id, -1)"
+							></span>
 							<span class="good-num">{{ item.num }}</span>
-							<van-icon name="add" @click.stop="del(item.id, +1)" />
+							<span class="add-btn iconfont icon-add" @click.stop="del(item.id, +1)"></span>
 						</span>
 					</div>
 				</li>
@@ -64,6 +68,12 @@ export default {
 
 	created() {
 		this.sellerInfo = local.get("sellerInfo");
+	},
+
+	filters: {
+		filtersPrice(val) {
+			return val.toFixed(2);
+		},
 	},
 
 	computed: {
@@ -109,195 +119,203 @@ export default {
 
 <style lang="less" scoped>
 .footer {
-	position: relative;
+    position: relative;
 
-	width: 100%;
-	height: 45px;
+    width: 100%;
+    height: 45px;
 
-	.van-cell {
-		overflow: visible;
+    .van-cell {
+        overflow: visible;
 
-		z-index: 2055;
+        z-index: 2055;
 
-		padding: 0;
-		height: 100%;
+        padding: 0;
+        height: 100%;
 
-		background-color: #505052;
+        background-color: #505052;
 
-		.van-cell__value--alone {
-			display: flex;
+        .van-cell__value--alone {
+            display: flex;
 
-			padding-left: 15px;
+            padding-left: 15px;
 
-			color: #bbb;
+            color: #bbb;
 
-			justify-content: space-between;
+            justify-content: space-between;
 
-			.cart {
-				display: flex;
+            .cart {
+                display: flex;
 
-				position: relative;
-				top: -5px;
+                position: relative;
+                top: -5px;
 
-				border-radius: 50%;
-				width: 50px;
-				height: 50px;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
 
-				background-color: #444;
+                background-color: #444;
 
-				justify-content: center;
-				align-items: center;
+                justify-content: center;
+                align-items: center;
 
-				.cart-border {
-					display: flex;
+                .cart-border {
+                    display: flex;
 
-					border-radius: 50%;
-					width: 40px;
-					height: 40px;
+                    border-radius: 50%;
+                    width: 40px;
+                    height: 40px;
 
-					background-color: #3190e8;
+                    background-color: #3190e8;
 
-					justify-content: center;
-					align-items: center;
-				}
+                    justify-content: center;
+                    align-items: center;
+                }
 
-				.cart-active {
-					color: #fff;
-				}
-			}
+                .cart-active {
+                    color: #fff;
+                }
+            }
 
-			.price {
-				display: flex;
+            .price {
+                display: flex;
 
-				flex-direction: column;
-				justify-content: space-around;
+                flex-direction: column;
+                justify-content: space-around;
 
-				p {
-					font-size: 14px;
-					line-height: 14px;
-				}
-			}
+                p {
+                    font-size: 14px;
+                    line-height: 14px;
+                }
+            }
 
-			.btns {
-				width: 120px;
+            .btns {
+                width: 120px;
 
-				.van-button {
-					width: 100%;
-					height: 100%;
+                .van-button {
+                    width: 100%;
+                    height: 100%;
 
-					letter-spacing: 2px;
-				}
-			}
-		}
+                    letter-spacing: 1px;
+                }
+            }
+        }
 
-		// 去掉箭头
-		.van-cell__right-icon {
-			display: none;
-		}
-	}
+        // 去掉箭头
+        .van-cell__right-icon {
+            display: none;
+        }
+    }
 
-	.van-cell__value {
-		overflow: visible;
-	}
+    .van-cell__value {
+        overflow: visible;
+    }
 
-	// 去掉伪元素
-	.van-cell::after {
-		border-bottom: none;
-	}
+    // 去掉伪元素
+    .van-cell::after {
+        border-bottom: none;
+    }
 
-	.van-popup--bottom {
-		bottom: 45px;
-	}
+    .van-popup--bottom {
+        bottom: 45px;
+    }
 
-	.buy-title {
-		display: flex;
+    .buy-title {
+        display: flex;
 
-		padding: 10px 15px;
-		height: 50px;
+        padding: 10px 15px;
+        height: 50px;
 
-		font-size: 16px;
-		line-height: 30px;
+        font-size: 16px;
+        line-height: 30px;
 
-		color: #666;
-		background-color: #eceff1;
+        color: #666;
+        background-color: #eceff1;
 
-		justify-content: space-between;
+        justify-content: space-between;
 
-		button {
-			border: none;
+        button {
+            border: none;
 
-			font-size: 16px;
-			line-height: 30px;
+            font-size: 16px;
+            line-height: 30px;
 
-			outline: none;
+            outline: none;
 
-			.van-icon {
-				vertical-align: middle;
-			}
-		}
-	}
+            .van-icon {
+                vertical-align: middle;
+            }
+        }
+    }
 
-	.buy-list {
-		padding: 0 15px;
+    .buy-list {
+        padding: 0 15px;
 
-		.buy-good {
-			display: flex;
+        .buy-good {
+            display: flex;
 
-			border-bottom: 1px solid #eceff1;
-			width: 100%;
-			height: 50px;
+            border-bottom: 1px solid #eceff1;
+            width: 100%;
+            height: 50px;
 
-			font-size: 16px;
-			line-height: 50px;
+            font-size: 16px;
+            line-height: 50px;
 
-			justify-content: space-between;
+            justify-content: space-between;
 
-			.good-name {
-				width: 140px;
+            .good-name {
+                width: 140px;
 
-				color: #333;
-			}
+                color: #333;
+            }
 
-			.operation {
-				display: flex;
+            .operation {
+                display: flex;
 
-				width: 180px;
+                width: 180px;
 
-				justify-content: space-between;
+                justify-content: space-between;
 
-				.single-price {
-					width: 120px;
+                .single-price {
+                    width: 120px;
 
-					font-weight: 700;
+                    font-weight: 700;
 
-					color: #ff5339;
-				}
+                    color: #ff5339;
+                }
 
-				.admi-btns {
-					display: flex;
+                .admi-btns {
+                    display: flex;
 
-					margin-left: 10px;
+                    margin-left: 10px;
 
-					text-align: right;
+                    text-align: right;
 
-					align-items: center;
-					justify-content: space-between;
+                    align-items: center;
+                    justify-content: space-between;
 
-					.van-icon {
-						font-size: 25px;
-						vertical-align: middle;
+                    .good-num {
+                        margin: 0 10px;
 
-						color: #3190e8;
-					}
+                        color: #646464;
+                    }
 
-					.good-num {
-						width: 35px;
+                    .min-btn {
+                        font-size: 20px;
 
-						text-align: center;
-					}
-				}
-			}
-		}
-	}
+                        color: #2395ff;
+                    }
+
+                    .add-btn {
+                        margin-right: 10px;
+
+                        font-size: 20px;
+
+                        color: #2395ff;
+                    }
+                }
+            }
+        }
+    }
 }
+
 </style>

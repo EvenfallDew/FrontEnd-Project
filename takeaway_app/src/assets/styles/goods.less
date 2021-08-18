@@ -90,57 +90,45 @@
                         color: #646464;
                     }
 
-                    .goods-price {
-                        font-weight: bold;
-
-                        color: red;
-
-                        span {
-                            font-size: 14px;
-                        }
-                    }
-
                     .goods-ctrl {
                         display: flex;
+
+                        margin-top: 5px;
+
+                        line-height: 20px;
 
                         align-items: center;
                         justify-content: space-between;
 
-                        .ctrl-btns {
+                        .goods-price {
+                            font-weight: bold;
+
+                            color: red;
+
                             span {
+                                font-size: 14px;
+                            }
+                        }
+
+                        .ctrl-btns {
+                            .good-num {
                                 margin: 0 10px;
 
                                 color: #646464;
                             }
 
-                            button {
-                                border: none;
-                                border-radius: 50%;
-                                width: 25px;
-                                height: 25px;
-
-                                font-size: 20px;
-                                text-align: center;
-                            }
-
                             .min-btn {
-                                border: 2px solid #2395ff;
-
-                                line-height: 21px;
+                                font-size: 20px;
 
                                 color: #2395ff;
-                                background-color: #fff;
                             }
 
                             .add-btn {
                                 margin-right: 10px;
 
-                                line-height: 25px;
+                                font-size: 20px;
 
-                                color: #fff;
-                                background-color: #2395ff;
-
-                                outline: none;
+                                color: #2395ff;
                             }
                         }
                     }
@@ -158,6 +146,7 @@
     top: 0;
     left: 0;
 
+    padding-bottom: 25px;
     width: 100%;
     height: 100%;
 
@@ -228,8 +217,10 @@
             }
 
             .van-button {
-                padding: 0 4px;
-                height: 28px;
+                padding: 0 5px;
+                height: 26px;
+
+                font-size: 12px;
 
                 color: #fff;
             }
@@ -237,7 +228,7 @@
     }
 
     .goods-ad {
-        margin-top: 25px;
+        margin-top: 20px;
 
         p {
             padding: 10px;
@@ -250,7 +241,7 @@
     }
 
     .goods-rate {
-        margin-top: 25px;
+        margin-top: 20px;
         border-bottom: 0;
 
         .btns {
@@ -295,6 +286,24 @@
 
                         vertical-align: middle;
                     }
+                }
+            }
+
+            .user-type {
+                display: flex;
+
+                .icon-good {
+                    color: #3190e8;
+                }
+
+                .icon-bad {
+                    color: #b7babf;
+                }
+
+                .user-text {
+                    margin-left: 5px;
+
+                    line-height: 16px;
                 }
             }
         }
