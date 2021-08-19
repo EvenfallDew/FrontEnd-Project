@@ -36,7 +36,11 @@
 										@click.stop="del(v.id, -1)"
 									></span>
 									<span class="good-num" v-if="v.num >= 1">{{ v.num }}</span>
-									<span class="add-btn iconfont icon-add" @click.stop="add(v.id, +1)"></span>
+									<span
+										class="add-btn iconfont icon-add"
+										@click.stop="add(v.id, +1)"
+										@click="addInCart"
+									></span>
 								</div>
 							</div>
 						</div>
@@ -208,6 +212,7 @@ export default {
 			console.log(newVal);
 		},
 	},
+
 	methods: {
 		// 获取 商品
 		async getGoods() {
@@ -221,7 +226,6 @@ export default {
 			this.goodsData = goodsList;
 			// 存入状态机
 			this.$store.commit("SETLIST", goodsList);
-
 			// 在created生命周期中  获取dom节点的方式
 			this.$nextTick(() => {
 				// 左边的分类滚动
@@ -290,6 +294,37 @@ export default {
 			if (this.checked == true) {
 				this.newArr = this.newArr.filter((item) => item.text != "");
 			}
+		},
+		// 添加动画
+		addInCart() {
+			let x = event.pageX - event.offsetX / 2;
+			let y = event.pageY - event.offsetY / 2;
+			this.createBall(x, y);
+		},
+		createBall(left, top) {
+			let bar = document.createElement("div");
+			bar.style.position = "absolute";
+			bar.style.left = left + "px";
+			bar.style.top = top + "px";
+			bar.style.width = "25px";
+			bar.style.height = "25px";
+			bar.style.borderRadius = "50%";
+			bar.style.backgroundColor = "#2395ff";
+			bar.style.transition = "left .6s linear, top .6s cubic-bezier(0.5, -0.5, 1, 1)";
+
+			document.body.appendChild(bar);
+			// 添加动画属性
+			setTimeout(() => {
+				let target = document.querySelector(".target-cart");
+				let content = document.querySelector(".content");
+				bar.style.left = target.offsetLeft + target.offsetWidth / 2 + "px";
+				bar.style.top = content.offsetHeight - target.offsetHeight / 2 + "px";
+			}, 0);
+
+			// 动画结束后，删除自己
+			bar.ontransitionend = function() {
+				this.remove();
+			};
 		},
 	},
 };
