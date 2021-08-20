@@ -50,9 +50,14 @@
 		</main>
 
 		<!-- 弹窗 -->
-		<transition name="b">
+		<transition
+			enter-active-class="animate__animated animate__slideInRight"
+			leave-active-class="animate__animated animate__slideOutRight"
+		>
 			<div class="dialog" v-if="isDialogShow">
-				<div class="close-btn" @click="isDialogShow = false">X</div>
+				<div class="close-btn" @click="isDialogShow = false">
+					<van-icon name="arrow-left" />
+				</div>
 				<van-image width="100%" height="400px" fit="cover" :src="goodsInfo.imgUrl">
 					<template v-slot:loading>
 						<van-loading type="spinner" size="20" />
@@ -297,8 +302,8 @@ export default {
 		},
 		// 添加动画
 		addInCart() {
-			let x = event.pageX - event.offsetX / 2;
-			let y = event.pageY - event.offsetY / 2;
+			let x = event.pageX - 10;
+			let y = event.pageY - 10;
 			this.createBall(x, y);
 		},
 		createBall(left, top) {
@@ -310,7 +315,7 @@ export default {
 			bar.style.height = "25px";
 			bar.style.borderRadius = "50%";
 			bar.style.backgroundColor = "#2395ff";
-			bar.style.transition = "left .6s linear, top .6s cubic-bezier(0.5, -0.5, 1, 1)";
+			bar.style.transition = "left .5s linear, top .5s cubic-bezier(0.5, -0.5, 1, 1)";
 
 			document.body.appendChild(bar);
 			// 添加动画属性

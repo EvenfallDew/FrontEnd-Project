@@ -29,8 +29,8 @@
 
 		<!-- 弹窗 -->
 		<transition
-			enter-active-class="animate__animated animate__fadeIn"
-			leave-active-class="animate__animated animate__fadeOut"
+			enter-active-class="animate__animated animate__slideInDown"
+			leave-active-class="animate__animated animate__slideOutUp"
 		>
 			<div class="dialog-box" v-if="isShow">
 				<main>

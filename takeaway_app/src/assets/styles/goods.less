@@ -136,194 +136,189 @@
             }
         }
     }
-}
 
-// 弹窗
-.dialog {
-    overflow-y: scroll;
+    // 弹窗
+    .dialog {
+        overflow-y: scroll;
 
-    position: fixed;
-    top: 0;
-    left: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
 
-    padding-bottom: 25px;
-    width: 100%;
-    height: 100%;
+        padding-bottom: 25px;
+        width: 100%;
+        height: 100%;
 
-    background: #f4f5f7;
+        background: #f4f5f7;
 
-    .close-btn {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        z-index: 99;
-
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-
-        line-height: 30px;
-        text-align: center;
-
-        color: #fff;
-        background: rgba(0, 0, 0, .6);
-    }
-
-    .goods-des,
-    .goods-ad,
-    .goods-rate {
-        border-top: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
-        padding: 20px;
-
-        background-color: #fff;
-
-        box-shadow: 0 .1rem .7rem rgba(0, 0, 0, .18);
-
-        h2 {
-            font: 600 17px/1em "微软雅黑";
-        }
-    }
-
-    .goods-des {
-        border-top: 0;
-
-        h2 {
-            font-weight: bolder;
-        }
-
-        p {
-            font: normal 14px/1.8em "微软雅黑";
-
-            color: #646464;
-        }
-
-        .goods-buy {
+        .close-btn {
             display: flex;
 
-            margin-top: 20px;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            z-index: 99;
 
-            justify-content: space-between;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
 
-            .now-price {
-                font-size: 16px;
-                font-weight: bold;
+            font-size: 20px;
 
-                color: red;
+            color: #fff;
+            background: rgba(0, 0, 0, .6);
 
-                span {
-                    font-size: 12px;
-                }
-            }
-
-            .van-button {
-                padding: 0 5px;
-                height: 26px;
-
-                font-size: 12px;
-
-                color: #fff;
-            }
-        }
-    }
-
-    .goods-ad {
-        margin-top: 20px;
-
-        p {
-            padding: 10px;
-            padding-bottom: 0;
-
-            font: normal 14px/1.8em "微软雅黑";
-
-            color: #646464;
-        }
-    }
-
-    .goods-rate {
-        margin-top: 20px;
-        border-bottom: 0;
-
-        .btns {
-            padding: 20px 0;
-
-            .van-button {
-                margin-right: 8px;
-                width: 75px;
-                height: 35px;
-            }
+            justify-content: center;
+            align-items: center;
         }
 
-        .only-conts {
-            border-top: 1px solid #eee;
-            padding: 20px 0;
-        }
-    }
-
-    ul {
-        border-top: 1px solid #ccc;
-
-        font-size: 14px;
-
-        .user-rate {
+        .goods-des,
+        .goods-ad,
+        .goods-rate {
+            border-top: 1px solid #ccc;
             border-bottom: 1px solid #ccc;
-            padding: 20px 0;
+            padding: 20px;
 
-            .user-info {
+            background-color: #fff;
+
+            box-shadow: 0 .1rem .7rem rgba(0, 0, 0, .18);
+
+            h2 {
+                font: 600 17px/1em "微软雅黑";
+            }
+        }
+
+        .goods-des {
+            border-top: 0;
+
+            h2 {
+                font-weight: bolder;
+            }
+
+            p {
+                font: normal 14px/1.8em "微软雅黑";
+
+                color: #646464;
+            }
+
+            .goods-buy {
                 display: flex;
+
+                margin-top: 20px;
 
                 justify-content: space-between;
 
-                p {
-                    line-height: 28px;
+                .now-price {
+                    font-size: 16px;
+                    font-weight: bold;
+
+                    color: red;
+
+                    span {
+                        font-size: 12px;
+                    }
                 }
 
-                div {
-                    line-height: 28px;
+                .van-button {
+                    padding: 0 5px;
+                    height: 26px;
 
-                    .van-image {
-                        margin-left: 10px;
+                    font-size: 12px;
 
-                        vertical-align: middle;
-                    }
+                    color: #fff;
+                }
+            }
+        }
+
+        .goods-ad {
+            margin-top: 20px;
+
+            p {
+                padding: 10px;
+                padding-bottom: 0;
+
+                font: normal 14px/1.8em "微软雅黑";
+
+                color: #646464;
+            }
+        }
+
+        .goods-rate {
+            margin-top: 20px;
+            border-bottom: 0;
+
+            .btns {
+                padding: 20px 0;
+
+                .van-button {
+                    margin-right: 8px;
+                    width: 75px;
+                    height: 35px;
                 }
             }
 
-            .user-type {
-                display: flex;
+            .only-conts {
+                border-top: 1px solid #eee;
+                padding: 20px 0;
+            }
+        }
 
-                .icon-good {
-                    color: #3190e8;
+        ul {
+            border-top: 1px solid #ccc;
+
+            font-size: 14px;
+
+            .user-rate {
+                border-bottom: 1px solid #ccc;
+                padding: 20px 0;
+
+                .user-info {
+                    display: flex;
+
+                    justify-content: space-between;
+
+                    p {
+                        line-height: 28px;
+                    }
+
+                    div {
+                        line-height: 28px;
+
+                        .van-image {
+                            margin-left: 10px;
+
+                            vertical-align: middle;
+                        }
+                    }
                 }
 
-                .icon-bad {
-                    color: #b7babf;
-                }
+                .user-type {
+                    display: flex;
 
-                .user-text {
-                    margin-left: 5px;
+                    .icon-good {
+                        color: #3190e8;
+                    }
 
-                    line-height: 16px;
+                    .icon-bad {
+                        color: #b7babf;
+                    }
+
+                    .user-text {
+                        margin-left: 5px;
+
+                        line-height: 16px;
+                    }
                 }
             }
         }
     }
-}
 
-// 弹窗动画
-// 过渡动画的样式
-.b-enter-active,
-.b-leave-active {
-    opacity: 1;
+    // 弹窗动画
+    .animate__animated.animate__slideInRight {
+        animation-duration: .5s;
+    }
 
-// 进入和离开 第一帧样式
-
-    transition: all .5s;
-}
-
-.b-enter,
-.b-leave-to
-
-/* 要执行到的动画效果 */ {
-    opacity: 0;
+    .animate__animated.animate__slideOutRight {
+        animation-duration: .5s;
+    }
 }
