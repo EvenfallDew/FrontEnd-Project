@@ -1,0 +1,76 @@
+{
+	"pages": [
+		{
+			"path": "pages/start/start",
+			"style": {
+				"navigationBarTitleText": "请登录",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/like/like",
+			"style": {
+				"navigationBarTitleText": "心愿单",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/order/order",
+			"style": {
+				"navigationBarTitleText": "烹饪行程",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/person/person",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"enablePullDownRefresh": false
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "四海香",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#f01",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "./static/images/footer1.png",
+				"selectedIconPath": "./static/images/footer1-sel.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/like/like",
+				"iconPath": "./static/images/footer2.png",
+				"selectedIconPath": "./static/images/footer2-sel.png",
+				"text": "心愿单"
+			},
+			{
+				"pagePath": "pages/order/order",
+				"iconPath": "./static/images/footer3.png",
+				"selectedIconPath": "./static/images/footer3-sel.png",
+				"text": "烹饪行程"
+			},
+			{
+				"pagePath": "pages/person/person",
+				"iconPath": "./static/images/footer4.png",
+				"selectedIconPath": "./static/images/footer4-sel.png",
+				"text": "我的"
+			}
+		]
+	}
+}

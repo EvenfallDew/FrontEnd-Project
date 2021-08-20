@@ -213,9 +213,6 @@ export default {
 		filterArr(newVal) {
 			this.newArr = newVal;
 		},
-		checked(newVal) {
-			console.log(newVal);
-		},
 	},
 
 	methods: {

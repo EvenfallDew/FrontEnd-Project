@@ -124,13 +124,11 @@ export default {
 			this.sellerInfo = data;
 			local.set("sellerInfo", data);
 		},
-
 		// 打开 弹窗
 		openDialog(data) {
 			this.isShow = data;
 			this.$refs.content.style.filter = "blur(5px)";
 		},
-
 		// 关闭 弹窗
 		closeDialog() {
 			this.isShow = false;

@@ -126,7 +126,7 @@ export default {
 			click: true,
 		});
 	},
-	// 过滤器
+
 	filters: {
 		filtime(val) {
 			return moment(val).format("YYYY-MM-DD HH:mm");

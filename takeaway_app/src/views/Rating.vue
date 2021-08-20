@@ -189,18 +189,20 @@ export default {
 	created() {
 		this.getRating();
 	},
-	// 过滤器
+
 	filters: {
 		filtime(val) {
 			return moment(val).format("YYYY-MM-DD HH:mm");
 		},
 	},
+
 	watch: {
 		// 监听到计算属性 过滤出来的数组值的变化
 		filterArr(newVal) {
 			this.newArr = newVal;
 		},
 	},
+
 	computed: {
 		goodNum() {
 			return this.rateData.filter((item) => item.rateType == 0).length;

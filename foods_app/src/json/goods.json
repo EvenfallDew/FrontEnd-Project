@@ -1,0 +1,24 @@
+{
+	"carlist": [
+		{ "id": 1, "name": "商品1", "img": "../static/images/3.png", "num": 0, "price": 99 },
+		{ "id": 2, "name": "商品2", "img": "../static/images/4.png", "num": 0, "price": 99 },
+		{ "id": 3, "name": "商品3", "img": "../static/images/5.png", "num": 0, "price": 99 }
+	],
+	"goodslist": [
+		{ "img": "../static/images/goods4.png", "goodsname": "麻辣小龙虾", "price": 188 },
+		{ "img": "../static/images/goods1.jpg", "goodsname": "和牛拉面", "price": 128 },
+		{ "img": "../static/images/goods3.jpg", "goodsname": "避风塘炒蟹", "price": 188 },
+		{ "img": "../static/images/goods2.jpg", "goodsname": "法式罗宋汤", "price": 88 }
+	],
+	"manlist": [
+		{ "id": 1, "img": "../static/images/man1.jpg", "name": "蔡亦凡" },
+		{ "id": 2, "img": "../static/images/man2.jpg", "name": "吴有林" },
+		{ "id": 3, "img": "../static/images/man3.jpg", "name": "李大龙" }
+	],
+	"navlist": [
+		{ "id": 1, "img": "../static/images/7.png", "text": "名厨" },
+		{ "id": 2, "img": "../static/images/5.png", "text": "餐宴" },
+		{ "id": 3, "img": "../static/images/4.png", "text": "坝坝宴" },
+		{ "id": 4, "img": "../static/images/6.png", "text": "周边" }
+	]
+}
