@@ -1,48 +1,54 @@
 <template>
-	<view class="content">
-		<view>
-			<text class="title">{{ title }}</text>
-		</view>
+	<view>
+		<!-- 1. 轮播 -->
+		<IndexBanner />
+		<!-- 2. nav导航 -->
+		<IndexNav />
+		<view class="hr"></view>
+		<!-- 3. 优选名厨 -->
+		<IndexCooks />
+		<view class="hr"></view>
+		<!-- 4. 优选餐宴 -->
+		<IndexGoods />
+		<view class="hr"></view>
+		<!-- 5. tag标签 -->
+		<IndexTags />
 	</view>
 </template>
 
 <script>
+import IndexBanner from "@/components/IndexBanner.vue";
+import IndexNav from "@/components/IndexNav.vue";
+import IndexCooks from "@/components/IndexCooks.vue";
+import IndexGoods from "@/components/IndexGoods.vue";
+import IndexTags from "@/components/IndexTags.vue";
+
 export default {
-	data() {
-		return {
-			title: "Hello",
-		};
+	components: {
+		IndexBanner,
+		IndexNav,
+		IndexCooks,
+		IndexGoods,
+		IndexTags,
 	},
+
+	data() {
+		return {};
+	},
+
 	onLoad() {},
+
 	methods: {},
 };
 </script>
 
 <style>
-.content {
-    display: flex;
+.hr {
+    margin-top: 10px;
+    width: 100%;
+    height: 10px;
 
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo {
-    margin: 200rpx auto 50rpx auto;
-    width: 200rpx;
-    height: 200rpx;
-}
-
-.text-area {
-    display: flex;
-
-    justify-content: center;
-}
-
-.title {
-    font-size: 36rpx;
-
-    color: #8f8f94;
+    background: #eee;
 }
 
 </style>

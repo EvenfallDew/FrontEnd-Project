@@ -1,21 +1,19 @@
 <template>
 	<view class="start">
 		<image class="login-bg" src="../../static/images/w4.jpg" mode=""></image>
-		<button class="login-btn" open-type="getUserInfo" @click="getuserinfo()">登录授权</button>
+		<button class="login-btn" open-type="getUserInfo" @click="getUserInfo()">登录授权</button>
 	</view>
 </template>
 
 <script>
-import { baseUrl } from "@/utils/utils";
-
 export default {
 	data() {
 		return {};
 	},
 
 	onLoad() {
-		let info = uni.getStorageSync("userinfo");
-		if (info != null) {
+		let userInfo = uni.getStorageSync("userInfo");
+		if (userInfo != null) {
 			uni.switchTab({
 				url: "/pages/index/index",
 			});
@@ -23,7 +21,7 @@ export default {
 	},
 
 	methods: {
-		getuserinfo() {
+		getUserInfo() {
 			uni.login({
 				provider: "weixin",
 				success: function(res) {
@@ -47,9 +45,8 @@ export default {
 			uni.getUserProfile({
 				desc: "登录授权获取信息",
 				success(res) {
-					console.log(res.userInfo);
 					// 存入本地
-					uni.setStorageSync("userinfo", res.userInfo);
+					uni.setStorageSync("userInfo", res.userInfo);
 					// 跳转首页
 					uni.switchTab({
 						url: "/pages/index/index",

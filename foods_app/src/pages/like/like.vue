@@ -1,5 +1,10 @@
 <template>
-	<view>心愿单</view>
+	<view class="like">
+		<view class="title">
+			<text>已收藏个餐宴</text>
+			<text>清空</text>
+		</view>
+	</view>
 </template>
 
 <script>
@@ -11,4 +16,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.title {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+</style>
