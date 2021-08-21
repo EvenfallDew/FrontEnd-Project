@@ -6,7 +6,9 @@
 			<view class="cook">
 				<image class="cook-img" src="../static/images/man1.jpg" mode="widthFix"></image>
 				<text class="cook-name">张小美</text>
-				<uni-rate v-model="value" @change="onChange" />
+				<view class="star">
+					<uni-rate :touchable="false" :value="5" />
+				</view>
 			</view>
 		</view>
 
@@ -17,12 +19,12 @@
 </template>
 
 <script>
-import uniRate from "@dcloudio/uni-ui/lib/uni-rate/uni-rate.vue";
+// import uniRate from "@dcloudio/uni-ui/lib/uni-rate/uni-rate.vue";
 
 export default {
 	name: "IndexCooks",
 
-	components: { uniRate },
+	// components: { uniRate },
 
 	data() {
 		return {
@@ -38,45 +40,56 @@ export default {
 </script>
 
 <style>
+.star {
+	height: 30px;
+	background: aqua;
+	display: flex;
+	/* #endif */
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 0;
+	font-size: 14px;
+	background-color: #ffffff;
+}
 .index-cooks {
-    padding: 20px 0 5px;
+	padding: 20px 0 5px;
 }
 
 .cook-title {
-    display: block;
+	display: block;
 
-    margin: 0 auto;
-    width: 70%;
+	margin: 0 auto;
+	width: 70%;
 }
 
 .cooks-box {
-    display: flex;
+	display: flex;
 
-    margin: 20px auto;
-    width: 90%;
+	margin: 20px auto;
+	width: 90%;
 
-    justify-content: space-between;
+	justify-content: space-between;
 }
 
 .cook {
-    display: block;
+	display: block;
 }
 
 .cook-img {
-    display: block;
+	display: block;
 
-    width: 50px;
+	width: 50px;
 }
 
 .cook-name {
-    display: block;
+	display: block;
 }
 
 .more-btn {
-    font-size: 14px;
-    text-align: center;
+	font-size: 14px;
+	text-align: center;
 
-    color: #646464;
+	color: #646464;
 }
-
 </style>
