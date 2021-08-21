@@ -6,8 +6,7 @@
 			<view class="cook">
 				<image class="cook-img" src="../static/images/man1.jpg" mode="widthFix"></image>
 				<text class="cook-name">张小美</text>
-				<uni-rate :touchable="false" :value="5" />
-				<uni-rate size="18" value="5" />
+				<uni-rate v-model="value" @change="onChange" />
 			</view>
 		</view>
 
@@ -26,7 +25,14 @@ export default {
 	components: { uniRate },
 
 	data() {
-		return {};
+		return {
+			value: 3,
+		};
+	},
+	methods: {
+		onChange() {
+			console.log(233);
+		},
 	},
 };
 </script>

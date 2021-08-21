@@ -3,7 +3,7 @@
 		<view class="person-info">
 			<view>
 				<view class="person-name">{{ userInfo.nickName }}</view>
-				<view class="person-welcome">欢迎您光临四海香</view>
+				<view class="person-welcome">欢迎您光临四海香！</view>
 			</view>
 			<view class="person-avatar">
 				<image class="person-avatar-img" :src="userInfo.avatarUrl"></image>
@@ -43,18 +43,36 @@ export default {
 </script>
 
 <style>
+.person {
+    color: #333;
+}
+
 .person-info {
     display: flex;
+
+    padding: 25px 20px;
 
     justify-content: space-between;
     align-items: center;
 }
 
+.person-name {
+    font: 500 28px/1.5em "微软雅黑";
+
+    color: #000;
+}
+
+.person-welcome {
+    font: 500 20px/1.5em "微软雅黑";
+
+    color: #bbb;
+}
+
 .person-avatar,
 .person-avatar-img {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
 }
 
 </style>

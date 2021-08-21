@@ -13,7 +13,7 @@ export default {
 
 	onLoad() {
 		let userInfo = uni.getStorageSync("userInfo");
-		if (userInfo != null) {
+		if (userInfo) {
 			uni.switchTab({
 				url: "/pages/index/index",
 			});
@@ -61,31 +61,30 @@ export default {
 <style>
 .start,
 page {
-    position: relative;
+	position: relative;
 
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .login-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
 
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .login-btn {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
 
-    margin-left: -75px;
-    width: 150px;
+	margin-left: -75px;
+	width: 150px;
 
-    color: #fff;
-    background-color: #7e9da2;
+	color: #fff;
+	background-color: #7e9da2;
 }
-
 </style>
