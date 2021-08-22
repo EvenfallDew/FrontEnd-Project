@@ -5,10 +5,10 @@
 		{ "id": 3, "name": "商品3", "img": "../static/images/5.png", "num": 0, "price": 99 }
 	],
 	"goodslist": [
-		{ "img": "../static/images/goods4.png", "goodsname": "麻辣小龙虾", "price": 188 },
-		{ "img": "../static/images/goods1.jpg", "goodsname": "和牛拉面", "price": 128 },
+		{ "img": "../static/images/goods1.jpg", "goodsname": "麻辣小龙虾", "price": 188 },
+		{ "img": "../static/images/goods2.jpg", "goodsname": "和牛拉面", "price": 128 },
 		{ "img": "../static/images/goods3.jpg", "goodsname": "避风塘炒蟹", "price": 188 },
-		{ "img": "../static/images/goods2.jpg", "goodsname": "法式罗宋汤", "price": 88 }
+		{ "img": "../static/images/goods1.jpg", "goodsname": "法式罗宋汤", "price": 88 }
 	],
 	"manlist": [
 		{ "id": 1, "img": "../static/images/man1.jpg", "name": "蔡亦凡" },

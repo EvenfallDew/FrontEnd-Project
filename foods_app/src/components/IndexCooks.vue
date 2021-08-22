@@ -3,11 +3,11 @@
 		<image class="cook-title" src="../static/images/9.png" mode="widthFix"></image>
 
 		<view class="cooks-box">
-			<view class="cook">
-				<image class="cook-img" src="../static/images/man1.jpg" mode="widthFix"></image>
-				<text class="cook-name">张小美</text>
+			<view class="cook" v-for="(item, index) in list">
+				<image class="cook-img" mode="aspectFill" :src="item.img"></image>
+				<text class="cook-name">{{ item.name }}</text>
 				<view class="star">
-					<uni-rate :touchable="false" :value="starVal" />
+					<uni-rate :size="14" :touchable="false" :value="item.star" />
 				</view>
 			</view>
 		</view>
@@ -24,24 +24,18 @@ export default {
 
 	data() {
 		return {
-			starVal: 3,
+			list: [
+				{ name: "张小妹", star: 4, img: "../static/images/man1.jpg" },
+				{ name: "王大牛", star: 5, img: "../static/images/man2.jpg" },
+				{ name: "斯塔克", star: 4, img: "../static/images/man3.jpg" },
+			],
 		};
 	},
-	methods: {
-		onChange() {
-			console.log(233);
-		},
-	},
+	methods: {},
 };
 </script>
 
 <style>
-.star {
-    height: 30px;
-
-    background: aqua;
-}
-
 .index-cooks {
     padding: 20px 0 5px;
 }
@@ -50,7 +44,7 @@ export default {
     display: block;
 
     margin: 0 auto;
-    width: 70%;
+    width: 60%;
 }
 
 .cooks-box {
@@ -63,22 +57,39 @@ export default {
 }
 
 .cook {
-    display: block;
+    display: flex;
+
+    border-radius: 8px;
+    width: 30%;
+    height: 120px;
+
+    box-shadow: 1px 1px 8px 1px #ccc;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .cook-img {
     display: block;
 
-    width: 50px;
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
 }
 
 .cook-name {
     display: block;
+
+    font-size: 15px;
+
+    color: #333;
 }
 
 .more-btn {
     font-size: 14px;
     text-align: center;
+    letter-spacing: 1px;
 
     color: #646464;
 }

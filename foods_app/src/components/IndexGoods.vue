@@ -2,7 +2,13 @@
 	<view class="index-goods">
 		<image class="good-title" src="../static/images/10.png" mode="widthFix"></image>
 
-		<view class="goods-box"></view>
+		<view class="goods-box">
+			<view class="good" v-for="(item, index) in goodslist">
+				<image class="good-img" mode="aspectFill" :src="item.img"></image>
+				<view class="good-name">{{ item.goodsname }}</view>
+				<view class="good-price">￥{{ item.price }}/桌</view>
+			</view>
+		</view>
 
 		<view class="more-btn">
 			<text>更多名厨</text>
@@ -11,10 +17,14 @@
 </template>
 
 <script>
+import jsons from "@/json/goods.json";
+
 export default {
 	name: "IndexGoods",
 	data() {
-		return {};
+		return {
+			goodslist: jsons.goodslist,
+		};
 	},
 };
 </script>
@@ -28,21 +38,39 @@ export default {
     display: block;
 
     margin: 0 auto;
-    width: 70%;
+    width: 60%;
 }
 
 .goods-box {
-    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
 
     margin: 20px auto 5px;
-    width: 90%;
 
-    justify-content: space-between;
+    white-space: nowrap;
+}
+
+.good {
+    display: inline-block;
+    overflow: hidden;
+
+    margin-right: 15px;
+    border-radius: 8px;
+    width: 150px;
+    height: 150px;
+
+    box-shadow: 1px 1px 8px 1px #ccc;
+}
+
+.good-img {
+    width: 150px;
+    height: 100px;
 }
 
 .more-btn {
     font-size: 14px;
     text-align: center;
+    letter-spacing: 1px;
 
     color: #646464;
 }

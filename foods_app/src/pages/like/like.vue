@@ -8,11 +8,14 @@
 				<image class="clear-img" src="../../static/images/icon_clear.png">清空</image>
 			</view>
 		</view>
-
-		<view class="foods-like">
+		<!-- 食物列表 -->
+		<view class="foods-list">
 			<view class="food-box" v-for="(item, index) in list">
 				<view class="food-top">
 					<image class="food-top-img" mode="aspectFill" :src="item.img"></image>
+					<view class="fire">
+						{{ item.fire }}
+					</view>
 				</view>
 				<!-- 描述 -->
 				<view class="food-info">
@@ -20,12 +23,18 @@
 						<view class="food-name">{{ item.title }}</view>
 						<view class="food-price">￥{{ item.price }}/桌</view>
 					</view>
-					<view class="food-collect">
+					<view class="food-collect" @click="del(item.id)">
 						<image class="collect-icon" src="../../static/images/footer2.png"></image>
 						<view class="collect-text">取消收藏</view>
 					</view>
 				</view>
 			</view>
+			<!-- 底线 -->
+			<view class="bottom-line" v-if="!isShow">-------------我是有底线的-------------</view>
+		</view>
+		<!-- 无商品 -->
+		<view v-if="list.length == 0" class="nomore">
+			<image class="nomore-img" src="../../static/images/nomore2.png" mode="widthFix"></image>
 		</view>
 	</view>
 </template>
@@ -34,12 +43,13 @@
 export default {
 	data() {
 		return {
+			isShow: true,
 			list: [
-				{ id: 1, img: "../../static/images/goods1.jpg", title: "麻辣小龙虾", fire: "99+", price: "99" },
-				{ id: 2, img: "../../static/images/goods2.jpg", title: "蒜蓉小龙虾", fire: "99+", price: "100" },
-				{ id: 3, img: "../../static/images/goods3.jpg", title: "油焖大闸蟹", fire: "99+", price: "150" },
-				{ id: 4, img: "../../static/images/goods1.jpg", title: "肉蛋充饥", fire: "99+", price: "30" },
-				{ id: 5, img: "../../static/images/goods2.jpg", title: "清蒸小龙虾", fire: "99+", price: "98" },
+				{ id: 1, img: "../../static/images/goods1.jpg", title: "餐宴01", fire: "99+", price: "10" },
+				{ id: 2, img: "../../static/images/goods2.jpg", title: "餐宴02", fire: "99+", price: "20" },
+				{ id: 3, img: "../../static/images/goods3.jpg", title: "餐宴03", fire: "99+", price: "30" },
+				{ id: 4, img: "../../static/images/goods1.jpg", title: "餐宴04", fire: "99+", price: "40" },
+				{ id: 5, img: "../../static/images/goods2.jpg", title: "餐宴05", fire: "99+", price: "50" },
 			],
 		};
 	},
@@ -56,6 +66,47 @@ export default {
 					}
 				},
 			});
+		},
+		// 删除
+		del(id) {
+			this.list.forEach((item, i) => {
+				if (id == item.id) {
+					this.list.splice(i, 1);
+				}
+			});
+		},
+		// 滚动底部加载新的数据
+		onReachBottom() {
+			// 滚动到底部 发请求
+			let newArr = [
+				{ id: 6, img: "../../static/images/goods3.jpg", title: "餐宴06", fire: "99+", price: "60" },
+				{ id: 7, img: "../../static/images/goods1.jpg", title: "餐宴07", fire: "99+", price: "70" },
+				{ id: 8, img: "../../static/images/goods2.jpg", title: "餐宴08", fire: "99+", price: "80" },
+			];
+
+			if (this.isShow) {
+				uni.showLoading({
+					title: "加载中",
+				});
+				setTimeout(function() {
+					uni.hideLoading();
+				}, 1500);
+				this.list = this.list.concat(newArr);
+			} else {
+				uni.showToast({
+					title: "没有了嗷",
+					duration: 1500,
+					icon: "none",
+					mask: true,
+				});
+			}
+
+			// 判断
+			if (newArr.length == this.list.length) {
+				this.isShow = true;
+			} else {
+				this.isShow = false;
+			}
 		},
 	},
 };
@@ -110,6 +161,26 @@ export default {
     background-color: #999;
 }
 
+.food-top {
+    position: relative;
+}
+
+.fire {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+
+    border-radius: 7px;
+    width: 80px;
+    height: 30px;
+
+    line-height: 30px;
+    text-align: center;
+
+    color: #fff;
+    background-color: rgba(0, 0, 0, .6);
+}
+
 .food-info {
     display: flex;
 
@@ -154,6 +225,24 @@ export default {
 
 .collect-text {
     font-size: 16px;
+}
+
+.nomore {
+    margin-top: 50px;
+    width: 100%;
+
+    text-align: center;
+}
+
+.nomore-img {
+    width: 60%;
+}
+
+.bottom-line {
+    font-size: 14px;
+    text-align: center;
+
+    color: #646464;
 }
 
 </style>

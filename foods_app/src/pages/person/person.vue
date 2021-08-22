@@ -13,6 +13,8 @@
 		<uni-list v-for="(item, i) in listContent" :key="i">
 			<uni-list-item :title="item.title" :thumb="item.img" thumb-size="medium" rightText=">"></uni-list-item>
 		</uni-list>
+
+		<button class="share-btn" open-type="share">分享</button>
 	</view>
 </template>
 
@@ -32,7 +34,14 @@ export default {
 	onLoad() {
 		this.userInfo = uni.getStorageSync("userInfo");
 	},
-
+	// 分享
+	onShareAppMessage(res) {
+		return {
+			title: "欢迎光临四海香！",
+			imageUrl: "../../static/images/logo.png",
+			path: "/pages/person/person?id=110",
+		};
+	},
 	methods: {},
 };
 </script>
@@ -68,6 +77,15 @@ export default {
     border-radius: 50%;
     width: 80px;
     height: 80px;
+}
+
+.share-btn {
+    margin-top: 50px;
+
+    font-size: 14px;
+    letter-spacing: 2px;
+
+    color: #646464;
 }
 
 </style>
