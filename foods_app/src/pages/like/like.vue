@@ -1,23 +1,27 @@
 <template>
 	<view class="like">
 		<view class="title">
-			<text class="title-num">已收藏XX个餐宴</text>
-			<text class="title-btn">清空</text>
+			<view class="title-num">
+				<image class="clear-img" src="../../static/images/icon_cha.png">已收藏{{ list.length }}个餐宴</image>
+			</view>
+			<view class="title-btn" @click="clear()">
+				<image class="clear-img" src="../../static/images/icon_clear.png">清空</image>
+			</view>
 		</view>
 
 		<view class="foods-like">
-			<view class="food-box">
+			<view class="food-box" v-for="(item, index) in list">
 				<view class="food-top">
-					<image class="food-top-img"></image>
+					<image class="food-top-img" mode="aspectFill" :src="item.img"></image>
 				</view>
 				<!-- 描述 -->
 				<view class="food-info">
-					<view>
-						<view class="food-name">name</view>
-						<view class="food-price">￥money/桌</view>
+					<view class="food-text">
+						<view class="food-name">{{ item.title }}</view>
+						<view class="food-price">￥{{ item.price }}/桌</view>
 					</view>
 					<view class="food-collect">
-						<view class="collect-icon">icon</view>
+						<image class="collect-icon" src="../../static/images/footer2.png"></image>
 						<view class="collect-text">取消收藏</view>
 					</view>
 				</view>
@@ -29,9 +33,31 @@
 <script>
 export default {
 	data() {
-		return {};
+		return {
+			list: [
+				{ id: 1, img: "../../static/images/goods1.jpg", title: "麻辣小龙虾", fire: "99+", price: "99" },
+				{ id: 2, img: "../../static/images/goods2.jpg", title: "蒜蓉小龙虾", fire: "99+", price: "100" },
+				{ id: 3, img: "../../static/images/goods3.jpg", title: "油焖大闸蟹", fire: "99+", price: "150" },
+				{ id: 4, img: "../../static/images/goods1.jpg", title: "肉蛋充饥", fire: "99+", price: "30" },
+				{ id: 5, img: "../../static/images/goods2.jpg", title: "清蒸小龙虾", fire: "99+", price: "98" },
+			],
+		};
 	},
-	methods: {},
+	methods: {
+		// 清空
+		clear() {
+			uni.showModal({
+				title: "清空收藏",
+				content: "清空后将无法恢复",
+				success: (res) => {
+					if (res.confirm) {
+						this.list = [];
+					} else if (res.cancel) {
+					}
+				},
+			});
+		},
+	},
 };
 </script>
 
@@ -58,17 +84,27 @@ export default {
     color: #bbb;
 }
 
+.clear-img {
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
+
+    vertical-align: middle;
+}
+
 .food-box {
     overflow: hidden;
 
-    margin: 0 auto;
+    margin: 0 auto 20px;
     border-radius: 10px;
     width: 90%;
 
     box-shadow: 1px 1px 8px 1px #ccc;
 }
 
-.food-top {
+.food-top,
+.food-top-img {
+    width: 100%;
     height: 425rpx;
 
     background-color: #999;
@@ -77,15 +113,22 @@ export default {
 .food-info {
     display: flex;
 
-    padding: 15px;
+    padding: 10px;
+    height: 52px;
 
     justify-content: space-between;
     align-items: center;
 }
 
+.food-text {
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+}
+
 .food-name {
-    font-size: 26px;
-    line-height: 1em;
+    font-size: 20px;
 }
 
 .food-price {
@@ -105,12 +148,12 @@ export default {
 }
 
 .collect-icon {
-    font-size: 26px;
-    line-height: 1em;
+    width: 30px;
+    height: 30px;
 }
 
 .collect-text {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 </style>

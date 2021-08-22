@@ -18,16 +18,16 @@
 		<!-- 搜索栏 -->
 		<view class="search">
 			<image class="search-icon" src="../static/images/3.png"></image>
-			<text>搜美食，菜谱</text>
+			<text class="test">搜美食，菜谱</text>
 		</view>
 		<!-- 抽屉 -->
 		<view class="drawer-btn" @click="showDrawer()"></view>
 		<uni-drawer class="drawer" ref="drawer" mode="left" :width="drawerWidth" :mask-click="true">
 			<scroll-view style="height: 100%;" scroll-y="true">
-				<view class="">
+				<view class="logo">
 					logo
 				</view>
-				<view v-for="item in 7" :key="item">icon,text {{ item }}</view>
+				<view v-for="item in 7" :key="item" @click="goLink()">icon,text {{ item }}</view>
 			</scroll-view>
 		</uni-drawer>
 	</view>
@@ -35,12 +35,9 @@
 
 <script>
 import { baseUrl } from "@/utils/utils";
-import uniDrawer from "@dcloudio/uni-ui/lib/uni-drawer/uni-drawer.vue";
 
 export default {
 	name: "IndexBanner",
-
-	components: { uniDrawer },
 
 	data() {
 		return {
@@ -65,20 +62,27 @@ export default {
 			},
 		});
 	},
-	watch: {
-		drawerWidth(newVal, oldVal) {
-			console.log(newVal, oldVal);
-			if (newVal == 300) {
-				wx.hideTabBar();
-			} else {
-				wx.hideTabBar();
-			}
-		},
-	},
+
 	methods: {
 		showDrawer() {
 			this.$refs.drawer.open();
-			console.log(this.$refs.drawer);
+			wx.hideTabBar();
+			setTimeout(() => {
+				let query = uni.createSelectorQuery().in(this);
+				// console.log(query);
+				query
+					.select("#ddd")
+					.boundingClientRect((data) => {
+						console.log("1", data);
+					})
+					.exec();
+			}, 3000);
+		},
+
+		goLink() {
+			setTimeout(() => {
+				wx.showTabBar();
+			}, 500);
 		},
 	},
 };
