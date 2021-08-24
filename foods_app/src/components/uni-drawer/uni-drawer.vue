@@ -1,12 +1,12 @@
 <template>
 	<view
-		id="ddd"
 		v-if="visibleSync"
 		:class="{ 'uni-drawer--visible': showDrawer }"
 		class="uni-drawer"
 		@touchmove.stop.prevent="clear"
 	>
 		<view
+			id="drawerMask"
 			class="uni-drawer__mask"
 			:class="{ 'uni-drawer__mask--visible': showDrawer && mask }"
 			@tap="close('mask')"
@@ -103,6 +103,15 @@ export default {
 			// fixed by mehaotian 抽屉尚未完全关闭或遮罩禁止点击时不触发以下逻辑
 			if ((type === "mask" && !this.maskClick) || !this.visibleSync) return;
 			this._change("showDrawer", "visibleSync", false);
+
+			// let query = uni.createSelectorQuery().in(this);
+			// console.dir("query", query);
+			// query
+			// 	.select("#drawerMask")
+			// 	.boundingClientRect((data) => {
+			// 		console.log("get", data);
+			// 	})
+			// 	.exec();
 		},
 		open() {
 			// fixed by mehaotian 处理重复点击打开的事件

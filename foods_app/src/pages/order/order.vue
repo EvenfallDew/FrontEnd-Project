@@ -53,11 +53,11 @@ export default {
 	data() {
 		return {
 			list: [
-				{ id: 1, img: "../../static/images/goods1.jpg", title: "麻辣小龙虾", fire: "99+", price: "99" },
-				{ id: 2, img: "../../static/images/goods2.jpg", title: "蒜蓉小龙虾", fire: "99+", price: "100" },
-				{ id: 3, img: "../../static/images/goods3.jpg", title: "油焖大闸蟹", fire: "99+", price: "150" },
-				{ id: 4, img: "../../static/images/goods1.jpg", title: "肉蛋充饥", fire: "99+", price: "30" },
-				{ id: 5, img: "../../static/images/goods2.jpg", title: "清蒸小龙虾", fire: "99+", price: "98" },
+				{ id: 1, img: "../../static/images/goods1.jpg", title: "餐宴01", fire: "99+", price: "10" },
+				{ id: 2, img: "../../static/images/goods2.jpg", title: "餐宴02", fire: "99+", price: "20" },
+				{ id: 3, img: "../../static/images/goods3.jpg", title: "餐宴03", fire: "99+", price: "30" },
+				{ id: 4, img: "../../static/images/goods1.jpg", title: "餐宴04", fire: "99+", price: "40" },
+				{ id: 5, img: "../../static/images/goods2.jpg", title: "餐宴05", fire: "99+", price: "50" },
 			],
 		};
 	},
@@ -70,115 +70,114 @@ export default {
 
 <style>
 .title {
-    display: flex;
+	display: flex;
 
-    margin: 0 auto;
-    width: 90%;
-    height: 100rpx;
+	margin: 0 auto;
+	width: 90%;
+	height: 100rpx;
 
-    justify-content: space-between;
-    align-items: center;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .title-num {
-    font-size: 18px;
-    letter-spacing: 1px;
+	font-size: 18px;
+	letter-spacing: 1px;
 
-    color: #333;
+	color: #333;
 }
 
 .title-btn {
-    color: #bbb;
+	color: #bbb;
 }
 
 .history-img {
-    margin-right: 5px;
-    width: 16px;
-    height: 16px;
+	margin-right: 5px;
+	width: 16px;
+	height: 16px;
 
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 .order-box {
-    overflow: hidden;
+	overflow: hidden;
 
-    margin: 0 auto 20px;
-    border-radius: 10px;
-    width: 90%;
+	margin: 0 auto 20px;
+	border-radius: 10px;
+	width: 90%;
 
-    box-shadow: 1px 1px 8px 1px #ccc;
+	box-shadow: 1px 1px 8px 1px #ccc;
 }
 
 .order-top,
 .order-top-img {
-    width: 100%;
-    height: 425rpx;
+	width: 100%;
+	height: 425rpx;
 
-    background-color: #999;
+	background-color: #999;
 }
 
 .order-info {
-    display: flex;
+	display: flex;
 
-    padding: 10px;
-    height: 52px;
+	padding: 10px;
+	height: 52px;
 
-    justify-content: space-between;
-    align-items: center;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .order-text {
-    display: flex;
+	display: flex;
 
-    flex-direction: column;
-    justify-content: center;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .order-name {
-    font-size: 20px;
+	font-size: 20px;
 }
 
 .order-price {
-    font-size: 18px;
+	font-size: 18px;
 
-    color: #ff6854;
+	color: #ff6854;
 }
 
 .order-collect {
-    display: flex;
+	display: flex;
 
-    color: #bbb;
+	color: #bbb;
 
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .collect-icon {
-    width: 30px;
-    height: 30px;
+	width: 30px;
+	height: 30px;
 }
 
 .collect-text {
-    font-size: 16px;
+	font-size: 16px;
 }
 
 .order-mine {
-    padding: 0 10px 10px;
+	padding: 0 10px 10px;
 }
 
 .order-btn {
-    border: none;
-    width: 100%;
-    height: 40px;
+	border: none;
+	width: 100%;
+	height: 40px;
 
-    font: normal 14px/40px "微软雅黑";
-    letter-spacing: 2px;
+	font: normal 14px/40px "微软雅黑";
+	letter-spacing: 2px;
 
-    color: #fff;
-    background-color: #ff6855;
+	color: #fff;
+	background-color: #ff6855;
 
-    outline: none;
+	outline: none;
 }
-
 </style>

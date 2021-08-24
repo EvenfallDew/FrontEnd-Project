@@ -50,58 +50,61 @@ export default {
 </script>
 
 <style>
-.tag-boxes {
-    display: flex;
+.index-tags {
+	background-color: #fff;
+}
 
-    justify-content: space-between;
+.tag-boxes {
+	display: flex;
+
+	justify-content: space-between;
 }
 
 .tag-box {
-    display: flex;
+	display: flex;
 
-    box-sizing: border-box;
-    padding: 15px;
-    width: 50%;
+	box-sizing: border-box;
+	padding: 15px;
+	width: 50%;
 
-    align-items: center;
-    justify-content: space-between;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .tag-box:nth-child(1),
 .tag-box:nth-child(3) {
-    border-right: 1px solid #ddd;
+	border-right: 1px solid #ddd;
 }
 
-.tag-box:nth-child(1),
-.tag-box:nth-child(2) {
-    border-bottom: 1px solid #ddd;
+.tag-box {
+	border-bottom: 1px solid #ddd;
 }
 
 .tag-img {
-    margin-right: 10px;
-    width: 45px;
+	margin-right: 10px;
+	width: 45px;
 }
 
 .tag-name {
-    font-size: 15px;
-    font-weight: bold;
+	font-size: 15px;
+	font-weight: bold;
 
-    color: #333;
+	color: #333;
 }
 
 .tag-info {
-    overflow: hidden;
+	overflow: hidden;
 
-    font-size: 14px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+	font-size: 14px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 
-    color: #646464;
+	color: #646464;
 }
 
 .tag-foot,
 .tag-foot-img {
-    width: 100%;
+	margin-top: 10px;
+	width: 100%;
 }
-
 </style>

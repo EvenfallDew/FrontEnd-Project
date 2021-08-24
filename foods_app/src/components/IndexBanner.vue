@@ -1,5 +1,5 @@
 <template>
-	<view class="index-banner">
+	<view class="index-banner" @click="showTab($event)">
 		<!-- 轮播图 -->
 		<swiper
 			class="swiper"
@@ -21,13 +21,16 @@
 			<text class="test">搜美食，菜谱</text>
 		</view>
 		<!-- 抽屉 -->
-		<view class="drawer-btn" @click="showDrawer()"></view>
+		<uni-icons class="drawer-btn" size="35" type="list" @click="showDrawer()"></uni-icons>
 		<uni-drawer class="drawer" ref="drawer" mode="left" :width="drawerWidth" :mask-click="true">
 			<scroll-view style="height: 100%;" scroll-y="true">
 				<view class="logo">
-					logo
+					<image class="shop-logo" src="../static/images/logo.png" mode="widthFix"></image>
 				</view>
-				<view v-for="item in 7" :key="item" @click="goLink()">icon,text {{ item }}</view>
+				<view class="li-box" v-for="(item, i) in list" :key="i" @click="goLink()">
+					<uni-icons class="li-icon" size="20" :type="item.icon"></uni-icons>
+					<text class="li-text">{{ item.title }}</text>
+				</view>
 			</scroll-view>
 		</uni-drawer>
 	</view>
@@ -35,7 +38,6 @@
 
 <script>
 import { baseUrl } from "@/utils/utils";
-
 export default {
 	name: "IndexBanner",
 
@@ -46,7 +48,16 @@ export default {
 			autoplay: true, // 自动播放
 			interval: 5000, // 间隔时间
 			duration: 500, // 滚动时长
-			drawerWidth: 220,
+			drawerWidth: 220, //抽屉宽度
+			list: [
+				{ title: "公司介绍", img: "../static/images/footer2.png", icon: "home" },
+				{ title: "分店风采", img: "../static/images/footer2.png", icon: "shop" },
+				{ title: "订单服务", img: "../static/images/footer2.png", icon: "cart" },
+				{ title: "形象展示", img: "../static/images/footer2.png", icon: "person" },
+				{ title: "服务流程", img: "../static/images/footer2.png", icon: "pengyouquan" },
+				{ title: "厨师加盟", img: "../static/images/footer2.png", icon: "personadd" },
+				{ title: "服务加盟", img: "../static/images/footer2.png", icon: "info" },
+			],
 		};
 	},
 
@@ -67,22 +78,17 @@ export default {
 		showDrawer() {
 			this.$refs.drawer.open();
 			wx.hideTabBar();
-			setTimeout(() => {
-				let query = uni.createSelectorQuery().in(this);
-				// console.log(query);
-				query
-					.select("#ddd")
-					.boundingClientRect((data) => {
-						console.log("1", data);
-					})
-					.exec();
-			}, 3000);
 		},
 
 		goLink() {
-			setTimeout(() => {
+			this.$refs.drawer.close();
+			wx.showTabBar();
+		},
+
+		showTab(e) {
+			if (e.detail.x > this.drawerWidth) {
 				wx.showTabBar();
-			}, 500);
+			}
 		},
 	},
 };
@@ -131,18 +137,46 @@ export default {
     top: 30rpx;
     left: 30rpx;
 
-    width: 60rpx;
-    height: 60rpx;
-
-    background-color: blue;
+    width: 35px;
+    height: 35px;
 }
 
-.drawer {
-    z-index: 9999999;
+.logo {
+    display: flex;
+
+    height: 180px;
+
+    background-color: #f6f6f6;
+
+    justify-content: center;
+    align-items: center;
 }
 
-.drawer2 {
-    z-index: 9999999;
+.shop-logo {
+    width: 110px;
+}
+
+.li-box {
+    height: 60px;
+
+    text-align: center;
+
+    color: #333;
+}
+
+.li-box:nth-last-child(1),
+.li-box:nth-last-child(2) {
+    color: #fd6852;
+}
+
+.li-icon {
+    margin-right: 10px;
+    width: 20px;
+}
+
+.li-text {
+    line-height: 80px;
+    letter-spacing: 1px;
 }
 
 </style>
