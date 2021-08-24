@@ -2,10 +2,12 @@
 	<view class="like">
 		<view class="title">
 			<view class="title-num">
-				<image class="clear-img" src="../../static/images/icon_cha.png">已收藏{{ list.length }}个餐宴</image>
+				<uni-icons type="compose" size="18" color="#000" style="margin-right:5px"></uni-icons>
+				已收藏{{ list.length }}个餐宴
 			</view>
 			<view class="title-btn" @click="clear()">
-				<image class="clear-img" src="../../static/images/icon_clear.png">清空</image>
+				<uni-icons type="trash" size="16" color="#646464" style="margin-right:5px"></uni-icons>
+				清空
 			</view>
 		</view>
 		<!-- 食物列表 -->
@@ -14,6 +16,12 @@
 				<view class="food-top">
 					<image class="food-top-img" mode="aspectFill" :src="item.img"></image>
 					<view class="fire">
+						<uni-icons
+							type="hand-thumbsup-filled"
+							size="16"
+							color="#f01"
+							style="margin-right:5px"
+						></uni-icons>
 						{{ item.fire }}
 					</view>
 				</view>
@@ -133,14 +141,6 @@ export default {
 
 .title-btn {
     color: #bbb;
-}
-
-.clear-img {
-    margin-right: 5px;
-    width: 16px;
-    height: 16px;
-
-    vertical-align: middle;
 }
 
 .food-box {

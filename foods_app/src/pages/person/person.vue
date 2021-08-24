@@ -11,7 +11,13 @@
 		</view>
 
 		<uni-list v-for="(item, i) in listContent" :key="i">
-			<uni-list-item :title="item.title" :thumb="item.img" thumb-size="medium" rightText=">"></uni-list-item>
+			<uni-list-item
+				thumb-size="medium"
+				link
+				:title="item.title"
+				:thumb="item.img"
+				:to="item.url"
+			></uni-list-item>
 		</uni-list>
 
 		<button class="share-btn" open-type="share">分享</button>
@@ -24,9 +30,9 @@ export default {
 		return {
 			userInfo: {},
 			listContent: [
-				{ title: "烹饪历史", img: "/static/images/icon_order.png" },
-				{ title: "支付记录", img: "/static/images/icon_money.png" },
-				{ title: "举报投诉", img: "/static/images/icon_msg.png" },
+				{ title: "烹饪历史", img: "/static/images/icon_order.png", url: "" },
+				{ title: "支付记录", img: "/static/images/icon_money.png", url: "" },
+				{ title: "举报投诉", img: "/static/images/icon_msg.png", url: "/pages/report/report" },
 			],
 		};
 	},
@@ -39,7 +45,7 @@ export default {
 		return {
 			title: "欢迎光临四海香！",
 			imageUrl: "../../static/images/logo.png",
-			path: "/pages/person/person?id=110",
+			path: "/pages/person/person?id=1",
 		};
 	},
 	methods: {},
@@ -67,7 +73,7 @@ export default {
 }
 
 .person-welcome {
-    font: 500 20px/1.5em "微软雅黑";
+    font: 500 18px/1.5em "微软雅黑";
 
     color: #bbb;
 }

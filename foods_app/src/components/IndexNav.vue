@@ -1,7 +1,7 @@
 <template>
 	<view class="index-nav">
 		<view class="navs">
-			<view class="nav-item" v-for="(item, i) in navArr" :key="i">
+			<view class="nav-item" v-for="(item, i) in navArr" :key="i" @click="go(item.id)">
 				<image class="nav-icon" :src="item.img" mode=""></image>
 				<view class="nav-text">
 					{{ item.text }}
@@ -26,7 +26,16 @@ export default {
 		};
 	},
 
-	created() {},
+	methods: {
+		go(i) {
+			console.log(1);
+			if (i == 4) {
+				uni.navigateTo({
+					url: "/pages/cart/cart",
+				});
+			}
+		},
+	},
 };
 </script>
 

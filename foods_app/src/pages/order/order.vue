@@ -1,25 +1,27 @@
 <template>
 	<view class="order">
 		<view class="title">
-			<view class="title-num">
-				<image class="history-img" src="../../static/images/icon_cha.png">已有{{ list.length }}个行程</image>
+			<view>
+				<uni-icons type="map" size="18" color="#333"></uni-icons>
+				<text class="title-num">已有{{ list.length }}个行程</text>
 			</view>
-			<view class="title-btn">
-				<image class="history-img" src="../../static/images/icon_clear.png">历史</image>
+			<view>
+				<uni-icons type="info" size="16" color="#bbb"></uni-icons>
+				<text class="title-history">历史</text>
 			</view>
 		</view>
 
 		<view class="orders-list">
 			<view class="order-box" v-for="(item, index) in list">
-				<!-- 时间 -->
-				<view>
-					<view class="title-num">
-						<image class="history-img" src="../../static/images/icon_cha.png">
-							已有{{ list.length }}个行程
-						</image>
+				<!-- 时间地址 -->
+				<view class="order-title">
+					<view>
+						<uni-icons type="flag" size="16" color="#646464"></uni-icons>
+						<text class="title-time">{{ item.time }}</text>
 					</view>
-					<view class="title-btn">
-						<image class="history-img" src="../../static/images/icon_clear.png">历史</image>
+					<view>
+						<uni-icons type="map-pin-ellipse" size="16" color="#646464"></uni-icons>
+						<text class="title-address">{{ item.address }}</text>
 					</view>
 				</view>
 				<!-- 图片 -->
@@ -35,13 +37,19 @@
 					</view>
 					<!-- 操作 -->
 					<view class="order-collect">
-						<image class="collect-icon" src="../../static/images/footer2.png"></image>
-						<view class="collect-text">取消收藏</view>
+						<view style="margin-right:20px" @click="call(item.tel, item.cook)">
+							<uni-icons type="phone" size="20" color="#f5b658"></uni-icons>
+							<view class="collect-phone">电话</view>
+						</view>
+						<view>
+							<uni-icons type="mail-open" size="20" color="#f5b658"></uni-icons>
+							<view class="collect-serve">服务</view>
+						</view>
 					</view>
 				</view>
 				<!-- 账单 -->
 				<view class="order-mine">
-					<button class="order-btn" type="button" @click="myOrder()">爷的账单</button>
+					<button class="order-btn" type="button" @click="myOrder()">我的账单</button>
 				</view>
 			</view>
 		</view>
@@ -53,15 +61,83 @@ export default {
 	data() {
 		return {
 			list: [
-				{ id: 1, img: "../../static/images/goods1.jpg", title: "餐宴01", fire: "99+", price: "10" },
-				{ id: 2, img: "../../static/images/goods2.jpg", title: "餐宴02", fire: "99+", price: "20" },
-				{ id: 3, img: "../../static/images/goods3.jpg", title: "餐宴03", fire: "99+", price: "30" },
-				{ id: 4, img: "../../static/images/goods1.jpg", title: "餐宴04", fire: "99+", price: "40" },
-				{ id: 5, img: "../../static/images/goods2.jpg", title: "餐宴05", fire: "99+", price: "50" },
+				{
+					id: 1,
+					img: "../../static/images/goods1.jpg",
+					title: "餐宴01",
+					fire: "99+",
+					price: "10",
+					time: "05-09 11:40 周三 名厨上门",
+					address: "涪陵区 长虹国际大道 翡翠绿湾 1栋2单元 1802",
+					tel: 10086,
+					cook: "厨师01",
+				},
+				{
+					id: 2,
+					img: "../../static/images/goods2.jpg",
+					title: "餐宴02",
+					fire: "99+",
+					price: "20",
+					time: "05-09 11:40 周三 名厨上门",
+					address: "涪陵区 长虹国际大道 翡翠绿湾 1栋2单元 1802",
+					tel: 10010,
+					cook: "厨师02",
+				},
+				{
+					id: 3,
+					img: "../../static/images/goods3.jpg",
+					title: "餐宴03",
+					fire: "99+",
+					price: "30",
+					time: "05-09 11:40 周三 名厨上门",
+					address: "涪陵区 长虹国际大道 翡翠绿湾 1栋2单元 1802",
+					tel: 10000,
+					cook: "厨师03",
+				},
+				{
+					id: 4,
+					img: "../../static/images/goods1.jpg",
+					title: "餐宴04",
+					fire: "99+",
+					price: "40",
+					time: "05-09 11:40 周三 名厨上门",
+					address: "涪陵区 长虹国际大道 翡翠绿湾 1栋2单元 1802",
+					tel: 118114,
+					cook: "厨师04",
+				},
+				{
+					id: 5,
+					img: "../../static/images/goods2.jpg",
+					title: "餐宴05",
+					fire: "99+",
+					price: "50",
+					time: "05-09 11:40 周三 名厨上门",
+					address: "涪陵区 长虹国际大道 翡翠绿湾 1栋2单元 1802",
+					tel: 12580,
+					cook: "厨师05",
+				},
 			],
 		};
 	},
 	methods: {
+		// 打电话
+		call(tel, cook) {
+			uni.showModal({
+				title: cook,
+				content: tel + "",
+				confirmText: "拨打电话",
+				confirmColor: "#f01",
+				success: function(res) {
+					if (res.confirm) {
+						console.log("用户点击拨打电话");
+						uni.makePhoneCall({
+							phoneNumber: tel + "",
+						});
+					} else if (res.cancel) {
+					}
+				},
+			});
+		},
 		// 查看账单
 		myOrder() {},
 	},
@@ -70,114 +146,124 @@ export default {
 
 <style>
 .title {
-	display: flex;
+    display: flex;
 
-	margin: 0 auto;
-	width: 90%;
-	height: 100rpx;
+    margin: 0 auto;
+    width: 90%;
+    height: 100rpx;
 
-	justify-content: space-between;
-	align-items: center;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .title-num {
-	font-size: 18px;
-	letter-spacing: 1px;
+    margin-left: 10px;
 
-	color: #333;
+    font-size: 18px;
+    letter-spacing: 1px;
+
+    color: #333;
 }
 
-.title-btn {
-	color: #bbb;
+.title-history {
+    margin-left: 8px;
+
+    color: #bbb;
 }
 
-.history-img {
-	margin-right: 5px;
-	width: 16px;
-	height: 16px;
+.order-title {
+    padding: 10px;
+}
 
-	vertical-align: middle;
+.title-time {
+    margin-left: 8px;
+
+    line-height: 1.5em;
+
+    color: #333;
+}
+
+.title-address {
+    margin-left: 8px;
+
+    line-height: 1.5em;
+
+    color: #333;
 }
 
 .order-box {
-	overflow: hidden;
+    overflow: hidden;
 
-	margin: 0 auto 20px;
-	border-radius: 10px;
-	width: 90%;
+    margin: 0 auto 20px;
+    border-radius: 10px;
+    width: 90%;
 
-	box-shadow: 1px 1px 8px 1px #ccc;
+    box-shadow: 1px 1px 8px 1px #ccc;
 }
 
 .order-top,
 .order-top-img {
-	width: 100%;
-	height: 425rpx;
+    width: 100%;
+    height: 425rpx;
 
-	background-color: #999;
+    background-color: #999;
 }
 
 .order-info {
-	display: flex;
+    display: flex;
 
-	padding: 10px;
-	height: 52px;
+    padding: 10px;
+    height: 52px;
 
-	justify-content: space-between;
-	align-items: center;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .order-text {
-	display: flex;
+    display: flex;
 
-	flex-direction: column;
-	justify-content: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .order-name {
-	font-size: 20px;
+    font-size: 20px;
 }
 
 .order-price {
-	font-size: 18px;
+    font-size: 18px;
 
-	color: #ff6854;
+    color: #ff6854;
 }
 
 .order-collect {
-	display: flex;
+    display: flex;
 
-	color: #bbb;
+    font-size: 18px;
+    text-align: center;
 
-	align-items: center;
-	flex-direction: column;
-	justify-content: center;
-}
+    color: #f5b658;
 
-.collect-icon {
-	width: 30px;
-	height: 30px;
-}
-
-.collect-text {
-	font-size: 16px;
+    align-items: center;
+    justify-content: center;
 }
 
 .order-mine {
-	padding: 0 10px 10px;
+    padding: 0 10px 10px;
 }
 
 .order-btn {
-	border: none;
-	width: 100%;
-	height: 40px;
+    border: none;
+    width: 100%;
+    height: 40px;
 
-	font: normal 14px/40px "微软雅黑";
-	letter-spacing: 2px;
+    font: normal 14px/40px "微软雅黑";
+    letter-spacing: 2px;
 
-	color: #fff;
-	background-color: #ff6855;
+    color: #fff;
+    background-color: #ff6855;
 
-	outline: none;
+    outline: none;
 }
+
 </style>

@@ -11,7 +11,7 @@
 		>
 			<swiper-item v-for="(item, i) in bannerArr" :key="i">
 				<view class="swiper-item">
-					<image class="banner-img" :src="item.ad_pic"></image>
+					<image class="banner-img" :src="item"></image>
 				</view>
 			</swiper-item>
 		</swiper>
@@ -21,7 +21,7 @@
 			<text class="test">搜美食，菜谱</text>
 		</view>
 		<!-- 抽屉 -->
-		<uni-icons class="drawer-btn" size="35" type="list" @click="showDrawer()"></uni-icons>
+		<uni-icons class="drawer-btn" size="35" type="list" color="#fff" @click="showDrawer()"></uni-icons>
 		<uni-drawer class="drawer" ref="drawer" mode="left" :width="drawerWidth" :mask-click="true">
 			<scroll-view style="height: 100%;" scroll-y="true">
 				<view class="logo">
@@ -37,13 +37,17 @@
 </template>
 
 <script>
-import { baseUrl } from "@/utils/utils";
 export default {
 	name: "IndexBanner",
 
 	data() {
 		return {
-			bannerArr: [], // 轮播数据
+			bannerArr: [
+				"../static/images/banner.png",
+				"../static/images/goods1.jpg",
+				"../static/images/goods2.jpg",
+				"../static/images/goods3.jpg",
+			], // 轮播数据
 			indicatorDots: true, // 小点点
 			autoplay: true, // 自动播放
 			interval: 5000, // 间隔时间
@@ -59,19 +63,6 @@ export default {
 				{ title: "服务加盟", img: "../static/images/footer2.png", icon: "info" },
 			],
 		};
-	},
-
-	created() {
-		uni.request({
-			url: baseUrl + "/index/home_banner",
-			method: "POST",
-			success: (res) => {
-				let { data, status } = res.data;
-				if (status == 200) {
-					this.bannerArr = data;
-				}
-			},
-		});
 	},
 
 	methods: {

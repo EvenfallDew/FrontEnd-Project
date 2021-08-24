@@ -9,7 +9,7 @@
 				</view>
 			</view>
 			<view class="tag-box">
-				<image class="tag-img" src="../static/images/13.png" mode="widthFix"></image>
+				<image class="tag-img" src="../static/images/14.png" mode="widthFix"></image>
 				<view class="tag-text">
 					<view class="tag-name">信用保障</view>
 					<view class="tag-info">服务到位，时间准时</view>
@@ -19,14 +19,14 @@
 
 		<view class="tag-boxes">
 			<view class="tag-box">
-				<image class="tag-img" src="../static/images/13.png" mode="widthFix"></image>
+				<image class="tag-img" src="../static/images/15.png" mode="widthFix"></image>
 				<view class="tag-text">
 					<view class="tag-name">信用保障</view>
 					<view class="tag-info">服务到位，时间准时</view>
 				</view>
 			</view>
 			<view class="tag-box">
-				<image class="tag-img" src="../static/images/13.png" mode="widthFix"></image>
+				<image class="tag-img" src="../static/images/16.png" mode="widthFix"></image>
 				<view class="tag-text">
 					<view class="tag-name">信用保障</view>
 					<view class="tag-info">服务到位，时间准时</view>
@@ -51,60 +51,61 @@ export default {
 
 <style>
 .index-tags {
-	background-color: #fff;
+    background-color: #fff;
 }
 
 .tag-boxes {
-	display: flex;
+    display: flex;
 
-	justify-content: space-between;
+    justify-content: space-between;
 }
 
 .tag-box {
-	display: flex;
+    display: flex;
 
-	box-sizing: border-box;
-	padding: 15px;
-	width: 50%;
+    box-sizing: border-box;
+    padding: 15px;
+    width: 50%;
 
-	align-items: center;
-	justify-content: space-between;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .tag-box:nth-child(1),
 .tag-box:nth-child(3) {
-	border-right: 1px solid #ddd;
+    border-right: 1px solid #ddd;
 }
 
 .tag-box {
-	border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 .tag-img {
-	margin-right: 10px;
-	width: 45px;
+    margin-right: 10px;
+    width: 45px;
 }
 
 .tag-name {
-	font-size: 15px;
-	font-weight: bold;
+    font-size: 15px;
+    font-weight: bold;
 
-	color: #333;
+    color: #333;
 }
 
 .tag-info {
-	overflow: hidden;
+    overflow: hidden;
 
-	font-size: 14px;
-	white-space: nowrap;
-	text-overflow: ellipsis;
+    font-size: 14px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
-	color: #646464;
+    color: #646464;
 }
 
 .tag-foot,
 .tag-foot-img {
-	margin-top: 10px;
-	width: 100%;
+    margin-top: 10px;
+    width: 100%;
 }
+
 </style>
