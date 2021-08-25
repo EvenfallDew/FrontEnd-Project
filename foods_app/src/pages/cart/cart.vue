@@ -13,7 +13,8 @@
 				>
 					{{ item.title }}
 				</view>
-				<view class="add-block"></view>
+
+				<view class="aside-block"></view>
 			</scroll-view>
 			<!-- 右侧内容菜单 -->
 			<block v-for="(item, i) in goods" :key="i">
@@ -38,13 +39,13 @@
 									{{ obj.num }}
 								</text>
 								<view class="btn" @click="operate(obj, 1, obj.id)">
-									+
+									<text @tap="">+</text>
 								</view>
 							</view>
 						</view>
 					</view>
 					<!-- 导航栏底部占位 -->
-					<view class="add-block"></view>
+					<view class="aside-block"></view>
 				</scroll-view>
 			</block>
 		</view>
@@ -58,6 +59,7 @@
 				购买
 			</view>
 		</view>
+		<!-- 弹窗 -->
 		<uni-popup ref="popup" type="bottom" background-color="#fff">
 			<view class="buy-goods">
 				<view class="buy-good" v-for="(item, i) in selArr" :key="i">
@@ -136,8 +138,6 @@ export default {
 			});
 			// 如果点击减号 数据为0了 过滤一下
 			this.selArr = this.selArr.filter((item) => item.num > 0);
-
-			console.log(this.selArr);
 		},
 		// 微信支付
 		pay() {
@@ -232,7 +232,7 @@ page,
     box-sizing: border-box;
 }
 
-.add-block {
+.aside-block {
     width: 100%;
     height: 60px;
 }
