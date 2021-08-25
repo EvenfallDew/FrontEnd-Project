@@ -38,12 +38,13 @@
 								<text v-if="obj.num > 0" class="num">
 									{{ obj.num }}
 								</text>
-								<view class="btn add-btn" :animation="animationData" @click="declick(j, $event)">
+								<view class="btn" @tap="addShopCar">
 									<view @click="operate(obj, 1, obj.id)">+</view>
 								</view>
 							</view>
 						</view>
 					</view>
+
 					<!-- 导航栏底部占位 -->
 					<view class="aside-block"></view>
 				</scroll-view>
@@ -59,6 +60,7 @@
 				购买
 			</view>
 		</view>
+
 		<!-- 弹窗 -->
 		<uni-popup ref="popup" type="bottom" background-color="#fff">
 			<view class="buy-goods">
@@ -81,30 +83,29 @@
 				</view>
 			</view>
 		</uni-popup>
+
+		<!-- 购物车曲线 -->
+		<shopCarAnimation ref="carAnmation" cartx="0.1" carty="1"></shopCarAnimation>
 	</view>
 </template>
 
 <script>
 import jsons from "@/json/static_data.json";
+import shopCarAnimation from "@/components/fly-in-cart/fly-in-cart.vue";
 
 export default {
+	components: {
+		shopCarAnimation,
+	},
+
 	data() {
 		return {
 			curPage: "白酒",
 			goods: jsons.cartList,
 			selArr: [], // 选中的商品
-			animationData: {},
-			off: false,
-			setWidth: 0,
 		};
 	},
-	mounted() {
-		uni.getSystemInfo({
-			success: (res) => {
-				this.setWidth = res.windowWidth;
-			},
-		});
-	},
+
 	computed: {
 		// 总数
 		total() {
@@ -204,245 +205,184 @@ export default {
 		openCart() {
 			this.$refs.popup.open("bottom");
 		},
-
-		// 获取点击位置坐标，动画曲线，endpoint=>getDetails.x.yaddInCart
-		addInCart(e) {
-			// 起点位置
-			let x = e.detail.x;
-			let y = e.detail.y;
-			console.log(x, y);
-			// 终点位置
-			let xe = 55;
-			let ye = 640;
-			// 构建bezel曲线
-			// 无法获取$refs.name的节点，在循环节点内创建一个view，点击v-if改为true，执行bezel曲线
+		// 购物车动画
+		addShopCar(e) {
+			this.$refs.carAnmation.touchOnGoods(e);
 		},
-
-		declick(i, e) {
-			// 起点位置
-			let x = e.detail.x;
-			let y = e.detail.y;
-			console.log(x, y);
-			// 终点位置
-			let xe = 55;
-			let ye = 640;
-			// 绝对定位移动值
-			let rightVal = this.setWidth - x;
-			let topVal = ye - y;
-			if (this.off) {
-				// 使用动画
-				this.rotateAndScale();
-			} else {
-				this.norotateAndScale();
-			}
-			this.off = !this.off;
-		},
-		// 定义动画内容
-		rotateAndScale() {
-			// 定义动画内容
-			this.animation
-				.rotate(45)
-				.right(20)
-				.top(0)
-				.step();
-			// 导出动画数据传递给data层
-			this.animationData = this.animation.export();
-		},
-		norotateAndScale() {
-			this.animation
-				.rotate(0)
-				.right(300)
-				.top(640)
-				.step();
-			this.animationData = this.animation.export();
-		},
-	},
-	onShow: function() {
-		// 初始化一个动画
-		var animation = uni.createAnimation({
-			duration: 2000,
-			timingFunction: "linear",
-		});
-		this.animation = animation;
 	},
 };
 </script>
 
 <style>
 .cart-box {
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 page,
 .goods {
-    display: flex;
+	display: flex;
 
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .aside {
-    width: 100px;
-    height: 100%;
+	width: 100px;
+	height: 100%;
 
-    text-align: center;
+	text-align: center;
 
-    background-color: #f7f7f7;
+	background-color: #f7f7f7;
 }
 
 .aside-title {
-    height: 42px;
+	height: 42px;
 
-    line-height: 42px;
+	line-height: 42px;
 }
 
 .nav {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .aside-block {
-    width: 100%;
-    height: 60px;
+	width: 100%;
+	height: 60px;
 }
 
 .cur {
-    color: #ff654e;
-    background-color: #fff;
+	color: #ff654e;
+	background-color: #fff;
 }
 
 .content {
-    padding: 0 0 0 20px;
-    height: 100%;
+	padding: 0 0 0 20px;
+	height: 100%;
 
-    flex: 1;
+	flex: 1;
 }
 
 .content-title {
-    box-sizing: border-box;
-    width: 100%;
-    height: 42px;
+	box-sizing: border-box;
+	width: 100%;
+	height: 42px;
 
-    line-height: 42px;
+	line-height: 42px;
 }
 
 .content-item {
-    display: flex;
+	display: flex;
 
-    margin-bottom: 20px;
-    width: 96%;
+	margin-bottom: 20px;
+	width: 96%;
 }
 
 .good-img {
-    margin-right: 10px;
-    width: 80px;
-    height: 80px;
+	margin-right: 10px;
+	width: 80px;
+	height: 80px;
 }
 
 .item-right {
-    flex: 1;
+	flex: 1;
 }
 
 .good-name {
-    font-weight: 600;
+	font-weight: 600;
 }
 
 .good-num {
-    margin-top: 5px;
-    margin-bottom: 10px;
+	margin-top: 5px;
+	margin-bottom: 10px;
 
-    color: #ff654e;
+	color: #ff654e;
 }
 
 .good-operate {
-    display: flex;
+	display: flex;
 
-    position: relative;
+	position: relative;
 
-    justify-content: flex-end;
+	justify-content: flex-end;
 }
 
 .num {
-    margin: 0 5px;
+	margin: 0 5px;
 }
 
 .btn {
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
 
-    line-height: 20px;
-    text-align: center;
+	line-height: 20px;
+	text-align: center;
 
-    color: #fff;
-    background-color: #ff654e;
-}
-
-.add-btn {
-    position: absolute;
-    top: 0;
-    right: 20px;
+	color: #fff;
+	background-color: #ff654e;
 }
 
 .buy {
-    display: flex;
+	display: flex;
 
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 999;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 999;
 
-    box-sizing: border-box;
-    padding-left: 20px;
-    width: 100%;
-    height: 60px;
+	box-sizing: border-box;
+	padding-left: 20px;
+	width: 100%;
+	height: 60px;
 
-    background-color: #fff;
+	background-color: #fff;
 
-    box-shadow: 1px 1px 10px 1px #ccc;
+	box-shadow: 1px 1px 10px 1px #ccc;
 }
 
 .buy-left {
-    padding-left: 20px;
+	padding-left: 20px;
 
-    font-size: 20px;
-    line-height: 60px;
+	font-size: 20px;
+	line-height: 60px;
 
-    flex: 1;
+	flex: 1;
 }
 
 .buy-btn {
-    width: 150px;
-    height: 60px;
+	width: 150px;
+	height: 60px;
 
-    line-height: 60px;
-    text-align: center;
-    letter-spacing: 2px;
+	line-height: 60px;
+	text-align: center;
+	letter-spacing: 2px;
 
-    color: #fff;
-    background-color: #ff654e;
+	color: #fff;
+	background-color: #ff654e;
 }
 
 .buy-goods {
-    padding: 10px 20px;
+	padding: 10px 20px;
 }
 
 .buy-good {
-    display: flex;
+	display: flex;
 
-    margin-bottom: 5px;
+	margin-bottom: 5px;
 
-    align-items: center;
-    justify-content: space-between;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .buy-img {
-    width: 50px;
-    height: 50px;
+	width: 50px;
+	height: 50px;
 }
 
 .buy-text {
-    width: 20%;
+	width: 20%;
 }
 
+/* test */
 </style>
