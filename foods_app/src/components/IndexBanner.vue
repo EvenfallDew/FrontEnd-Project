@@ -37,31 +37,20 @@
 </template>
 
 <script>
+import jsons from "@/json/static_data.json";
+
 export default {
 	name: "IndexBanner",
 
 	data() {
 		return {
-			bannerArr: [
-				"../static/images/banner.png",
-				"../static/images/goods1.jpg",
-				"../static/images/goods2.jpg",
-				"../static/images/goods3.jpg",
-			], // 轮播数据
+			bannerArr: jsons.bannerList, // 轮播数据
 			indicatorDots: true, // 小点点
 			autoplay: true, // 自动播放
 			interval: 5000, // 间隔时间
 			duration: 500, // 滚动时长
 			drawerWidth: 220, //抽屉宽度
-			list: [
-				{ title: "公司介绍", img: "../static/images/footer2.png", icon: "home" },
-				{ title: "分店风采", img: "../static/images/footer2.png", icon: "shop" },
-				{ title: "订单服务", img: "../static/images/footer2.png", icon: "cart" },
-				{ title: "形象展示", img: "../static/images/footer2.png", icon: "person" },
-				{ title: "服务流程", img: "../static/images/footer2.png", icon: "pengyouquan" },
-				{ title: "厨师加盟", img: "../static/images/footer2.png", icon: "personadd" },
-				{ title: "服务加盟", img: "../static/images/footer2.png", icon: "info" },
-			],
+			list: jsons.drawerList, //抽屉内容
 		};
 	},
 

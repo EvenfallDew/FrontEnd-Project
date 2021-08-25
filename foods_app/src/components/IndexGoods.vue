@@ -19,13 +19,13 @@
 </template>
 
 <script>
-import jsons from "@/json/goods.json";
+import jsons from "@/json/static_data.json";
 
 export default {
 	name: "IndexGoods",
 	data() {
 		return {
-			goodslist: jsons.goodslist,
+			goodsList: jsons.goodslist,
 		};
 	},
 };

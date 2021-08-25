@@ -13,7 +13,7 @@
 				>
 					{{ item.title }}
 				</view>
-				<view class="h60"></view>
+				<view class="add-block"></view>
 			</scroll-view>
 			<!-- 右侧内容菜单 -->
 			<block v-for="(item, i) in goods" :key="i">
@@ -26,11 +26,11 @@
 					<view class="content-item" v-for="(obj, j) in item.child" :key="j">
 						<image class="good-img" mode="aspectFill" :src="obj.img"></image>
 						<view class="item-right">
-							<view class="one">
+							<view class="good-name">
 								{{ obj.name }}
 							</view>
-							<view class="two">￥{{ obj.price }}/瓶</view>
-							<view class="three">
+							<view class="good-num">￥{{ obj.price }}/瓶</view>
+							<view class="good-operate">
 								<view v-if="obj.num > 0" class="btn" @click="operate(obj, -1, obj.id)">
 									-
 								</view>
@@ -43,8 +43,8 @@
 							</view>
 						</view>
 					</view>
-
-					<view class="h60"></view>
+					<!-- 导航栏底部占位 -->
+					<view class="add-block"></view>
 				</scroll-view>
 			</block>
 		</view>
@@ -65,7 +65,7 @@
 					<view class="buy-text">{{ item.name }}</view>
 					<view class="buy-text">{{ item.num }}</view>
 					<view class="buy-text">{{ item.num * item.price }}</view>
-					<view class="three">
+					<view class="good-operate">
 						<view v-if="item.num > 0" class="btn" @click="operate(item, -1, item.id)">
 							-
 						</view>
@@ -83,36 +83,13 @@
 </template>
 
 <script>
+import jsons from "@/json/static_data.json";
+
 export default {
 	data() {
 		return {
 			curPage: "白酒",
-			goods: [
-				{
-					title: "白酒",
-					child: [
-						{ id: 1, img: "../../static/images/goods1.jpg", name: "老白干", price: 8, num: 0 },
-						{ id: 2, img: "../../static/images/goods2.jpg", name: "泸州老窖", price: 38, num: 0 },
-						{ id: 3, img: "../../static/images/goods3.jpg", name: "歪嘴", price: 18, num: 0 },
-						{ id: 4, img: "../../static/images/goods3.jpg", name: "江小白", price: 18, num: 0 },
-						{ id: 5, img: "../../static/images/goods2.jpg", name: "牛栏山", price: 9, num: 0 },
-						{ id: 6, img: "../../static/images/goods1.jpg", name: "茅台", price: 1688, num: 0 },
-						{ id: 7, img: "../../static/images/goods2.jpg", name: "五粮液", price: 1280, num: 0 },
-					],
-				},
-				{
-					title: "啤酒",
-					child: [
-						{ id: 8, img: "../../static/images/goods3.jpg", name: "教士", price: 8, num: 0 },
-						{ id: 9, img: "../../static/images/goods2.jpg", name: "雪花", price: 12, num: 0 },
-						{ id: 10, img: "../../static/images/goods1.jpg", name: "青岛", price: 12, num: 0 },
-						{ id: 11, img: "../../static/images/goods3.jpg", name: "百威", price: 8, num: 0 },
-						{ id: 12, img: "../../static/images/goods2.jpg", name: "1664", price: 16, num: 0 },
-						{ id: 13, img: "../../static/images/goods1.jpg", name: "纯生", price: 14, num: 0 },
-						{ id: 14, img: "../../static/images/goods2.jpg", name: "哈啤", price: 6, num: 0 },
-					],
-				},
-			],
+			goods: jsons.cartList,
 			selArr: [], // 选中的商品
 		};
 	},
@@ -151,10 +128,15 @@ export default {
 					this.selArr.splice(i, 1);
 				}
 			});
+			// 添加进购物车
 			this.selArr.push(obj);
-
+			// 按照id排序
+			this.selArr.sort(function(a, b) {
+				return a.id - b.id;
+			});
 			// 如果点击减号 数据为0了 过滤一下
 			this.selArr = this.selArr.filter((item) => item.num > 0);
+
 			console.log(this.selArr);
 		},
 		// 微信支付
@@ -212,7 +194,6 @@ export default {
 		// 打开购物车
 		openCart() {
 			this.$refs.popup.open("bottom");
-			console.log(this.$refs);
 		},
 	},
 };
@@ -251,7 +232,7 @@ page,
     box-sizing: border-box;
 }
 
-.h60 {
+.add-block {
     width: 100%;
     height: 60px;
 }
@@ -293,18 +274,18 @@ page,
     flex: 1;
 }
 
-.one {
+.good-name {
     font-weight: 600;
 }
 
-.two {
+.good-num {
     margin-top: 5px;
     margin-bottom: 10px;
 
     color: #ff654e;
 }
 
-.three {
+.good-operate {
     display: flex;
 
     justify-content: flex-end;

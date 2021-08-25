@@ -19,16 +19,14 @@
 </template>
 
 <script>
+import jsons from "@/json/static_data.json";
+
 export default {
 	name: "IndexCooks",
 
 	data() {
 		return {
-			list: [
-				{ name: "张小妹", star: 4, img: "../static/images/man1.jpg" },
-				{ name: "王大牛", star: 5, img: "../static/images/man2.jpg" },
-				{ name: "斯塔克", star: 4, img: "../static/images/man3.jpg" },
-			],
+			list: jsons.cookList,
 		};
 	},
 	methods: {},

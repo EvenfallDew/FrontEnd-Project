@@ -16,19 +16,18 @@
 </template>
 
 <script>
-import jsons from "@/json/goods.json";
+import jsons from "@/json/static_data.json";
 
 export default {
 	name: "IndexNav",
 	data() {
 		return {
-			navArr: jsons.navlist,
+			navArr: jsons.navList,
 		};
 	},
 
 	methods: {
 		go(i) {
-			console.log(1);
 			if (i == 4) {
 				uni.navigateTo({
 					url: "/pages/cart/cart",

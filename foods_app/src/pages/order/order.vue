@@ -57,66 +57,12 @@
 </template>
 
 <script>
+import jsons from "@/json/static_data.json";
+
 export default {
 	data() {
 		return {
-			list: [
-				{
-					id: 1,
-					img: "../../static/images/goods1.jpg",
-					title: "餐宴01",
-					fire: "99+",
-					price: "10",
-					time: "05-09 11:40 周三 名厨上门",
-					address: "涪陵区 长虹国际大道 翡翠绿湾 1栋2单元 1802",
-					tel: 10086,
-					cook: "厨师01",
-				},
-				{
-					id: 2,
-					img: "../../static/images/goods2.jpg",
-					title: "餐宴02",
-					fire: "99+",
-					price: "20",
-					time: "05-09 11:40 周三 名厨上门",
-					address: "涪陵区 长虹国际大道 翡翠绿湾 1栋2单元 1802",
-					tel: 10010,
-					cook: "厨师02",
-				},
-				{
-					id: 3,
-					img: "../../static/images/goods3.jpg",
-					title: "餐宴03",
-					fire: "99+",
-					price: "30",
-					time: "05-09 11:40 周三 名厨上门",
-					address: "涪陵区 长虹国际大道 翡翠绿湾 1栋2单元 1802",
-					tel: 10000,
-					cook: "厨师03",
-				},
-				{
-					id: 4,
-					img: "../../static/images/goods1.jpg",
-					title: "餐宴04",
-					fire: "99+",
-					price: "40",
-					time: "05-09 11:40 周三 名厨上门",
-					address: "涪陵区 长虹国际大道 翡翠绿湾 1栋2单元 1802",
-					tel: 118114,
-					cook: "厨师04",
-				},
-				{
-					id: 5,
-					img: "../../static/images/goods2.jpg",
-					title: "餐宴05",
-					fire: "99+",
-					price: "50",
-					time: "05-09 11:40 周三 名厨上门",
-					address: "涪陵区 长虹国际大道 翡翠绿湾 1栋2单元 1802",
-					tel: 12580,
-					cook: "厨师05",
-				},
-			],
+			list: jsons.orderList,
 		};
 	},
 	methods: {

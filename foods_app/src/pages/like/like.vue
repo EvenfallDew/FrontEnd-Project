@@ -48,17 +48,13 @@
 </template>
 
 <script>
+import jsons from "@/json/static_data.json";
+
 export default {
 	data() {
 		return {
 			isShow: true,
-			list: [
-				{ id: 1, img: "../../static/images/goods1.jpg", title: "餐宴01", fire: "99+", price: "10" },
-				{ id: 2, img: "../../static/images/goods2.jpg", title: "餐宴02", fire: "99+", price: "20" },
-				{ id: 3, img: "../../static/images/goods3.jpg", title: "餐宴03", fire: "99+", price: "30" },
-				{ id: 4, img: "../../static/images/goods1.jpg", title: "餐宴04", fire: "99+", price: "40" },
-				{ id: 5, img: "../../static/images/goods2.jpg", title: "餐宴05", fire: "99+", price: "50" },
-			],
+			list: jsons.likeList,
 		};
 	},
 	methods: {
@@ -86,11 +82,7 @@ export default {
 		// 滚动底部加载新的数据
 		onReachBottom() {
 			// 滚动到底部 发请求
-			let newArr = [
-				{ id: 6, img: "../../static/images/goods3.jpg", title: "餐宴06", fire: "99+", price: "60" },
-				{ id: 7, img: "../../static/images/goods1.jpg", title: "餐宴07", fire: "99+", price: "70" },
-				{ id: 8, img: "../../static/images/goods2.jpg", title: "餐宴08", fire: "99+", price: "80" },
-			];
+			let newArr = jsons.likeList1;
 
 			if (this.isShow) {
 				uni.showLoading({

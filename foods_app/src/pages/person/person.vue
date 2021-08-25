@@ -10,7 +10,7 @@
 			</view>
 		</view>
 
-		<uni-list v-for="(item, i) in listContent" :key="i">
+		<uni-list v-for="(item, i) in list" :key="i">
 			<uni-list-item
 				thumb-size="medium"
 				link
@@ -25,15 +25,13 @@
 </template>
 
 <script>
+import jsons from "@/json/static_data.json";
+
 export default {
 	data() {
 		return {
 			userInfo: {},
-			listContent: [
-				{ title: "烹饪历史", img: "/static/images/icon_order.png", url: "" },
-				{ title: "支付记录", img: "/static/images/icon_money.png", url: "" },
-				{ title: "举报投诉", img: "/static/images/icon_msg.png", url: "/pages/report/report" },
-			],
+			list: jsons.personList,
 		};
 	},
 
