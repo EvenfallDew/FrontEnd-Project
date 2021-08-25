@@ -38,8 +38,8 @@
 								<text v-if="obj.num > 0" class="num">
 									{{ obj.num }}
 								</text>
-								<view class="btn" @click="operate(obj, 1, obj.id)">
-									<text @tap="">+</text>
+								<view class="btn add-btn" :animation="animationData" @click="declick(j, $event)">
+									<view @click="operate(obj, 1, obj.id)">+</view>
 								</view>
 							</view>
 						</view>
@@ -93,9 +93,18 @@ export default {
 			curPage: "白酒",
 			goods: jsons.cartList,
 			selArr: [], // 选中的商品
+			animationData: {},
+			off: false,
+			setWidth: 0,
 		};
 	},
-
+	mounted() {
+		uni.getSystemInfo({
+			success: (res) => {
+				this.setWidth = res.windowWidth;
+			},
+		});
+	},
 	computed: {
 		// 总数
 		total() {
@@ -195,6 +204,66 @@ export default {
 		openCart() {
 			this.$refs.popup.open("bottom");
 		},
+
+		// 获取点击位置坐标，动画曲线，endpoint=>getDetails.x.yaddInCart
+		addInCart(e) {
+			// 起点位置
+			let x = e.detail.x;
+			let y = e.detail.y;
+			console.log(x, y);
+			// 终点位置
+			let xe = 55;
+			let ye = 640;
+			// 构建bezel曲线
+			// 无法获取$refs.name的节点，在循环节点内创建一个view，点击v-if改为true，执行bezel曲线
+		},
+
+		declick(i, e) {
+			// 起点位置
+			let x = e.detail.x;
+			let y = e.detail.y;
+			console.log(x, y);
+			// 终点位置
+			let xe = 55;
+			let ye = 640;
+			// 绝对定位移动值
+			let rightVal = this.setWidth - x;
+			let topVal = ye - y;
+			if (this.off) {
+				// 使用动画
+				this.rotateAndScale();
+			} else {
+				this.norotateAndScale();
+			}
+			this.off = !this.off;
+		},
+		// 定义动画内容
+		rotateAndScale() {
+			// 定义动画内容
+			this.animation
+				.rotate(45)
+				.right(20)
+				.top(0)
+				.step();
+			// 导出动画数据传递给data层
+			this.animationData = this.animation.export();
+		},
+		norotateAndScale() {
+			this.animation
+				.rotate(0)
+				.right(300)
+				.top(640)
+				.step();
+			this.animationData = this.animation.export();
+		},
+	},
+	onShow: function() {
+		// 初始化一个动画
+		var animation = uni.createAnimation({
+			duration: 2000,
+			timingFunction: "linear",
+		});
+		this.animation = animation;
 	},
 };
 </script>
@@ -288,6 +357,8 @@ page,
 .good-operate {
     display: flex;
 
+    position: relative;
+
     justify-content: flex-end;
 }
 
@@ -305,6 +376,12 @@ page,
 
     color: #fff;
     background-color: #ff654e;
+}
+
+.add-btn {
+    position: absolute;
+    top: 0;
+    right: 20px;
 }
 
 .buy {
