@@ -52,7 +52,7 @@
 		</view>
 		<!-- 结算 -->
 		<view class="buy">
-			<view>
+			<view @click="openCart()">
 				<uni-icons :type="total > 0 ? 'cart-filled' : 'cart'" size="60" color="#ff654e"></uni-icons>
 			</view>
 			<view class="buy-left" @click="openCart()">￥{{ totalPrice }}</view>
