@@ -9,7 +9,7 @@
 				<!-- 店铺头像 -->
 				<van-image class="shop-avatar" width="70px" height="70px " fit="cover" :src="sellerInfo.avatar">
 					<template v-slot:loading>
-						<van-loading type="spinner" size="20" />
+						<van-loading color="#1989fa" size="20" />
 					</template>
 				</van-image>
 				<!-- 店铺名称 -->

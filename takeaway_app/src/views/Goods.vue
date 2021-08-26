@@ -48,7 +48,6 @@
 				</div>
 			</div>
 		</main>
-
 		<!-- 弹窗 -->
 		<transition
 			enter-active-class="animate__animated animate__slideInRight"
