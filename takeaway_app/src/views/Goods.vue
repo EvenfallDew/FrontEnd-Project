@@ -39,7 +39,7 @@
 									<span
 										class="add-btn iconfont icon-add"
 										@click.stop="add(v.id, +1)"
-										@click="addInCart"
+										@click="addInCart()"
 									></span>
 								</div>
 							</div>
@@ -75,7 +75,9 @@
 							<span>￥</span>
 							{{ goodsInfo.price }}
 						</span>
-						<van-button round type="info" @click.stop="add(goodsInfo.id, +1)">加入购物车</van-button>
+						<van-button round type="info" @click.stop="add(goodsInfo.id, +1)" @click="addInCart()">
+							加入购物车
+						</van-button>
 					</p>
 				</div>
 

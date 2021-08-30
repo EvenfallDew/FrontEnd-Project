@@ -111,6 +111,7 @@ export default {
 				require("./../assets/images/discount.png"),
 				require("./../assets/images/special.png"),
 			],
+			imagesNone: require("./../assets/images/img_none.jpg"),
 			checked: false,
 			collectColor: "gray",
 		};
@@ -118,6 +119,9 @@ export default {
 
 	created() {
 		this.sellerInfo = local.get("sellerInfo");
+		if (this.sellerInfo.pics.length == 0) {
+			this.sellerInfo.pics[0] = this.imagesNone;
+		}
 	},
 
 	mounted() {
