@@ -1,6 +1,6 @@
 # FrontEnd-Project 前端项目
 
-## 一些前端练习的项目
+## 前端项目练习
 
 ### 01. 安防监控企业网站仿例
 
@@ -41,3 +41,4 @@
 -   餐饮 uniapp 仿例页面：
 
 > [源码地址](https://github.com/EvenfallDew/FrontEnd-Projects/tree/main/foods_app)
+
