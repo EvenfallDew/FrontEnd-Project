@@ -41,4 +41,3 @@
 -   餐饮 uniapp 仿例页面：
 
 > [源码地址](https://github.com/EvenfallDew/FrontEnd-Projects/tree/main/foods_app)
-
