@@ -1,5 +1,6 @@
 // 店铺api 模块
 import request from "@/utils/request";
+// 引入qs转post请求
 import Qs from "qs";
 
 // 获取 店铺数据
